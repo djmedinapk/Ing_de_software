@@ -50,7 +50,7 @@ public class DAOuser
         return Usuario;
     }
 
-    public DataTable obtenerUsuario(String condicion1, String condicion2, String condicion3)
+    public DataTable obtenerUsuario()
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -59,9 +59,6 @@ public class DAOuser
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_usuario", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = condicion1;
-            dataAdapter.SelectCommand.Parameters.Add("_Condicion2", NpgsqlDbType.Varchar).Value = condicion2;
-            dataAdapter.SelectCommand.Parameters.Add("_Condicion3", NpgsqlDbType.Varchar).Value = condicion3;
             conectar.Open();
             dataAdapter.Fill(Usuario);
         }
@@ -80,4 +77,116 @@ public class DAOuser
     }
 
 
+    public DataTable obtenerEmpresa(String valor1)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_empresa", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
+            conectar.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return Usuario;
+    }
+
+    public DataTable obtenerProductos(String valor1, String valor2)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_productos", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Varchar).Value = valor2;
+            conectar.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return Usuario;
+    }
+
+
+    public DataTable obtenerProductos(String valor1, Int32 valor2)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_productos", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Varchar).Value = valor2;
+            conectar.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return Usuario;
+    }
+
+    public DataTable obtenerEstudios(String valor1, Int32 valor2,String valor3)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_estudios", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Varchar).Value = valor2;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion3", NpgsqlDbType.Varchar).Value = valor3;
+            conectar.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return Usuario;
+    }
 }
