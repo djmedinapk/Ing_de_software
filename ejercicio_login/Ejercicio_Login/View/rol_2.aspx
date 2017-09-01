@@ -13,17 +13,13 @@
 <body>
    
     <form id="form1" runat="server">
-   
-    <div class ="imagen">
-    <h1>dfsddfs</h1>sdfasfasfasfasfa
-    </div>
-    
+      
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <p>
-            <asp:TextBox ID="T1" runat="server" AutoPostBack="True"></asp:TextBox>
+            <h4>Nombre Empresa: </h4><asp:TextBox ID="T1" runat="server" AutoPostBack="True"></asp:TextBox>
         </p>
 
             <asp:GridView ID="GridView1" runat="server" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Height="200px" Width="281px" AllowPaging="True" AllowSorting="True" DataSourceID="datosEmpresa">

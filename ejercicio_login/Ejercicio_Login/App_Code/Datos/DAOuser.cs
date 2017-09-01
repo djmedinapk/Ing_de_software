@@ -103,18 +103,19 @@ public class DAOuser
         }
         return Usuario;
     }
-
     public DataTable obtenerProductos(String valor1, String valor2)
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+        
 
         try
         {
+            int valor3 = int.Parse(valor2);
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_productos", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
-            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Varchar).Value = valor2;
+            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Integer).Value = valor3;
             conectar.Open();
             dataAdapter.Fill(Usuario);
         }
@@ -132,36 +133,7 @@ public class DAOuser
         return Usuario;
     }
 
-
-    public DataTable obtenerProductos(String valor1, Int32 valor2)
-    {
-        DataTable Usuario = new DataTable();
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_productos", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_condicion1", NpgsqlDbType.Varchar).Value = valor1;
-            dataAdapter.SelectCommand.Parameters.Add("_condicion2", NpgsqlDbType.Varchar).Value = valor2;
-            conectar.Open();
-            dataAdapter.Fill(Usuario);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return Usuario;
-    }
-
-    public DataTable obtenerEstudios(String valor1, Int32 valor2,String valor3)
+    public DataTable obtenerEstudios(String valor1, String valor2,String valor3)
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);

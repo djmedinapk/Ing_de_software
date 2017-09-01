@@ -33,6 +33,12 @@ public partial class _Default : System.Web.UI.Page
                 case 2:
                     Response.Redirect("rol_2.aspx");
                     break;                                             //Faltan 2 paginas para los roles!!
+                case 3:
+                    Response.Redirect("rol_3.aspx");
+                    break;
+                case 4:
+                    Response.Redirect("rol_4.aspx");
+                    break;
                 default:
                     Response.Redirect("Login.aspx");
                     break;

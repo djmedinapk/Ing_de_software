@@ -47,5 +47,11 @@
 
         </div>
     </form>
+    <p>
+        rol:1  usuario:Torrado      clave:123 <br />
+        rol:2  usuario:CYRO         clave:123<br />
+        rol:3  usuario:Yesid123     clave:123<br />
+        rol:4  usuario:David22      clave:123<br />
+    </p>
 </body>
 </html>
