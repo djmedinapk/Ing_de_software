@@ -103,6 +103,7 @@
                         </SelectParameters>
                     </asp:ObjectDataSource>
         </p>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cerrar Sesion" />
     </form>
 
 </body>
