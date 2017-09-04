@@ -38,7 +38,9 @@
             
         
         
-                    
+
+
+        <asp:Button ID="Button1" runat="server" Text="Cerrar Sesion" OnClick="Button1_Click" />
     </form>
 </body>
 </html>

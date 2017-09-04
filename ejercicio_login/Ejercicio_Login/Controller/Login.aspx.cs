@@ -12,6 +12,28 @@ public partial class _Default : System.Web.UI.Page
     {
         Lerror.ForeColor = System.Drawing.Color.Black;
         Lerror.Text = "";
+        if (Session["usuario"] != null)
+        {
+            switch (Session["usuario"])
+            {
+                case 1:
+                    Response.Redirect("rol_1.aspx");
+                    break;
+                case 2:
+                    Response.Redirect("rol_2.aspx");
+                    break;                                             //Faltan 2 paginas para los roles!!
+                case 3:
+                    Response.Redirect("rol_3.aspx");
+                    break;
+                case 4:
+                    Response.Redirect("rol_4.aspx");
+                    break;
+                default:
+                    Response.Redirect("Login.aspx");
+                    break;
+
+            }
+        }
     }
 
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
@@ -25,7 +47,8 @@ public partial class _Default : System.Web.UI.Page
         DataTable informacion = daoLogin.consultar_login(login);
         if (informacion.Rows.Count != 0)
         {
-            switch (informacion.Rows[0][0])
+            Session["usuario"]=informacion.Rows[0][0];
+            switch (Session["usuario"])
             {
                 case 1:
                     Response.Redirect("rol_1.aspx");

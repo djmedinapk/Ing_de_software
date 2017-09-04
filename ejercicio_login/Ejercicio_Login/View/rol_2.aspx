@@ -40,6 +40,7 @@
                             <asp:ControlParameter ControlID="T1" DefaultValue="ninguno" Name="valor1" PropertyName="Text" Type="String" />
                         </SelectParameters>
         </asp:ObjectDataSource>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Cerrar Sesion" />
     </form>
     
 </body>
