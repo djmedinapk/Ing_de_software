@@ -73,16 +73,71 @@ public class DAOtienda
         return products;
     }
 
-    public DataTable listar_carrito(int? id)
+    public DataTable listar_carrito(int id)
     {
         DataTable carrito = new DataTable();
         NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
         try
         {
-            id = 1;
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_obtener_carrito", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_iduser", NpgsqlDbType.Integer).Value = id;
+            conectar.Open();
+            dataAdapter.Fill(carrito);
+        }
+        catch (Exception Ex)
+        {
+
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return carrito;
+    }
+
+
+    public DataTable terminar_compra(int id)
+    {
+        DataTable carrito = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_finalizar_compra", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer).Value = id;
+            conectar.Open();
+            dataAdapter.Fill(carrito);
+        }
+        catch (Exception Ex)
+        {
+
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return carrito;
+    }
+
+    public DataTable agregar_carrito(int id_usuario, int id_producto )
+    {
+        DataTable carrito = new DataTable();
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("f_agregar_carrito", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_iduser", NpgsqlDbType.Integer).Value = id_usuario;
+            dataAdapter.SelectCommand.Parameters.Add("_idproducto", NpgsqlDbType.Integer).Value = id_producto;
             conectar.Open();
             dataAdapter.Fill(carrito);
         }

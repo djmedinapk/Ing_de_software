@@ -26,6 +26,9 @@ public partial class Loginaspx : System.Web.UI.Page
         {
             Session["usuario"] = informacion;
             Session["idusuario"] = informacion.Rows[0][0];
+            Session["username_usuario"] = informacion.Rows[0][3];
+            Session["nombre_usuario"] = informacion.Rows[0][1];
+
             switch (informacion.Rows[0][5])
             {
                 case 1:
@@ -33,7 +36,7 @@ public partial class Loginaspx : System.Web.UI.Page
                     break;
                 case 2:
                     Response.Redirect("home.aspx");
-                    break;                                             //Faltan 2 paginas para los roles!!
+                    break;                                             
                 case 3:
                     Response.Redirect("home.aspx");
                     break;

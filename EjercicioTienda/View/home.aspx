@@ -30,13 +30,17 @@
 <body>
     <form id="form1" runat="server">
     <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img src="../img/logo.png" class="img-fluid" width="100px" />Bienvenido</a>  
+    <a class="navbar-brand" href="#"><img src="../img/logo.png" class="img-fluid" width="100px" />Bienvenido</a> 
+        <a class="navbar-brand my-2" href="#">
+            <asp:Label ID="LUsername" runat="server" Text="Label"></asp:Label><asp:Button ID="Bsalir" runat="server" Text="Cerrar Sesion" CssClass="btn btn-outline-light my-2 my-sm-0" OnClick="Bsalir_Click" /></a>
+        
         <asp:Button ID="Blogin" runat="server" Text="Iniciar Sesion" CssClass="btn btn-outline-light my-2 my-sm-0" OnClick="Button2_Click"/>
+        
 </nav>
         <div class="row">
           <div class="col-md-9 col-xs-12 col-lg-8 col-sm-12 ">
               <div class="espacio"></div>
-                             <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataSourceID="ObjectDataSource1" ForeColor="#333333" RepeatColumns="4" RepeatDirection="Horizontal" Width="100%">
+                             <asp:DataList ID="DataList1" runat="server" CellPadding="4" DataSourceID="ObjectDataSource1" ForeColor="#333333" RepeatColumns="4" RepeatDirection="Horizontal" Width="100%" OnItemCommand="DataList1_ItemCommand">
                                  <ItemTemplate>
                                      <div class="item">
                                          <div class="header-item">
@@ -49,8 +53,9 @@
                                          <div class="footer-item">
                                              <hr class="hr-item" />
                                                <strong>Precio: $<asp:Label ID="label2" runat="server" Text='<%# Bind("precio") %>'></asp:Label></strong>
+                                             <asp:Label ID="Lid" runat="server" Text='<%# Bind("id") %>' Visible="False"></asp:Label>
                                                 <p>
-                                                    <asp:Button ID="Button1" runat="server" Text="Agregar Al Carrito" CssClass="btn btn-dark btn-lg btn-block" />
+                                                    <asp:Button ID="Button1" runat="server" Text="Agregar Al Carrito" CssClass="btn btn-dark btn-lg btn-block" CommandName="agregar" />
                                                 </p>
                                          </div>
 
@@ -77,11 +82,13 @@
 
               <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="listar_carrito" TypeName="DAOtienda">
                   <SelectParameters>
-                      <asp:SessionParameter DefaultValue="1" Name="id" SessionField="usuario.id" Type="Int32" />
+                      <asp:SessionParameter DefaultValue="0" Name="id" SessionField="idusuario" Type="Int32" />
                   </SelectParameters>
               </asp:ObjectDataSource>
               <hr />
-              <asp:Button ID="Button3" runat="server" Text="Terminar Compra" class="btn btn-danger btn-block"/>
+              <asp:Button ID="Bcarrito_terminar_compra" runat="server" Text="Terminar Compra" class="btn btn-danger btn-block" OnClick="Bcarrito_terminar_compra_Click"/>
+              <asp:Label ID="Lcarrito_login" runat="server" Text="Debe Iniciar Sesion Para Acceder Al Carrito"></asp:Label>
+              <asp:Button ID="Bcarrito_login" runat="server" Text="Iniciar Sesion" class="btn btn-danger btn-block" OnClick="Bcarrito_login_Click"/>
           </div>
          </div>
               
