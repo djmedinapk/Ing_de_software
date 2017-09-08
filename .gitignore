@@ -2,3 +2,4 @@
 EjercicioTienda/Bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll
 *.dll
 EjercicioTienda/Bin/roslyn/VBCSCompiler.exe
+EjercicioMaster/Proyecto/Bin/roslyn/VBCSCompiler.exe
