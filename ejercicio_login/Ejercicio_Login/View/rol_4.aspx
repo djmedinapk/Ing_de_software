@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/rol_4.aspx.cs" Inherits="View_rol_4" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Ejercicio_Login/Controller/rol_4.aspx.cs" Inherits="View_rol_4" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Tablas.aspx.cs" Inherits="View_Tablas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Ejercicio_Login/Controller/Tablas.aspx.cs" Inherits="View_Tablas" %>
 
 <!DOCTYPE html>
 
