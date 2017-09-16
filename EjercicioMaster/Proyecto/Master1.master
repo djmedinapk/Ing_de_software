@@ -31,7 +31,7 @@
     					<br>
         					<h6><sub>Suscribirse</sub>&#160;&#160;
                             <sub>Olvido la contraseña?</sub>
-        					<asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success" /></asp:Button></h6> 
+        					<asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success" OnClick="Button1_Click" /></asp:Button></h6> 
     				</h5>
 
     			</div>
