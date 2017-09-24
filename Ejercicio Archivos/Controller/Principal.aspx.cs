@@ -18,13 +18,17 @@ public partial class View_Principal : System.Web.UI.Page
             Session["offi"] = 0;
         }
         DataTable fotos;
+        Label5.Text = "img Restrantes: " + (3 - (int)(Session["img"])).ToString();
+        Label6.Text = "pdf Restrantes: " + (4 - (int)(Session["pdf"]) ).ToString();
+        Label7.Text = "Ofimatica Restrantes: " + (3 - (int)(Session["offi"]) ).ToString();
 
         if (Session["fotos"] == null)
         {
             fotos = new DataTable();
             fotos.Columns.Add("ruta");
-            fotos.Columns.Add("descripcion");
-
+            fotos.Columns.Add("tipo");
+            fotos.Columns.Add("url");
+            fotos.Columns.Add("nombre");
             Session["fotos"] = fotos;
         }
         else
@@ -76,17 +80,53 @@ public partial class View_Principal : System.Web.UI.Page
                         if (System.IO.File.Exists(saveLocation_final))
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
+                            try
+                            {
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         try
                         {
                             System.IO.File.Move(saveLocation, saveLocation_final);
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
-                            //System.IO.File.Delete(saveLocation_final);
+                            //System.IO.File.Delete(saveLocation_final); 
+                            
+                                        DataTable fotos = new DataTable();
+
+                                        fotos = (DataTable)Session["fotos"];
+
+                                        string[] celdas = new string[4];
+
+                                        celdas[0] = "..\\Archivos\\imagenes\\" + "img_" + nombreArchivo;
+                                        celdas[1] = extension;
+                                        celdas[2] = saveLocation_final; 
+                                        celdas[3] = nombreArchivo;
+
+
+
+                            fotos.Rows.Add(celdas);
+
+                                        Session["fotos"] = fotos;
+
+                                        GridView1.DataSource = fotos;
+                                        GridView1.DataBind();
                         }
                         catch (Exception exc)
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: ');</script>");
+                            try
+                            {
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         cant++;
@@ -122,6 +162,13 @@ public partial class View_Principal : System.Web.UI.Page
                         if (System.IO.File.Exists(saveLocation_final))
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
+                            try{
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         try
@@ -129,10 +176,36 @@ public partial class View_Principal : System.Web.UI.Page
                             System.IO.File.Move(saveLocation, saveLocation_final);
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
                             //System.IO.File.Delete(saveLocation_final);
+                            DataTable fotos = new DataTable();
+
+                            fotos = (DataTable)Session["fotos"];
+
+                            string[] celdas = new string[4];
+
+                            celdas[0] = "..\\recursos\\pdf.jpg";
+                            celdas[1] = extension;
+                            celdas[2] = saveLocation_final;
+                            celdas[3] = nombreArchivo;
+
+
+                            fotos.Rows.Add(celdas);
+
+                            Session["fotos"] = fotos;
+
+                            GridView1.DataSource = fotos;
+                            GridView1.DataBind();
                         }
                         catch (Exception exc)
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: ');</script>");
+                            try
+                            {
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         
@@ -177,6 +250,14 @@ public partial class View_Principal : System.Web.UI.Page
                         if (System.IO.File.Exists(saveLocation_final))
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
+                            try
+                            {
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         try
@@ -184,10 +265,36 @@ public partial class View_Principal : System.Web.UI.Page
                             System.IO.File.Move(saveLocation, saveLocation_final);
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
                             //System.IO.File.Delete(saveLocation_final);
+                            DataTable fotos = new DataTable();
+
+                            fotos = (DataTable)Session["fotos"];
+
+                            string[] celdas = new string[4];
+
+                            celdas[0] = "..\\recursos\\"+extension+".jpg";
+                            celdas[1] = extension;
+                            celdas[2] = saveLocation_final;
+                            celdas[3] = nombreArchivo;
+
+
+                            fotos.Rows.Add(celdas);
+
+                            Session["fotos"] = fotos;
+
+                            GridView1.DataSource = fotos;
+                            GridView1.DataBind();
                         }
                         catch (Exception exc)
                         {
                             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: ');</script>");
+                            try
+                            {
+                                System.IO.File.Delete(saveLocation);
+                            }
+                            catch
+                            {
+
+                            }
                             return;
                         }
                         
@@ -211,8 +318,13 @@ public partial class View_Principal : System.Web.UI.Page
                     return;
                 }
                 break;
+
+                
         }
 
+        Label5.Text = "img Restrantes: " + (3 - (int)(Session["img"])).ToString();
+        Label6.Text = "pdf Restrantes: " + (4 - (int)(Session["pdf"])).ToString();
+        Label7.Text = "Ofimatica Restrantes: " + (3 - (int)(Session["offi"])).ToString();
 
 
 
