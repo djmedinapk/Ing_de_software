@@ -13,4 +13,12 @@ public partial class View_Grid : System.Web.UI.Page
     }
 
 
+
+
+    protected void Update_row(object sender, GridViewUpdateEventArgs e)
+    {
+        
+    }
+
+
 }

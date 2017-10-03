@@ -81,7 +81,7 @@ public class DAOUsuario
         return Usuario;
     }
 
-    public DataTable modificarUsuarios(string nom, string apell, string correo, string sexo, string marca, string referencia,
+    public DataTable modificarUsuarios(int id,string nombre, string apellido, string correo, string sexo, string marca, string referencia,
         string url, string fecha)
     {
         DataTable Usuario = new DataTable();
@@ -91,14 +91,42 @@ public class DAOUsuario
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_modificar_usuario", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar, 100).Value = nom;
-            dataAdapter.SelectCommand.Parameters.Add("_apellido", NpgsqlDbType.Varchar, 100).Value = apell;
+            dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Varchar, 100).Value = id;
+            dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar, 100).Value = nombre;
+            dataAdapter.SelectCommand.Parameters.Add("_apellido", NpgsqlDbType.Varchar, 100).Value = apellido;
             dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar, 100).Value = correo;
             dataAdapter.SelectCommand.Parameters.Add("_sexo", NpgsqlDbType.Varchar, 100).Value = sexo;
             dataAdapter.SelectCommand.Parameters.Add("_marca", NpgsqlDbType.Varchar, 100).Value = marca;
             dataAdapter.SelectCommand.Parameters.Add("_referencia", NpgsqlDbType.Varchar, 100).Value = referencia;
             dataAdapter.SelectCommand.Parameters.Add("_url", NpgsqlDbType.Varchar, 100).Value = url;
             dataAdapter.SelectCommand.Parameters.Add("_fecha", NpgsqlDbType.Varchar, 100).Value = fecha;
+            conection.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conection != null)
+            {
+                conection.Close();
+            }
+        }
+        return Usuario;
+    }
+
+    public DataTable eliminarUsuario(int identificador)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_eliminar_usuario", conection);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_id", NpgsqlDbType.Integer, 100).Value = identificador;
             conection.Open();
             dataAdapter.Fill(Usuario);
         }

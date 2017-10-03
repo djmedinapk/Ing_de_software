@@ -21,19 +21,22 @@
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="ODS_usuarios" EmptyDataText="No Hay resgistros" ForeColor="Black" GridLines="Vertical" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="ODS_usuarios" EmptyDataText="No Hay resgistros" ForeColor="Black" GridLines="Vertical" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" OnRowUpdating="Update_row" DataKeyNames="id">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
+                                <asp:BoundField DataField="id" HeaderText="ID" Visible="False" />
                                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                 <asp:BoundField DataField="apellido" HeaderText="Apellido" />
                                 <asp:BoundField DataField="correo" HeaderText="Correo" />
                                 <asp:BoundField DataField="sexo" HeaderText="Sexo" />
                                 <asp:BoundField DataField="marca" HeaderText="Marca" />
                                 <asp:BoundField DataField="referencia" HeaderText="Referencia" />
-                                <asp:ImageField DataImageUrlField="url" HeaderText="Foto">
+                                <asp:ImageField DataImageUrlField="url" HeaderText="Foto" ControlStyle-Width="100px">
+<ControlStyle Width="100px"></ControlStyle>
                                 </asp:ImageField>
                                 <asp:BoundField DataField="fecha" HeaderText="fecha" />
                                 <asp:CommandField ShowEditButton="True" />
+                                <asp:CommandField ShowDeleteButton="True" />
                             </Columns>
                             <FooterStyle BackColor="#CCCCCC" />
                             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
