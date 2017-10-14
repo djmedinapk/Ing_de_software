@@ -37,12 +37,12 @@
     			</div>
     			<div class="col-sm-4 container"></div>
     			<div class="col-sm-4  ml-8  mr-0  container text-right">
-    				<h5>Usuario <asp:TextBox ID="Tlogin_user" runat="server"></asp:TextBox>
-    					<br>Contraseña <asp:TextBox ID="Tlogin_pass" runat="server"></asp:TextBox>
+    				<h5>Usuario <asp:TextBox ID="Tlogin_user" runat="server" ValidationGroup="master"></asp:TextBox>
+    					<br>Contraseña <asp:TextBox ID="Tlogin_pass" runat="server" ValidationGroup="master"></asp:TextBox>
     					<br>
-        					<h6><sub>Suscribirse</sub>&#160;&#160;
+        					<h6><sub>Crear Cuenta</sub>&#160;&#160;
                             <sub>Olvido la contraseña?</sub>
-        					<asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success" /></asp:Button></h6> 
+        					<asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success" ValidationGroup="master" /></asp:Button></h6> 
     				</h5>
 
     			</div>
