@@ -92,6 +92,7 @@
 						   <%-- <label for="inputlg"></label>--%>
                             <asp:TextBox ID="TregistroPassword2" runat="server" class="form-control input-lg" placeholder="Confirmar Contraseña" TextMode="Password"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroPassword2" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Las contraseñas no coinciden" ControlToCompare="TregistroPassword" ControlToValidate="TregistroPassword2" ForeColor="Red"></asp:CompareValidator>
 						    <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Confirmar Contraseña">--%>
 						  </div>
 					  </dd>	

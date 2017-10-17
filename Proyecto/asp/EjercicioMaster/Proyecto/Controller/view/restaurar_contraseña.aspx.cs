@@ -32,7 +32,7 @@ public partial class view_restaurar_contraseña : System.Web.UI.Page
             reset.AlmacenarToken(userToken, token.Id);
             Correo correo = new Correo();
             String mensaje = "Para continuar con su restablecimiento de contraseña, por favor ingrese al siguiente link: " 
-                + "http://localhost:52200/View/nueva_contraseña.aspx?" + userToken + "  El link funcionara por los próximos 60 minutos después de enviado este correo, después de eso tendrá que volver a solicitar la recuperación de contraseña. "
+                + "http://localhost:57264/View/login/nueva_contraseña.aspx?" + userToken + "  El link funcionara por los próximos 60 minutos después de enviado este correo, después de eso tendrá que volver a solicitar la recuperación de contraseña. "
                 +" Atentamente, el equipo de FOROUDEC";
             correo.enviarCorreo(token.Correo, userToken, mensaje);
             L_respuesta.ForeColor = System.Drawing.Color.Green;
