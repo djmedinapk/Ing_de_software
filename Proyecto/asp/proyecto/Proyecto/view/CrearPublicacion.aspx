@@ -57,7 +57,7 @@
                   <textarea id="TAcrearpostEtiquetas" cols="20" rows="4" class="form-control"></textarea>
               </div>
 
-          
+   
        </div>  
 
     
