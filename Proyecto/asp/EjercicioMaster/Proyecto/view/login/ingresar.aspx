@@ -25,7 +25,7 @@
 					  <dd class="col-sm-8">
 					  	<div class="form-group">
 						    <label for="inputlg"></label>
-                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg text-lowercase" MaxLength=50 placeholder="Usuario o Correo"></asp:TextBox>
+                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg " MaxLength=50 placeholder="Usuario o Correo"></asp:TextBox>
                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginUser" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
 						      <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						    
