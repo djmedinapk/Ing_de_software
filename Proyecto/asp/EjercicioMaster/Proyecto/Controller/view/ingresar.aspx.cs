@@ -31,6 +31,7 @@ public partial class view_login_ingresar : System.Web.UI.Page
         Eregistro usuario = new Eregistro();
         usuario.Correo = TregistroCorreo.Text;
         usuario.Username = TregistroUser.Text;
+        usuario.Session = Session.SessionID;
         usuario.Password = encryption(TregistroPassword2.Text);
         DAOregistro registro = new DAOregistro();
         DataTable informacion = registro.registro(usuario);

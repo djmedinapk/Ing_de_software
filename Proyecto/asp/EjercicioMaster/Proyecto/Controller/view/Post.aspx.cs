@@ -56,7 +56,6 @@ public partial class view_post_Post : System.Web.UI.Page
             LpostUsername.Text = datospost.Rows[0]["username"].ToString();
             IpostAvatar.ImageUrl = datospost.Rows[0]["avatar_username"].ToString();
             LcargarComentarios.Text = datospost.Rows[0]["comentarios"].ToString() + " Comentarios";
-
         }
         
     }

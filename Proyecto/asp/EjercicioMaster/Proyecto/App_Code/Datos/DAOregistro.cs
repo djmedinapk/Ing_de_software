@@ -30,6 +30,7 @@ public class DAOregistro
             dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = datos.Username;
             dataAdapter.SelectCommand.Parameters.Add("_contrasena", NpgsqlDbType.Varchar).Value = datos.Password;
             dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = datos.Correo;
+            dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Varchar).Value = datos.Session;
 
             conectar.Open();
             dataAdapter.Fill(verificacion);

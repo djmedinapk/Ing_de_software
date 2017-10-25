@@ -66,11 +66,7 @@
     		<!--- fin menu-->
     	</div>
     </div>
-    <div class="botonForoUdec rotar">
-		<ul>
-			<li><a href="#" target="_blank" class="icon-facebook">Foro Estudiantes</a></li>			
-		</ul>
-	</div>
+ 
     
     <div class="container" style="padding-top: 250PX;">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
