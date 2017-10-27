@@ -21,9 +21,10 @@
     font-family: "HelveticaLTStd-Light";
     src: url('../../App_Themes/assets/fonts/HelveticaLTStd-Light.otf') format("opentype");
         }
-     .menus{
-        -webkit-transition:all 2s; 
-         transition: all 2s ease;
+        .menus {
+            -webkit-transition: all 2s;
+            transition: all 2s ease;
+        }
  </style>
  
 </head>
@@ -51,7 +52,7 @@
           </div>
           <div class="row" style="padding-top: 10px;">
             <div class="col">
-              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"  /></asp:Button>
+              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click" ></asp:Button>
             </div>
           </div>
         </div>

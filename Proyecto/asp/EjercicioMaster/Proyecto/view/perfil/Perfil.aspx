@@ -38,7 +38,6 @@
                             <li>estado: <span style="color: #02FF32">online</span></li>
                             <li>total mensajes: 12</li>
                             <li>total Post: 12</li>
-
                         </ul>
                     </h6>
                     <div style="height: 100px"></div>
@@ -100,18 +99,24 @@
                             <dt class="col-sm-3 mt-5 text-right">Nombre</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilNombre" placeholder="Nombre"></asp:textbox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilNombre" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
+						        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilNombre" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">Apellido</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilApellido" placeholder="Apellido"></asp:textbox>
+                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilApellido" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
+						        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilApellido" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
                                 <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Apellido">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">Edad</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="Number"></asp:textbox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilEdad" ValidationExpression=".{0,3}" ForeColor="Red"></asp:RegularExpressionValidator>
+						        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilEdad" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Edad">--%>
                             </dd>
 
@@ -127,7 +132,7 @@
                             
                         </dl>
                         <div class="row" style="padding-bottom:20px;">
-                            <asp:Button ID="BperfilGuardar" runat="server" Text="Guardar Cambios" class="btn btn-secondary btn-lg btn-block" OnClick="BperfilGuardar_Click" />
+                            <asp:Button ID="BperfilGuardar" runat="server" Text="Guardar Cambios" class="btn btn-secondary btn-lg btn-block" ValidationGroup="1" OnClick="BperfilGuardar_Click" />
                         </div>
                         
                     </div>

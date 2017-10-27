@@ -11,6 +11,7 @@
                           <div class="form-group">
                               <label for="inputlg"></label>
                               <asp:TextBox ID="TResetPassUser" runat="server" class="form-control input-lg" MaxLength=35 placeholder="Username" ></asp:TextBox>
+                              <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TresetPassUser" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TResetPassUser" ForeColor="Red" Font-Size="XX-Small" ></asp:RequiredFieldValidator>
 						   <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						  </div>

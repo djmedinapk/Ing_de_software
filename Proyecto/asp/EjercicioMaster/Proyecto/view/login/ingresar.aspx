@@ -1,4 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/ingresar.aspx.cs" Inherits="view_login_ingresar" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/ingresar.aspx.cs" Inherits="view_login_ingresar" %>
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../../App_Themes/css/login.css" rel="stylesheet" />
@@ -25,7 +28,8 @@
 					  <dd class="col-sm-8">
 					  	<div class="form-group">
 						    <label for="inputlg"></label>
-                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg text-lowercase" MaxLength=50 placeholder="Usuario o Correo"></asp:TextBox>
+                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg" MaxLength=50 placeholder="Usuario o Correo"></asp:TextBox>
+                              <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TregistroUser" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginUser" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
 						      <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						    
@@ -38,7 +42,8 @@
 					    <div class="form-group">
 						    <label for="inputlg"></label>
                             <asp:TextBox ID="TloginPassword" runat="server" class="form-control input-lg" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
-						    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginPassword" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
+						    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroPassword" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginPassword" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
                             <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Contraseña">--%>
 						  </div>
 					  </dd>	
@@ -59,18 +64,20 @@
 					  <dt class="col-sm-0"></dt>
 					  <dd class="col-sm-9">
 					  	<div class="form-group">
+
 						   <%-- <label for="inputlg"></label>--%>
-                              <asp:TextBox ID="TregistroCorreo" runat="server" class="form-control input-lg" placeholder="Correo" TextMode="Email"></asp:TextBox>
-						        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroCorreo" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                              <asp:TextBox ID="TregistroCorreo" runat="server" class="form-control input-lg" placeholder="Correo" ></asp:TextBox>
+                              <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TregistroCorreo" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroCorreo" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
                               <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Correo">--%>
 						  </div>
-
 					   </dd>
 					   <dt class="col-sm-0"></dt>
 					  <dd class="col-sm-9">
 					  	<div class="form-group">
 						    <%--<label for="inputlg"></label>--%>
                               <asp:TextBox ID="TregistroUser" runat="server" class="form-control input-lg" placeholder="Usuario"></asp:TextBox>
+                              <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TregistroUser" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
 						        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroUser" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
                               <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario">--%>
 						  </div>
@@ -83,6 +90,7 @@
 						   <%-- <label for="inputlg"></label>--%>
                             <asp:TextBox ID="TregistroPassword" runat="server" class="form-control input-lg" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
 						   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroPassword" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                           <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TregistroPassword" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
                             <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Contraseña">--%>
 						  </div>
 					  </dd>	
@@ -92,6 +100,7 @@
 						   <%-- <label for="inputlg"></label>--%>
                             <asp:TextBox ID="TregistroPassword2" runat="server" class="form-control input-lg" placeholder="Confirmar Contraseña" TextMode="Password"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroPassword2" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                            
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Las contraseñas no coinciden" ControlToCompare="TregistroPassword" ControlToValidate="TregistroPassword2" ForeColor="Red"></asp:CompareValidator>
 						    <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Confirmar Contraseña">--%>
 						  </div>

@@ -20,7 +20,7 @@ public partial class view_login_ingresar : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect("../perfil/perfil.aspx");
+            Response.Redirect("~/perfil/perfil.aspx");
         }
         
     }
@@ -41,7 +41,7 @@ public partial class view_login_ingresar : System.Web.UI.Page
             if (frase == "Registro_exitoso") {
                 string mensaje = "<div class='alert alert-success alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Registro Exitoso!</strong> Gracias Por Ser Parte De Esta Gran Comunidad</div>";
                 LMensaje.Text = mensaje;
-                TloginUser.Text = usuario.Correo;
+                TloginUser.Text = usuario.Username;
                 TloginPassword.Focus();
             }else
             {

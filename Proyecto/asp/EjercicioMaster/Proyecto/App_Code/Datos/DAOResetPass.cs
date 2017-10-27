@@ -28,6 +28,7 @@ public class DAOResetPass
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_validar_usuario", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_user_name", NpgsqlDbType.Text).Value = user_name;
+
             conection.Open();
             dataAdapter.Fill(Usuario);
         }

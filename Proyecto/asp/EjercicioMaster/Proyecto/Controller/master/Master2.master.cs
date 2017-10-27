@@ -11,19 +11,18 @@ public partial class Master1 : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int i = 0;
     }
 
 
     protected void Button1_Click(object sender, EventArgs e)
     {
         DAOUsuario guardarUsuario = new DAOUsuario();
-        string username = Tlogin_user.Text.ToString();
-        string pass = encryption(Tlogin_pass.Text.ToString());
-        System.Data.DataTable data = guardarUsuario.ingresar(username, pass);
+        //string username = Tlogin_user.Text.ToString();
+        //string pass = encryption(Tlogin_pass.Text.ToString());
+        //System.Data.DataTable data = guardarUsuario.ingresar(username, pass);
 
 
-        if (int.Parse(data.Rows[0]["user_id"].ToString()) > 0)
+        /*if (int.Parse(data.Rows[0]["user_id"].ToString()) > 0)
         {
             try
             {
@@ -64,7 +63,7 @@ public partial class Master1 : System.Web.UI.MasterPage
             string mensaje = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Datos Incorrectos!</strong> Si has olvidado tus datos has click en Recuperar Contraseña </div>";
             // LMensaje.Text = mensaje;
         }
-
+        */
     }
     public string encryption(String password)
     {
