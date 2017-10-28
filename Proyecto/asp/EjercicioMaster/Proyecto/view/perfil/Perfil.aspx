@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2_2.master" AutoEventWireup="true" CodeFile="~/Controller/view/Perfil.aspx.cs" Inherits="view_Perfil" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+ <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+   
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../App_Themes/css/modificar_perfil.css">
     <style>
@@ -30,14 +31,13 @@
                         <%--<img src="../../img/123.jpg" alt="..." class="img-thumbnail" width="200px">--%>
                     </div>
 
-                    <h5><asp:Label ID="Lusername" runat="server" Text=""></asp:Label> <br>
-                        <small class="text-muted">Never use to be</small>
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Label ID="Lusername" runat="server" Text="" style="font-weight: 700; font-size: large"></asp:Label> <br>
                     </h5>
                     <h6 class="text-muted">
                         <ul>
                             <li>estado: <span style="color: #02FF32">online</span></li>
-                            <li>total mensajes: 12</li>
-                            <li>total Post: 12</li>
+                            <li>total Post: <asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label></li>
+
                         </ul>
                     </h6>
                     <div style="height: 100px"></div>
@@ -98,25 +98,25 @@
                             </dd>
                             <dt class="col-sm-3 mt-5 text-right">Nombre</dt>
                             <dd class="col-sm-9 mt-5">
-                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilNombre" placeholder="Nombre"></asp:textbox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilNombre" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
-						        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilNombre" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilNombre" placeholder="Nombre" ></asp:textbox>
+                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                               <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="ñ " TargetControlID="TperfilNombre" />
+                               
+                                     <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="No se Admiten Caracteres Especiales" ControlToValidate="TperfilNombre" ValidationExpression="[^a-zA-Z \-]|( )|(\-\-)|(^\s*$)"></asp:RegularExpressionValidator>--%>
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">Apellido</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilApellido" placeholder="Apellido"></asp:textbox>
-                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilApellido" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
-						        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilApellido" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="ñ " TargetControlID="TperfilApellido" />
                                 <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Apellido">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">Edad</dt>
                             <dd class="col-sm-9 mt-5">
-                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="Number"></asp:textbox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TperfilEdad" ValidationExpression=".{0,3}" ForeColor="Red"></asp:RegularExpressionValidator>
-						        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilEdad" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="1"></asp:RequiredFieldValidator>
+                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="Number" MaxLength="2"></asp:textbox>
+                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers"  TargetControlID="TperfilEdad" />
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Edad">--%>
                             </dd>
 
@@ -132,7 +132,7 @@
                             
                         </dl>
                         <div class="row" style="padding-bottom:20px;">
-                            <asp:Button ID="BperfilGuardar" runat="server" Text="Guardar Cambios" class="btn btn-secondary btn-lg btn-block" ValidationGroup="1" OnClick="BperfilGuardar_Click" />
+                            <asp:Button ID="BperfilGuardar" runat="server" Text="Guardar Cambios" class="btn btn-secondary btn-lg btn-block" OnClick="BperfilGuardar_Click" />
                         </div>
                         
                     </div>
@@ -142,24 +142,31 @@
                             <dt class="col-sm-3 mt-5 text-right">Usuario</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesUsername" placeholder="Usuario"></asp:textbox>
+                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TperfilAjustesUsername" />
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">correo</dt>
                             <dd class="col-sm-9 mt-5">
                                         <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesCorreo" type="text" placeholder="Correo" textmode="Email"></asp:textbox>
+                                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-ñ.@" TargetControlID="TperfilAjustesCorreo" />
                                         <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Correo">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right">Contraseña</dt>
                             <dd class="col-sm-9 mt-5">
-                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena" placeholder="Contraseña"></asp:textbox>
+                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena" placeholder="Contraseña" TextMode="Password"></asp:textbox>
+                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TperfilAjustesContrasena" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">--%>
                             </dd>
 
                             <dt class="col-sm-3 mt-5 text-right"></dt>
                             <dd class="col-sm-9 mt-5">
-                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena2" placeholder="Repetir Contraseña"></asp:textbox>
+                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena2" placeholder="Repetir Contraseña" TextMode="Password"></asp:textbox>
+
+                                <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                                ControlToCompare="TperfilAjustesContrasena" ControlToValidate="TperfilAjustesContrasena2" 
+                                 ErrorMessage="No coinciden las contraseñas" ForeColor="Red"></asp:CompareValidator>
                                 <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Apellido">--%>
                             </dd>
                         </dl>
@@ -173,4 +180,5 @@
         </div>
     </div>
 </asp:Content>
+
 

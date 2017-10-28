@@ -14,6 +14,6 @@ public partial class view_login_redirect_login : System.Web.UI.Page
 
     protected void Bredirect_Click(object sender, EventArgs e)
     {
-        Response.Redirect("ingresar.aspx");
+        Response.Redirect("../login/ingresar.aspx");
     }
 }

@@ -21,10 +21,9 @@
     font-family: "HelveticaLTStd-Light";
     src: url('../../App_Themes/assets/fonts/HelveticaLTStd-Light.otf') format("opentype");
         }
-        .menus {
-            -webkit-transition: all 2s;
-            transition: all 2s ease;
-        }
+     .menus{
+        -webkit-transition:all 2s; 
+         transition: all 2s ease;
  </style>
  
 </head>
@@ -32,11 +31,11 @@
     <form id="form1" runat="server">
     <div class="container-fluid menus " id="header" style=" position: relative;  top:0px; " >
     	<div class="d-flex justify-content-md-between">
-        <div class="p-2"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></div>
-        <div class="p-2">
+        <div class="p-2"><a href="../home/Index.aspx"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></a></div>
+        <div class="p-4">
           <div class="row">
             <div class="col">
-              <h5>Usuario </h5>
+              <%--<h5>Usuario </h5>
             </div>
             <div class="col">
               <asp:TextBox ID="Tlogin_user" runat="server" ValidationGroup="master"></asp:TextBox>
@@ -51,8 +50,8 @@
             </div>
           </div>
           <div class="row" style="padding-top: 10px;">
-            <div class="col">
-              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click" ></asp:Button>
+            <div class="col">--%>
+              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"  /></asp:Button>
             </div>
           </div>
         </div>
@@ -99,7 +98,7 @@
             <!-- menu-->
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container-fluid" style="position: relative;  top:0px;  left: 0px; max-width:200px;  margin-left: 0px; margin-top: 0px; height: 0px;" >
-                      <a class="navbar-brand" href="#"><img src="../../img/logo2.svg" class="img-fluid" width="200px" ></a>
+                      <a class="navbar-brand" href="../home/Index.aspx"><img src="../../img/logo2.svg" class="img-fluid" width="200px" ></a>
                     </div>
                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -207,6 +206,7 @@ $(window).scroll(function() {
  
 );
 </script>
+        
     </form>
 </body>
 </html>

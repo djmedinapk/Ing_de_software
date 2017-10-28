@@ -31,10 +31,10 @@
       .contenido {
         min-height: 600px;
       }
-      .card,.card-header,.card-footer{
+      /**.card,.card-header,.card-footer{
         background-color: #FFFFFF;
         border-color: #FFFFFF;
-      }
+      }**/
       
     </style>
   </head>
@@ -100,30 +100,86 @@
    <diiv class="row">
      <div class="col-12">
        <div class="card" style="width: 100%;">
-             <div class="card-body">
-                      <div class="card" style="width: 100%;">
-                      	<div class="card-header">
-					<span>Username</span>
-			</div>
-                      <div class="card-body">
-                        
-                        <p class="card-text">Comentario.</p>
-                        <a href="#" class="">Responder</a>
-			<div class="card" style="width: 100%;">
-                      < div class="card-header">
-					<span>Username</span>
-				</div>
-                      <div class="card-body">
-                        
-                        <p class="card-text">Comentario.</p>
-                        <a href="#" class="">Responder</a>
-				
-                      </div>  	
-                      </div>  
-             </div>
-		</div>
+          <div class="d-flex justify-content-between">
+                        <div class="p-2">
+                          <span>Username</span> 
+                        </div>
+                        <div class="p-2">
+                          <a class="btn"  onclick="denunciar(1)">
+                            <small>Reportar</small>
+                          </a>
+                        </div>
+                         
+                        </div>
+
+                         <div class="card-body">
+                             <div id="accordion" role="tablist">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Collapsible Group Item #1
+                                </a>
+                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                  <div class="card" style="width: 100%;">
+                                      	<div class="d-flex justify-content-between">
+                                        <div class="p-2">
+                                          <span>Username</span> 
+                                        </div>
+                                        <div class="p-2">
+                                          <a class="btn"   onclick="denunciar(2)">
+                                            <small>Reportar</small>
+                                          </a>
+                                        </div>
+                                         
+                                        </div>
+                					               
+                			
+                                      <div class="card-body">
+                                        
+                                        <p class="card-text">Comentario.</p>
+                                         <a href="#" class="">1 Repuesta</a>
+                                        <a href="#" class="">Responder</a>
+                                        </div>
+                		              </div></div>
+                          </div>
+                       </div>
+          </div>
      </div>
      </diiv>   
+     <div  id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Denunciar Comentario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                  <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="TdenunciaId">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Razon De La Denúncia</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Enviar Denuncia</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <script type="text/javascript">
+       function denunciar(id){
+          $('#myModal').modal('toggle');
+          $('#TdenunciaId').val(id);
+         
+
+       }
+     </script>
 
 
 

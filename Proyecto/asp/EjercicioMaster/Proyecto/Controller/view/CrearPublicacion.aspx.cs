@@ -78,6 +78,7 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
             string mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
             
         }
+        Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()
     {

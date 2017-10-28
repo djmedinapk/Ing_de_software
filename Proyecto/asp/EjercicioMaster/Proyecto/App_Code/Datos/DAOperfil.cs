@@ -50,7 +50,7 @@ public class DAOperfil
 
         try
         {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_datos_sesion", conection);
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_datos_sesion2", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
             dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
@@ -70,7 +70,7 @@ public class DAOperfil
         }
         return Usuario;
     }
-    public DataTable modificarDatos(int user_id,EdatosUsuario datos)
+    public DataTable modificarDatos(int user_id,EdatosUsuario datos, String Sesion)
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -79,6 +79,7 @@ public class DAOperfil
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("public.f_modificar_usuario", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = Sesion;
             dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
             //dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = datos.Username;
             dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar).Value = datos.Nombre;
@@ -145,7 +146,7 @@ public class DAOperfil
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("public.f_modificar_perfil_ajustes", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Varchar).Value = Sesion;
+            dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Varchar).Value = Sesion;
             dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
             dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = datos.Username;
             dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = datos.Correo;
@@ -166,5 +167,32 @@ public class DAOperfil
             }
         }
         return post;
+    }
+    public DataTable traerDatos_vistaPerfil(int user_id)
+    {
+        DataTable Usuario = new DataTable();
+        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_datos_vista_perfil", conection);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+            conection.Open();
+            dataAdapter.Fill(Usuario);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conection != null)
+            {
+                conection.Close();
+            }
+        }
+        return Usuario;
     }
 }

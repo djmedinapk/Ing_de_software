@@ -9,7 +9,6 @@
                               <label for="inputlg"></label>
                               <asp:TextBox ID="TNewPassUser" runat="server" class="form-control input-lg" MaxLength=30 placeholder="Nueva contraseña" TextMode="Password"  ></asp:TextBox>
                               <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TNewPassUser" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
-                              <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TNewPassUser" ForeColor="Red" Font-Size="XX-Small" ></asp:RequiredFieldValidator>
 						   <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						  </div>
 					   </dd>
@@ -17,10 +16,9 @@
                           <div class="form-group">
                               <label for="inputlg"></label>
                               <asp:TextBox ID="TNewPassUser2" runat="server" class="form-control input-lg" MaxLength=30 placeholder="Repita la contraseña" TextMode="Password" ></asp:TextBox>
-                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TNewPassUser2" ForeColor="Red" Font-Size="XX-Small" ></asp:RequiredFieldValidator>
-                              <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Verifique la contraseña ingresada" ControlToCompare="TNewPassUser2" ControlToValidate="TNewPassUser" ForeColor="#FF3300"></asp:CompareValidator>
-						       <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TNewPassUser" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
-                              <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TNewPassUser2" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                              <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Las contraseñas no coinciden" ControlToCompare="TNewPassUser" ControlToValidate="TNewPassUser2" ForeColor="Red"></asp:CompareValidator>
+						     <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						  </div>
 					   </dd>
 					  

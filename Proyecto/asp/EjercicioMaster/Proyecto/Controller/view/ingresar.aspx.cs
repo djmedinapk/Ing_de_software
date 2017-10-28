@@ -20,7 +20,7 @@ public partial class view_login_ingresar : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect("~/perfil/perfil.aspx");
+            Response.Redirect("../perfil/perfil.aspx");
         }
         
     }

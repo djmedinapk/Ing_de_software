@@ -31,7 +31,8 @@
     <form id="form1" runat="server">
     <div class="container-fluid menus " id="header" style=" position: relative;  top:0px; " >
         <div class="d-flex justify-content-md-between">
-        <div class="p-2"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></div>
+        <div class="p-2">
+            <a href="../home/Index.aspx"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></a></div>
         <div class="p-2">
             <div class="row">
                 <div class="col">
@@ -93,7 +94,7 @@
             <!-- menu-->
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container-fluid" style="position: relative;  top:0px;  left: 0px; max-width:200px;  margin-left: 0px; margin-top: 0px; height: 0px;" >
-                      <a class="navbar-brand" href="#"><img src="../../img/logo2.svg" class="img-fluid" width="200px" ></a>
+                      <a class="navbar-brand" href="../home/Index.aspx"><img src="../../img/logo2.svg" class="img-fluid" width="200px" ></a>
                     </div>
                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -191,6 +192,7 @@ $(window).scroll(function() {
  
 );
 </script>
+        
     </form>
 </body>
 </html>

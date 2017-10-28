@@ -165,4 +165,94 @@ public class DAOpost
         }
         return post;
     }
+    public DataTable ver_comentarios(int post_id,int comentario)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_comentarios_post", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+            dataAdapter.SelectCommand.Parameters.Add("_comentario", NpgsqlDbType.Integer).Value = comentario;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
+    public DataTable puntuar_post(int puntuacion,int user_id,int post_id)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_puntuar_post", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_puntuacion", NpgsqlDbType.Integer).Value = puntuacion;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+            dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
+    public DataTable comentar_post(int comentario_id, int user_id, int post_id,String comentario)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_comentar_post", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_comentarioid", NpgsqlDbType.Integer).Value = comentario_id;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+            dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+            dataAdapter.SelectCommand.Parameters.Add("_comentario", NpgsqlDbType.Text).Value = comentario;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
 }

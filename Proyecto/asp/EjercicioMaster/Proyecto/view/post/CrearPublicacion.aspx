@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2_2.master" AutoEventWireup="true" CodeFile="~/Controller/view/CrearPublicacion.aspx.cs" Inherits="view_CrearPublicacion" ValidateRequest="false" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script src="../../App_Themes/assets/ckeditor/ckeditor.js"></script>
@@ -43,23 +44,26 @@
             <div class="container contenedor-cuerpo">
               <label for="Nombre-post">Nombre Post</label>
               <div class="input-group"> 
-                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" MaxLength="100"></asp:TextBox>
-                  <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Tipo de entrada incorrecta" ControlToValidate="TpostNombre" ValidationExpression="\w+" ForeColor="Red"></asp:RegularExpressionValidator>
-                  <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TpostNombre" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
-               <%-- <input type="text" id="Nombre-post" name="a">--%>
+                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control"></asp:TextBox>
+                  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                  <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TpostNombre" />
+                 
+                  <%-- <input type="text" id="Nombre-post" name="a">--%>
+
                </div>
                <label for="Descripcion-post">Descripcion</label>
               <div class="input-group">
                   <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control"></asp:TextBox>
-                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tpostdescripcion" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                  <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tpostdescripcion" />
+                 
+
                 <%--<input type="text" class="form-control" id="Descripcion-post" >--%>
                </div>
                 <label for="DDLcategoria">Categoria</label>
             <div class="input-group">
                 <asp:dropdownlist runat="server" id="DDLcategoria" class="form-control" DataSourceID="ODSlistarCategoria" DataTextField="nombre" DataValueField="id"></asp:dropdownlist>
                 <asp:ObjectDataSource ID="ODSlistarCategoria" runat="server" SelectMethod="listar_categoria" TypeName="DAOpost"></asp:ObjectDataSource>
-               <<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="DDLcategoria" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
-                /div>
+               </div>
               <div class="input-group editor1">
                   
                    <input type="text"  name='editor1' id='editor1' style='width: 100%' onkeyup="PassValue()"/>
@@ -74,7 +78,8 @@
                   </div>
                   <div class="input-group editor1">
                       <asp:RadioButton ID="RBpostfuentes2" runat="server" Text="Otras fuentes: " GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged"  />
-                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control"></asp:TextBox>   
+                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control"></asp:TextBox>  
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ /:;." TargetControlID="TpostFuentes" />
                   </div>
                       
             </div>

@@ -28,9 +28,9 @@
         background-color: #FFFFFF;
         border-color: #FFFFFF;
       }
-      .card-header{
+      .card-body{
         background-color: #FFFFFF;
-        border-color: #FFFFFF;
+        border-color: #808080;
       }
       .card{
         background-color: #FFFFFF;
@@ -62,18 +62,21 @@
           
         </div>
       <div class="col-md-3 ">
+          
+          <asp:hyperlink id="HLavatarImagen" runat="server">
+
           <asp:Image ID="IpostAvatar" runat="server" class="img-thumbnail" width="200px" />
+
           <%--<img src="../perfil/img/123.jpg" alt="..." class="img-thumbnail" width="200px" height="20px">--%>
-              <h5>
+             </asp:hyperlink> <h5>
                   <asp:Label ID="LpostUsername" runat="server" Text=""></asp:Label>
                   <br>
             <small class="text-muted">Never use to be</small>
           </h5>
           <p class="text-muted" >
             <ul>
-              <li>estado: <span style="color: #02FF32">online</span></li>
-                <li>total mensajes: 12</li>
-                <li>total Post: 12</li>    
+              <li>estado: <asp:Label ID="Label1" runat="server" Text="<span style='color: #02FF32'>online</span>"></asp:Label></li>
+                <li>total Post:<asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label> </li>    
               
                </ul>
           </p>
@@ -84,26 +87,172 @@
     <div class="row">
       <div class="col-md-9">
         <div class="d-flex justify-content-center  mb-3">
+            <div class="p-2 align-self-center">
+                <span><h4>Puntúa Este Post: </h4></span>
+            </div>
           <div class="p-4">
              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group mr-2 btn-group-lg text-center" role="group" aria-label="First group" style="width: 60%;">
-                <button type="button" class="btn btn-success">1</button>
-                <button type="button" class="btn btn-success">2</button>
-                <button type="button" class="btn btn-success">3</button>
-                <button type="button" class="btn btn-success">4</button>
-                <button type="button" class="btn btn-success">5</button>
+                  <asp:button runat="server" text="1" id="Bpunt1" class="btn btn-success" OnClick="Bpunt1_Click"/>
+                  <asp:button runat="server" text="2" id="Bpunt2" class="btn btn-success" OnClick="Bpunt2_Click"/>
+                  <asp:button runat="server" text="3" id="Bpunt3" class="btn btn-success" OnClick="Bpunt3_Click"/>
+                  <asp:button runat="server" text="4" id="Bpunt4" class="btn btn-success" OnClick="Bpunt4_Click"/>
+                  <asp:button runat="server" text="5" id="Bpunt5" class="btn btn-success" OnClick="Bpunt5_Click"/>
               </div>
             </div>
           </div>
         </div>
         </div>
       </div>
-   <diiv class="row">
-     <div class="col-12" style="background-color:darkgray;">
-                <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF">
+    
+    <div class="row">
+     <div class="col-12">
+         
+            <asp:TextBox ID="Tidcomentario" runat="server" type="hidden" Text="0"></asp:TextBox>
+              <div class="col-12">
+                  <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Agragar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>
+                     
+
+
+                    </div>
+              </div>
+             <div class="d-flex justify-content-end ">
+                 <div class="p-2"><asp:Button ID="Button2" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click"/></div>
+             </div>
+          
+         <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF" >
                     <asp:Label runat="server" ID="LcargarComentarios" Text=""></asp:Label>
                 </asp:HyperLink>
+        <asp:DataList runat="server" DataSourceID="ODScargarComentarios">
+            <ItemTemplate>
+                <!----------------------------------inicio comentario------------------------>
+                <div class="card" style="width: 100%;">
+                  <div class="d-flex justify-content-between">
+                                <div class="p-2">
+                                    <asp:Label id="LidPost" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
+                                  <span><h5><asp:Label id="Ltitulo" runat="server" Text='<%# Bind("username") %>'></asp:Label></h5></span> 
+                                </div>
+                                <div class="p-2">
+                                 <asp:Label id="Label7" runat="server" Text='<%# Bind("denuncia") %>'></asp:Label>
+                                    <small>Reportar</small>
+                                  </a>
+                                </div>
+                         
+                                </div>
+                     <div class="card-body">
+                          <p>
+                              <asp:Label id="Label2" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                          </p>
+                         
+                       
+                                    
+                                              <div id="accordion" role="tablist">
+                                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                      <asp:Label id="Label3" runat="server" Text='<%# Bind("respuestas") %>'></asp:Label> Respuestas
+                                                    </a>
+                                                  <asp:Label id="Label8" runat="server" Text='<%# Bind("comentaridpost") %>'></asp:Label>
+                                                   <small>responder</small>
+                                  </a>
+                                                    <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                      
+                                                        <asp:DataList runat="server" DataSourceID="ODScargarRespuestas">
+                                                            <ItemTemplate>
+                                                                <!----------------------------------inicio comentario------------------------>
+                                                                <div class="card" style="width: 100%;">
+                                                                    <div class="d-flex justify-content-between">
+                                                                                <div class="p-2">
+                                                                                    <span><h5><asp:Label id="Label4" runat="server" Text='<%# Bind("username") %>'></asp:Label></h5></span> 
+                                                                                </div>
+                                                                                <div class="p-2">
+                                                                                    <asp:Label id="Label6" runat="server" Text='<%# Bind("denuncia") %>'></asp:Label>
+                                                                                    <small>Reportar</small>
+                                                                                    </a>
+                                                                                </div>
+                         
+                                                                                </div>
+                                                                        <div class="card-body">
+                                                                            <p>
+                                                                                <asp:Label id="Label5" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                                                                            </p>
+                                                                </div><div>
+                                                            </ItemTemplate>
+                                                            </asp:DataList>
+
+                                                            <asp:ObjectDataSource ID="ODScargarRespuestas" runat="server" SelectMethod="ver_comentarios" TypeName="DAOpost">
+                                                                <SelectParameters>
+                                                                    <asp:QueryStringParameter Name="post_id" QueryStringField="id" Type="Int32" />
+                                                                    <asp:ControlParameter ControlID="LidPost" DefaultValue='0' Name="comentario" PropertyName="Text" Type="Int32" />
+                                                                </SelectParameters>
+                                                            </asp:ObjectDataSource>
+                                                    
+                                                    
+                                                    
+                                                    </div>
+                                              </div>
+                  
+
+                <!----------------------------------fin comentario------------------------>
+                </div><div>
+            </ItemTemplate>
+         </asp:DataList>
+
+         <asp:ObjectDataSource ID="ODScargarComentarios" runat="server" SelectMethod="ver_comentarios" TypeName="DAOpost">
+             <SelectParameters>
+                 <asp:QueryStringParameter Name="post_id" QueryStringField="id" Type="Int32" />
+                 <asp:Parameter DefaultValue="0" Name="comentario" Type="Int32" />
+             </SelectParameters>
+         </asp:ObjectDataSource>
+
      </div>
-     </diiv>  
+     </div>   
+     <div  id="modalDenuncia" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Denunciar Comentario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                  <div class="form-group row">
+                 <%-- <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>--%>
+                  <div class="col-sm-10">
+                      <asp:TextBox ID="TdenunciaComentarioID" runat="server"  class="form-control-plaintext" type="hidden"></asp:TextBox>
+                    <%--<input type="text" readonly class="form-control-plaintext" id="TdenunciaId">--%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Razon De La Denúncia</label>
+                  <textarea class="form-control" id="TdenunciaComentarioText" rows="3" runat="server"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" />
+              <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     <script type="text/javascript">
+       function denunciar(id){
+           $('#modalDenuncia').modal('toggle');
+           $('#ContentPlaceHolder1_TdenunciaComentarioID').val(id);
+         
+
+       }
+     </script>
+    <script type="text/javascript">
+        function comentaridpost(id) {
+            
+            $('#ContentPlaceHolder1_Tidcomentario').val(id);
+            $('#ContentPlaceHolder1_TAcomentario').focus();
+        }
+     </script>
+    <asp:Label id="Lpopup" runat="server" Text=""></asp:Label>
 </asp:Content>
 
