@@ -281,4 +281,17 @@ public partial class view_Perfil : System.Web.UI.Page
         }
         return encryptdata.ToString();
     }
+
+
+
+    protected void Unnamed1_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "eliminar")
+        {
+            Int32 postid=Int32.Parse(e.CommandArgument.ToString());
+            DAOpost eliminar = new DAOpost();
+            DataTable informacion = eliminar.eliminar_post(postid, Session.SessionID);
+            Response.Redirect("Perfil.aspx");
+        }
+    }
 }

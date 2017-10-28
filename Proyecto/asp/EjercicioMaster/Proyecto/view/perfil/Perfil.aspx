@@ -18,6 +18,10 @@
         .panel-derecho {
             padding-right: 30px;
         }
+        .Beliminar{
+            border:0px;
+            background-color:#fff;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -59,15 +63,27 @@
                             <%--<asp:Button ID="BperfilCrearpost" runat="server" Text="Crear Publicacion" class="btn btn-warning"/>--%>
                         </div>
                         <div class="list-group">
-                            <asp:datalist runat="server" repeatlayout="Flow" DataSourceID="ODSpostPerfil">
+                            <asp:datalist runat="server" repeatlayout="Flow" DataSourceID="ODSpostPerfil" DataKeyField="id" OnItemCommand="Unnamed1_ItemCommand" >
                                 <ItemTemplate>
-                                <asp:HyperLink id="HLpost" runat="server" class="list-group-item list-group-item-action flex-column align-items-start " NavigateUrl='<%#  Bind("id_post") %>'>
-                                    <div class="d-flex w-100 justify-content-between">
+                                   <div class="d-flex w-10 justify-content-end" style="margin-bottom:-15px;">
+                                       <div class="p-2 align-content-end">
+                                           <asp:Button ID="Beliminar" class="close Beliminar" Text="x" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id") %>' />
+                                           <%-- <button type="button" class="close">
+                                       <span>x</span>
+                                      </button >--%>
+                                           <asp:HyperLink ID="HLmodificarPost" runat="server" class="close" NavigateUrl='<%# Bind("editar_post") %>'><span ><i class="fa fa-pencil-square-o"></i></span></asp:HyperLink>
+                                        </div>
+                                   
+                                <asp:HyperLink id="HLpost" runat="server" class="list-group-item list-group-item-action flex-column align-items-start " NavigateUrl='<%#  Bind("id_post") %>' style="margin-top:10px;">
+                                    <div class="p-10 align-self-end" >
+                                        <div class="d-flex w-100 justify-content-between" >
 								      <h6 class="mb-1"><asp:Label ID="LperfilTituloPost" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h6>
 								      <small><asp:Label ID="Label2" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></small>
 								    </div>
 								    <p class="mb-0"><asp:Label ID="Label1" runat="server" Text='<%# Bind("estado") %>'></asp:Label></p>	
+                                    </div>
                                 </asp:HyperLink>
+                                       </div>
                                 </ItemTemplate>
                             </asp:datalist>
                             <asp:ObjectDataSource ID="ODSpostPerfil" runat="server" SelectMethod="listar_post" TypeName="DAOperfil">

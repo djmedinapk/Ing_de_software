@@ -113,9 +113,6 @@
                   <div class="form-group">
                         <label for="exampleFormControlTextarea1">Agragar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
                         <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>
-                     
-
-
                     </div>
               </div>
              <div class="d-flex justify-content-end ">
@@ -125,11 +122,11 @@
          <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF" >
                     <asp:Label runat="server" ID="LcargarComentarios" Text=""></asp:Label>
                 </asp:HyperLink>
-        <asp:DataList runat="server" DataSourceID="ODScargarComentarios">
+        <asp:DataList runat="server" DataSourceID="ODScargarComentarios" style="width:100%;">
             <ItemTemplate>
                 <!----------------------------------inicio comentario------------------------>
-                <div class="card" style="width: 100%;">
-                  <div class="d-flex justify-content-between">
+                <div class="card col-12" style="width:100%;">
+                  <div class="d-flex justify-content-between" >
                                 <div class="p-2">
                                     <asp:Label id="LidPost" runat="server" Text='<%# Bind("id") %>' Visible="false" ></asp:Label>
                                   <span><h5><asp:Label id="Ltitulo" runat="server" Text='<%# Bind("username") %>'></asp:Label></h5></span> 
@@ -157,7 +154,7 @@
                                   </a>
                                                     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                                       
-                                                        <asp:DataList runat="server" DataSourceID="ODScargarRespuestas">
+                                                        <asp:DataList runat="server" DataSourceID="ODScargarRespuestas" style="width:100%;">
                                                             <ItemTemplate>
                                                                 <!----------------------------------inicio comentario------------------------>
                                                                 <div class="card" style="width: 100%;">

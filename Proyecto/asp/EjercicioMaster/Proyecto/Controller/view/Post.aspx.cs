@@ -210,8 +210,11 @@ public partial class view_post_Post : System.Web.UI.Page
                 {
                     string frase = informacion.Rows[0][0].ToString();
                     Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    TdenunciaComentarioText.Value = "";
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                       "setInterval('guardar()', 1500);" +
+                       "function guardar() { window.location.href='"+ "Post.aspx?id=" + post.ToString() + "'; }</script>";
+                    TAcomentario.Value = "";
+                    //Response.Redirect("~/view/post/Post.aspx?id=" + post.ToString());
                 }
                 else
                 {

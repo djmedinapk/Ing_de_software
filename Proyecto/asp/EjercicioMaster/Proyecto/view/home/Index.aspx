@@ -61,7 +61,7 @@
                   </asp:datalist>
                   <asp:ObjectDataSource ID="ODSranking" runat="server" SelectMethod="ver_post_home" TypeName="DAOpost">
                       <SelectParameters>
-                          <asp:Parameter DefaultValue="2" Name="orden" Type="String" />
+                          <asp:Parameter DefaultValue="3" Name="orden" Type="String" />
                       </SelectParameters>
                   </asp:ObjectDataSource>
                 <!--- datalist here my friends-->
