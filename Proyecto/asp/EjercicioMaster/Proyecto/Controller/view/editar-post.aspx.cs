@@ -116,7 +116,7 @@ public partial class view_post_editar_post : System.Web.UI.Page
 
 
         }
-        //Response.Redirect("../perfil/perfil.aspx");
+        Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()
     {

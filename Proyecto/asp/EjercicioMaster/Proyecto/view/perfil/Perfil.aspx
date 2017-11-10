@@ -131,8 +131,9 @@
 
                             <dt class="col-sm-3 mt-5 text-right">Edad</dt>
                             <dd class="col-sm-9 mt-5">
-                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="Number" MaxLength="2"></asp:textbox>
-                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers"  TargetControlID="TperfilEdad" />
+                                <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="number" MaxLength="2"></asp:textbox>
+                                <asp:RangeValidator id="rango1" runat="server" ControlToValidate="TperfilEdad" MinimumValue="1" MaximumValue="99" Type="Integer" Text="Edad No Valida" ForeColor="#CC3300" />
+                               <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers"  TargetControlID="TperfilEdad" />
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Edad">--%>
                             </dd>
 
@@ -172,7 +173,8 @@
                             <dt class="col-sm-3 mt-5 text-right">Contraseña</dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena" placeholder="Contraseña" TextMode="Password"></asp:textbox>
-                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TperfilAjustesContrasena" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
+                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TperfilAjustesContrasena" />
+                           
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">--%>
                             </dd>
 

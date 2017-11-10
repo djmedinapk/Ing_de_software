@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/nueva_contraseña.aspx.cs" Inherits="view_nueva_contraseña" %>
+﻿
+<%@ Page Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/nueva_contraseña.aspx.cs" Inherits="view_nueva_contraseña" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
             <div class="row " >		    
@@ -7,8 +9,12 @@
 					  <dd class="col-sm-10">
                           <div class="form-group">
                               <label for="inputlg"></label>
+                            
                               <asp:TextBox ID="TNewPassUser" runat="server" class="form-control input-lg" MaxLength=30 placeholder="Nueva contraseña" TextMode="Password"  ></asp:TextBox>
-                              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TNewPassUser" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>
+                              <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+                              <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TNewPassUser" />
+                           
+                              <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TNewPassUser" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>--%>
 						   <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario ò Correo">--%>
 						  </div>
 					   </dd>
