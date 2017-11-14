@@ -90,7 +90,7 @@
                             <asp:TextBox ID="TregistroPassword" runat="server" class="form-control input-lg" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
 						   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TregistroPassword" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
                            <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Debe contener numeros y letras" ControlToValidate="TregistroPassword" ForeColor="Red" ValidationExpression="[a-zA-Z]+\w*\d+\w*"></asp:RegularExpressionValidator>--%>
-                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TregistroPassword" />
+                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-$ñ" TargetControlID="TregistroPassword" />
                             <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Contraseña">--%>
 						  </div>
 					  </dd>	

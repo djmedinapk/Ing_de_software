@@ -46,7 +46,21 @@
         
            <div class="card ">
                 <div class="card-header">
-                    <asp:Label ID="LpostTitulo" runat="server" Text=""></asp:Label>
+                    <div class="d-flex justify-content-between" >
+                        <div class="p-8">
+                            <h2><asp:Label ID="LpostTitulo" runat="server" Text=""></asp:Label></h2>
+                        </div>
+                        <div class="p-2">
+                            <div class="dropdown">
+                              <button class="btn btn-outline-dark dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#modalDenuncia2">Reportar</a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body contenido">
                   <asp:Label ID="LpostContenido" runat="server" Text=""></asp:Label>
@@ -88,7 +102,7 @@
       <div class="col-md-9">
         <div class="d-flex justify-content-center  mb-3">
             <div class="p-2 align-self-center">
-                <span><h4>Puntúa Este Post: </h4></span>
+                <span><h4><asp:Label runat="server" Text="Puntúa Este Post: " ID="Lpuntuacionn"></asp:Label></h4></span>
             </div>
           <div class="p-4">
              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -107,6 +121,8 @@
     
     <div class="row">
      <div class="col-12">
+         <asp:Panel ID="panel_comentario" runat="server">
+
          
             <asp:TextBox ID="Tidcomentario" runat="server" type="hidden" Text="0"></asp:TextBox>
               <div class="col-12">
@@ -116,12 +132,13 @@
                     </div>
               </div>
              <div class="d-flex justify-content-end ">
-                 <div class="p-2"><asp:Button ID="Button2" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click"/></div>
+                 <div class="p-2"><asp:Button ID="BagregarComentario" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click"/></div>
              </div>
           
          <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF" >
                     <asp:Label runat="server" ID="LcargarComentarios" Text=""></asp:Label>
                 </asp:HyperLink>
+    </asp:Panel>
         <asp:DataList runat="server" DataSourceID="ODScargarComentarios" style="width:100%;">
             <ItemTemplate>
                 <!----------------------------------inicio comentario------------------------>
@@ -154,7 +171,7 @@
                                   </a>
                                                     <div id="collapseOne" class="collapse " role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                                       
-                                                        <asp:DataList runat="server" DataSourceID="ODScargarRespuestas" style="width:100%;">
+                                                        <asp:DataList ID="DLComentarios" runat="server" DataSourceID="ODScargarRespuestas" style="width:100%;" >
                                                             <ItemTemplate>
                                                                 <!----------------------------------inicio comentario------------------------>
                                                                 <div class="card" style="width: 100%;">
@@ -228,6 +245,41 @@
             </div>
             <div class="modal-footer">
                 <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" />
+              <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div  id="modalDenuncia2" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Denunciar Publicacion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                  <div class="form-group row">
+                 <%-- <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>--%>
+                  <div class="col-sm-10">
+                      <label for="DDLopcion">Razón de la denuncia</label>
+                      <asp:DropDownList ID="DDLopcion" runat="server" class="form-control">
+                            <asp:ListItem Value="1" Text="Viola derechos de autor"></asp:ListItem> 
+                            <asp:ListItem Value="2" Text="Contenido Inapropiado"></asp:ListItem> 
+                            <asp:ListItem Value="3" Text="Otro"></asp:ListItem> 
+                      </asp:DropDownList>
+                    <%--<input type="text" readonly class="form-control-plaintext" id="TdenunciaId">--%>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Descripcion</label>
+                  <textarea class="form-control" id="TdenunciaPostText" rows="3" runat="server"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>

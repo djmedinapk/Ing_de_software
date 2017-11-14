@@ -50,6 +50,7 @@
                         <%--<button type="button" class="btn btn-outline-success  btn-block" OnClick="BperfilMod_Click" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false">perfil</button>--%>
                         <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false">Perfil</button>
                         <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-ajustes-tab" data-toggle="pill" href="#v-pills-ajustes" role="tab" aria-controls="v-pills-ajustes" aria-expanded="false">Ajustes</button>
+                        <asp:Button ID="Bmoderador" runat="server" Text="Moderador" class="btn btn-outline-warning  btn-block" role="tab" OnClick="Bmoderador_Click" />
                         <%--<asp:Button ID="BperfilMod" runat="server" Text="Perfil"   class="btn btn-outline-success  btn-block"  href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false" />--%>
                         <asp:Button ID="Blogout" runat="server" Text="Cerrar Sesion" class="btn btn-outline-danger  btn-block" role="tab" aria-controls="v-pills-profile" aria-expanded="false" OnClick="Blogout_Click"/>
                     </div>

@@ -89,9 +89,10 @@ public class DAOpost
 
         try
         {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_ver_post", conectar);
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_ver_post2", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+            //dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Integer).Value = control;
 
             conectar.Open();
             dataAdapter.Fill(post);
@@ -284,6 +285,35 @@ public class DAOpost
         }
         return post;
     }
+    public DataTable validar_post(int post_id, String Sesion)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(" post.f_validar_post", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Text).Value = Sesion;
+            dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
     public DataTable cargar_mod_post(Int32 post_id, Int32 user_id)
     {
         DataTable post = new DataTable();
@@ -349,6 +379,33 @@ public class DAOpost
             }
         }
         return categoria;
+    }
+    public DataTable listar_post_moderador()
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_moderador", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
     }
 
 

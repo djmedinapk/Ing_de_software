@@ -19,7 +19,7 @@ public partial class view_Perfil : System.Web.UI.Page
             Session["username"] = null;
             Session["user_id"] = null;
             Session["Iperfil_url"]=null;
-            Response.Redirect("../login/ingresar.aspx");
+            Response.Redirect("~\\view\\login\\ingresar.aspx");
         }
         else
         {
@@ -35,6 +35,15 @@ public partial class view_Perfil : System.Web.UI.Page
                 BperfilMod_Click(sender, e);
                 Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
                 Lusername.Text = Session["username"].ToString();
+            }
+            var papas = (DataRow)Session["data_user"];
+            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4)
+            {
+                Bmoderador.Visible = true;
+            }
+            else
+            {
+                Bmoderador.Visible = false;
             }
             
         }
@@ -52,7 +61,7 @@ public partial class view_Perfil : System.Web.UI.Page
         };
         user.CerrarSession(datos);
 
-        Response.Redirect("../login/ingresar.aspx");
+        Response.Redirect("~\\view\\login\\ingresar.aspx");
     }
     protected void BperfilGuardar_Click(object sender, EventArgs e)
     {
@@ -154,7 +163,7 @@ public partial class view_Perfil : System.Web.UI.Page
         {
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'>      <div class='modal-header'>     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>         <h4>Bienvenido A ForoUdec</h4>  </div>      <div class='modal-body'>         <h4>Opciones de Perfil</h4>         Antes de comenzar, te surgerimos que completes tu perfil.      </div>      <div class='modal-footer'>     <a href='#v-pills-profile' data-dismiss='modal' data-toggle='pill'  role='tab' aria-controls='v-pills-profile'  class='btn btn-danger'>Ir a Perfil</a>  </div>   </div></div></div>" +
                 "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            Session["Iperfil_url"] = "../../Imagenes/Default/123.jpg";
+            Session["Iperfil_url"] = "~\\Imagenes\\Default\\123.jpg";
         }
         
     }
@@ -293,5 +302,10 @@ public partial class view_Perfil : System.Web.UI.Page
             DataTable informacion = eliminar.eliminar_post(postid, Session.SessionID);
             Response.Redirect("Perfil.aspx");
         }
+    }
+
+    protected void Bmoderador_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~\\View\\moderador\\moderador.aspx");
     }
 }

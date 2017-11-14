@@ -122,6 +122,8 @@
              //console.log("hola");
              var data = CKEDITOR.instances.editor1.getData();
              $("#ContentPlaceHolder1_op").val(data);
+             var anchura = $("cke_173_textInput").val();
+             console.log(anchura);
          }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

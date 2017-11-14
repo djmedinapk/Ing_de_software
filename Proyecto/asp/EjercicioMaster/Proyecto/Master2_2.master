@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/master/Master2.master.cs" Inherits="Master1"  %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/master/Master2_2.master.cs" Inherits="Master1"  %>
 
 <!DOCTYPE html>
 
@@ -36,11 +36,12 @@
         <div class="p-2">
             <div class="row">
                 <div class="col">
-                    <strong>username</strong>
+                    <strong><asp:Label ID="LmasterUsername" runat="server" Text=""></asp:Label></strong>
                 </div>
                 <div class="col">
                     <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="../../img/default-perfil.jpg" width="100px" class="img-thumbnail" style="float: right;"> </a>
+                        <asp:Image ID="ImasterAvatar" runat="server"  width="100px" class="img-thumbnail" style="float: right;" />
+                    <%--<img src="../../img/default-perfil.jpg" width="100px" class="img-thumbnail" style="float: right;"> --%></a>
                      
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-top: 60px;"><!--dropdown-item   dropdown-item  -->
                         

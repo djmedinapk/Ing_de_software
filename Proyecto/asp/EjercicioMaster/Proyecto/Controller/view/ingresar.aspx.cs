@@ -67,12 +67,13 @@ public partial class view_login_ingresar : System.Web.UI.Page
         System.Data.DataTable data = guardarUsuario.ingresar(username,pass);
 
 
-        if (int.Parse(data.Rows[0]["user_id"].ToString()) > 0)
+        if (data.Rows.Count > 0)
         {
             try
             {
+                Session["data_user"] = data.Rows[0];
                 Session["username"] = data.Rows[0]["username"].ToString();
-                Session["user_id"] = data.Rows[0]["user_id"].ToString();
+                Session["user_id"] = data.Rows[0]["id"].ToString();
 
                 Eusuario datosUsuario = new Eusuario();
                 // String ipAddress;

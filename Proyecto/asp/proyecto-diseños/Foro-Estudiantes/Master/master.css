@@ -1,0 +1,77 @@
+.menu-header{
+	background-color: #0C0C0C;
+	color:#fff;
+}
+.logo{
+	margin-left: 20px;
+}
+.img-logo{
+
+	width: 200px;
+	height: 100px;
+	position:fixed;
+	position:
+
+}
+.menu-inicio{
+	width:166px;
+	display:block;
+	background-image:url(menu.png);
+	background-position:left -6px top -3px;
+
+}
+.menu-inicio:Hover{
+	width:166px;
+	display:block;
+	background-image:url(menu.png);
+	background-position:left -6px top -65px;
+
+}
+.pack{
+	background-color: #535353;
+}
+.body{
+	padding-top: 50px;
+}
+.nav-tabs .nav-link {
+     border-top: 0px solid transparent !important; 
+     border-bottom: : 0px solid transparent !important; 
+    border-top-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.nav-tabs .nav-link.active {
+	color:#00FF48 !important;
+     background: rgba(76,76,76,1);
+background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.01) 99%, rgba(0,0,0,0) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(99%, rgba(89,89,89,0.01)), color-stop(100%, rgba(0,0,0,0)));
+background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.01) 99%, rgba(0,0,0,0) 100%);
+background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.01) 99%, rgba(0,0,0,0) 100%);
+background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.01) 99%, rgba(0,0,0,0) 100%);
+background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,0.01) 99%, rgba(0,0,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#000000', GradientType=0 );
+}
+li.eleccion,li.eleccion:Hover,li.eleccion:Active{
+	border-bottom-width: 0px;
+	border-top-width: 0px;
+	color: #89be43;
+
+}
+
+a.eleccion,a.eleccion:hover{
+	border-bottom-width: 0px;
+	border-top-width: 0px;
+	padding-left: 51px;
+	padding-right: 51px;
+	color:#89be43;
+	font-size: 12;
+
+}
+.cardss{
+		margin-left: 50px;
+		margin-top: 20px;
+		font-size: 12px;
+}
+.item{
+	margin-bottom: 20px;
+}
