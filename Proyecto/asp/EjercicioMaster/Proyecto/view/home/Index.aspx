@@ -16,7 +16,6 @@
                   <asp:datalist runat="server" DataSourceID="ODSvisitas">
                       <ItemTemplate>
                           <div class="card" style="width: 20rem;">
-                              <img class="card-img-top" src="..." alt="Card image cap">
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Ltitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label1" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
@@ -33,7 +32,7 @@
                 <!--- datalist here my friends-->
               </div>
               <div class="card-footer text-muted">
-                <a href="#">Ver Mas -></a>
+               
               </div>
             </div>
          </div>
@@ -49,7 +48,6 @@
                       <ItemTemplate>
 
                           <div class="card" style="width: 20rem;">
-                              <img class="card-img-top" src="..." alt="Card image cap">
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Label4" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label5" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
@@ -67,7 +65,7 @@
                 <!--- datalist here my friends-->
               </div>
               <div class="card-footer text-muted">
-                <a href="#">Ver Mas -></a>
+               
               </div>
             </div>
          </div><div class="d-flex flex-row ">
@@ -81,7 +79,6 @@
                   <asp:datalist runat="server" DataSourceID="ODSfecha">
                       <ItemTemplate>
                           <div class="card" style="width: 20rem;">
-                              <img class="card-img-top" src="..." alt="Card image cap">
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Label2" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label3" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
@@ -100,7 +97,7 @@
                 <!--- datalist here my friends-->
               </div>
               <div class="card-footer text-muted">
-                <a href="#">Ver Mas -></a>
+                
               </div>
             </div>
          </div>                 

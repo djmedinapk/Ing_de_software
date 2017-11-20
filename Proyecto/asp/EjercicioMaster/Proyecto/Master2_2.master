@@ -31,7 +31,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="container-fluid menus " id="header" style=" position: relative;  top:0px; " >
+    <div class="container menus " id="header" style=" position: relative;  top:0px; " >
         <div class="d-flex justify-content-md-between">
         <div class="p-2">
             <a href="../home/Index.aspx"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></a></div>
