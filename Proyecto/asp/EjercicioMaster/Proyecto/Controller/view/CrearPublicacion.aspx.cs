@@ -70,23 +70,33 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
             string frase = informacion.Rows[0][0].ToString();
             if (frase == "Ingreso_exitoso")
             {
-                string mensaje = "<div class='alert alert-success alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Registro Exitoso!</strong> Gracias Por Ser Parte De Esta Gran Comunidad</div>";
-                
+                string mensaje = "<strong>Se relizo la publicacion</strong>, espera a que un moderador la acepte";
+                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                      "setInterval('guardar()', 1500);" +
+                      "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
+
             }
             else
             {
-                string mensaje = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Ya se Encuentra en uso este correo  y/o nombre de Usuario!</strong> Si has olvidado tus datos has click en Recuperar Contraseña</div>";
-                
+                string mensaje = "Error al prrocesar la solicitud";
+                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                      "setInterval('guardar()', 1500);" +
+                       "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
             }
 
         }
         else
         {
 
-            string mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
-            
+            string mensaje = "<strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo";
+            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                      "setInterval('guardar()', 1500);" +
+                       "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
         }
-        Response.Redirect("../perfil/perfil.aspx");
+        //Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()
     {
@@ -112,7 +122,7 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
 
             if (!(extension.Equals(".jpg") || extension.Equals(".gif") || extension.Equals(".jpge") || extension.Equals(".png")))
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido');</script>");
+               // cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido');</script>");
                 url = "error";
             }
             else
@@ -134,7 +144,7 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
                     }
                     catch (Exception exc)
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
                     }
                 }
             }

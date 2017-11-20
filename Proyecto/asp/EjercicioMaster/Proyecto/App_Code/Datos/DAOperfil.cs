@@ -195,4 +195,89 @@ public class DAOperfil
         }
         return Usuario;
     }
+    public DataTable traerCorreoInstitucional(int user_id)
+    {
+        DataTable correo = new DataTable();
+        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_correo_institucional", conection);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+            conection.Open();
+            dataAdapter.Fill(correo);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conection != null)
+            {
+                conection.Close();
+            }
+        }
+        return correo;
+    }
+    public DataTable RegistrarCorreoInstitucional(int user_id,String correo,String sesion)
+    {
+        DataTable mensaje = new DataTable();
+        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_ingresar_correo_institucional", conection);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+            dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = correo;
+            dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Varchar).Value = sesion;
+            conection.Open();
+            dataAdapter.Fill(mensaje);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conection != null)
+            {
+                conection.Close();
+            }
+        }
+        return mensaje;
+    }
+    public DataTable listar_post_private(int user_id, String Sesion)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_private", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Varchar).Value = Sesion;
+            dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
 }

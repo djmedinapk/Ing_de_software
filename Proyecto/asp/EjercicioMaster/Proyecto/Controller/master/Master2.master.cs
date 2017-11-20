@@ -95,11 +95,22 @@ public partial class Master1 : System.Web.UI.MasterPage
         };
         user.CerrarSession(datos);
 
-        Response.Redirect("../login/ingresar.aspx");
+        Response.Redirect("~/view/login/ingresar.aspx");
     }
 
     protected void Bminiatura_settings_Click(object sender, EventArgs e)
     {
-        Response.Redirect("../perfil/perfil.aspx");
+        Response.Redirect("~/view/perfil/perfil.aspx");
+    }
+
+    protected void BTNsearch_Click(object sender, EventArgs e)
+    {
+        String busqueda=Tsearch.Text;
+        Response.Redirect("~/view/home/search.aspx?search=" + busqueda);
+    }
+    protected void BTNsearch2_Click(object sender, EventArgs e)
+    {
+        String busqueda = Tsearch2.Text;
+        Response.Redirect("~/view/home/search.aspx?search=" + busqueda);
     }
 }

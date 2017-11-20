@@ -44,7 +44,8 @@
             <div class="container contenedor-cuerpo">
               <label for="Nombre-post">Nombre Post</label>
               <div class="input-group"> 
-                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control"></asp:TextBox>
+                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" ValidationGroup="post"></asp:TextBox>
+                  <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TpostNombre" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
                   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TpostNombre" />
                  
@@ -53,7 +54,8 @@
                </div>
                <label for="Descripcion-post">Descripcion</label>
               <div class="input-group">
-                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control"></asp:TextBox>
+                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control" ValidationGroup="post"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tpostdescripcion" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tpostdescripcion" />
                  
 
@@ -61,23 +63,26 @@
                </div>
                 <label for="DDLcategoria">Categoria</label>
             <div class="input-group">
-                <asp:dropdownlist runat="server" id="DDLcategoria" class="form-control" DataSourceID="ODSlistarCategoria" DataTextField="nombre" DataValueField="id"></asp:dropdownlist>
+                <asp:dropdownlist runat="server" id="DDLcategoria" class="form-control" DataSourceID="ODSlistarCategoria" DataTextField="nombre" DataValueField="id" ValidationGroup="post"></asp:dropdownlist>
                 <asp:ObjectDataSource ID="ODSlistarCategoria" runat="server" SelectMethod="listar_categoria" TypeName="DAOpost"></asp:ObjectDataSource>
                </div>
               <div class="input-group editor1">
-                  
+                 
                    <input type="text"  name='editor1' id='editor1' style='width: 100%' onkeyup="PassValue()"/>
+                  
                   <%--<textarea  name='editor1' id='editor1' style='width: 100%' onkeyup="PassValue(this);"></textarea>--%>
                   <%--<asp:TextBox name='editor1' id='editor1' style='width: 100%' runat="server"></asp:TextBox>--%>
                  
-                  <asp:Label ID="Label1" runat="server" Text="" Visible="False"></asp:Label>
+                  <asp:Label ID="Label1" runat="server" Text="" Visible="False" ValidationGroup="post"></asp:Label>
+                   
+
                </div>
                  <label for="Descripcion-post">Fuente(s)</label>
                  <div class="input-group editor1">
-                   <asp:RadioButton ID="RBpostfuentes1" runat="server" Text="El contenido es de mi autoria y/o recopilacion de varias fuentes" GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged" />
+                   <asp:RadioButton ID="RBpostfuentes1" runat="server" Text="El contenido es de mi autoria y/o recopilacion de varias fuentes" GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged"  Checked="true" ValidationGroup="post"/>
                   </div>
                   <div class="input-group editor1">
-                      <asp:RadioButton ID="RBpostfuentes2" runat="server" Text="Otras fuentes: " GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged"  />
+                      <asp:RadioButton ID="RBpostfuentes2" runat="server" Text="Otras fuentes: " GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged" ValidationGroup="post" />
                       <asp:TextBox ID="TpostFuentes" runat="server" class="form-control"></asp:TextBox>  
                       <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ /:;." TargetControlID="TpostFuentes" />
                   </div>
@@ -93,7 +98,9 @@
           <label for="Nombre-post">Etiquetas</label>
               <div class="input-group">
                   <%--<input type="text" value="" data-role="tagsinput"  class="input-group"/>--%>
+                  <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TpostEtiquetas" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
                   <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group"></asp:TextBox>
+                  
               </div>
           <label for="Nombre-post"><sub>las etiquetas deben ir separadas por una coma</sub></label>
 
@@ -104,7 +111,7 @@
      </div>
     <asp:Label ID="Leditor" Text="" runat="server"></asp:Label>
     <div class="d-flex justify-content-center" style="padding-bottom:55px;">
-              <div class="p-2"><asp:Button ID="BcrearpostTerminar" runat="server" Text="Terminar" class="btn btn-warning" Width="300px" OnClick="BcrearpostTerminar_Click"/></div>              
+              <div class="p-2"><asp:Button ID="BcrearpostTerminar" runat="server" Text="Terminar" class="btn btn-warning" Width="300px" OnClick="BcrearpostTerminar_Click" ValidationGroup="post"/></div>              
             </div>
     <asp:TextBox ID="op" name="op" runat="server" type="hidden"></asp:TextBox>
     
@@ -132,5 +139,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="../../App_Themes/assets/bootstrap-tagsinput-master/dist/bootstrap-tagsinput.js"></script>
     <script src="../../App_Themes/assets/bootstrap-tagsinput-master/dist/bootstrap-tagsinput-angular.js"></script>
+    <asp:Label id="Lpopup" runat="server" Text=""></asp:Label>
 </asp:Content>
 

@@ -11,8 +11,41 @@ using System.Text;
 
 public partial class view_Perfil : System.Web.UI.Page
 {
+    //void Page_PreInit(Object sender, EventArgs e)
+    //{
+    //    String master;
+    //    try
+    //    {
+    //        master = Request.QueryString["m"].ToString();
+    //        if (master == "1")
+    //        {
+    //            this.MasterPageFile = "~/Master1_1.master";
+    //        }
+    //    }
+    //    catch
+    //    {
+
+    //    }
+    //}
+    void Page_PreInit(Object sender, EventArgs e)
+    {
+        String metodo;
+        try
+        {
+            metodo = Request.QueryString["m"].ToString();
+            if (metodo == "1")
+            {
+                this.MasterPageFile = "~/Master1_1.master";
+            }
+        }
+        catch
+        {
+            
+        }
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
+        //String caca = Session["correo_ins"].ToString();
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         if (Session["username"] == null || Session["user_id"] == null)
         {
@@ -37,13 +70,18 @@ public partial class view_Perfil : System.Web.UI.Page
                 Lusername.Text = Session["username"].ToString();
             }
             var papas = (DataRow)Session["data_user"];
-            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4)
+            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
             {
                 Bmoderador.Visible = true;
+                if (int.Parse(papas["id_permisos"].ToString()) == 2)
+                {
+                    Badmin.Visible = true;
+                }
             }
             else
             {
                 Bmoderador.Visible = false;
+                Badmin.Visible = false;
             }
             
         }
@@ -86,7 +124,7 @@ public partial class view_Perfil : System.Web.UI.Page
             {
                 if (url != "sin_cargar")
                 {
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
+                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
                     newData.Avatar = "sinActualizar";
 
                 }
@@ -99,7 +137,7 @@ public partial class view_Perfil : System.Web.UI.Page
             }
             else
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo De Archivo no Valido');</script>");
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo De Archivo no Valido');</script>");
                 newData.Avatar = "sinActualizar";
             }
         }
@@ -137,6 +175,7 @@ public partial class view_Perfil : System.Web.UI.Page
         DAOperfil old = new DAOperfil();
         DataTable datosold = old.traerDatos(int.Parse(Session["user_id"].ToString()));
         DataTable datosSession = old.traerDatosSesion(int.Parse(Session["user_id"].ToString()));
+        DataTable correoIns = old.traerCorreoInstitucional(int.Parse(Session["user_id"].ToString()));
 
         if (datosSession.Rows.Count > 0)
         {
@@ -165,7 +204,33 @@ public partial class view_Perfil : System.Web.UI.Page
                 "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
             Session["Iperfil_url"] = "~\\Imagenes\\Default\\123.jpg";
         }
-        
+        if (correoIns.Rows.Count > 0)
+        {
+            if (correoIns.Rows[0][0].ToString() != "")
+            {
+
+                Bcorreoins.Visible = false;
+                Tcorreoins.Visible = true;
+                Tcorreoins.Text = correoIns.Rows[0][0].ToString();
+                Session["correo_inst"] = correoIns.Rows[0][0].ToString();
+                Pprivados.Visible = true;
+            }
+            else
+            {
+                Pprivados.Visible = false;
+                Bcorreoins.Visible = true;
+                Tcorreoins.Visible = false;
+                Tcorreoins.Text = "";
+            }
+        }
+        else
+        {
+            Pprivados.Visible = false;
+            Bcorreoins.Visible = true;
+            Tcorreoins.Visible = false;
+            Tcorreoins.Text = "";
+        }
+
     }
     
 
@@ -220,6 +285,10 @@ public partial class view_Perfil : System.Web.UI.Page
         }
         
 
+    }
+    protected void Bcorreoins_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/view/perfil/correoInstitucional.aspx");
     }
     protected String cargarImagen()
     {
@@ -307,5 +376,9 @@ public partial class view_Perfil : System.Web.UI.Page
     protected void Bmoderador_Click(object sender, EventArgs e)
     {
         Response.Redirect("~\\View\\moderador\\moderador.aspx");
+    }
+    protected void Badmin_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~\\View\\admin\\index.aspx");
     }
 }

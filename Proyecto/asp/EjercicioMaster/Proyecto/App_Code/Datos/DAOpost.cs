@@ -408,5 +408,118 @@ public class DAOpost
         return post;
     }
 
+    public DataTable busqueda(String info)
+    {
+        DataTable datos = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda", conectar);
+            dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            conectar.Open();
+            dataAdapter.Fill(datos);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return datos;
+    }
+    public DataTable ver_post_home_categoria(string orden)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
+
+    //////--------------------------------post privado
+    public DataTable ver_post_home_private(string orden)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_private", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
+    }
+    public DataTable busqueda_private(String info)
+    {
+        DataTable datos = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda_private", conectar);
+            dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            conectar.Open();
+            dataAdapter.Fill(datos);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return datos;
+    }
+
 
 }

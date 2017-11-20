@@ -2,6 +2,15 @@
 	background-color: #0C0C0C;
 	color:#fff;
 }
+.footer{
+	background-color: #000;
+	height: 28px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	color: #4e4e4e;
+	font-size: 12px;
+}
 .logo{
 	margin-left: 20px;
 }
@@ -32,6 +41,7 @@
 }
 .body{
 	padding-top: 50px;
+	min-height: 400px;
 }
 .nav-tabs .nav-link {
      border-top: 0px solid transparent !important; 
@@ -74,4 +84,20 @@ a.eleccion,a.eleccion:hover{
 }
 .item{
 	margin-bottom: 20px;
+}
+.item-menu{
+	min-width:100px;
+	display:block;
+	color: #fff;
+	text-decoration: none;
+}
+.item-menu:hover{
+	background-color: #89be43;
+	min-width:100px;
+	display:block;
+	color: #fff;
+	text-decoration: none;
+}
+.buscarbtn{
+	height: 25px;
 }

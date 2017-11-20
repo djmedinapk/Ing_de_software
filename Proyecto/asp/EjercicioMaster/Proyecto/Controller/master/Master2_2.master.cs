@@ -64,4 +64,14 @@ public partial class Master1 : System.Web.UI.MasterPage
         {
             Response.Redirect("~\\view\\perfil\\perfil.aspx");
         }
+    protected void BTNsearch_Click(object sender, EventArgs e)
+    {
+        String busqueda = Tsearch.Text;
+        Response.Redirect("~/view/home/search.aspx?search=" + busqueda);
     }
+    protected void BTNsearch2_Click(object sender, EventArgs e)
+    {
+        String busqueda = Tsearch2.Text;
+        Response.Redirect("~/view/home/search.aspx?search=" + busqueda);
+    }
+}

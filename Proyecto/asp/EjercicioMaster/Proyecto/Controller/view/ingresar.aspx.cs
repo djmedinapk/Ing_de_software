@@ -71,6 +71,7 @@ public partial class view_login_ingresar : System.Web.UI.Page
         {
             try
             {
+                String permisos = data.Rows[0]["id_permisos"].ToString();
                 Session["data_user"] = data.Rows[0];
                 Session["username"] = data.Rows[0]["username"].ToString();
                 Session["user_id"] = data.Rows[0]["id"].ToString();
@@ -93,8 +94,29 @@ public partial class view_login_ingresar : System.Web.UI.Page
 
 
                 guardarUsuario.guardadoSession(datosUsuario);
-
-                Response.Redirect("../perfil/perfil.aspx");
+                DAOperfil old = new DAOperfil();
+                DataTable correoIns = old.traerCorreoInstitucional(int.Parse(Session["user_id"].ToString()));
+                if (correoIns.Rows.Count > 0)
+                {
+                    if (correoIns.Rows[0][0].ToString() != "")
+                    {
+                        Session["correo_inst"]= correoIns.Rows[0][0].ToString();
+                        String hola = Session["correo_inst"].ToString();
+                    }
+                    else
+                    {
+                        Session["correo_inst"] = null;
+                    }
+                 }
+                if (permisos != "2")
+                {
+                    Response.Redirect("~/view/perfil/perfil.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/view/admin/index.aspx");
+                }
+                    
             }
             catch {
                 string mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";

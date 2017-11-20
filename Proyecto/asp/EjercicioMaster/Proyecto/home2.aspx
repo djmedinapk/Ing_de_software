@@ -1,162 +1,449 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/home2.aspx.cs" Inherits="home2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterAdmin.master" AutoEventWireup="true" CodeFile="~/Controller/home2.aspx.cs" Inherits="home2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">    
-
-   
-   <style>
-    .div_div_perfil{
-
-	height: 600px;
-	background-color:#fff;
-
-
-    }
-    .btn-outline-success.active{
-			background-color: #FFFFFF;
-			color: #28a745;
-			border-right-color: #FFFFFF;
-    }
-   
-		
-		.flex-column{
-			
-			border-right: 1px solid;
-			border-right-color: #fff;
-		}
-		.panel-izquierda{
-			
-			padding-top: 20px;
-            padding-bottom:200px;
-		}
-		.panel-derecho{
-			padding-right: 0px;
-
-		}
-
-	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-	<div class="tabs">
-		<div class="row">
-		    <div class="col-3 panel-izquierda">
-		    	<div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist">
-			        <img src="img/123.jpg" alt="..." class="img-thumbnail" width="200px" height="20px">
-			        <h5>
-					  DJMEDINA<br>
-					  <small class="text-muted">Never use to be</small>
-					</h5>
-					<h6 class="text-muted">
-						<ul>
-							<li>estado: <span style="color: #02FF32">online</span></li>
-					      <li>total mensajes: 12</li>
-					      <li>total Post: 12</li>    
-				      
-				    	 </ul>
-					</h6>
-					<div style="height: 100px"></div>
-					<div class="btn-group-vertical">
-					    	 <button  type="button" class="btn btn-outline-success  btn-block active"  id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" >Publicaciones</button>
-							  <button type="button"  class="btn btn-outline-success  btn-block"  id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false" >Configuracion Perfil</button>
-							  <button type="button"  class="btn btn-outline-success  btn-block" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false" >Ajustes</button>
-					</div>
-		     	</div>
-		    </div>
-		    <div class="col-9 panel-derecho">
-		      	<div class="tab-content" id="v-pills-tabContent">
-			        <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" aria-expanded="true">
-				        <div class="list-group">
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-								    <div class="d-flex w-100 justify-content-between">
-								      <h6 class="mb-1">List group item heading</h6>
-								      <small>3 days ago</small>
-								    </div>
-								    <p class="mb-0">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>								   
-								</a>
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-								    <div class="d-flex w-100 justify-content-between">
-								      <h6 class="mb-1">List group item heading</h6>
-								      <small>3 days ago</small>
-								    </div>
-								    <p class="mb-0">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>								    
-								</a>
-								<a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-								    <div class="d-flex w-100 justify-content-between">
-								      <h6 class="mb-1">List group item heading</h6>
-								      <small>3 days ago</small>
-								    </div>
-								    <p class="mb-0">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>								   
-								</a>								
-						</div>
-			         </div>
+	<div class="right_col" role="main">
+        <!-- top tiles -->
+          <div class="row tile_count">
+              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count"></div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>Total usuarios</span>
+              <div class="count">2500</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-file-text" aria-hidden="true"></i>Total Post</span>
+              <div class="count">123.50</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-comments" aria-hidden="true"></i>Total Comentarios</span>
+              <div class="count green">2,500</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Total puntos</span>
+              <div class="count">4,567</div>
+            </div>
+          </div>
+          <!-- /top tiles -->
+        <!--- top perfiles de usuario-->
+        <div class="row">
+              <div class="col-md-4">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <ul class="nav navbar-left panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                      <h2>Top Perfiles Publicaciones</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item One Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Three Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
 
-			        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" aria-expanded="false">
-				        <dl class="row">
+              <div class="col-md-4">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Top Profiles <small>Sessions</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item One Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Three Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
 
-							<dt class="col-sm-3 text-right">Imagen de Perfil</dt>
-							<dd class="col-sm-9">
-							  	<dl class="row">
-								    <dt class="col-sm-4">
-								      	 <img src="img/123.jpg" alt="..." class="img-thumbnail" width="200px" height="20px">
-								    </dt>
-								    <dd class="col-sm-8">
-								       <input class="form-control input-lg" id="inputlg" type="file" placeholder="Apellido">
-								       <span class="badge badge-secondary">tamaño maximo 4MB</span>
-								    </dd>
-							    </dl>
-							</dd>
+              <div class="col-md-4">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Top Profiles <small>Sessions</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item One Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Two Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                    <article class="media event">
+                      <a class="pull-left date">
+                        <p class="month">April</p>
+                        <p class="day">23</p>
+                      </a>
+                      <div class="media-body">
+                        <a class="title" href="#">Item Three Title</a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+    <!--.------ /top perfiles de usuario-->
+    <!-----------top publicaciones mas puntuadas----------------->
+             <div class="clearfix"></div>
 
-							<dt class="col-sm-3 mt-5 text-right">Usuario</dt>
-							<dd class="col-sm-9 mt-5">
-							  	 <input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario">
-							</dd>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Table design <small>Custom design</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
 
-							<dt class="col-sm-3 mt-5 text-right">Nombre</dt>
-							<dd class="col-sm-9 mt-5">
-							  	 <input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">
-							</dd>
+                  <div class="x_content">
 
-							<dt class="col-sm-3 mt-5 text-right">Apellido</dt>
-							<dd class="col-sm-9 mt-5">
-							     <input class="form-control input-lg" id="inputlg" type="text" placeholder="Apellido">
-							 </dd>
+                    <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
 
-							<dt class="col-sm-3 mt-5 text-right">Edad</dt>
-							<dd class="col-sm-9 mt-5">
-							  	 <input class="form-control input-lg" id="inputlg" type="text" placeholder="Edad">
-							</dd>
+                    <div class="table-responsive">
+                      <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th>
+                              <input type="checkbox" id="check-all" class="flat">
+                            </th>
+                            <th class="column-title">Invoice </th>
+                            <th class="column-title">Invoice Date </th>
+                            <th class="column-title">Order </th>
+                            <th class="column-title">Bill to Name </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Amount </th>
+                            <th class="column-title no-link last"><span class="nobr">Action</span>
+                            </th>
+                            <th class="bulk-actions" colspan="7">
+                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                          </tr>
+                        </thead>
 
-							<dt class="col-sm-3 mt-5 text-right">correo</dt>
-							<dd class="col-sm-9 mt-5">
-							    <dl class="row">
-								    <dt class="col-sm-4"></dt>
-								    <dd class="col-sm-8">
-								    	<input class="form-control input-lg" id="inputlg" type="text" placeholder="Correo">
-								     </dd>
-							    </dl>
-							</dd>
-						</dl>
-					</div>
-		        </div>       		        
-		    </div>
-		</div>
-	</div>
-	  
-			
-		
+                        <tbody>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000040</td>
+                            <td class=" ">May 23, 2014 11:47:56 PM </td>
+                            <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$7.45</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000039</td>
+                            <td class=" ">May 23, 2014 11:30:12 PM</td>
+                            <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
+                            </td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$741.20</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000038</td>
+                            <td class=" ">May 24, 2014 10:55:33 PM</td>
+                            <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
+                            </td>
+                            <td class=" ">Mike Smith</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$432.26</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000037</td>
+                            <td class=" ">May 24, 2014 10:52:44 PM</td>
+                            <td class=" ">121000204</td>
+                            <td class=" ">Mike Smith</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$333.21</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000040</td>
+                            <td class=" ">May 24, 2014 11:47:56 PM </td>
+                            <td class=" ">121000210</td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$7.45</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000039</td>
+                            <td class=" ">May 26, 2014 11:30:12 PM</td>
+                            <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
+                            </td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$741.20</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000038</td>
+                            <td class=" ">May 26, 2014 10:55:33 PM</td>
+                            <td class=" ">121000203</td>
+                            <td class=" ">Mike Smith</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$432.26</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000037</td>
+                            <td class=" ">May 26, 2014 10:52:44 PM</td>
+                            <td class=" ">121000204</td>
+                            <td class=" ">Mike Smith</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$333.21</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
 
-			
-	  		
-	    <!-- Optional JavaScript -->
-	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000040</td>
+                            <td class=" ">May 27, 2014 11:47:56 PM </td>
+                            <td class=" ">121000210</td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$7.45</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">121000039</td>
+                            <td class=" ">May 28, 2014 11:30:12 PM</td>
+                            <td class=" ">121000208</td>
+                            <td class=" ">John Blank L</td>
+                            <td class=" ">Paid</td>
+                            <td class="a-right a-right ">$741.20</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+							
+						
+                  </div>
+                </div>
+              </div>
+         <!-----------/top publicaciones mas puntuadas----------------->
+         
+    </div>
 </asp:Content>
 

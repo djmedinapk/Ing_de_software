@@ -123,11 +123,11 @@
      <div class="col-12">
          <asp:Panel ID="panel_comentario" runat="server">
 
-         
+         <a name="comentario1" id="comentario1"></a>
             <asp:TextBox ID="Tidcomentario" runat="server" type="hidden" Text="0"></asp:TextBox>
               <div class="col-12">
                   <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Agragar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="exampleFormControlTextarea1">Agregar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
                         <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>
                     </div>
               </div>

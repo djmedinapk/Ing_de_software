@@ -26,7 +26,7 @@
 					  <dd class="col-sm-8">
 					  	<div class="form-group">
 						    <label for="inputlg"></label>
-                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg text-lowercase" MaxLength=50 placeholder="Usuario o Correo"></asp:TextBox>
+                              <asp:TextBox ID="TloginUser" runat="server" class="form-control input-lg text-lowercase" MaxLength=50 placeholder="Usuario o Correo" ValidationGroup="h"></asp:TextBox>
                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginUser" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
 						      <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TloginUser" />
@@ -40,7 +40,7 @@
 					  <dd class="col-sm-8">
 					    <div class="form-group">
 						    <label for="inputlg"></label>
-                            <asp:TextBox ID="TloginPassword" runat="server" class="form-control input-lg" placeholder="Contraseña" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="TloginPassword" runat="server" class="form-control input-lg" placeholder="Contraseña" TextMode="Password" ValidationGroup="h"></asp:TextBox>
 						    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TloginPassword" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="h"></asp:RequiredFieldValidator>
                            <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TloginPassword" />
                             <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Contraseña">--%>

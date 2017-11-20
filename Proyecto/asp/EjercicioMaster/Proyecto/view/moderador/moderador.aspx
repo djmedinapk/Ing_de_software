@@ -66,9 +66,9 @@
                       <a class="nav-link btn-outline-success active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Publicaciones</a>
                     </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link btn-outline-success dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Denuncias</a>
+                        <a class="nav-link btn-outline-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Denuncias</a>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Publicaciones</a>
+                          <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false">Comentarios</a>
                             
                           <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false">Comentarios</a>
                          <div class="dropdown-divider"></div>
