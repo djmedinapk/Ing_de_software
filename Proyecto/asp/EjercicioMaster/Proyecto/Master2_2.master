@@ -80,7 +80,8 @@
                       </li>
 
                     </ul>
-                      <asp:TextBox ID="Tsearch" runat="server" CssClass="form-control " Width="300px"></asp:TextBox>   
+                      <asp:TextBox ID="Tsearch" runat="server" CssClass="form-control " Width="300px" ValidationGroup="busqueda" ></asp:TextBox> 
+                      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Tsearch" ForeColor="Red" ValidationExpression="[a-zA-Z ]*" ValidationGroup="busqueda" ></asp:RegularExpressionValidator>
                       <asp:Button ID="BTNsearch" runat="server" CssClass="btn btn-outline-success text-white" Text="Buscar" ValidationGroup="busqueda" OnClick="BTNsearch_Click" />
                       <%--<asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn btn-outline-success text-white"><i class='fa fa-search' aria-hidden='true'></i></asp:HyperLink>--%>
                   </div>
@@ -114,8 +115,9 @@
                         <a class="nav-link"  href="../home/contacto.aspx">Contacto</a>
                       </li>
                       </ul>
-                      <asp:TextBox ID="Tsearch2" runat="server" CssClass="form-control " Width="300px"></asp:TextBox> 
-                      <asp:Button ID="BTNsearch2" runat="server" CssClass="btn btn-outline-success text-white" Text="Buscar" ValidationGroup="busqueda" OnClick="BTNsearch2_Click" />
+                      <asp:TextBox ID="Tsearch2" runat="server" CssClass="form-control " Width="300px" ValidationGroup="tse2"></asp:TextBox> 
+                      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"  ControlToValidate="Tsearch2" ForeColor="Red" ValidationExpression="[a-zA-Z ]*" ValidationGroup="tse2"></asp:RegularExpressionValidator>
+                      <asp:Button ID="BTNsearch2" runat="server" CssClass="btn btn-outline-success text-white" Text="Buscar" ValidationGroup="tse2" OnClick="BTNsearch2_Click" />
                       <%--<asp:HyperLink ID="HyperLsink2" runat="server" CssClass="btn btn-outline-success text-white"><i class='fa fa-search' aria-hidden='true'></i></asp:HyperLink>--%>
                       
                     
