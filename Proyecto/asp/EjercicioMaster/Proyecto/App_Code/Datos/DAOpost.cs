@@ -44,7 +44,7 @@ public class DAOpost
         }
         return categoria;
     }
-    public DataTable ingresar_post(Epost datosPost, int user_id,String Sesion)
+    public DataTable ingresar_post(Epost datosPost, int user_id,String Sesion, int modo)
     {
         DataTable categoria = new DataTable();
 
@@ -52,7 +52,17 @@ public class DAOpost
 
         try
         {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_ingresar_post", conectar);
+            NpgsqlDataAdapter dataAdapter = null;
+
+            if (modo == 1)
+            {
+                 dataAdapter = new NpgsqlDataAdapter("post.f_ingresar_post_privado", conectar);
+            }
+            else
+            {
+                 dataAdapter = new NpgsqlDataAdapter("post.f_ingresar_post", conectar);
+            }
+            
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Varchar).Value = Sesion;
             dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value =user_id;
@@ -519,6 +529,34 @@ public class DAOpost
             }
         }
         return datos;
+    }
+    public DataTable ver_post_home_categoria_private(string orden)
+    {
+        DataTable post = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias_private", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+
+            conectar.Open();
+            dataAdapter.Fill(post);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return post;
     }
 
 

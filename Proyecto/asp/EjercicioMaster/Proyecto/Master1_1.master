@@ -26,10 +26,10 @@
         <div class="p-2 logo"></div>  
         <div class="p-2">
                  <div class="d-flex justify-content-around">
-                     <a href="index.aspx" class="p-2 text-center"><i class="fa fa-pencil-square-o text-success" aria-hidden="true" style="font-size:25px;"></i></a>
+                     <a href="../Post/crearPublicacion.aspx?m=1" class="p-2 text-center"><i class="fa fa-pencil-square-o text-success" aria-hidden="true" style="font-size:25px;"></i></a>
                     <a href="index.aspx" class="p-2 text-center item-menu">Inicio</a>
                      <a href="../home/index.aspx" class="p-2 text-center item-menu">ForoPublico</a>
-                    <a href="" class="p-2 text-center item-menu">Categorias</a>
+                    <a href="../private/categoria.aspx" class="p-2 text-center item-menu">Categorias</a>
                     <a href="" class="p-2 text-center item-menu dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><asp:Label ID="Lusername" runat="server"></asp:Label></a>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          <a class="dropdown-item" href="../perfil/perfil.aspx?m=1">Perfil</a>
@@ -46,7 +46,7 @@
         </div>  
       </div>
     </div>
-    <div class="body" style="margin-top:50px;">
+    <div class="body" style="margin-top:50px; padding:50px;">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
 
         </asp:ContentPlaceHolder>

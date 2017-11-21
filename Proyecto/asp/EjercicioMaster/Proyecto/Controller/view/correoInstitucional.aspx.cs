@@ -45,6 +45,7 @@ public partial class view_perfil_correoInstitucional : System.Web.UI.Page
                letra = posibles[obj.Next(longitud)];
                nuevacadena += letra.ToString();
             }
+        String auxsinvalor = nuevacadena;
         Correo correo = new Correo();
         String mensajecorreo = "<html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><title>Validar Correo</title></head><body><table width='100%' border='0' cellspacing='0' cellpadding='0'>  <tr>  " +
                 "  <td align='center' valign='top' bgcolor='#FFFFFF' style='background-color:#FFFFFF;'><br>    <tr>        <td colspan='2' align='left' valign='top' bgcolor='#078B0A' style='background-color:#078B0A; padding:10px; font-family:Arial; color:#FFFFFF; font-size:60px;'>ForoUdec</td>    " +

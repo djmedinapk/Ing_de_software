@@ -9,6 +9,24 @@ using System.Web.UI.WebControls;
 
 public partial class view_CrearPublicacion : System.Web.UI.Page
 {
+    String modo;
+    void Page_PreInit(Object sender, EventArgs e)
+    {
+        String metodo;
+        try
+        {
+            metodo = Request.QueryString["m"].ToString();
+            if (metodo == "1")
+            {
+                this.MasterPageFile = "~/Master1_1.master";
+                modo = "1";
+            }else { modo = "2"; }
+        }
+        catch
+        {
+            modo = "2";
+        }
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         //string scrip = " < script language=\"JavaScript\">";
@@ -62,8 +80,17 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
         {
             post.Autor = "El Contenido es de mi autoria y/o Recopilacion de varias fuentes";
         }
-        
-       DataTable informacion = publicar.ingresar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID);
+        DataTable informacion = null; ;
+        if (modo == "1")
+        {
+            informacion = publicar.ingresar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID,1);
+        }
+        else
+        {
+            informacion = publicar.ingresar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID,0);
+        }
+
+         
 
         if (informacion.Rows.Count != 0)
         {
@@ -96,7 +123,7 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
                       "setInterval('guardar()', 1500);" +
                        "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
         }
-        //Response.Redirect("../perfil/perfil.aspx");
+        Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()
     {

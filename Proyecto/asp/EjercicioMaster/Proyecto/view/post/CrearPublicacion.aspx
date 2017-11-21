@@ -44,7 +44,7 @@
             <div class="container contenedor-cuerpo">
               <label for="Nombre-post">Nombre Post</label>
               <div class="input-group"> 
-                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" ValidationGroup="post"></asp:TextBox>
+                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" ValidationGroup="post" MaxLength="100"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TpostNombre" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
                   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TpostNombre" />
@@ -54,7 +54,7 @@
                </div>
                <label for="Descripcion-post">Descripcion</label>
               <div class="input-group">
-                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control" ValidationGroup="post"></asp:TextBox>
+                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control" ValidationGroup="post" MaxLength="200"></asp:TextBox>
                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tpostdescripcion" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tpostdescripcion" />
                  
@@ -83,7 +83,7 @@
                   </div>
                   <div class="input-group editor1">
                       <asp:RadioButton ID="RBpostfuentes2" runat="server" Text="Otras fuentes: " GroupName="fuentes" OnCheckedChanged="RBpostfuentes2_CheckedChanged" ValidationGroup="post" />
-                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control"></asp:TextBox>  
+                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control" MaxLength="200"></asp:TextBox>  
                       <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ /:;." TargetControlID="TpostFuentes" />
                   </div>
                       
@@ -99,7 +99,7 @@
               <div class="input-group">
                   <%--<input type="text" value="" data-role="tagsinput"  class="input-group"/>--%>
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TpostEtiquetas" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="post"></asp:RequiredFieldValidator>
-                  <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group"></asp:TextBox>
+                  <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group" MaxLength="240"></asp:TextBox>
                   
               </div>
           <label for="Nombre-post"><sub>las etiquetas deben ir separadas por una coma</sub></label>

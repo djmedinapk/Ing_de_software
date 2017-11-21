@@ -72,7 +72,7 @@
                                 </asp:HyperLink>
                             </ItemTemplate>
                         </asp:DataList>
-                        <asp:ObjectDataSource ID="ODSlistarPosts" runat="server" SelectMethod="listar_post" TypeName="DAOperfil">
+                        <asp:ObjectDataSource ID="ODSlistarPosts" runat="server" SelectMethod="listar_post_public" TypeName="DAOperfil">
                             <SelectParameters>
                                 <asp:QueryStringParameter DefaultValue="" Name="user_id" QueryStringField="id" Type="Int32" />
                                 <asp:Parameter DefaultValue="123" Name="Sesion" Type="String" />
