@@ -45,7 +45,7 @@
             <div class="container contenedor-cuerpo">
               <label for="Nombre-post">Nombre Post</label>
               <div class="input-group"> 
-                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control"></asp:TextBox>
+                  <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" MaxLength="100"></asp:TextBox>
                   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TpostNombre" />
                  
@@ -54,7 +54,7 @@
                </div>
                <label for="Descripcion-post">Descripcion</label>
               <div class="input-group">
-                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control"></asp:TextBox>
+                  <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control" MaxLength="200"></asp:TextBox>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tpostdescripcion" />
                  
 
@@ -81,7 +81,7 @@
                   </div>
                   <div class="input-group editor1">
                       <asp:RadioButton ID="RBpostfuentes2" runat="server" Text="Otras fuentes: " GroupName="fuentes" />
-                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control"></asp:TextBox>  
+                      <asp:TextBox ID="TpostFuentes" runat="server" class="form-control" MaxLength="200"></asp:TextBox>  
                       <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ /:;." TargetControlID="TpostFuentes" />
                   </div>
                       
@@ -98,7 +98,7 @@
           <label for="Nombre-post">Etiquetas</label>
               <div class="input-group">
                   <%--<input type="text" value="" data-role="tagsinput"  class="input-group"/>--%>
-                  <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group"></asp:TextBox>
+                  <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group" MaxLength="240">,</asp:TextBox>
               </div>
           <label for="Nombre-post"><sub>las etiquetas deben ir separadas por una coma</sub></label>
 

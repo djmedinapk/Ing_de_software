@@ -42,16 +42,17 @@ public partial class view_post_Post : System.Web.UI.Page
         try
         {
             post = Request.QueryString[0].ToString();
+            DAOpost DApost = new DAOpost();
+            DataTable datosPost = DApost.ver_post(int.Parse(post.ToString()));
+            cargar_post(sender, e, datosPost);
+            DAOpost visitar = new DAOpost();
+            DataTable visita = visitar.visita_post(int.Parse(post.ToString()));
         }
         catch
         {
             Response.Redirect("~/view/home/index.aspx");
         }
-        DAOpost DApost = new DAOpost();
-        DataTable datosPost = DApost.ver_post(int.Parse(post.ToString()));
-        cargar_post(sender,e, datosPost);
-        DAOpost visitar = new DAOpost();
-        DataTable visita = visitar.visita_post(int.Parse(post.ToString()));
+        
     }
     protected void cargar_post(object sender, EventArgs e,DataTable datospost)
     {

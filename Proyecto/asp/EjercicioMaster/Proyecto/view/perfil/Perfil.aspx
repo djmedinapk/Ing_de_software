@@ -68,7 +68,7 @@
                         <div class="list-group" style="padding-bottom:60px;">
                             <asp:datalist runat="server" repeatlayout="Flow" DataSourceID="ODSpostPerfil" DataKeyField="id" OnItemCommand="Unnamed1_ItemCommand" >
                                 <ItemTemplate>
-                                   <div class="d-flex w-10 justify-content-end" style="margin-bottom:-15px;">
+                                   <div class="d-flex w-10 justify-content-end" style="margin-bottom:-15px;" >
                                        <div class="p-2 align-content-end">
                                            <asp:Button ID="Beliminar" class="close Beliminar" Text="x" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id") %>' />
                                            <%-- <button type="button" class="close">
@@ -78,9 +78,9 @@
                                         </div>
                                    
                                 <asp:HyperLink id="HLpost" runat="server" class="list-group-item list-group-item-action flex-column align-items-start " NavigateUrl='<%#  Bind("id_post") %>' style="margin-top:10px;">
-                                    <div class="p-10 align-self-end" >
-                                        <div class="d-flex w-100 justify-content-between" >
-								      <h6 class="mb-1"><asp:Label ID="LperfilTituloPost" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h6>
+                                    <div class="p-10 align-self-end">
+                                        <div class="d-flex w-10 justify-content-between" >
+								      <h6 class="mb-1"><span style="max-width:300px;"><asp:Label ID="LperfilTituloPost" runat="server" Text='<%# Bind("titulo") %>' ></asp:Label></span></h6>
 								      <small><asp:Label ID="Label2" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></small>
 								    </div>
 								    <p class="mb-0"><asp:Label ID="Label1" runat="server" Text='<%# Bind("estado") %>'></asp:Label></p>	
