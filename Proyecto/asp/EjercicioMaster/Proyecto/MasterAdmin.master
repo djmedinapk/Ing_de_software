@@ -71,7 +71,7 @@
                         <li><a><i class="fa fa-table"></i>CRUD <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="usuario.aspx">Usuarios</a></li>
-                                <li><a href="tables_dynamic.html">Publicaciones</a></li>
+                                <li><a href="publicacion.aspx">Publicaciones</a></li>
                                 <li><a href="tables.html">Comentarios</a></li>
                                 <li><a href="tables.html">Denuncias</a></li>
                             </ul>
@@ -259,6 +259,8 @@
         <script>
             $(document).ready(function () {
                 $('[data-toggle="popover"]').popover({ html: true });
+                $('#ContentPlaceHolder1_RBadmin').addClass("js-switch");
+                console.log('listo');
             });
 </script>
     
