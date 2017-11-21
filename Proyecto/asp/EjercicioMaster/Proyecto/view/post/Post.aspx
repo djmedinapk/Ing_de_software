@@ -56,7 +56,7 @@
                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" data-toggle="modal" data-target="#modalDenuncia2">Reportar</a>
+                                <a class="dropdown-item" data-toggle="modal" onclick="denunciapost()">Reportar</a>
                               </div>
                             </div>
                         </div>
@@ -300,6 +300,11 @@
             
             $('#ContentPlaceHolder1_Tidcomentario').val(id);
             $('#ContentPlaceHolder1_TAcomentario').focus();
+        }
+     </script>
+    <script type="text/javascript">
+        function denunciapost() {
+            $('#modalDenuncia2').modal('toggle');
         }
      </script>
     <asp:Label id="Lpopup" runat="server" Text=""></asp:Label>

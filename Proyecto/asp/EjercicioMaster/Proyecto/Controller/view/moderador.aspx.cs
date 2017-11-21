@@ -33,7 +33,7 @@ public partial class view_moderador_moderador : System.Web.UI.Page
                 //Lusername.Text = Session["username"].ToString();
             }
             var papas = (DataRow)Session["data_user"];
-            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4)
+            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
             {
                
             }
