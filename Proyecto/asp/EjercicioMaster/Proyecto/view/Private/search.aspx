@@ -1,12 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master1_1.master" AutoEventWireup="true" CodeFile="~/Controller/view/private/search.aspx.cs" Inherits="view_Private_search" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="row" style="padding:100px;">
         <asp:TextBox ID="Tsearch" runat="server" AutoPostBack="true"></asp:TextBox>
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                  <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-$ñ " TargetControlID="Tsearch" />
     </div>
     <div class="col col-12">
         <h3>Resultados de la Busqeuda</h3>
