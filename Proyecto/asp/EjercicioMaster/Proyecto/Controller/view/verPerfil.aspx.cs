@@ -42,6 +42,10 @@ public partial class view_perfil_verPerfil : System.Web.UI.Page
             Iperfil.ImageUrl = datos_user.Rows[0]["avatar"].ToString();
             Lusername.Text = datos_user.Rows[0]["username"].ToString();
             LtotalPublic.Text = datos_user.Rows[0]["posts"].ToString();
+            Lestado.Text= datos_user.Rows[0]["estado"].ToString();
+            Lnombre.Text= datos_user.Rows[0]["nombre"].ToString();
+            Ledad.Text= datos_user.Rows[0]["edad"].ToString();
+            Lgenero.Text= datos_user.Rows[0]["sexo"].ToString();
         }
         else
         {

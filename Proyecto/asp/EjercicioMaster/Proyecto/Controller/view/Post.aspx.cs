@@ -124,7 +124,7 @@ public partial class view_post_Post : System.Web.UI.Page
             string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Value = "";
+            TdenunciaComentarioText.Text = "";
         }
         else
         {
@@ -133,14 +133,14 @@ public partial class view_post_Post : System.Web.UI.Page
                 DAOdenuncia comentario = new DAOdenuncia();
                 Int32 user_id = Int32.Parse(Session["user_id"].ToString());
                 Int32 comentario_id = Int32.Parse(TdenunciaComentarioID.Text.ToString());
-                string descripcion = TdenunciaComentarioText.Value.ToString();
+                string descripcion = TdenunciaComentarioText.Text.ToString();
                 DataTable informacion = comentario.denuncia_comentario(user_id, comentario_id, descripcion);
                 if (informacion.Rows.Count != 0)
                 {
                     string frase = informacion.Rows[0][0].ToString();
                     Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                        "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    TdenunciaComentarioText.Value = "";
+                    TdenunciaComentarioText.Text = "";
                 }
                 else
                 {
@@ -168,7 +168,7 @@ public partial class view_post_Post : System.Web.UI.Page
             string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Value = "";
+            TdenunciaComentarioText.Text = "";
         }
         else
         {
@@ -191,14 +191,14 @@ public partial class view_post_Post : System.Web.UI.Page
                         break;
 
                 }
-                descripcion += TdenunciaPostText.Value.ToString();
+                descripcion += TdenunciaPostText.Text.ToString();
                 DataTable informacion = denuncia.denuncia_publicacion(user_id, publicacion_id, descripcion);
                 if (informacion.Rows.Count != 0)
                 {
                     string frase = informacion.Rows[0][0].ToString();
                     Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                        "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    TdenunciaComentarioText.Value = "";
+                    TdenunciaComentarioText.Text = "";
                 }
                 else
                 {
@@ -227,7 +227,7 @@ public partial class view_post_Post : System.Web.UI.Page
             string frase = "Inicia Sesion Para Poder Puntuar este Post";
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Value = "";
+            TdenunciaComentarioText.Text = "";
         }
         else
         {
@@ -297,7 +297,7 @@ public partial class view_post_Post : System.Web.UI.Page
             string frase = "Inicia Sesion Para Poder Poder Comentar";
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Value = "";
+            TdenunciaComentarioText.Text = "";
         }
         else
         {
@@ -305,7 +305,7 @@ public partial class view_post_Post : System.Web.UI.Page
             try
             {
                 DAOpost comentario = new DAOpost();
-                String contenido = TAcomentario.Value.ToString();
+                String contenido = TAcomentario.Text.ToString();
                 Int32 comentario_id= Int32.Parse(Tidcomentario.Text.ToString());
                 Int32 user_id = Int32.Parse(Session["user_id"].ToString());
                 Int32 post_id = Int32.Parse(post.ToString());
@@ -317,7 +317,7 @@ public partial class view_post_Post : System.Web.UI.Page
                        "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
                        "setInterval('guardar()', 1500);" +
                        "function guardar() { window.location.href='" + "Post.aspx?id=" + post.ToString() + "'; }</script>";
-                    TAcomentario.Value = "";
+                    TAcomentario.Text = "";
                     //Response.Redirect("~/view/post/Post.aspx?id=" + post.ToString());
                 }
                 else

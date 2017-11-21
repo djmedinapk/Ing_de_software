@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master1_1.master" AutoEventWireup="true" CodeFile="Post_udec.aspx.cs" Inherits="view_Private_Post_udec" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     
     <style >
@@ -58,7 +59,7 @@
                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" data-toggle="modal" data-target="#modalDenuncia2">Reportar</a>
+                                <a class="dropdown-item" data-toggle="modal"onclick="denunciapost()">Reportar</a>
                               </div>
                             </div>
                         </div>
@@ -127,10 +128,15 @@
 
          <a name="comentario1" id="comentario1"></a>
             <asp:TextBox ID="Tidcomentario" runat="server" type="hidden" Text="0"></asp:TextBox>
-              <div class="col-12">
+             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                  <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tidcomentario" />
+             <div class="col-12">
                   <div class="form-group">
                         <label for="exampleFormControlTextarea1">Agregar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>
+                       <%-- <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>--%>
+                        <asp:TextBox ID="TAcomentario" runat="server" class="form-control input-lg" MaxLength=2000 placeholder="Escriba aquí su comentario" TextMode="MultiLine" Rows="3"  ></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TAcomentario" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="comentario"></asp:RequiredFieldValidator>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TAcomentario" />
                     </div>
               </div>
              <div class="d-flex justify-content-end ">
@@ -222,17 +228,22 @@
                   <div class="form-group row">
                  <%-- <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>--%>
                   <div class="col-sm-10">
-                      <asp:TextBox ID="TdenunciaComentarioID" runat="server"  class="form-control-plaintext" type="hidden"></asp:TextBox>
+                     <asp:TextBox ID="TdenunciaComentarioID" runat="server"  class="form-control-plaintext" type="hidden" ValidationGroup="denunciacomentario"></asp:TextBox>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TdenunciaComentarioID" />
                     <%--<input type="text" readonly class="form-control-plaintext" id="TdenunciaId">--%>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Razon De La Denúncia</label>
-                  <textarea class="form-control" id="TdenunciaComentarioText" rows="3" runat="server"></textarea>
+                  <%--<textarea class="form-control" id="TdenunciaComentarioText" rows="3" runat="server"></textarea>--%>
+                    <asp:TextBox ID="TdenunciaComentarioText" runat="server" class="form-control input-lg" MaxLength=240 placeholder="" TextMode="MultiLine" Rows="3"  ></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TdenunciaComentarioText" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="denunciacomentario"></asp:RequiredFieldValidator>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TdenunciaComentarioText" />
+
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" />
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" ValidationGroup="denunciacomentario" />
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -263,11 +274,14 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Descripcion</label>
-                  <textarea class="form-control" id="TdenunciaPostText" rows="3" runat="server"></textarea>
+                  <%--<textarea class="form-control" id="TdenunciaPostText" rows="3" runat="server"></textarea>--%>
+                    <asp:TextBox ID="TdenunciaPostText" runat="server" class="form-control input-lg" MaxLength=240 placeholder="" TextMode="MultiLine" Rows="3" ValidationGroup="denunciapost" ></asp:TextBox>
+                    
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TdenunciaPostText"  />
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click"/>
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click" ValidationGroup="denunciapost"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -288,6 +302,11 @@
             
             $('#ContentPlaceHolder1_Tidcomentario').val(id);
             $('#ContentPlaceHolder1_TAcomentario').focus();
+        }
+     </script>
+    <script type="text/javascript">
+        function denunciapost() {
+            $('#modalDenuncia2').modal('toggle');
         }
      </script>
     <asp:Label id="Lpopup" runat="server" Text=""></asp:Label>

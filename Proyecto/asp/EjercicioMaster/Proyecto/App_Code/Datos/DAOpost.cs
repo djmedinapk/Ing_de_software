@@ -390,7 +390,7 @@ public class DAOpost
         }
         return categoria;
     }
-    public DataTable listar_post_moderador()
+    public DataTable listar_post_moderador(String orden)
     {
         DataTable post = new DataTable();
 
@@ -400,6 +400,8 @@ public class DAOpost
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_moderador", conectar);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+
 
             conectar.Open();
             dataAdapter.Fill(post);

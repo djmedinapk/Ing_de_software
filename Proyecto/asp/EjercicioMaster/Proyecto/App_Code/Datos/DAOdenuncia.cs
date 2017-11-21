@@ -131,4 +131,32 @@ public class DAOdenuncia
         }
         return respuesta;
     }
+    
+    public DataTable aceptar_denuncia_comentario(int id_denuncia)
+    {
+        DataTable respuesta = new DataTable();
+
+        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+        try
+        {
+            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("denuncia.f_aceptar_denuncia_comentario", conectar);
+            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dataAdapter.SelectCommand.Parameters.Add("_denunciaid", NpgsqlDbType.Integer).Value = id_denuncia;
+            conectar.Open();
+            dataAdapter.Fill(respuesta);
+        }
+        catch (Exception Ex)
+        {
+            throw Ex;
+        }
+        finally
+        {
+            if (conectar != null)
+            {
+                conectar.Close();
+            }
+        }
+        return respuesta;
+    }
 }

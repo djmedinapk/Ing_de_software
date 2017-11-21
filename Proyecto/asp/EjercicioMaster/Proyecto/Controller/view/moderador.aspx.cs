@@ -35,7 +35,11 @@ public partial class view_moderador_moderador : System.Web.UI.Page
             var papas = (DataRow)Session["data_user"];
             if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
             {
-               
+                if (int.Parse(papas["id_permisos"].ToString()) == 1 )
+                {
+                    Panelprivado.Visible = false;
+                }
+                else { Panelprivado.Visible = true; }
             }
             else
             {
@@ -61,6 +65,18 @@ public partial class view_moderador_moderador : System.Web.UI.Page
             DAOpost eliminar = new DAOpost();
             DataTable informacion = eliminar.validar_post(postid, Session.SessionID);
             Response.Redirect("moderador.aspx");
+        }
+    }
+  
+
+    protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+        if (e.CommandName == "eliminar")
+        {
+            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
+            DAOdenuncia eliminar = new DAOdenuncia();
+            DataTable informacion = eliminar.aceptar_denuncia_comentario(postid);
+            Response.Redirect("../moderador/moderador.aspx");
         }
     }
 }

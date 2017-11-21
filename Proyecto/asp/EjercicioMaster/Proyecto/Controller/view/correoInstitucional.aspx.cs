@@ -32,7 +32,7 @@ public partial class view_perfil_correoInstitucional : System.Web.UI.Page
 
     protected void Bterminar_Click(object sender, EventArgs e)
     {
-        String mail = Tcorreo.Text.ToLower();
+        String mail = Tcorreo.Text.ToLower()+"@ucundinamarca.edu.co";
         //-------------codigo ramdom para verificar token fuente:http://joefay.blogspot.com.co/2012/04/generar-cadenas-de-texto-aleatorio.html
         Random obj = new Random();
             string posibles = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -84,7 +84,7 @@ public partial class view_perfil_correoInstitucional : System.Web.UI.Page
         String tipoMensaje;
         var papas = (DataRow)Session["data_user"];
         Int32 id = Int32.Parse(papas["id"].ToString());
-        String mail = Tcorreo.Text.ToLower();
+        String mail = Tcorreo.Text.ToLower()+"@ucundinamarca.edu.co";
         String codigo = Tcodigo.Text;
         String Codigoold = clave.Text;
         if (codigo == Codigoold)

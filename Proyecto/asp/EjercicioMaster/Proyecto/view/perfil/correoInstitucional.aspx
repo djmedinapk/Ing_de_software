@@ -11,10 +11,10 @@
                 <h2>Registrar Correo Institucional</h2>
             </div>
            <div class="card-body">
-               <asp:TextBox ID="Tcorreo" runat="server" CssClass="form-control" TextMode="Email" ValidationGroup="correo"></asp:TextBox>
+               <asp:TextBox ID="Tcorreo" runat="server" CssClass="form-control"  ValidationGroup="correo"></asp:TextBox><input type="text" disabled class="form-control" value="@ucundinamarca.edu.co" />
                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tcorreo" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="correo"></asp:RequiredFieldValidator>
                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="/@_.- " TargetControlID="Tcorreo" />
+                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="/_.- " TargetControlID="Tcorreo" />
            </div>
             <div class="card-footer">
                 <asp:Button ID="Bterminar" runat="server" Text="Enviar" CssClass="btn btn-outline-success btn-block btn-lg" OnClick="Bterminar_Click" ValidationGroup="correo" />

@@ -76,9 +76,11 @@
                       </li>
                   </ul>
                 </div>
-                  <div class="tab-content" id="myTabContent">
+                <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3>Publicas</h3>
                         <div class="list-group">
+                            <asp:Panel id="panelpublico" runat="server">
                         <asp:DataList ID="DLlistarPosts" runat="server" DataSourceID="ODSlistarPosts">
                             <ItemTemplate>
                                  <div class="d-flex w-10 justify-content-end" style="margin-bottom:0px;">
@@ -103,35 +105,90 @@
                             </ItemTemplate>
                         </asp:DataList>
                         <asp:ObjectDataSource ID="ODSlistarPosts" runat="server" SelectMethod="listar_post_moderador" TypeName="DAOpost">
+                            <SelectParameters>
+                                        <asp:Parameter DefaultValue="1" Name="orden" Type="String"></asp:Parameter>
+                                    </SelectParameters>
                         </asp:ObjectDataSource>
+                        
+                        </asp:Panel>
+
                         </div>
+                        
+                        <div class="list-group">
+                            <asp:Panel id="Panelprivado" runat="server">
+                    <h3>Privadas</h3>
+                        <asp:DataList ID="DataList1" runat="server" DataSourceID="ODSlistarPosts2">
+                            <ItemTemplate>
+                                 <div class="d-flex w-10 justify-content-end" style="margin-bottom:0px;">
+                                       <div class="p-2 align-content-end">
+                                           <asp:Button ID="Button1" class="close Beliminar" Text="x" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id") %>' OnCommand="Beliminar_Command" />
+                                           <%-- <button type="button" class="close">
+                                       <span>x</span>
+                                      </button >--%>
+                                           <asp:Button ID="Button2" class="close Beliminar" Text="✓" runat="server" CommandName="validar" CommandArgument='<%#  Bind("id") %>' OnCommand="Beliminar_Command" />
+                                        </div>
+                                   
+                                <asp:HyperLink id="HyperLink1" runat="server" class="list-group-item list-group-item-action flex-column align-items-start " NavigateUrl='<%#  Bind("id_post") %>'>
+                                     <div class="p-10 align-self-end" >
+                                    <div class="d-flex justify-content-between" >
+								      <h6 class="mb-1"><asp:Label ID="Label3" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h6>
+								      <small><asp:Label ID="Label4" runat="server" Text='<%# Bind("miniatura") %>'></asp:Label></small>
+								    </div>
+								    <p class="mb-0"><asp:Label ID="Label5" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
+                                         </div>
+                                </asp:HyperLink>
+                                     </div>
+                            </ItemTemplate>
+                        </asp:DataList>
+                        <asp:ObjectDataSource ID="ODSlistarPosts2" runat="server" SelectMethod="listar_post_moderador" TypeName="DAOpost">
+                            <SelectParameters>
+                                        <asp:Parameter DefaultValue="2" Name="orden" Type="String"></asp:Parameter>
+                                    </SelectParameters>
+                        </asp:ObjectDataSource>
+                        
+                        </asp:Panel>
+
+                        </div>
+
+
                     </div>
                     <div class="tab-pane fade" id="denunciaComentario" role="tabpanel" aria-labelledby="denunciaComentario-tab">
-                        <asp:GridView ID="GridView1" runat="server" DataSourceID="ODSlistarComentarios" AutoGenerateColumns="False" CssClass="rwd-table" AllowPaging="True" AllowSorting="True" DataKeyNames="id_denuncia">
-                            <Columns>
-                                <asp:BoundField DataField="id_denuncia" AccessibleHeaderText="Id" HeaderText="Id">
-                                </asp:BoundField>
-                                <asp:BoundField DataField="descripcion" AccessibleHeaderText="Contenido Denuncia" HeaderText="Contenido Denuncia">
-                                    <HeaderStyle Width="30%" CssClass="peras"></HeaderStyle>
-                                </asp:BoundField>
-                                <asp:BoundField DataField="contenido_comentario" AccessibleHeaderText="Comentario" HeaderText="Comentario">
-                                    <HeaderStyle CssClass="peras"></HeaderStyle>
-                                </asp:BoundField>
-                                <asp:TemplateField ShowHeader="False" SortExpression="id_denuncia">
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">comentario</th>
+                                    <th scope="col">accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:ListView ID="ListView1" runat="server" DataSourceID="ODSlistarComentarios" DataKeyNames="id_denuncia" OnItemCommand="ListView1_ItemCommand"  >
                                     <ItemTemplate>
-                                        <asp:LinkButton runat="server" Text="" CommandName="Delete" CausesValidation="False" ID="LinkButton1"><i class="fa fa-times" aria-hidden="true" style="font-size:16px; color:white;"></i></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                        <tr class="odd pointer">
+                                            <th scope="row">
+                                                <asp:Label ID="Lcorreo" runat="server" Text='<%# Bind("id_denuncia") %>'></asp:Label></th>
+                                            <td >
+                                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></td>
+                                            <td >
+                                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("contenido_comentario") %>'></asp:Label></td>
+                                            <td >
+                                               <asp:LinkButton runat="server" Text="" CommandName="Delete" CausesValidation="False" ID="LinkButton1"><i class="fa fa-times" aria-hidden="true" style="font-size:16px; color:white;"></i></asp:LinkButton>
+                                               <asp:Button ID="Beliminar" class="close Beliminar" Text="aceptar" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id_denuncia") %>' />
+                                        </tr>
 
-                            </Columns>
-                        </asp:GridView>
-                        <asp:ObjectDataSource runat="server" ID="ODSlistarComentarios" SelectMethod="mostar_denuncia_comentario" TypeName="DAOdenuncia" DeleteMethod="eliminar_denuncia_comentario">
+                                    </ItemTemplate>
+                                </asp:ListView>
+                               
+                            </tbody>
+                        </table>
+                        <asp:objectdatasource runat="server" id="ODSlistarComentarios" selectmethod="mostar_denuncia_comentario" typename="DAOdenuncia" deletemethod="eliminar_denuncia_comentario">
                             <DeleteParameters>
                                 <asp:Parameter Name="id_denuncia" Type="Int32"  ></asp:Parameter>
                             </DeleteParameters>
-                        </asp:ObjectDataSource>
+                        </asp:objectdatasource>
                     </div>
-                  </div>
+                </div>
                 </div>
             </div>
     </div>
