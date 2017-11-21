@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/Post.aspx.cs" Inherits="view_post_Post" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     
     <style >
@@ -125,14 +125,18 @@
 
          <a name="comentario1" id="comentario1"></a>
             <asp:TextBox ID="Tidcomentario" runat="server" type="hidden" Text="0"></asp:TextBox>
+             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                  <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tidcomentario" />
               <div class="col-12">
                   <div class="form-group">
                         <label for="exampleFormControlTextarea1">Agregar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
                         <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TAcomentario" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="comentario"></asp:RequiredFieldValidator>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TAcomentario" />
                     </div>
               </div>
              <div class="d-flex justify-content-end ">
-                 <div class="p-2"><asp:Button ID="BagregarComentario" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click"/></div>
+                 <div class="p-2"><asp:Button ID="BagregarComentario" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click" ValidationGroup="comentario"/></div>
              </div>
           
          <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF" >
@@ -234,17 +238,20 @@
                   <div class="form-group row">
                  <%-- <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>--%>
                   <div class="col-sm-10">
-                      <asp:TextBox ID="TdenunciaComentarioID" runat="server"  class="form-control-plaintext" type="hidden"></asp:TextBox>
+                      <asp:TextBox ID="TdenunciaComentarioID" runat="server"  class="form-control-plaintext" type="hidden" ValidationGroup="denunciacomentario"></asp:TextBox>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TdenunciaComentarioID" />
                     <%--<input type="text" readonly class="form-control-plaintext" id="TdenunciaId">--%>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Razon De La Denúncia</label>
                   <textarea class="form-control" id="TdenunciaComentarioText" rows="3" runat="server"></textarea>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TdenunciaComentarioText" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="denunciacomentario"></asp:RequiredFieldValidator>
+                      <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="TdenunciaComentarioText" />
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" />
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" ValidationGroup="denunciacomentario"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -279,7 +286,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click"/>
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click" />
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
