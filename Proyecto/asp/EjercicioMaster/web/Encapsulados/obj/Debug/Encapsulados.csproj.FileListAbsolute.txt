@@ -1,0 +1,6 @@
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\bin\Debug\Encapsulados.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\bin\Debug\Encapsulados.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\obj\Debug\Encapsulados.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\obj\Debug\Encapsulados.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\obj\Debug\Encapsulados.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Encapsulados\obj\Debug\Encapsulados.csprojResolveAssemblyReference.cache
