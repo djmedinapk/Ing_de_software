@@ -7,12 +7,14 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class view_login_ingresar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(Session["username"]==null || Session["user_id"] == null)
+        if (Session["username"] == null || Session["user_id"] == null)
         {
             Session["username"] = null;
             Session["user_id"] = null;
@@ -22,129 +24,68 @@ public partial class view_login_ingresar : System.Web.UI.Page
         {
             Response.Redirect("../perfil/perfil.aspx");
         }
-        
+
     }
 
 
     protected void Bregistro_Click(object sender, EventArgs e)
     {
-        Eregistro usuario = new Eregistro();
+        Uadmin_actualizar_usuario usuario = new Uadmin_actualizar_usuario();
         usuario.Correo = TregistroCorreo.Text;
         usuario.Username = TregistroUser.Text;
         usuario.Session = Session.SessionID;
-        usuario.Password = encryption(TregistroPassword2.Text);
-        DAOregistro registro = new DAOregistro();
-        DataTable informacion = registro.registro(usuario);
-        if (informacion.Rows.Count != 0)
-        {
-            string frase = informacion.Rows[0][0].ToString();
-            if (frase == "Registro_exitoso") {
-                string mensaje = "<div class='alert alert-success alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Registro Exitoso!</strong> Gracias Por Ser Parte De Esta Gran Comunidad</div>";
-                LMensaje.Text = mensaje;
-                TloginUser.Text = usuario.Username;
-                TloginPassword.Focus();
-            }else
-            {
-                string mensaje = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Ya se Encuentra en uso este correo  y/o nombre de Usuario!</strong> Si has olvidado tus datos has click en Recuperar Contraseña</div>";
-                LMensaje.Text = mensaje;
-            }
-            
-        }
-        else
-        {
+        usuario.Password = TregistroPassword2.Text;
 
-            string mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
-            LMensaje.Text = mensaje;
+        Lregistro registro = new Lregistro();
+        try
+        {
+            LMensaje.Text = registro.Bregistro(usuario);
+            TloginUser.Text = usuario.Username;
+            TloginPassword.Focus();
+
         }
-        
+        catch { }
     }
 
     protected void Blogin_Click(object sender, EventArgs e)
     {
-        DAOUsuario guardarUsuario = new DAOUsuario();
-        string username= TloginUser.Text.ToString();
-        string pass= encryption(TloginPassword.Text.ToString());
-        System.Data.DataTable data = guardarUsuario.ingresar(username,pass);
-
-
-        if (data.Rows.Count > 0)
+        Llogin login = new Llogin();
+        Uadmin_ver_usuario usuario = new Uadmin_ver_usuario();
+        usuario.Username = TloginUser.Text.ToString();
+        usuario.Password = TloginPassword.Text.ToString();
+        DataTable[] respuesta = login.Blogin(usuario, Session.SessionID);
+        try
         {
-            try
-            {
-                String permisos = data.Rows[0]["id_permisos"].ToString();
-                Session["data_user"] = data.Rows[0];
-                Session["username"] = data.Rows[0]["username"].ToString();
-                Session["user_id"] = data.Rows[0]["id"].ToString();
 
-                Eusuario datosUsuario = new Eusuario();
-                // String ipAddress;
-                MAC macc;
-
-
-                // ipAddress = HttpContext.Current.Request.UserHostAddress;
-
-                macc = new MAC();
-                String ipAddress = macc.ip();
-                String MAC = macc.mac();
-
-                datosUsuario.UserId = int.Parse(Session["user_id"].ToString());
-                datosUsuario.Ip = ipAddress;
-                datosUsuario.Mac = MAC;
-                datosUsuario.Session = Session.SessionID;
-
-
-                guardarUsuario.guardadoSession(datosUsuario);
-                DAOperfil old = new DAOperfil();
-                DataTable correoIns = old.traerCorreoInstitucional(int.Parse(Session["user_id"].ToString()));
-                if (correoIns.Rows.Count > 0)
-                {
-                    if (correoIns.Rows[0][0].ToString() != "")
-                    {
-                        Session["correo_inst"]= correoIns.Rows[0][0].ToString();
-                        String hola = Session["correo_inst"].ToString();
-                    }
-                    else
-                    {
-                        Session["correo_inst"] = null;
-                    }
-                 }
-                if (permisos != "2")
-                {
-                    Response.Redirect("~/view/perfil/perfil.aspx");
-                }
-                else
-                {
-                    Response.Redirect("~/view/admin/index.aspx");
-                }
-                    
-            }
-            catch {
-                string mensaje = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
-                LMensaje.Text = mensaje;
-
-            }
+            LMensaje.Text = respuesta[1].Rows[0]["mensaje"].ToString();
 
         }
-        else
+        catch
         {
-            string mensaje = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Datos Incorrectos!</strong> Si has olvidado tus datos has click en Recuperar Contraseña </div>";
-            LMensaje.Text = mensaje;
+            // LMensaje.Text = "Algo Ha Salido mal :)";
         }
-
-    }
-    public string encryption(String password)
-    {
-        MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-        byte[] encrypt;
-        UTF8Encoding encode = new UTF8Encoding();
-        //encrypt the given password string into Encrypted data  
-        encrypt = md5.ComputeHash(encode.GetBytes(password));
-        StringBuilder encryptdata = new StringBuilder();
-        //Create a new string by using the encrypted data  
-        for (int i = 0; i < encrypt.Length; i++)
+        try
         {
-            encryptdata.Append(encrypt[i].ToString());
+            Session["username"] = respuesta[0].Rows[0]["username"].ToString();
+            Session["user_id"] = respuesta[0].Rows[0]["id"].ToString();
+            Session["correo_inst"] = respuesta[1].Rows[0]["correo_ins"].ToString();
+            Session["data_user"] = respuesta[0].Rows[0];
         }
-        return encryptdata.ToString();
+        catch
+        {
+            Session["username"] = null;
+            Session["user_id"] = null;
+            Session["correo_inst"] = null;
+            Session["data_user"] = null;
+        }
+        try
+        {
+            string url = respuesta[1].Rows[0]["response"].ToString();
+            Response.Redirect(login.validacionurl(url));
+        }
+        catch
+        {
+            //LMensaje.Text = "Algo Ha Salido mal x2 :")";
+        }
     }
 }
