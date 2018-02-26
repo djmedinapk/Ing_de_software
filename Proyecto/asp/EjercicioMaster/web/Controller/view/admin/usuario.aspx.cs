@@ -14,6 +14,25 @@ public partial class view_admin_usuario : System.Web.UI.Page
     public Int32 id;
     protected void Page_Load(object sender, EventArgs e)
     {
+        LverificarSesion verificar = new LverificarSesion();//"U1", "M1", "U2","M2",
+        String[] permisos = new String[] { "AD" };
+        try
+        {
+            String url = verificar.verificar_sesion((DataRow)Session["data_user"],"../home/index.aspx");
+            Response.Redirect(url);
+        }
+        catch
+        {
+           try
+            {
+                String url = verificar.verificar_permisos((DataRow)Session["data_user"], permisos, "../home/index.aspx");
+                Response.Redirect(url);
+            }
+            catch
+            {
+                
+            }
+        }
         Lalert.Text = "";
         Paneldatos.Visible = !IsPostBack;
         PanelUser.Visible = IsPostBack;

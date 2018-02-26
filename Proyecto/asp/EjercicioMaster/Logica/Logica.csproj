@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="encryption.cs" />
+    <Compile Include="Ladmin_main.cs" />
     <Compile Include="Ladmin_usuario.cs" />
     <Compile Include="Llogin.cs" />
     <Compile Include="LPerfil.cs" />
     <Compile Include="Lregistro.cs" />
+    <Compile Include="LverificarSesion.cs" />
     <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

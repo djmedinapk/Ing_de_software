@@ -14,6 +14,32 @@ namespace Datos
 {
     public class Dadmin
     {
+        public DataTable cargar_pag_home()
+        {
+            DataTable datos = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_caragr_datos_admin_home", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                conectar.Open();
+                dataAdapter.Fill(datos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datos;
+        }
         public DataTable suspender_usuario(Int32 id, String Sesion)
         {
             DataTable datos = new DataTable();

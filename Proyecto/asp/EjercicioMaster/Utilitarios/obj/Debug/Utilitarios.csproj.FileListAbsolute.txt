@@ -16,3 +16,9 @@ C:\Users\ledua\OneDrive\Escritorio\EjercicioMaster\Utilitarios\obj\Debug\Utilita
 C:\Users\ledua\OneDrive\Escritorio\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 C:\Users\ledua\OneDrive\Escritorio\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\ledua\OneDrive\Escritorio\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.pdb

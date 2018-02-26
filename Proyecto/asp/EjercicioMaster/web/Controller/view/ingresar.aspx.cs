@@ -14,16 +14,27 @@ public partial class view_login_ingresar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["username"] == null || Session["user_id"] == null)
+        LverificarSesion verificar = new LverificarSesion();//"U1", "M1", "U2","M2",
+        //String[] permisos = new String[] { "AD" };
+        try
         {
-            Session["username"] = null;
-            Session["user_id"] = null;
+            String url = verificar.verificar_sesion2((DataRow)Session["data_user"], "../perfil/perfil.aspx");
+            Response.Redirect(url);
+        }
+        catch {
+            //String b = verificar.verificar_permisos((DataRow)Session["data_user"], permisos, "../home/index.aspx");
+            //int a = 0;
+        }
+        //if (Session["username"] == null || Session["user_id"] == null)
+        //{
+        //    Session["username"] = null;
+        //    Session["user_id"] = null;
 
-        }
-        else
-        {
-            Response.Redirect("../perfil/perfil.aspx");
-        }
+        //}
+        //else
+        //{
+
+        //}
 
     }
 

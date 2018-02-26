@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uadmin_actualizar_usuario.cs" />
+    <Compile Include="Uadmin_main.cs" />
     <Compile Include="Uadmin_ver_usuario.cs" />
     <Compile Include="Uadmin_ver_usuario_2.cs" />
     <Compile Include="Uperfil_campos.cs" />
