@@ -4,9 +4,3 @@ C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Util
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Utilitarios\obj\Debug\Utilitarios.pdb
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Utilitarios\obj\Debug\Utilitarios.csprojResolveAssemblyReference.cache
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\bin\Debug\Utilitarios.dll
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\bin\Debug\Utilitarios.pdb
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.csprojResolveAssemblyReference.cache
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.dll
-C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Utilitarios\obj\Debug\Utilitarios.pdb

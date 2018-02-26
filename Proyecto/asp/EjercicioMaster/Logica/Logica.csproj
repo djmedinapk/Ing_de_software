@@ -43,9 +43,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="encryption.cs" />
     <Compile Include="Ladmin_usuario.cs" />
-    <Compile Include="Llogin.cs" />
-    <Compile Include="Lregistro.cs" />
-    <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
