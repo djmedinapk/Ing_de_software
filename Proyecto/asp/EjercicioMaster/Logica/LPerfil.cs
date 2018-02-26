@@ -16,7 +16,7 @@ namespace Logica
         public String modificar_datos_pers(int userid, Uadmin_actualizar_usuario2 newData, String sesion)
         {
 
-            String popup="";
+            String popup = "";
             Dperfil news = new Dperfil();
             Eadmin_actualizar_usuario_2 datos = new Eadmin_actualizar_usuario_2();
             datos.Id = newData.Id;
@@ -27,12 +27,12 @@ namespace Logica
             //datos.Session = newData.Session;
             datos.Avatar = newData.Avatar;
 
-            DataTable informacion = news.modificarDatos(userid, datos,sesion);
+            DataTable informacion = news.modificarDatos(userid, datos, sesion);
             popup = confirm_mod(informacion);            //Verifica si se agrego la informacion y devuelve el popUp
             return popup;
         }
 
-        public String [] generar_url(String carpeta_destino, String nombreArchivo, String extension)
+        public String[] generar_url(String carpeta_destino, String nombreArchivo, String extension)
         {
 
 
@@ -43,8 +43,8 @@ namespace Logica
             }
 
 
-            String []url = new String[2]; 
-            
+            String[] url = new String[2];
+
             if (nombreArchivo != "")
             {
                 string saveLocation = carpeta_destino + "\\" + nombreArchivo;
@@ -58,7 +58,8 @@ namespace Logica
                 }
                 return url;
             }
-            else {
+            else
+            {
                 url[1] = "";
                 url[0] = "sin_cargar";
                 return url;
@@ -97,7 +98,8 @@ namespace Logica
             }
             return avatar;
         }
-        public String confirm_mod(DataTable informacion) {
+        public String confirm_mod(DataTable informacion)
+        {
             String popup = "";
             if (informacion.Rows.Count != 0)
             {
@@ -120,7 +122,7 @@ namespace Logica
         }
 
 
-        public Uperfil_campos gestionar_nuevos_datos(Uadmin_actualizar_usuario datos, int userid,String sesion) //Trae los datos antiguos del usuario/ recibe los nuevos datos del formulario
+        public Uperfil_campos gestionar_nuevos_datos(Uadmin_actualizar_usuario datos, int userid, String sesion) //Trae los datos antiguos del usuario/ recibe los nuevos datos del formulario
         {
             String oldusername = null;
             String oldcorreo = null;
@@ -136,9 +138,9 @@ namespace Logica
                 oldcorreo = datosSesion.Rows[0]["correo"].ToString();
                 oldpassword = datosSesion.Rows[0]["pasword"].ToString();
             }
-            
+
             //Recibir los datos nuevos
-            Eadmin_actualizar_usuario datosAjustes =  new Eadmin_actualizar_usuario ();
+            Eadmin_actualizar_usuario datosAjustes = new Eadmin_actualizar_usuario();
             datosAjustes.Username = datos.Username;
             datosAjustes.Correo = datos.Correo;
             datosAjustes.Password = datos.Password;
@@ -179,3 +181,4 @@ namespace Logica
         }
     }
 }
+

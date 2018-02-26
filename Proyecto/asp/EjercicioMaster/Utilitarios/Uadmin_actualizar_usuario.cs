@@ -20,7 +20,6 @@ namespace Utilitarios
         public string Session { get => session; set => session = value; }
         public bool Admin { get => admin; set => admin = value; }
     }
-
     public class Uadmin_actualizar_usuario2     //Cascaron para informacion personal del usuario
     {
         private String id;
@@ -39,5 +38,4 @@ namespace Utilitarios
         public string Session { get => session; set => session = value; }
         public string Avatar { get => avatar; set => avatar = value; }
     }
-
 }

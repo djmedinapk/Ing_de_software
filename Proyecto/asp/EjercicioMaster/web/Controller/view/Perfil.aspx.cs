@@ -42,7 +42,7 @@ public partial class view_Perfil : System.Web.UI.Page
         }
         catch
         {
-            
+
         }
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +53,7 @@ public partial class view_Perfil : System.Web.UI.Page
         {
             Session["username"] = null;
             Session["user_id"] = null;
-            Session["Iperfil_url"]=null;
+            Session["Iperfil_url"] = null;
             Response.Redirect("~\\view\\login\\ingresar.aspx");
         }
         else
@@ -61,7 +61,7 @@ public partial class view_Perfil : System.Web.UI.Page
             // TperfilUsuario.Text = Session["username"].ToString();
             if (IsPostBack)
             {
-               // BperfilMod_Click(sender, e);
+                // BperfilMod_Click(sender, e);
                 //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
                 //Lusername.Text = Session["username"].ToString();
             }
@@ -89,7 +89,7 @@ public partial class view_Perfil : System.Web.UI.Page
                 Bmoderador.Visible = false;
                 Badmin.Visible = false;
             }
-            
+
         }
     }
 
@@ -137,7 +137,7 @@ public partial class view_Perfil : System.Web.UI.Page
         {
             TperfilAjustesUsername.Text = datosSession.Rows[0]["username"].ToString();
             TperfilAjustesCorreo.Text = datosSession.Rows[0]["correo"].ToString();
-            LtotalPublic.Text= datosSession.Rows[0]["posts"].ToString();
+            LtotalPublic.Text = datosSession.Rows[0]["posts"].ToString();
 
 
 
@@ -145,13 +145,13 @@ public partial class view_Perfil : System.Web.UI.Page
         if (datosold.Rows.Count > 0)
         {
             Lpopup.Text = "";
-           //TperfilUsuario.Text = datosold.Rows[0]["username"].ToString();
+            //TperfilUsuario.Text = datosold.Rows[0]["username"].ToString();
             //TperfilCorreo.Text = datosold.Rows[0]["corrreo"].ToString();
             TperfilNombre.Text = datosold.Rows[0]["nombre"].ToString();
             TperfilApellido.Text = datosold.Rows[0]["apellido"].ToString();
             TperfilEdad.Text = datosold.Rows[0]["edad"].ToString();
             IperfilImage.ImageUrl = datosold.Rows[0]["avatar"].ToString();
-            Session["Iperfil_url"]= datosold.Rows[0]["avatar"].ToString(); ;
+            Session["Iperfil_url"] = datosold.Rows[0]["avatar"].ToString(); ;
             RB1.SelectedValue = datosold.Rows[0]["sexo"].ToString();
         }
         else
@@ -188,20 +188,20 @@ public partial class view_Perfil : System.Web.UI.Page
         }
 
     }
-    
+
 
     protected void BajustesGuardar_Click(object sender, EventArgs e)
     {
         Uperfil_campos campos = new Uperfil_campos();
-        
+
         LPerfil perfil = new LPerfil();
 
-        Uadmin_actualizar_usuario new_login = new Uadmin_actualizar_usuario();      
+        Uadmin_actualizar_usuario new_login = new Uadmin_actualizar_usuario();
 
         new_login.Username = TperfilAjustesUsername.Text;
         new_login.Correo = TperfilAjustesCorreo.Text;
         new_login.Password = encryption(TperfilAjustesContrasena2.Text);
-        campos = perfil.gestionar_nuevos_datos(new_login, int.Parse(Session["user_id"].ToString()),Session.SessionID);  //Envia los datos recibidos en el form, y recibe los campos a colocar
+        campos = perfil.gestionar_nuevos_datos(new_login, int.Parse(Session["user_id"].ToString()), Session.SessionID);  //Envia los datos recibidos en el form, y recibe los campos a colocar
 
         Lpopup.Text = campos.Popup;
         TperfilAjustesContrasena.Text = campos.Pass1;
@@ -241,13 +241,13 @@ public partial class view_Perfil : System.Web.UI.Page
     {
         LPerfil cargar = new LPerfil();
         String[] recibido = new String[2];
-        String[] url= new String[3];
+        String[] url = new String[3];
         string carpeta_destino = Server.MapPath("~\\Imagenes") + "\\" + Session["user_id"];
         ClientScriptManager cm = this.ClientScript;
         string nombreArchivo = System.IO.Path.GetFileName(FUperfilImagen.PostedFile.FileName);
         string extension = System.IO.Path.GetExtension(FUperfilImagen.PostedFile.FileName);
-        recibido = cargar.generar_url(carpeta_destino,nombreArchivo,extension);  //Recibe la url para guardar el archivo
-        url[2] = "~\\Imagenes" + "\\" + Session["user_id"] + "\\" +  nombreArchivo;
+        recibido = cargar.generar_url(carpeta_destino, nombreArchivo, extension);  //Recibe la url para guardar el archivo
+        url[2] = "~\\Imagenes" + "\\" + Session["user_id"] + "\\" + nombreArchivo;
         try
         {
             FUperfilImagen.PostedFile.SaveAs(recibido[1]);
@@ -282,7 +282,7 @@ public partial class view_Perfil : System.Web.UI.Page
     {
         if (e.CommandName == "eliminar")
         {
-            Int32 postid=Int32.Parse(e.CommandArgument.ToString());
+            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
             DAOpost eliminar = new DAOpost();
             DataTable informacion = eliminar.eliminar_post(postid, Session.SessionID);
             Response.Redirect("Perfil.aspx");

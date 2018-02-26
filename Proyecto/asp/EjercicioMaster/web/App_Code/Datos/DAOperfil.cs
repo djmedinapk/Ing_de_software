@@ -70,9 +70,7 @@ public class DAOperfil
         }
         return Usuario;
     }
-
-
-    /*public DataTable modificarDatos(int user_id,EdatosUsuario datos, String Sesion)
+    public DataTable modificarDatos(int user_id,EdatosUsuario datos, String Sesion)
     {
         DataTable Usuario = new DataTable();
         NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -106,7 +104,7 @@ public class DAOperfil
             }
         }
         return Usuario;
-    }*/
+    }
 
     public DataTable listar_post(int user_id, String Sesion)
     {

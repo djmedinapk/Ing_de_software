@@ -17,7 +17,7 @@ namespace Datos
         {
 
         }
-        public DataTable modificarDatos(int user_id,  Eadmin_actualizar_usuario_2 datos , String Sesion)
+        public DataTable modificarDatos(int user_id, Eadmin_actualizar_usuario_2 datos, String Sesion)
         {
             DataTable Usuario = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -115,3 +115,4 @@ namespace Datos
         }
     }
 }
+
