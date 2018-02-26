@@ -45,6 +45,7 @@
     <Compile Include="Uadmin_actualizar_usuario.cs" />
     <Compile Include="Uadmin_ver_usuario.cs" />
     <Compile Include="Uadmin_ver_usuario_2.cs" />
+    <Compile Include="Uperfil_campos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

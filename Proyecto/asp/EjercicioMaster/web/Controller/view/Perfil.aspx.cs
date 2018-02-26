@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Utilitarios;
+using Logica;
 
 public partial class view_Perfil : System.Web.UI.Page
 {
@@ -108,70 +110,20 @@ public partial class view_Perfil : System.Web.UI.Page
     protected void BperfilGuardar_Click(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
-        DAOperfil news = new DAOperfil();
-        EdatosUsuario newData = new EdatosUsuario();
-
+        LPerfil perfil = new LPerfil();
+        Uadmin_actualizar_usuario2 newData = new Uadmin_actualizar_usuario2();
         //newData.Username = TperfilUsuario.Text;
         // newData.Username = TperfilUsuario.Text;
         //newData.Correo = TperfilCorreo.Text;
         newData.Nombre = TperfilNombre.Text;
         newData.Apellido = TperfilApellido.Text;
-        newData.Edad = int.Parse(TperfilEdad.Text);
+        newData.Edad = TperfilEdad.Text;
         newData.Sexo = RB1.SelectedValue;
-        string url = cargarImagen(); 
-        if (url!= "error" && url != "archivo_no_valido" && url != "sin_cargar") {
-            newData.Avatar = url;
-        }
-        else 
-        {
-            if (url != "archivo_no_valido")
-            {
-                if (url != "sin_cargar")
-                {
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
-                    newData.Avatar = "sinActualizar";
+        String[] url = cargarImagen();
+        newData.Avatar = perfil.poner_imagen(url);
 
-                }
-                else
-                {
-                   // cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo De Archivo no Valido');</script>");
-                    newData.Avatar = "sinActualizar";
-                }
-
-            }
-            else
-            {
-                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo De Archivo no Valido');</script>");
-                newData.Avatar = "sinActualizar";
-            }
-        }
-        
-        DataTable informacion=news.modificarDatos(int.Parse(Session["user_id"].ToString()),newData, Session.SessionID);
-        if (informacion.Rows.Count != 0)
-        {
-            string frase = informacion.Rows[0][0].ToString();
-            if (frase == "Registro_exitoso")
-            {
-
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Se han guardado Los cambios</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                //Response.Redirect("../perfil/Perfil.aspx");
-            }
-            else
-            {
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Ha ocurrido algun Error por favor recarga la pagina e intentanuevamente</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            }
-
-        }
-        else
-        {
-
-            
-        }
-        
-
-
+        String popup = perfil.modificar_datos_pers(int.Parse(Session["user_id"].ToString()), newData, Session.SessionID); //Envia todos los datos a LOGICA y retorna el mensaje
+        Lpopup.Text = popup;
     }
 
     protected void BperfilMod_Click(object sender, EventArgs e)
@@ -240,35 +192,23 @@ public partial class view_Perfil : System.Web.UI.Page
 
     protected void BajustesGuardar_Click(object sender, EventArgs e)
     {
-        string oldusername=null;
-        string oldcorreo = null;
-        string oldpasword = null;
-        DAOperfil old = new DAOperfil();
-        DataTable datosSesion = old.traerDatosSesion(int.Parse(Session["user_id"].ToString()));
+        Uperfil_campos campos = new Uperfil_campos();
+        
+        LPerfil perfil = new LPerfil();
 
-        if (datosSesion.Rows.Count > 0)
-        {
-             oldusername= datosSesion.Rows[0]["username"].ToString();
-            oldcorreo= datosSesion.Rows[0]["correo"].ToString();
-            oldpasword= datosSesion.Rows[0]["pasword"].ToString();
+        Uadmin_actualizar_usuario new_login = new Uadmin_actualizar_usuario();      
 
-        }
-        Eregistro datosAjustes = new Eregistro();
-        datosAjustes.Username = TperfilAjustesUsername.Text;
-        datosAjustes.Correo = TperfilAjustesCorreo.Text;
-        datosAjustes.Password = encryption(TperfilAjustesContrasena2.Text);
-        if (datosAjustes.Password == "2122914021714301784233128915223624866126")
-        {
-            datosAjustes.Password = oldpasword;
-        }
-        if(oldusername==datosAjustes.Username && oldcorreo== datosAjustes.Correo && datosAjustes.Password== oldpasword)
-        {
-            Lpopup.Text = "";
-            TperfilAjustesContrasena2.Text = "";
-            TperfilAjustesContrasena.Text = "";
+        new_login.Username = TperfilAjustesUsername.Text;
+        new_login.Correo = TperfilAjustesCorreo.Text;
+        new_login.Password = encryption(TperfilAjustesContrasena2.Text);
+        campos = perfil.gestionar_nuevos_datos(new_login, int.Parse(Session["user_id"].ToString()),Session.SessionID);  //Envia los datos recibidos en el form, y recibe los campos a colocar
 
-        }
-        else
+        Lpopup.Text = campos.Popup;
+        TperfilAjustesContrasena.Text = campos.Pass1;
+        TperfilAjustesContrasena2.Text = campos.Pass2;
+        Session["username"] = campos.Username;
+
+        /*else
         {
             DAOperfil ajustes = new DAOperfil();
             DataTable informacion = ajustes.modificar_perfil_ajustes(int.Parse(Session["user_id"].ToString()), Session.SessionID, datosAjustes);
@@ -291,67 +231,34 @@ public partial class view_Perfil : System.Web.UI.Page
 
 
             }
-        }
-        
-
+        }*/
     }
     protected void Bcorreoins_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/view/perfil/correoInstitucional.aspx");
     }
-    protected String cargarImagen()
+    protected String[] cargarImagen()         // Recoge los datos para guardar la imagen del avatar, y si no existe la imagen la guarda
     {
+        LPerfil cargar = new LPerfil();
+        String[] recibido = new String[2];
+        String[] url= new String[3];
         string carpeta_destino = Server.MapPath("~\\Imagenes") + "\\" + Session["user_id"];
-        if (Directory.Exists(carpeta_destino))
-        {
-
-        }
-
-        else
-        {
-            Directory.CreateDirectory(carpeta_destino);
-        }
-
-
-        String url = "";
         ClientScriptManager cm = this.ClientScript;
         string nombreArchivo = System.IO.Path.GetFileName(FUperfilImagen.PostedFile.FileName);
         string extension = System.IO.Path.GetExtension(FUperfilImagen.PostedFile.FileName);
-        if (nombreArchivo !="")
+        recibido = cargar.generar_url(carpeta_destino,nombreArchivo,extension);  //Recibe la url para guardar el archivo
+        url[2] = "~\\Imagenes" + "\\" + Session["user_id"] + "\\" +  nombreArchivo;
+        try
         {
-            string saveLocation = Server.MapPath("~\\Imagenes") + "\\" + Session["user_id"] + "\\" + nombreArchivo;
-
-            if (!(extension.Equals(".jpg") || extension.Equals(".gif") || extension.Equals(".jpge") || extension.Equals(".png")))
-            {
-                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido');</script>");
-                url = "archivo_no_valido";
-            }
-            else
-            {
-
-                if (System.IO.File.Exists(saveLocation))
-                {
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
-                    url = "~\\Imagenes" + "\\" + Session["user_id"] + "\\" + nombreArchivo;
-                }
-                else
-                {
-
-                    try
-                    {
-                        FUperfilImagen.PostedFile.SaveAs(saveLocation);
-                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
-                        url = "~\\Imagenes" + "\\" + Session["user_id"] + "\\" + nombreArchivo;
-                    }
-                    catch (Exception exc)
-                    {
-                        url = "error";
-                    }
-                }
-            }
-            return url;
+            FUperfilImagen.PostedFile.SaveAs(recibido[1]);
         }
-        else { url = "sin_cargar"; return url; }
+        catch (Exception exc)
+        {
+            recibido[0] = "error";
+        }
+        url[0] = recibido[0];
+        url[1] = recibido[1];
+        return url;
     }
     public string encryption(String password)
     {

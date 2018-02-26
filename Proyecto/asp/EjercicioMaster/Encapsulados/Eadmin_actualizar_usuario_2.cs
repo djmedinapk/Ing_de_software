@@ -14,6 +14,7 @@ namespace Encapsulados
         private String edad;
         private String sexo;
         private String session;
+        private String avatar;
 
         public string Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -21,5 +22,6 @@ namespace Encapsulados
         public string Edad { get => edad; set => edad = value; }
         public string Sexo { get => sexo; set => sexo = value; }
         public string Session { get => session; set => session = value; }
+        public string Avatar { get => avatar; set => avatar = value; }
     }
 }
