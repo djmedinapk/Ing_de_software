@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Dadmin.cs" />
+    <Compile Include="DcorreoInst.cs" />
+    <Compile Include="Dlogin.cs" />
+    <Compile Include="Dregistro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
