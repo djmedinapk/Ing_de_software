@@ -95,16 +95,17 @@ public partial class view_Perfil : System.Web.UI.Page
 
     protected void Blogout_Click(object sender, EventArgs e)
     {
-        Session["user_id"] = null;
-        Session["username"] = null;
-
+        
         DAOUsuario user = new DAOUsuario();
         Eusuario datos = new Eusuario
         {
             Session = Session.SessionID
         };
         user.CerrarSession(datos);
-
+        Session["user_id"] = null;
+        Session["username"] = null;
+        Session["data_user"] = null;
+        Session.Clear();
         Response.Redirect("~\\view\\login\\ingresar.aspx");
     }
     protected void BperfilGuardar_Click(object sender, EventArgs e)
