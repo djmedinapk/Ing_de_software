@@ -66,7 +66,7 @@
                                 </article>
                             </ItemTemplate>
                         </asp:DataList>
-                        <asp:ObjectDataSource runat="server" ID="ODStoppub" SelectMethod="cargar_pag_home_toppub" TypeName="DAOadmin"></asp:ObjectDataSource>
+                        <asp:ObjectDataSource runat="server" ID="ODStoppub" SelectMethod="cargar_top_user_post" TypeName="Logica.Ladmin_main"></asp:ObjectDataSource>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                                 </article>
                             </ItemTemplate>
                         </asp:DataList>
-                        <asp:ObjectDataSource runat="server" ID="ODStoppoint" SelectMethod="cargar_pag_home_toppoint" TypeName="DAOadmin"></asp:ObjectDataSource>
+                        <asp:ObjectDataSource runat="server" ID="ODStoppoint" SelectMethod="cargar_top_user_puntos" TypeName="Logica.Ladmin_main"></asp:ObjectDataSource>
                     </div>
                 </div>
             </div>

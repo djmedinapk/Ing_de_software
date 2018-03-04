@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Eadmin_actualizar_usuario.cs" />
     <Compile Include="Eadmin_actualizar_usuario_2.cs" />
+    <Compile Include="Econtacto.cs" />
     <Compile Include="Eperfil_usuario.cs" />
     <Compile Include="Epublicacion.cs" />
     <Compile Include="Esesion.cs" />

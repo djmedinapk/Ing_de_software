@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Dadmin.cs" />
+    <Compile Include="Dcontacto.cs" />
     <Compile Include="DcorreoInst.cs" />
     <Compile Include="Dlogin.cs" />
     <Compile Include="Dperfil.cs" />
@@ -58,6 +59,9 @@
       <Project>{f60280c1-4974-40aa-bf67-d7f7b9019667}</Project>
       <Name>Encapsulados</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

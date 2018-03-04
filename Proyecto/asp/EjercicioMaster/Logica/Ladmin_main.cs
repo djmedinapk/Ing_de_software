@@ -25,5 +25,18 @@ namespace Logica
             datos2.LtotalPuntos= datos.Rows[0]["_totalpoints"].ToString();
             return datos2;
         }
+        public DataTable cargar_top_user_post()
+        {
+            Dadmin solicitud = new Dadmin();
+            DataTable respuesta = solicitud.cargar_pag_home_toppub();
+            return respuesta;
+        }
+        public DataTable cargar_top_user_puntos()
+        {
+            Dadmin solicitud = new Dadmin();
+            DataTable respuesta = solicitud.cargar_pag_home_toppoint();
+            return respuesta;
+        }
+        
     }
 }

@@ -195,7 +195,7 @@
 
                                     </ItemTemplate>
                                 </asp:ListView>
-                                <asp:ObjectDataSource runat="server" ID="ODSusuario" SelectMethod="cargar_usuarios" TypeName="DAOadmin">
+                                <asp:ObjectDataSource runat="server" ID="ODSusuario" SelectMethod="cargar_user" TypeName="Logica.Ladmin_usuario">
                                     
                                 </asp:ObjectDataSource>
                             </tbody>

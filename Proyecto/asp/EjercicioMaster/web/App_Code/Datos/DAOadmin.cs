@@ -44,84 +44,84 @@ public class DAOadmin
     //    }
     //    return datos;
     //}
-    public DataTable cargar_pag_home_toppub()
-    {
-        DataTable datos = new DataTable();
+    //public DataTable cargar_pag_home_toppub()
+    //{
+    //    DataTable datos = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_cargar_usuariospubl", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(datos);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return datos;
-    }
-    public DataTable cargar_pag_home_toppoint()
-    {
-        DataTable datos = new DataTable();
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_cargar_usuariospubl", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(datos);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return datos;
+    //}
+    //public DataTable cargar_pag_home_toppoint()
+    //{
+    //    DataTable datos = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_cargar_usuariospoints", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(datos);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return datos;
-    }
-    public DataTable cargar_usuarios()
-    {
-        DataTable datos = new DataTable();
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_cargar_usuariospoints", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(datos);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return datos;
+    //}
+    //public DataTable cargar_usuarios()
+    //{
+    //    DataTable datos = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_crud_usuarios_listar", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(datos);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return datos;
-    }
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_crud_usuarios_listar", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(datos);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return datos;
+    //}
     //public DataTable suspender_usuario(Int32 id, String Sesion)
     //{
     //    DataTable datos = new DataTable();

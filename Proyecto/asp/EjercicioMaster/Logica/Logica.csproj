@@ -44,6 +44,8 @@
     <Compile Include="encryption.cs" />
     <Compile Include="Ladmin_main.cs" />
     <Compile Include="Ladmin_usuario.cs" />
+    <Compile Include="Lcontacto.cs" />
+    <Compile Include="Lcorreo.cs" />
     <Compile Include="Llogin.cs" />
     <Compile Include="Lotros.cs" />
     <Compile Include="LPerfil.cs" />

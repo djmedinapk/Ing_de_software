@@ -186,6 +186,12 @@ namespace Logica
             }
             solicitud.actualizar_perfil(usuario);
         }
+        public DataTable cargar_user()
+        {
+            Dadmin solicitud = new Dadmin();
+            DataTable respuesta = solicitud.cargar_usuarios();
+            return respuesta;
+        }
 
     }
 }
