@@ -124,11 +124,16 @@ namespace Logica
         {
             if (comando=="eliminar")
             {
-                Int32 postid = post_id;
+                
                 Dpost eliminar = new Dpost();
-                DataTable informacion = eliminar.eliminar_post(postid, sesion);
+                DataTable informacion = eliminar.eliminar_post(post_id, sesion);
             }
-            
+            if (comando == "validar")
+            {
+                Dpost validar = new Dpost();
+                DataTable informacion = validar.validar_post(post_id, sesion);
+            }
+
         }
 
         public Upost2 cargarPost(Int32 id_post,Int32 userid)
@@ -161,6 +166,16 @@ namespace Logica
                 respuesta.Categoria = datos_post.Rows[0]["id_categoria"].ToString();
             }
             return respuesta;
+        }
+
+        public void aceptar_denuncia(Int32 post_id,String comando)
+        {
+            if (comando == "eliminar")
+            {
+
+                DDenuncia eliminar = new DDenuncia();
+                DataTable informacion = eliminar.aceptar_denuncia_comentario(post_id);
+            }
         }
         public String terminar_mod(Upost datos, String sesion, Int32 user_id,Int32 post_id,bool autor,String miniatura)
         {
@@ -207,6 +222,66 @@ namespace Logica
 
             }
             return respuesta;
+        }
+
+        public String[] recibir_denuncia_post(String userid,String username, Int32 postid, String opcion, String argumento)
+        {
+            String[] mensaje = new String[2];
+            string descripcion;
+            if (username == null || userid == null)
+            {
+                string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
+               mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> "
+                    + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+               mensaje[1] = "";
+            }
+            else
+            {
+                mensaje[0] = "";
+                try
+                {
+                    DDenuncia denuncia = new DDenuncia();
+                    Int32 user_id = Int32.Parse(userid);
+                    switch (opcion)
+                    {
+                        case "1":
+                            descripcion = "Viola derechos de autor - ";
+                            break;
+                        case "2":
+                            descripcion = "Contenido Inapropiado - ";
+                            break;
+                        default:
+                            descripcion = "Otro - ";
+                            break;
+
+                    }
+                    descripcion += argumento;
+                    DataTable informacion = denuncia.denuncia_publicacion(user_id, postid, descripcion);
+                    if (informacion.Rows.Count != 0)
+                    {
+                        string frase = informacion.Rows[0][0].ToString();
+                       mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                        mensaje[1] = "";
+                    }
+                    else
+                    {
+                        string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                       mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+
+                    }
+                }
+                catch
+                {
+                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                   mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                }
+
+            }
+            return mensaje;
         }
     }
 }

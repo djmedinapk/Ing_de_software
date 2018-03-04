@@ -117,6 +117,35 @@ namespace Datos
             }
             return post;
         }
+        public DataTable validar_post(int post_id, String Sesion)
+        {
+            DataTable post = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(" post.f_validar_post", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Text).Value = Sesion;
+                dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+
+                conectar.Open();
+                dataAdapter.Fill(post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return post;
+        }
 
         public DataTable modificar_post(Epublicacion datosPost, int user_id, String Sesion, int post_id)
         {

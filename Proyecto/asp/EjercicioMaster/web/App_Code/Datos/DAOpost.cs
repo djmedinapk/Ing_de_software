@@ -295,7 +295,7 @@ public class DAOpost
         }
         return post;
     }
-    public DataTable validar_post(int post_id, String Sesion)
+    /*public DataTable validar_post(int post_id, String Sesion)
     {
         DataTable post = new DataTable();
 
@@ -323,7 +323,7 @@ public class DAOpost
             }
         }
         return post;
-    }
+    }*/
     //public DataTable cargar_mod_post(Int32 post_id, Int32 user_id)
     //{
     //    DataTable post = new DataTable();

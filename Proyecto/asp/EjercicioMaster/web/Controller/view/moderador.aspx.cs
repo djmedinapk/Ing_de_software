@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
 
 public partial class view_moderador_moderador : System.Web.UI.Page
 {
@@ -52,31 +53,19 @@ public partial class view_moderador_moderador : System.Web.UI.Page
 
     protected void Beliminar_Command(object sender, CommandEventArgs e)
     {
-        if (e.CommandName == "eliminar")
-        {
-            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
-            DAOpost eliminar = new DAOpost();
-            DataTable informacion = eliminar.eliminar_post(postid, Session.SessionID);
-            Response.Redirect("moderador.aspx");
-        }
-        if (e.CommandName == "validar")
-        {
-            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
-            DAOpost eliminar = new DAOpost();
-            DataTable informacion = eliminar.validar_post(postid, Session.SessionID);
-            Response.Redirect("moderador.aspx");
-        }
+        Int32 postid = Int32.Parse(e.CommandArgument.ToString());
+        Lpost eliminar = new Lpost();
+        eliminar.eliminarPost(postid, e.CommandName, Session.SessionID);
+        Response.Redirect("moderador.aspx");
     }
   
 
     protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        if (e.CommandName == "eliminar")
-        {
-            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
-            DAOdenuncia eliminar = new DAOdenuncia();
-            DataTable informacion = eliminar.aceptar_denuncia_comentario(postid);
-            Response.Redirect("../moderador/moderador.aspx");
-        }
+        Int32 postid = Int32.Parse(e.CommandArgument.ToString());
+        Lpost eliminar = new Lpost();
+        Lpost post = new Lpost();
+        post.aceptar_denuncia(postid, e.CommandName);
+        Response.Redirect("../moderador/moderador.aspx");
     }
 }

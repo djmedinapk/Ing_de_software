@@ -48,7 +48,7 @@ public class DAOdenuncia
         }
         return respuesta;
     }
-    public DataTable denuncia_publicacion(int user_id, int publicacion_id, String descripcion)
+    /*public DataTable denuncia_publicacion(int user_id, int publicacion_id, String descripcion)
     {
         DataTable respuesta = new DataTable();
 
@@ -77,7 +77,8 @@ public class DAOdenuncia
             }
         }
         return respuesta;
-    }
+    }*/
+
     public DataTable mostar_denuncia_comentario()
     {
         DataTable respuesta = new DataTable();
@@ -132,7 +133,7 @@ public class DAOdenuncia
         return respuesta;
     }
     
-    public DataTable aceptar_denuncia_comentario(int id_denuncia)
+    /*public DataTable aceptar_denuncia_comentario(int id_denuncia)
     {
         DataTable respuesta = new DataTable();
 
@@ -158,5 +159,5 @@ public class DAOdenuncia
             }
         }
         return respuesta;
-    }
+    }*/
 }

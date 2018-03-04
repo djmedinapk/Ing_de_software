@@ -22,3 +22,9 @@ C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsul
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.csproj.CoreCompileInputs.cache
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.dll
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.pdb
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\bin\Debug\Encapsulados.dll
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\bin\Debug\Encapsulados.pdb
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.csprojResolveAssemblyReference.cache
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.csproj.CoreCompileInputs.cache
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.dll
+C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Debug\Encapsulados.pdb

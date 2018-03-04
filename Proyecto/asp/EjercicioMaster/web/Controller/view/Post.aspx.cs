@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Logica;
 public partial class view_post_Post : System.Web.UI.Page
 {
     public String post;
@@ -162,15 +162,23 @@ public partial class view_post_Post : System.Web.UI.Page
     }
     protected void BdenunciaPost_Click(object sender, EventArgs e)
     {
-        string descripcion;
-        if (Session["username"] == null || Session["user_id"] == null)
+        Lpost post_logica = new Lpost();
+        String username = Session["username"].ToString();
+        String userid = Session["user_id"].ToString();
+        Int32 publicacion_id = Int32.Parse(post.ToString());
+        String argumento = TdenunciaPostText.Text.ToString();
+        String opcion = DDLopcion.SelectedValue.ToString();
+        String [] mensaje = post_logica.recibir_denuncia_post(userid, username, publicacion_id, opcion, argumento);
+        Lpopup.Text = mensaje[0];
+        TdenunciaComentarioText.Text = mensaje[1];
+        /*if (Session["username"] == null || Session["user_id"] == null)
         {
             string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
             Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
             TdenunciaComentarioText.Text = "";
-        }
-        else
+        }*/
+        /*else
         {
             Lpopup.Text = "";
             try
@@ -217,7 +225,7 @@ public partial class view_post_Post : System.Web.UI.Page
 
             }
 
-        }
+        }*/
 
     }
     protected void enviar_puntuacion(object sender, EventArgs e, int puntuacion)
