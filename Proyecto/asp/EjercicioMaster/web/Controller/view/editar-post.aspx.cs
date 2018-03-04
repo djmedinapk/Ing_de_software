@@ -9,113 +9,88 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class view_post_editar_post : System.Web.UI.Page
 {
     String POST;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["username"] == null || Session["user_id"] == null)
+        String urlerror = "../login/ingresar.aspx";
+        LverificarSesion verificar = new LverificarSesion();//"U1", "M1", "U2","M2",
+        String[] permisos = new String[] { "AD", "U1", "M1", "U2", "M2" };
+        try
         {
-            Session["username"] = null;
-            Session["user_id"] = null;
-            Response.Redirect("../login/ingresar.aspx");
+            String url = verificar.verificar_sesion((DataRow)Session["data_user"], urlerror);
+            Response.Redirect(url);
         }
-        else
+        catch
+        {
+            try
+            {
+                String url = verificar.verificar_permisos((DataRow)Session["data_user"], permisos, urlerror);
+                Response.Redirect(url);
+            }
+            catch
+            {
+
+            }
+        }
+        try
         {
             POST = Request.QueryString[0].ToString();
-            if (!IsPostBack)
+            try
             {
-                
+                Lotros aux = new Lotros();
+                Int32 aux1;
+                aux1= Int32.Parse(aux.aux1(IsPostBack).ToString());
                 cargar_datos(sender, e);
             }
-            
+            catch{  }
         }
+        catch { }
+            
+            
+        
     }
     protected void RBpostfuentes2_CheckedChanged(object sender, EventArgs e)
     {
-        //if (RBpostfuentes2.Checked == true)
-        //{
-        //    TpostFuentes.Enabled = true;
-        //}
-        //else
-        //{
-        //    TpostFuentes.Enabled = false;
-        //}
     }
     protected void cargar_datos(object sender, EventArgs e)
     {
-        DAOpost cargar = new DAOpost();
+        Lpost cargar = new Lpost();
         Int32 post_id = Int32.Parse(POST);
         Int32 user_id =Int32.Parse( Session["user_id"].ToString());
-        DataTable datos_post = cargar.cargar_mod_post(post_id,user_id);
-        if (datos_post.Rows.Count > 0)
-        {
-            TpostNombre.Text = datos_post.Rows[0]["titulo"].ToString();
-            Tpostdescripcion.Text = datos_post.Rows[0]["descripcion"].ToString();
-            TpostEtiquetas.Text = datos_post.Rows[0]["etiquetas"].ToString();
-            contenidoedito.Text= datos_post.Rows[0]["contenido"].ToString();
-            if (datos_post.Rows[0]["fuente"].ToString() == "El Contenido es de mi autoria y/o Recopilacion de varias fuentes")
-            {
-                RBpostfuentes1.Checked = true;
-            }
-            else
-            {
-                RBpostfuentes2.Checked = true;
-                TpostFuentes.Text = datos_post.Rows[0]["fuente"].ToString();
-            }
-            Iminiaturapost.ImageUrl = datos_post.Rows[0]["miniatura"].ToString();
-            //editor1.Value= datos_post.Rows[0]["contenido"].ToString();
-            DDLcategoria.SelectedValue= datos_post.Rows[0]["id_categoria"].ToString();
-        }
+        Upost2 datos = new Upost2();
+        datos  = cargar.cargarPost(post_id,user_id);
+        TpostNombre.Text = datos.Nombre;
+        Tpostdescripcion.Text = datos.Descripcion;
+        TpostEtiquetas.Text = datos.Etiquetas;
+        contenidoedito.Text = datos.Contenido;
+        RBpostfuentes1.Checked = datos.Fuentes1;
+        RBpostfuentes2.Checked = datos.Fuentes2;
+        TpostFuentes.Text = datos.Autor;
+        Iminiaturapost.ImageUrl = datos.Miniatura;
+        DDLcategoria.SelectedValue = datos.Categoria;
+        
         
     }
 
     protected void BcrearpostTerminar_Click(object sender, EventArgs e)
     {
         DAOpost publicar = new DAOpost();
-        Epost post = new Epost();
+        Upost post = new Upost();
+        Lpost modificar = new Lpost();
         post.Nombre = TpostNombre.Text;
         post.Descripcion = Tpostdescripcion.Text;
         post.Contenido = op.Text;
         post.Categoria = int.Parse(DDLcategoria.SelectedItem.Value);
         post.Etiquetas = TpostEtiquetas.Text;
-
         post.Miniatura = cargarImagen();
-
-        if (post.Miniatura == "error")
-        {
-            post.Miniatura = Iminiaturapost.ImageUrl.ToString();
-        }
-        
-
-        if (RBpostfuentes2.Checked == true)
-        {
-            post.Autor = TpostFuentes.Text;
-        }
-        else
-        {
-            post.Autor = "El Contenido es de mi autoria y/o Recopilacion de varias fuentes";
-        }
-
-        DataTable informacion = publicar.modificar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID,int.Parse(POST));
-
-        if (informacion.Rows.Count != 0)
-        {
-            string frase = informacion.Rows[0][0].ToString();
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});"+
-                       "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href='" + "Post.aspx?id=" + POST.ToString() + "'; }</script>";
-
-
-            //Response.Redirect("../perfil/Perfil.aspx");
-        }
-        else
-        {
-
-
-        }
+        post.Autor = TpostFuentes.Text;
+        String respuesta = modificar.terminar_mod(post, Session.SessionID, int.Parse(Session["user_id"].ToString()), int.Parse(POST), RBpostfuentes2.Checked, Iminiaturapost.ImageUrl.ToString());
+        Lpopup.Text = respuesta;
         Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()

@@ -6,21 +6,43 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class view_CrearPublicacion : System.Web.UI.Page
 {
     String modo;
     void Page_PreInit(Object sender, EventArgs e)
     {
+        String urlerror = "../login/ingresar.aspx";
+        LverificarSesion verificar = new LverificarSesion();//"U1", "M1", "U2","M2",
+        String[] permisos = new String[] { "AD", "U1", "M1", "U2", "M2" };
+        try
+        {
+            String url = verificar.verificar_sesion((DataRow)Session["data_user"], urlerror);
+            Response.Redirect(url);
+        }
+        catch
+        {
+            try
+            {
+                String url = verificar.verificar_permisos((DataRow)Session["data_user"], permisos, urlerror);
+                Response.Redirect(url);
+            }
+            catch
+            {
+
+            }
+        }
+
         String metodo;
         try
         {
             metodo = Request.QueryString["m"].ToString();
-            if (metodo == "1")
-            {
-                this.MasterPageFile = "~/Master1_1.master";
-                modo = "1";
-            }else { modo = "2"; }
+            Lpost validar = new Lpost();
+            String[] respuesta= validar.modo(metodo, Session["correo_inst"].ToString(), (DataRow)Session["data_user"]);
+            this.MasterPageFile = respuesta[0];
+            modo = respuesta[1];
         }
         catch
         {
@@ -29,100 +51,26 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        //string scrip = " < script language=\"JavaScript\">";
-        //scrip += "CKEDITOR.replace('editor1');";
-        //scrip += "</ script >";
-        //Leditor.Text = scrip; 
-        //string script = "<script language=\"JavaScript\">";
-        //script += "alert(\"Hola Mundo\");";
-        //script += "CKEDITOR.replace('editor1');";
-        //script += "</script>";
-        //Leditor.Text = script;
-        if (Session["username"] == null || Session["user_id"] == null)
-        {
-            Session["username"] = null;
-            Session["user_id"] = null;
-            Response.Redirect("../login/ingresar.aspx");
-        }
-        else
-        {
-            //.Text = Session["username"].ToString();
-        }
+        
     }
 
     protected void RBpostfuentes2_CheckedChanged(object sender, EventArgs e)
     {
-        //if (RBpostfuentes2.Checked == true)
-        //{
-        //    TpostFuentes.Enabled = true;
-        //}
-        //else
-        //{
-        //    TpostFuentes.Enabled = false;
-        //}
     }
 
     protected void BcrearpostTerminar_Click(object sender, EventArgs e)
     {
-        DAOpost publicar = new DAOpost();
-        Epost post = new Epost();
+        Lpost publicar = new Lpost();
+        Upost post = new Upost();
         post.Nombre = TpostNombre.Text;
         post.Descripcion = Tpostdescripcion.Text;
         post.Contenido = op.Text;
         post.Categoria = int.Parse(DDLcategoria.SelectedItem.Value);
         post.Etiquetas = TpostEtiquetas.Text;
         post.Miniatura = cargarImagen();
-        if (RBpostfuentes2.Checked == true)
-        {
-            post.Autor = TpostFuentes.Text;
-        }
-        else
-        {
-            post.Autor = "El Contenido es de mi autoria y/o Recopilacion de varias fuentes";
-        }
-        DataTable informacion = null; ;
-        if (modo == "1")
-        {
-            informacion = publicar.ingresar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID,1);
-        }
-        else
-        {
-            informacion = publicar.ingresar_post(post, int.Parse(Session["user_id"].ToString()), Session.SessionID,0);
-        }
-
-         
-
-        if (informacion.Rows.Count != 0)
-        {
-            string frase = informacion.Rows[0][0].ToString();
-            if (frase == "Ingreso_exitoso")
-            {
-                string mensaje = "<strong>Se relizo la publicacion</strong>, espera a que un moderador la acepte";
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                      "setInterval('guardar()', 1500);" +
-                      "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
-
-            }
-            else
-            {
-                string mensaje = "Error al prrocesar la solicitud";
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                      "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
-            }
-
-        }
-        else
-        {
-
-            string mensaje = "<strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo";
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + mensaje + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                      "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                      "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href=\"../perfil/perfil.aspx\"; }</script>";
-        }
+        post.Autor=TpostFuentes.Text;
+        String respuesta=publicar.publicarPost(post, RBpostfuentes2.Checked,modo,Session.SessionID, Int32.Parse(Session["user_id"].ToString()));
+        Lpopup.Text = respuesta;
         Response.Redirect("../perfil/perfil.aspx");
     }
     protected String cargarImagen()

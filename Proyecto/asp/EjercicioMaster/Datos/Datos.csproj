@@ -49,6 +49,7 @@
     <Compile Include="DcorreoInst.cs" />
     <Compile Include="Dlogin.cs" />
     <Compile Include="Dperfil.cs" />
+    <Compile Include="Dpost.cs" />
     <Compile Include="Dregistro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

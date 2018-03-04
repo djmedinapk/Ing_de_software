@@ -143,7 +143,8 @@ namespace Logica
             Eadmin_actualizar_usuario datosAjustes = new Eadmin_actualizar_usuario();
             datosAjustes.Username = datos.Username;
             datosAjustes.Correo = datos.Correo;
-            datosAjustes.Password = datos.Password;
+            encryption encripto = new encryption();
+            datosAjustes.Password = encripto.encrypto(datos.Password);
             //datosAjustes.Session = datos.Session;
 
             //Comparar NEW VS OLD

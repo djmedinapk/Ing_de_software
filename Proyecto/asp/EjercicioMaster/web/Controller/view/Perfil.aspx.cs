@@ -35,14 +35,14 @@ public partial class view_Perfil : System.Web.UI.Page
         try
         {
             metodo = Request.QueryString["m"].ToString();
-            if (metodo == "1")
-            {
-                this.MasterPageFile = "~/Master1_1.master";
-            }
+            Lpost validar = new Lpost();
+            String[] respuesta = validar.modo(metodo, Session["correo_inst"].ToString(), (DataRow)Session["data_user"]);
+            this.MasterPageFile = respuesta[0];
+           
         }
         catch
         {
-
+            
         }
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -201,7 +201,7 @@ public partial class view_Perfil : System.Web.UI.Page
 
         new_login.Username = TperfilAjustesUsername.Text;
         new_login.Correo = TperfilAjustesCorreo.Text;
-        new_login.Password = encryption(TperfilAjustesContrasena2.Text);
+        new_login.Password = TperfilAjustesContrasena2.Text;
         campos = perfil.gestionar_nuevos_datos(new_login, int.Parse(Session["user_id"].ToString()), Session.SessionID);  //Envia los datos recibidos en el form, y recibe los campos a colocar
 
         Lpopup.Text = campos.Popup;
@@ -261,33 +261,14 @@ public partial class view_Perfil : System.Web.UI.Page
         url[1] = recibido[1];
         return url;
     }
-    public string encryption(String password)
-    {
-        MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-        byte[] encrypt;
-        UTF8Encoding encode = new UTF8Encoding();
-        //encrypt the given password string into Encrypted data  
-        encrypt = md5.ComputeHash(encode.GetBytes(password));
-        StringBuilder encryptdata = new StringBuilder();
-        //Create a new string by using the encrypted data  
-        for (int i = 0; i < encrypt.Length; i++)
-        {
-            encryptdata.Append(encrypt[i].ToString());
-        }
-        return encryptdata.ToString();
-    }
-
-
-
     protected void Unnamed1_ItemCommand(object source, DataListCommandEventArgs e)
     {
-        if (e.CommandName == "eliminar")
-        {
-            Int32 postid = Int32.Parse(e.CommandArgument.ToString());
-            DAOpost eliminar = new DAOpost();
-            DataTable informacion = eliminar.eliminar_post(postid, Session.SessionID);
-            Response.Redirect("Perfil.aspx");
-        }
+        Lpost eliminar = new Lpost();
+        String comando = e.CommandName;
+        String argumento = e.CommandArgument.ToString();
+        eliminar.eliminarPost(Int32.Parse(argumento),comando,Session.SessionID);
+        Response.Redirect("Perfil.aspx");
+        
     }
 
     protected void Bmoderador_Click(object sender, EventArgs e)

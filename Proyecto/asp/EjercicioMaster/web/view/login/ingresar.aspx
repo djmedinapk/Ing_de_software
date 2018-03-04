@@ -35,7 +35,7 @@
 						  </div>
 
 					   </dd>
-
+                        <form >
 					  <dt class="col-sm-3"></dt>
 					  <dd class="col-sm-8">
 					    <div class="form-group">
@@ -54,6 +54,7 @@
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/view/login/restaurar_contraseña.aspx">Recuperar Contraseña</asp:HyperLink>
 						    <%--<button type="button" class="btn btn-block">Ingresar</button>--%>
 						  </div>
+                          </form>
 					  </dd>			  
 					</dl>
 		    </div>

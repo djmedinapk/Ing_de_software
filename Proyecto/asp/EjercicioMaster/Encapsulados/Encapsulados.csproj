@@ -44,6 +44,7 @@
     <Compile Include="Eadmin_actualizar_usuario.cs" />
     <Compile Include="Eadmin_actualizar_usuario_2.cs" />
     <Compile Include="Eperfil_usuario.cs" />
+    <Compile Include="Epublicacion.cs" />
     <Compile Include="Esesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
