@@ -77,31 +77,31 @@ public class DAOUsuario
     //    return Usuario;
     //}
 
-    public DataTable CerrarSession(Eusuario datos)
-    {
-        DataTable Usuario = new DataTable();
-        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //public DataTable CerrarSession(Eusuario datos)
+    //{
+    //    DataTable Usuario = new DataTable();
+    //    NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad_registros.f_cerrar_session", conection);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("seguridad_registros.f_cerrar_session", conection);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
 
-            conection.Open();
-            dataAdapter.Fill(Usuario);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conection != null)
-            {
-                conection.Close();
-            }
-        }
-        return Usuario;
-    }
+    //        conection.Open();
+    //        dataAdapter.Fill(Usuario);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conection != null)
+    //        {
+    //            conection.Close();
+    //        }
+    //    }
+    //    return Usuario;
+    //}
 }

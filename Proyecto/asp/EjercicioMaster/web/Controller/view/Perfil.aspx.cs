@@ -96,12 +96,9 @@ public partial class view_Perfil : System.Web.UI.Page
     protected void Blogout_Click(object sender, EventArgs e)
     {
         
-        DAOUsuario user = new DAOUsuario();
-        Eusuario datos = new Eusuario
-        {
-            Session = Session.SessionID
-        };
-        user.CerrarSession(datos);
+        Llogin user = new Llogin();
+
+        user.terminar_sesion(Session.SessionID.ToString());
         Session["user_id"] = null;
         Session["username"] = null;
         Session["data_user"] = null;

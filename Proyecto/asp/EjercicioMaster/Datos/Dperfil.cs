@@ -113,6 +113,35 @@ namespace Datos
             }
             return post;
         }
+        public DataTable listar_post(int user_id, String Sesion)
+        {
+            DataTable post = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Varchar).Value = Sesion;
+                dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+
+                conectar.Open();
+                dataAdapter.Fill(post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return post;
+        }
     }
 }
 

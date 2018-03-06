@@ -103,6 +103,12 @@ namespace Logica
                 url = null;
             return url;
         }
+
+        public void terminar_sesion(String sesion)
+        {
+            Dlogin cerrar = new Dlogin();
+            cerrar.CerrarSession(sesion);
+        }
         
     }
 }

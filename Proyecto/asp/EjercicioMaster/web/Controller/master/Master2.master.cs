@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -85,17 +86,14 @@ public partial class Master1 : System.Web.UI.MasterPage
 
     protected void Bminiatura_salir_Click(object sender, EventArgs e)
     {
+        Llogin user = new Llogin();
+
+        user.terminar_sesion(Session.SessionID.ToString());
         Session["user_id"] = null;
         Session["username"] = null;
-
-        DAOUsuario user = new DAOUsuario();
-        Eusuario datos = new Eusuario
-        {
-            Session = Session.SessionID
-        };
-        user.CerrarSession(datos);
-
-        Response.Redirect("~/view/login/ingresar.aspx");
+        Session["data_user"] = null;
+        Session.Clear();
+        Response.Redirect("~\\view\\login\\ingresar.aspx");
     }
 
     protected void Bminiatura_settings_Click(object sender, EventArgs e)

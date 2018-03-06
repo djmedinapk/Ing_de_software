@@ -180,6 +180,12 @@ namespace Logica
             }
             return data;
         }
+        public DataTable Llistar_post_perfil(Int32 user_id,String sesion)
+        {
+            Dperfil solicitud = new Dperfil();
+            DataTable posts = solicitud.listar_post(user_id, sesion);
+            return posts;
+        }
     }
 }
 

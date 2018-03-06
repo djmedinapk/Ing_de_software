@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
 
 public partial class Master1 : System.Web.UI.MasterPage
 {
@@ -44,21 +45,15 @@ public partial class Master1 : System.Web.UI.MasterPage
     }
     protected void Bminiatura_salir_Click(object sender, EventArgs e)
         {
-            Session["user_id"] = null;
-            Session["username"] = null;
-            Session["data_user"] = null;
-            Session.Clear();
+        Llogin user = new Llogin();
 
-
-        DAOUsuario user = new DAOUsuario();
-            Eusuario datos = new Eusuario
-            {
-                Session = Session.SessionID
-            };
-            user.CerrarSession(datos);
-
-            Response.Redirect("~\\view\\login\\ingresar.aspx");
-        }
+        user.terminar_sesion(Session.SessionID.ToString());
+        Session["user_id"] = null;
+        Session["username"] = null;
+        Session["data_user"] = null;
+        Session.Clear();
+        Response.Redirect("~\\view\\login\\ingresar.aspx");
+    }
 
         protected void Bminiatura_settings_Click(object sender, EventArgs e)
         {
