@@ -264,5 +264,32 @@ namespace Datos
             }
             return datos;
         }
+        public DataTable crud_post(String orden)
+        {
+            DataTable datos = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_crud_post", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+                conectar.Open();
+                dataAdapter.Fill(datos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datos;
+        }
     }
 }

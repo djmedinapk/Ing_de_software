@@ -56,7 +56,7 @@
 
                                     </ItemTemplate>
                                 </asp:ListView>
-                                <asp:ObjectDataSource runat="server" ID="ODSusuario" SelectMethod="crud_post" TypeName="DAOadmin">
+                                <asp:ObjectDataSource runat="server" ID="ODSusuario" SelectMethod="listar_crud_post" TypeName="Logica.Ladmin_post">
                                      <SelectParameters>
                                         <asp:Parameter DefaultValue="2" Name="orden" Type="String"></asp:Parameter>
                                     </SelectParameters>
@@ -118,7 +118,7 @@
 
                                     </ItemTemplate>
                                 </asp:ListView>
-                                <asp:ObjectDataSource runat="server" ID="ODSpost2" SelectMethod="crud_post" TypeName="DAOadmin">
+                                <asp:ObjectDataSource runat="server" ID="ODSpost2" SelectMethod="listar_crud_post" TypeName="Logica.Ladmin_post">
                                      <SelectParameters>
                                         <asp:Parameter DefaultValue="1" Name="orden" Type="String"></asp:Parameter>
                                     </SelectParameters>

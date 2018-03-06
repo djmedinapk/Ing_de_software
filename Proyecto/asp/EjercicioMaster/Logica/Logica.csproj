@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="encryption.cs" />
     <Compile Include="Ladmin_main.cs" />
+    <Compile Include="Ladmin_post.cs" />
     <Compile Include="Ladmin_usuario.cs" />
     <Compile Include="Lcontacto.cs" />
     <Compile Include="Lcorreo.cs" />

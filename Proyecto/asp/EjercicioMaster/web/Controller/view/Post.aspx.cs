@@ -23,26 +23,6 @@ public partial class view_post_Post : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["username"] == null || Session["user_id"] == null)
-        //{
-        //    Session["username"] = null;
-        //    Session["user_id"] = null;
-        //    Session["Iperfil_url"] = null;
-        //    //Response.Redirect("../login/ingresar.aspx");
-        //}
-        //else
-        //{
-        //    //// TperfilUsuario.Text = Session["username"].ToString();
-        //    //if (IsPostBack)
-        //    //{
-
-        //    //}
-        //    //else
-        //    //{
-                
-        //    //}
-
-        //}
         try
         {
             post = Request.QueryString[0].ToString();
