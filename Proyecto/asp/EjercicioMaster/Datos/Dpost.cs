@@ -184,5 +184,94 @@ namespace Datos
             }
             return categoria;
         }
+
+
+
+        
+        public DataTable listar_categoria()
+        {
+            DataTable categoria = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_categoria", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                conectar.Open();
+                dataAdapter.Fill(categoria);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return categoria;
+        }
+
+
+        public DataTable ver_post(int post_id)
+        {
+            DataTable post = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_ver_post2", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+                //dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Integer).Value = control;
+
+                conectar.Open();
+                dataAdapter.Fill(post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return post;
+        }
+        public DataTable visita_post(int post_id)
+        {
+            DataTable post = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(" post.f_visita_post", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+
+                conectar.Open();
+                dataAdapter.Fill(post);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return post;
+        }
     }
 }

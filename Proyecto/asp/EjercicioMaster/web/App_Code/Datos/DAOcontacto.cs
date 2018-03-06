@@ -20,33 +20,33 @@ public class DAOcontacto
 	}
 
 
-    public DataTable Enviar_solicitud(Econtacto solicitud)
-    {
-        DataTable contraseña = new DataTable();
-        NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("public.f_agregar_contacto", conection);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar).Value = solicitud.Nombre;
-            dataAdapter.SelectCommand.Parameters.Add("_apellido", NpgsqlDbType.Varchar).Value = solicitud.Apellido;
-            dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = solicitud.Correo;
-            dataAdapter.SelectCommand.Parameters.Add("_telefono", NpgsqlDbType.Varchar).Value = solicitud.Telefono;
-            dataAdapter.SelectCommand.Parameters.Add("_contenido", NpgsqlDbType.Text).Value = solicitud.Contenido;
-            conection.Open();
-            dataAdapter.Fill(contraseña);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conection != null)
-            {
-                conection.Close();
-            }
-        }
-        return contraseña;
-    }
+    //public DataTable Enviar_solicitud(Econtacto solicitud)
+    //{
+    //    DataTable contraseña = new DataTable();
+    //    NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("public.f_agregar_contacto", conection);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar).Value = solicitud.Nombre;
+    //        dataAdapter.SelectCommand.Parameters.Add("_apellido", NpgsqlDbType.Varchar).Value = solicitud.Apellido;
+    //        dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = solicitud.Correo;
+    //        dataAdapter.SelectCommand.Parameters.Add("_telefono", NpgsqlDbType.Varchar).Value = solicitud.Telefono;
+    //        dataAdapter.SelectCommand.Parameters.Add("_contenido", NpgsqlDbType.Text).Value = solicitud.Contenido;
+    //        conection.Open();
+    //        dataAdapter.Fill(contraseña);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conection != null)
+    //        {
+    //            conection.Close();
+    //        }
+    //    }
+    //    return contraseña;
+    //}
 }

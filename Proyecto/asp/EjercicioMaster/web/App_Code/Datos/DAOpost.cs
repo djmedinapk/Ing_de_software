@@ -18,32 +18,32 @@ public class DAOpost
         // TODO: Agregar aquí la lógica del constructor
         //
     }
-    public DataTable listar_categoria()
-    {
-        DataTable categoria = new DataTable();
+    //public DataTable listar_categoria()
+    //{
+    //    DataTable categoria = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_categoria", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(categoria);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return categoria;
-    }
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_categoria", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(categoria);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return categoria;
+    //}
     //public DataTable ingresar_post(Epost datosPost, int user_id,String Sesion, int modo)
     //{
     //    DataTable categoria = new DataTable();
@@ -62,7 +62,7 @@ public class DAOpost
     //        {
     //             dataAdapter = new NpgsqlDataAdapter("post.f_ingresar_post", conectar);
     //        }
-            
+
     //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
     //        dataAdapter.SelectCommand.Parameters.Add("_sesion", NpgsqlDbType.Varchar).Value = Sesion;
     //        dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value =user_id;
@@ -90,7 +90,7 @@ public class DAOpost
     //    }
     //    return categoria;
     //}
-   
+
     public DataTable ver_post(int post_id)
     {
         DataTable post = new DataTable();

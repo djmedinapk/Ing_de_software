@@ -283,5 +283,88 @@ namespace Logica
             }
             return mensaje;
         }
+
+        public DataTable listar_categorias()
+        {
+            Dpost solicitud = new Dpost();
+            DataTable categorias = solicitud.listar_categoria();
+            return categorias;
+        }
+        public Upost3 ver_post(Int32 post_id, DataRow sesion)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable datospost = solicitud.ver_post(post_id);
+            Upost3 dp1 = new Upost3();
+            if (datospost.Rows.Count > 0)
+            {
+                if (datospost.Rows[0]["estado"].ToString() == "Activo")
+                {
+                    dp1.Titulo = datospost.Rows[0]["titulo"].ToString();
+                    dp1.Contenido = datospost.Rows[0]["contenido"].ToString();
+                    dp1.Fuentes = "Fuente: " + datospost.Rows[0]["fuente"].ToString();
+                    dp1.Categoria = "Categoria(s): " + datospost.Rows[0]["categoria"].ToString();
+                    dp1.Username = datospost.Rows[0]["username"].ToString();
+                    dp1.Avatar = datospost.Rows[0]["avatar_username"].ToString();
+                    dp1.Urlperfil = "~/view/perfil/verPerfil.aspx?id=" + datospost.Rows[0]["id_usuario"].ToString();
+                    dp1.Avatarimg = dp1.Urlperfil;
+                    dp1.Totalpubs = datospost.Rows[0]["posts"].ToString();
+                    dp1.Totalcoments = datospost.Rows[0]["comentarios"].ToString() + " Comentarios";
+                    dp1.P1 = true;
+                    dp1.P2 = true;
+                    dp1.P3 = true;
+                    dp1.P4 = true;
+                    dp1.P5 = true;
+                    dp1.BagregarComentario1 = true;
+                    dp1.PagregarComentario1 = true;
+                    dp1.Respons = null;
+                }
+                else
+                {
+                    if (sesion != null)
+                    {
+                        var papas = sesion;
+                        if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id"].ToString()) == int.Parse(datospost.Rows[0]["id_usuario"].ToString()))
+                        {
+                            dp1.Titulo = datospost.Rows[0]["titulo"].ToString();
+                            dp1.Contenido = datospost.Rows[0]["contenido"].ToString();
+                            dp1.Fuentes = "Fuente: " + datospost.Rows[0]["fuente"].ToString();
+                            dp1.Categoria = "Categoria(s): " + datospost.Rows[0]["categoria"].ToString();
+                            dp1.Username = datospost.Rows[0]["username"].ToString();
+                            dp1.Avatar = datospost.Rows[0]["avatar_username"].ToString();
+                            String urlPerfil = "~/view/perfil/verPerfil.aspx?id=" + datospost.Rows[0]["id_usuario"].ToString();
+                            dp1.Avatarimg = urlPerfil;
+                            dp1.P1 = false;
+                            dp1.P2 = false;
+                            dp1.P3 = false;
+                            dp1.P4 = false;
+                            dp1.P5 = false;
+                            dp1.Lpuntuacion1 = "";
+                            dp1.BagregarComentario1 = false;
+                            dp1.PagregarComentario1 = false;
+                            dp1.Respons = null;
+                        }
+                        else
+                        {
+                            dp1.Respons="../home/index.aspx";
+
+                        }
+                    }
+                    else
+                    {
+                        dp1.Respons = "../home/index.aspx";
+
+                    }
+                }
+
+            }
+            else
+            {
+                dp1.Respons = "../home/index.aspx";
+            }
+
+            Dpost visitar = new Dpost();
+            DataTable visita = visitar.visita_post(post_id);
+            return dp1;
+        }
     }
 }

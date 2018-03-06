@@ -63,7 +63,7 @@
                 <label for="DDLcategoria">Categoria</label>
             <div class="input-group">
                 <asp:dropdownlist runat="server" id="DDLcategoria" class="form-control" DataSourceID="ODSlistarCategoria" DataTextField="nombre" DataValueField="id"></asp:dropdownlist>
-                <asp:ObjectDataSource ID="ODSlistarCategoria" runat="server" SelectMethod="listar_categoria" TypeName="DAOpost"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODSlistarCategoria" runat="server" SelectMethod="listar_categorias" TypeName="Logica.Lpost"></asp:ObjectDataSource>
                </div>
               <div class="input-group editor1">
                  
