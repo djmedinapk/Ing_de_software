@@ -137,7 +137,7 @@
                     </div>
               </div>
              <div class="d-flex justify-content-end ">
-                 <div class="p-2"><asp:Button ID="BagregarComentario" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Button2_Click" ValidationGroup="comentario"/></div>
+                 <div class="p-2"><asp:Button ID="BagregarComentario" runat="server" Text="Comentar" class="form-group btn-primary" OnClick="Bagregar_comentario" ValidationGroup="comentario"/></div>
              </div>
           
          <asp:HyperLink ID="HLcomentarios" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#3366FF" >
@@ -253,7 +253,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="Unnamed2_Click" ValidationGroup="denunciacomentario"/>
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="BDenuncia_comentario" ValidationGroup="denunciacomentario"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
@@ -291,7 +291,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="BdenunciaPost_Click" ValidationGroup="denunciapost"/>
+                <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="Bdenuncia_Post" ValidationGroup="denunciapost"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>

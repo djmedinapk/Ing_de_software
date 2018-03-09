@@ -73,155 +73,72 @@ public partial class view_post_Post : System.Web.UI.Page
 
 
 
-    protected void Unnamed2_Click(object sender, EventArgs e)
+    protected void BDenuncia_comentario(object sender, EventArgs e)   //Boton denuncia de comentarios!!!
     {
-        if(Session["username"] == null || Session["user_id"] == null)
-        {
-            string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Text = "";
-        }
-        else
-        {
-            Lpopup.Text = "";
-            try {
-                DAOdenuncia comentario = new DAOdenuncia();
-                Int32 user_id = Int32.Parse(Session["user_id"].ToString());
-                Int32 comentario_id = Int32.Parse(TdenunciaComentarioID.Text.ToString());
-                string descripcion = TdenunciaComentarioText.Text.ToString();
-                DataTable informacion = comentario.denuncia_comentario(user_id, comentario_id, descripcion);
-                if (informacion.Rows.Count != 0)
-                {
-                    string frase = informacion.Rows[0][0].ToString();
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    TdenunciaComentarioText.Text = "";
-                }
-                else
-                {
-                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-
-                }
-            } catch {
-                string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    
-                
-            }
-            
-        }
-        
-    }
-    protected void BdenunciaPost_Click(object sender, EventArgs e)
-    {
+        String username;
+        String userid;
         Lpost post_logica = new Lpost();
-        String username = Session["username"].ToString();
-        String userid = Session["user_id"].ToString();
+        try
+        {
+            username = Session["username"].ToString();
+            userid = Session["user_id"].ToString();
+        }
+        catch
+        {
+            username = null;
+            userid = null;
+        }
+        Int32 comentario_id = Int32.Parse(TdenunciaComentarioID.Text.ToString());
+        String descripcion = TdenunciaComentarioText.Text.ToString();
+        String[] mensaje = post_logica.Denuncia_comentario(userid, username, comentario_id, descripcion);
+        Lpopup.Text = mensaje[0];
+        TdenunciaComentarioText.Text = mensaje[1];
+    }
+
+    protected void Bdenuncia_Post(object sender, EventArgs e)     //Envia la denuncia de un post
+    {
+        String username;
+        String userid;
+        Lpost post_logica = new Lpost();
+        try
+        {
+            username = Session["username"].ToString();
+            userid = Session["user_id"].ToString();
+        }
+        catch
+        {
+            username = null;
+            userid = null;
+        }
+
         Int32 publicacion_id = Int32.Parse(post.ToString());
         String argumento = TdenunciaPostText.Text.ToString();
         String opcion = DDLopcion.SelectedValue.ToString();
         String [] mensaje = post_logica.recibir_denuncia_post(userid, username, publicacion_id, opcion, argumento);
         Lpopup.Text = mensaje[0];
         TdenunciaComentarioText.Text = mensaje[1];
-        /*if (Session["username"] == null || Session["user_id"] == null)
-        {
-            string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Text = "";
-        }*/
-        /*else
-        {
-            Lpopup.Text = "";
-            try
-            {
-                DAOdenuncia denuncia = new DAOdenuncia();
-                Int32 user_id = Int32.Parse(Session["user_id"].ToString());
-                Int32 publicacion_id = Int32.Parse(post.ToString());
-                switch (DDLopcion.SelectedValue.ToString())
-                {
-                    case "1" :
-                        descripcion = "Viola derechos de autor - ";
-                        break;
-                    case "2":
-                        descripcion = "Contenido Inapropiado - ";
-                        break;
-                    default:
-                        descripcion = "Otro - ";
-                        break;
-
-                }
-                descripcion += TdenunciaPostText.Text.ToString();
-                DataTable informacion = denuncia.denuncia_publicacion(user_id, publicacion_id, descripcion);
-                if (informacion.Rows.Count != 0)
-                {
-                    string frase = informacion.Rows[0][0].ToString();
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                    TdenunciaComentarioText.Text = "";
-                }
-                else
-                {
-                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-
-                }
-            }
-            catch
-            {
-                string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-
-
-            }
-
-        }*/
 
     }
-    protected void enviar_puntuacion(object sender, EventArgs e, int puntuacion)
+    protected void enviar_puntuacion(object sender, EventArgs e, int puntuacion)       //Envia la puntuacion del post
     {
-        if (Session["username"] == null || Session["user_id"] == null)
+        String username;
+        String userid;
+        Lpost post_logica = new Lpost();
+        try
         {
-            string frase = "Inicia Sesion Para Poder Puntuar este Post";
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Text = "";
+            username = Session["username"].ToString();
+            userid = Session["user_id"].ToString();
         }
-        else
+        catch
         {
-            try
-            {
-                DAOpost puntuar = new DAOpost();
-                Int32 user_id = Int32.Parse(Session["user_id"].ToString());
-                Int32 post_id = Int32.Parse(post.ToString());
-                DataTable informacion = puntuar.puntuar_post(puntuacion, user_id, post_id);
-                if (informacion.Rows.Count != 0)
-                {
-                    string frase = informacion.Rows[0][0].ToString();
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-                }
-                else
-                {
-                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-
-                }
-
-            } catch {
-                string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            }
-            
+            username = null;
+            userid = null;
         }
+        
+        Int32 publicacion_id = Int32.Parse(post.ToString());
+        String[] mensaje = post_logica.enviarPuntuacion(userid, username, publicacion_id,puntuacion);
+        Lpopup.Text = mensaje[0];
+        TdenunciaComentarioText.Text = mensaje[1];
     }
 
     protected void Bpunt1_Click(object sender, EventArgs e)
@@ -254,59 +171,29 @@ public partial class view_post_Post : System.Web.UI.Page
         enviar_puntuacion(sender, e, valor);
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void Bagregar_comentario(object sender, EventArgs e)                   //Boton para agregar el comentario!!!!
     {
-        if (Session["username"] == null || Session["user_id"] == null)
+        String username;
+        String userid;
+        Lpost post_logica = new Lpost();
+        try
         {
-            string frase = "Inicia Sesion Para Poder Poder Comentar";
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-               "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            TdenunciaComentarioText.Text = "";
+            username = Session["username"].ToString();
+            userid = Session["user_id"].ToString();
         }
-        else
+        catch
         {
-            Lpopup.Text = "";
-            try
-            {
-                DAOpost comentario = new DAOpost();
-                String contenido = TAcomentario.Text.ToString();
-                Int32 comentario_id= Int32.Parse(Tidcomentario.Text.ToString());
-                Int32 user_id = Int32.Parse(Session["user_id"].ToString());
-                Int32 post_id = Int32.Parse(post.ToString());
-                DataTable informacion = comentario.comentar_post(comentario_id,user_id, post_id, contenido);
-                if (informacion.Rows.Count != 0)
-                {
-                    string frase = informacion.Rows[0][0].ToString();
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                       "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href='" + "Post.aspx?id=" + post.ToString() + "'; }</script>";
-                    TAcomentario.Text = "";
-                    //Response.Redirect("~/view/post/Post.aspx?id=" + post.ToString());
-                }
-                else
-                {
-                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                    Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                       "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href='" + "Post.aspx?id=" + post.ToString() + "'; }</script>";
-
-                }
-            }
-            catch
-            {
-                string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
-                Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
-                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
-                       "setInterval('guardar()', 1500);" +
-                       "function guardar() { window.location.href='" + "Post.aspx?id=" + post.ToString() + "'; }</script>";
-
-
-            }
-
+            username = null;
+            userid = null;
         }
-        
+        String contenido = TAcomentario.Text.ToString();
+        Int32 comentario_id = Int32.Parse(Tidcomentario.Text.ToString());
+        Int32 post_id = Int32.Parse(post.ToString());
+        String[] mensaje = post_logica.agregar_comentario(userid, username, comentario_id, post_id, contenido);
+        Lpopup.Text = mensaje[0];
+        TdenunciaComentarioText.Text = mensaje[1];
+        TAcomentario.Text = mensaje[2];
+
     }
 
 }

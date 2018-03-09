@@ -283,6 +283,144 @@ namespace Logica
             }
             return mensaje;
         }
+        public String[] enviarPuntuacion(String userid, String username, Int32 postid, int puntuacion)
+        {
+            String[] mensaje = new String[2];
+            if (username == null || userid == null)
+            {
+                string frase = "Inicia Sesion Para Poder Puntuar este Post";
+                mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                mensaje[1] = "";
+            }
+            else
+            {
+                try
+                {
+                    Dpost puntuar = new Dpost();
+                    DataTable informacion = puntuar.puntuar_post(puntuacion, int.Parse(userid), postid);
+                    if (informacion.Rows.Count != 0)
+                    {
+                        string frase = informacion.Rows[0][0].ToString();
+                       mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                    }
+                    else
+                    {
+                        string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                       mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+
+                    }
+
+                }
+                catch
+                {
+                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                    mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                }
+
+            }
+            return mensaje;
+
+        }
+
+
+        public String[] Denuncia_comentario(String userid, String username, Int32 comId, String descripcion)
+        {
+            String[] mensaje = new String[2];
+            if (userid == null || username == null)
+            {
+                string frase = "Inicia Sesion Para Poder Realizar La Denuncia";
+                mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                mensaje[1] = "";
+            }
+            else
+            {
+               mensaje[0] = "";
+                try
+                {
+                    DDenuncia comentario = new DDenuncia();
+                    DataTable informacion = comentario.denuncia_comentario(int.Parse(userid), comId, descripcion);
+                    if (informacion.Rows.Count != 0)
+                    {
+                        string frase = informacion.Rows[0][0].ToString();
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                        mensaje[1] = "";
+                    }
+                    else
+                    {
+                        string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                    }
+                }
+                catch
+                {
+                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                    mensaje[1] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                }
+
+            }
+            return mensaje;
+        }
+
+        public String[] agregar_comentario(String userid, String username, Int32 comId, Int32 post_id, String contenido)
+        {
+            String[] mensaje = new String[3];
+            if (userid == null || username == null)
+            {
+                string frase = "Inicia Sesion Para Poder Poder Comentar";
+                mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+               mensaje[1] = "";
+            }
+            else
+            {
+                mensaje[0] = "";
+                try
+                {
+                    Dpost comentario = new Dpost();
+                    DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
+                    if (informacion.Rows.Count != 0)
+                    {
+                        string frase = informacion.Rows[0][0].ToString();
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post.aspx?id=" + post_id + "'; }</script>";
+                        mensaje[2] = "";
+                        //Response.Redirect("~/view/post/Post.aspx?id=" + post.ToString());
+                    }
+                    else
+                    {
+                        string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post.aspx?id=" + post_id + "'; }</script>";
+
+                    }
+                }
+                catch
+                {
+                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                    mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post.aspx?id=" + post_id + "'; }</script>";
+
+
+                }
+
+            }
+
+            return mensaje;
+        }
 
         public DataTable listar_categorias()
         {
