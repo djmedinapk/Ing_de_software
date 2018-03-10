@@ -25,79 +25,90 @@ namespace Logica
             DataTable verificar = ingresar.solicitar_bloqueo_sesion_pre(usuario.Username);
             if (verificar.Rows.Count > 0)
             {
-                if(verificar.Rows[0][0].ToString()=="1")
+                DataTable contador_sesiones = ingresar.solicitar_conteo_sesion(usuario.Username);
+                if (contador_sesiones.Rows.Count>0)
                 {
-                    Llogin oto = new Llogin();
-                    r1["mensaje"] = oto.mensaje(usuario);
-                }
-                else
-                {
-                    encryption encriptar = new encryption();
-                    String pass = encriptar.encrypto(usuario.Password);
-                    DataTable data = ingresar.ingresar(usuario.Username, pass);
-                    if (data.Rows.Count > 0)
+                    if (Int32.Parse(contador_sesiones.Rows[0][0].ToString())<3)
                     {
-
-                        try
+                        if (verificar.Rows[0][0].ToString() == "1")
                         {
-                            ingresar.limpiar_bloqueo_sesion(usuario.Username);
-                            String permisos = data.Rows[0]["id_permisos"].ToString();
-                            mensaje[0] = data;
-                            //mensaje[1] = data.Rows[0]["username"].ToString();
-                            //mensaje[2] = data.Rows[0]["id"].ToString();
-
-                            Esesion datosUsuario = new Esesion();
-                            // String ipAddress;
-                            MAC macc = new MAC();
-                            String ipAddress = macc.ip();
-                            String MAC = macc.mac();
-
-                            datosUsuario.UserId = int.Parse(mensaje[0].Rows[0]["id"].ToString());
-                            datosUsuario.Ip = ipAddress;
-                            datosUsuario.Mac = MAC;
-                            datosUsuario.Session = session_id;
-                            ingresar.guardadoSession(datosUsuario);
-
-
-
-                            DcorreoInst old = new DcorreoInst();
-                            DataTable correoIns = old.traerCorreoInstitucional(int.Parse(mensaje[0].Rows[0]["id"].ToString()));
-                            if (correoIns.Rows.Count > 0)
+                            Llogin oto = new Llogin();
+                            r1["mensaje"] = oto.mensaje(usuario);
+                        }
+                        else
+                        {
+                            encryption encriptar = new encryption();
+                            String pass = encriptar.encrypto(usuario.Password);
+                            DataTable data = ingresar.ingresar(usuario.Username, pass);
+                            if (data.Rows.Count > 0)
                             {
-                                if (correoIns.Rows[0][0].ToString() != "")
-                                {
-                                    r1["correo_ins"] = correoIns.Rows[0][0].ToString();
-                                }
-                                else
-                                {
-                                    r1["correo_ins"] = null;
-                                }
-                            }
 
-                            if (permisos != "2")
-                            {
-                                r1["response"] = "~/view/perfil/perfil.aspx";
+                                try
+                                {
+                                    ingresar.limpiar_bloqueo_sesion(usuario.Username);
+                                    String permisos = data.Rows[0]["id_permisos"].ToString();
+                                    mensaje[0] = data;
+                                    //mensaje[1] = data.Rows[0]["username"].ToString();
+                                    //mensaje[2] = data.Rows[0]["id"].ToString();
+
+                                    Esesion datosUsuario = new Esesion();
+                                    // String ipAddress;
+                                    MAC macc = new MAC();
+                                    String ipAddress = macc.ip();
+                                    String MAC = macc.mac();
+
+                                    datosUsuario.UserId = int.Parse(mensaje[0].Rows[0]["id"].ToString());
+                                    datosUsuario.Ip = ipAddress;
+                                    datosUsuario.Mac = MAC;
+                                    datosUsuario.Session = session_id;
+                                    ingresar.guardadoSession(datosUsuario);
+
+
+
+                                    DcorreoInst old = new DcorreoInst();
+                                    DataTable correoIns = old.traerCorreoInstitucional(int.Parse(mensaje[0].Rows[0]["id"].ToString()));
+                                    if (correoIns.Rows.Count > 0)
+                                    {
+                                        if (correoIns.Rows[0][0].ToString() != "")
+                                        {
+                                            r1["correo_ins"] = correoIns.Rows[0][0].ToString();
+                                        }
+                                        else
+                                        {
+                                            r1["correo_ins"] = null;
+                                        }
+                                    }
+
+                                    if (permisos != "2")
+                                    {
+                                        r1["response"] = "~/view/perfil/perfil.aspx";
+                                    }
+                                    else
+                                    {
+                                        r1["response"] = "~/view/admin/index.aspx";
+                                    }
+
+                                }
+                                catch
+                                {
+
+                                    r1["mensaje"] = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
+
+
+                                }
+
                             }
                             else
                             {
-                                r1["response"] = "~/view/admin/index.aspx";
+                                ingresar.ingresar_bloqueo_sesion(usuario.Username);
+                                Llogin oto = new Llogin();
+                                r1["mensaje"] = oto.mensaje(usuario);
                             }
-
                         }
-                        catch
-                        {
-
-                            r1["mensaje"] = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Upssss!</strong> Algo ha salido mal intenta recargar la pagina y vuelve a intentarlo</div>";
-
-
-                        }
-
                     }
                     else
                     {
-                        ingresar.ingresar_bloqueo_sesion(usuario.Username);
-                        Llogin oto = new Llogin();
-                        r1["mensaje"] = oto.mensaje(usuario);
+                        r1["mensaje"] = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Maximo de sesiones abiertas!</strong> Intenta cerrar una sesion en otro dispositivo y vuelve a intentarlo</div>";
                     }
                 }
             }
