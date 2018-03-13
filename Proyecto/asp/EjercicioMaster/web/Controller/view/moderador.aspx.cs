@@ -63,7 +63,6 @@ public partial class view_moderador_moderador : System.Web.UI.Page
     protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
         Int32 postid = Int32.Parse(e.CommandArgument.ToString());
-        Lpost eliminar = new Lpost();
         Lpost post = new Lpost();
         post.aceptar_denuncia(postid, e.CommandName);
         Response.Redirect("../moderador/moderador.aspx");

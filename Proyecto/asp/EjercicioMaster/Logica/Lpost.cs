@@ -176,6 +176,7 @@ namespace Logica
                 DDenuncia eliminar = new DDenuncia();
                 DataTable informacion = eliminar.aceptar_denuncia_comentario(post_id);
             }
+            
         }
         public String terminar_mod(Upost datos, String sesion, Int32 user_id,Int32 post_id,bool autor,String miniatura)
         {

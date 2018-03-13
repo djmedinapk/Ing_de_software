@@ -18,7 +18,7 @@ public class DAOdenuncia
         // TODO: Agregar aquí la lógica del constructor
         //
     }
-    public DataTable denuncia_comentario(int user_id, int comentario_id,String descripcion)
+    /*public DataTable denuncia_comentario(int user_id, int comentario_id,String descripcion)
     {
         DataTable respuesta = new DataTable();
 
@@ -47,7 +47,7 @@ public class DAOdenuncia
             }
         }
         return respuesta;
-    }
+    }*/
     /*public DataTable denuncia_publicacion(int user_id, int publicacion_id, String descripcion)
     {
         DataTable respuesta = new DataTable();
@@ -105,7 +105,8 @@ public class DAOdenuncia
         }
         return respuesta;
     }
-    public DataTable eliminar_denuncia_comentario(int id_denuncia)
+
+    /*public DataTable eliminar_denuncia_comentario(int id_denuncia)
     {
         DataTable respuesta = new DataTable();
 
@@ -131,7 +132,7 @@ public class DAOdenuncia
             }
         }
         return respuesta;
-    }
+    }*/
     
     /*public DataTable aceptar_denuncia_comentario(int id_denuncia)
     {

@@ -91,7 +91,7 @@ public class DAOpost
     //    return categoria;
     //}
 
-    public DataTable ver_post(int post_id)
+    /*public DataTable ver_post(int post_id)
     {
         DataTable post = new DataTable();
 
@@ -119,7 +119,8 @@ public class DAOpost
             }
         }
         return post;
-    }
+    }*/
+
     public DataTable ver_post_home(string orden)
     {
         DataTable post = new DataTable();
@@ -148,7 +149,8 @@ public class DAOpost
         }
         return post;
     }
-    public DataTable visita_post(int post_id)
+
+    /*public DataTable visita_post(int post_id)
     {
         DataTable post = new DataTable();
 
@@ -175,7 +177,8 @@ public class DAOpost
             }
         }
         return post;
-    }
+    }*/
+
     public DataTable ver_comentarios(int post_id,int comentario)
     {
         DataTable post = new DataTable();
@@ -205,7 +208,7 @@ public class DAOpost
         }
         return post;
     }
-    public DataTable puntuar_post(int puntuacion,int user_id,int post_id)
+   /* public DataTable puntuar_post(int puntuacion,int user_id,int post_id)
     {
         DataTable post = new DataTable();
 
@@ -234,8 +237,9 @@ public class DAOpost
             }
         }
         return post;
-    }
-    public DataTable comentar_post(int comentario_id, int user_id, int post_id,String comentario)
+    }*/ 
+
+    /*public DataTable comentar_post(int comentario_id, int user_id, int post_id,String comentario)
     {
         DataTable post = new DataTable();
 
@@ -265,8 +269,8 @@ public class DAOpost
             }
         }
         return post;
-    }
-    public DataTable eliminar_post(int post_id, String Sesion)
+    }*/
+    /*public DataTable eliminar_post(int post_id, String Sesion)
     {
         DataTable post = new DataTable();
 
@@ -294,7 +298,8 @@ public class DAOpost
             }
         }
         return post;
-    }
+    }*/
+
     /*public DataTable validar_post(int post_id, String Sesion)
     {
         DataTable post = new DataTable();
@@ -390,6 +395,7 @@ public class DAOpost
     //    }
     //    return categoria;
     //}
+
     public DataTable listar_post_moderador(String orden)
     {
         DataTable post = new DataTable();
