@@ -5,16 +5,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
 
 public partial class view_perfil_verPerfil : System.Web.UI.Page
 {
     public String userid;
     void Page_PreInit(Object sender, EventArgs e)
     {
-        if (Session["username"] != null)
+        Lotros master = new Lotros();
+        try
         {
-            this.MasterPageFile = "~/Master2_2.master";
+            this.MasterPageFile = master.aux2((DataRow)Session["data_user"]);
         }
+        catch { }
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -35,21 +39,22 @@ public partial class view_perfil_verPerfil : System.Web.UI.Page
     }
     protected void cargar_datos_pagina(object sender, EventArgs e) {
 
-        DAOperfil datos_usuario = new DAOperfil();
-        DataTable datos_user = datos_usuario.traerDatos_vistaPerfil(Int32.Parse(userid));
-        if (datos_user.Rows.Count > 0)
-        {
-            Iperfil.ImageUrl = datos_user.Rows[0]["avatar"].ToString();
-            Lusername.Text = datos_user.Rows[0]["username"].ToString();
-            LtotalPublic.Text = datos_user.Rows[0]["posts"].ToString();
-            Lestado.Text= datos_user.Rows[0]["estado"].ToString();
-            Lnombre.Text= datos_user.Rows[0]["nombre"].ToString();
-            Ledad.Text= datos_user.Rows[0]["edad"].ToString();
-            Lgenero.Text= datos_user.Rows[0]["sexo"].ToString();
+        LPerfil datos_usuario = new LPerfil();
+        Uvista_perfil datos_user = datos_usuario.vista_perfil(Int32.Parse(userid));
+        
+            Iperfil.ImageUrl = datos_user.ImageUrl;
+            Lusername.Text = datos_user.Username;
+            LtotalPublic.Text = datos_user.TotalPublic;
+            Lestado.Text = datos_user.Estado;
+            Lnombre.Text = datos_user.Nombre;
+            Ledad.Text = datos_user.Edad;
+            Lgenero.Text = datos_user.Genero;
+        try { 
+            Response.Redirect(datos_user.Response);
         }
-        else
+        catch
         {
-            Response.Redirect("~/view/home/index.aspx");
+
         }
         
 

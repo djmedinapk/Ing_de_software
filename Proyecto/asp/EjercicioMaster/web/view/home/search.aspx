@@ -35,7 +35,7 @@
                     </div>
                 </ItemTemplate>
             </asp:ListView>
-            <asp:ObjectDataSource runat="server" ID="ODSbusqueda" SelectMethod="busqueda" TypeName="DAOpost">
+            <asp:ObjectDataSource runat="server" ID="ODSbusqueda" SelectMethod="listar_busqueda" TypeName="Logica.Lpost">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="Tsearch" PropertyName="Text" Name="info" Type="String"></asp:ControlParameter>
                 </SelectParameters>

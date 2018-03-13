@@ -24,7 +24,7 @@
                             </div>
                       </ItemTemplate>
                   </asp:datalist>
-                  <asp:ObjectDataSource ID="ODSvisitas" runat="server" SelectMethod="ver_post_home" TypeName="DAOpost">
+                  <asp:ObjectDataSource ID="ODSvisitas" runat="server" SelectMethod="listar_ver_post_home" TypeName="Logica.Lpost">
                       <SelectParameters>
                           <asp:Parameter DefaultValue="1" Name="orden" Type="String" />
                       </SelectParameters>
@@ -57,7 +57,7 @@
                             </div>
                       </ItemTemplate>
                   </asp:datalist>
-                  <asp:ObjectDataSource ID="ODSranking" runat="server" SelectMethod="ver_post_home" TypeName="DAOpost">
+                  <asp:ObjectDataSource ID="ODSranking" runat="server" SelectMethod="listar_ver_post_home" TypeName="Logica.Lpost">
                       <SelectParameters>
                           <asp:Parameter DefaultValue="3" Name="orden" Type="String" />
                       </SelectParameters>
@@ -87,7 +87,7 @@
                             </div>
                       </ItemTemplate>
                   </asp:datalist>
-                  <asp:ObjectDataSource ID="ODSfecha" runat="server" SelectMethod="ver_post_home" TypeName="DAOpost">
+                  <asp:ObjectDataSource ID="ODSfecha" runat="server" SelectMethod="listar_ver_post_home" TypeName="Logica.Lpost">
                       <SelectParameters>
                           <asp:Parameter DefaultValue="2" Name="orden" Type="String" />
                       </SelectParameters>

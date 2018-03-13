@@ -121,34 +121,34 @@ public class DAOpost
         return post;
     }*/
 
-    public DataTable ver_post_home(string orden)
-    {
-        DataTable post = new DataTable();
+    //public DataTable ver_post_home(string orden)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
 
     /*public DataTable visita_post(int post_id)
     {
@@ -179,35 +179,35 @@ public class DAOpost
         return post;
     }*/
 
-    public DataTable ver_comentarios(int post_id,int comentario)
-    {
-        DataTable post = new DataTable();
+    //public DataTable ver_comentarios(int post_id,int comentario)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_comentarios_post", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
-            dataAdapter.SelectCommand.Parameters.Add("_comentario", NpgsqlDbType.Integer).Value = comentario;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_comentarios_post", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
+    //        dataAdapter.SelectCommand.Parameters.Add("_comentario", NpgsqlDbType.Integer).Value = comentario;
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
    /* public DataTable puntuar_post(int puntuacion,int user_id,int post_id)
     {
         DataTable post = new DataTable();
@@ -396,176 +396,176 @@ public class DAOpost
     //    return categoria;
     //}
 
-    public DataTable listar_post_moderador(String orden)
-    {
-        DataTable post = new DataTable();
+    //public DataTable listar_post_moderador(String orden)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_moderador", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_moderador", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
 
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
 
-    public DataTable busqueda(String info)
-    {
-        DataTable datos = new DataTable();
+    //public DataTable busqueda(String info)
+    //{
+    //    DataTable datos = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda", conectar);
-            dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(datos);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return datos;
-    }
-    public DataTable ver_post_home_categoria(string orden)
-    {
-        DataTable post = new DataTable();
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda", conectar);
+    //        dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(datos);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return datos;
+    //}
+    //public DataTable ver_post_home_categoria(string orden)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
 
     //////--------------------------------post privado
-    public DataTable ver_post_home_private(string orden)
-    {
-        DataTable post = new DataTable();
+    //public DataTable ver_post_home_private(string orden)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_private", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_private", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
-    public DataTable busqueda_private(String info)
-    {
-        DataTable datos = new DataTable();
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
+    //public DataTable busqueda_private(String info)
+    //{
+    //    DataTable datos = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda_private", conectar);
-            dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(datos);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return datos;
-    }
-    public DataTable ver_post_home_categoria_private(string orden)
-    {
-        DataTable post = new DataTable();
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_busqueda_private", conectar);
+    //        dataAdapter.SelectCommand.Parameters.Add("_dato", NpgsqlDbType.Varchar).Value = info;
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(datos);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return datos;
+    //}
+    //public DataTable ver_post_home_categoria_private(string orden)
+    //{
+    //    DataTable post = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias_private", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("post.f_listar_post_home_categorias_private", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        dataAdapter.SelectCommand.Parameters.Add("_orden", NpgsqlDbType.Varchar).Value = orden;
 
-            conectar.Open();
-            dataAdapter.Fill(post);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return post;
-    }
+    //        conectar.Open();
+    //        dataAdapter.Fill(post);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return post;
+    //}
 
 
 }

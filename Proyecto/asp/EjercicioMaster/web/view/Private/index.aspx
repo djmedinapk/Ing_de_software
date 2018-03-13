@@ -67,7 +67,7 @@
                       </div>
                   </ItemTemplate>
               </asp:DataList>
-              <asp:ObjectDataSource runat="server" ID="ODSpostVisitas" SelectMethod="ver_post_home_private" TypeName="DAOpost">
+              <asp:ObjectDataSource runat="server" ID="ODSpostVisitas" SelectMethod="ver_post_home_private" TypeName="Logica.Lpost">
                   <SelectParameters>
                       <asp:Parameter DefaultValue="1" Name="orden" Type="String"></asp:Parameter>
                   </SelectParameters>
@@ -86,7 +86,7 @@
                       </div>
                   </ItemTemplate>
               </asp:DataList>
-              <asp:ObjectDataSource runat="server" ID="ODSpostpoints" SelectMethod="ver_post_home_private" TypeName="DAOpost">
+              <asp:ObjectDataSource runat="server" ID="ODSpostpoints" SelectMethod="ver_post_home_private" TypeName="Logica.Lpost">
                   <SelectParameters>
                       <asp:Parameter DefaultValue="2" Name="orden" Type="String"></asp:Parameter>
                   </SelectParameters>
@@ -103,7 +103,7 @@
                       </div>
                   </ItemTemplate>
               </asp:DataList>
-              <asp:ObjectDataSource runat="server" ID="ODSpostrecent" SelectMethod="ver_post_home_private" TypeName="DAOpost">
+              <asp:ObjectDataSource runat="server" ID="ODSpostrecent" SelectMethod="ver_post_home_private" TypeName="Logica.Lpost">
                   <SelectParameters>
                       <asp:Parameter DefaultValue="3" Name="orden" Type="String"></asp:Parameter>
                   </SelectParameters>

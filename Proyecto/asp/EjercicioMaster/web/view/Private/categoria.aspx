@@ -54,7 +54,7 @@
 
             <SortedDescendingHeaderStyle BackColor="#275353"></SortedDescendingHeaderStyle>
         </asp:GridView>
-        <asp:ObjectDataSource runat="server" ID="ODSpost" SelectMethod="ver_post_home_categoria_private" TypeName="DAOpost">
+        <asp:ObjectDataSource runat="server" ID="ODSpost" SelectMethod="ver_post_home_categoria_private" TypeName="Logica.Lpost">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DDLbusqueda" PropertyName="SelectedValue" Name="orden" Type="String"></asp:ControlParameter>
             </SelectParameters>

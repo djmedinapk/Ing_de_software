@@ -122,7 +122,7 @@
                                        </div>
                                 </ItemTemplate>
                             </asp:datalist>
-                            <asp:ObjectDataSource ID="ODSpostperfilPrivado" runat="server" SelectMethod="listar_post_private" TypeName="DAOperfil">
+                                <asp:ObjectDataSource ID="ODSpostperfilPrivado" runat="server" SelectMethod="Llistar_post_perfil_private" TypeName="Logica.LPerfil">
                                 <SelectParameters>
                                     <asp:SessionParameter Name="user_id" SessionField="user_id" Type="Int32" />
                                     <asp:Parameter DefaultValue="123" Name="Sesion" Type="String" />

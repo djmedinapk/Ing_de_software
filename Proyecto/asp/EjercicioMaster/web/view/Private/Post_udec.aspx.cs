@@ -16,7 +16,7 @@ public partial class view_Private_Post_udec : System.Web.UI.Page
         Lotros master = new Lotros();
         try
         {
-            this.MasterPageFile = master.aux2((DataRow)Session["data_user"]);
+            this.MasterPageFile = master.aux2_privado((DataRow)Session["data_user"], Session["correo_inst"].ToString());
         }
         catch { }
     }
@@ -190,7 +190,7 @@ public partial class view_Private_Post_udec : System.Web.UI.Page
         String contenido = TAcomentario.Text.ToString();
         Int32 comentario_id = Int32.Parse(Tidcomentario.Text.ToString());
         Int32 post_id = Int32.Parse(post.ToString());
-        String[] mensaje = post_logica.agregar_comentario(userid, username, comentario_id, post_id, contenido);
+        String[] mensaje = post_logica.agregar_comentario_privado(userid, username, comentario_id, post_id, contenido);
         Lpopup.Text = mensaje[0];
         TdenunciaComentarioText.Text = mensaje[1];
         TAcomentario.Text = mensaje[2];

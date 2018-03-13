@@ -195,7 +195,7 @@
                                                             </ItemTemplate>
                                                             </asp:DataList>
 
-                                                            <asp:ObjectDataSource ID="ODScargarRespuestas" runat="server" SelectMethod="ver_comentarios" TypeName="DAOpost">
+                                                            <asp:ObjectDataSource ID="ODScargarRespuestas" runat="server" SelectMethod="listar_ver_comentarios_post" TypeName="Logica.Lpost">
                                                                 <SelectParameters>
                                                                     <asp:QueryStringParameter Name="post_id" QueryStringField="id" Type="Int32" />
                                                                     <asp:ControlParameter ControlID="LidPost" DefaultValue='0' Name="comentario" PropertyName="Text" Type="Int32" />
@@ -206,7 +206,7 @@
             </ItemTemplate>
          </asp:DataList>
 
-         <asp:ObjectDataSource ID="ODScargarComentarios" runat="server" SelectMethod="ver_comentarios" TypeName="DAOpost">
+         <asp:ObjectDataSource ID="ODScargarComentarios" runat="server" SelectMethod="listar_ver_comentarios_post" TypeName="Logica.Lpost">
              <SelectParameters>
                  <asp:QueryStringParameter Name="post_id" QueryStringField="id" Type="Int32" />
                  <asp:Parameter DefaultValue="0" Name="comentario" Type="Int32" />

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using Utilitarios;
 
 public partial class Master1 : System.Web.UI.MasterPage
 {
@@ -27,16 +28,9 @@ public partial class Master1 : System.Web.UI.MasterPage
             } catch { }
             try
             {
-                DAOperfil datos_usuario = new DAOperfil();
-                DataTable datos = datos_usuario.traerDatos_vistaPerfil(Int32.Parse(Session["user_id"].ToString()));
-                if (datos.Rows.Count > 0)
-                {
-                    ImasterAvatar.ImageUrl = datos.Rows[0]["avatar"].ToString();
-                }
-                else
-                {
-                    ImasterAvatar.ImageUrl = "~\\Imagenes\\Default\\123.jpg";
-                }
+                LPerfil datos_usuario = new LPerfil();
+                Uvista_perfil datos = datos_usuario.vista_perfil(Int32.Parse(Session["user_id"].ToString()));
+                ImasterAvatar.ImageUrl = datos.ImageUrl;
             }
             catch { }
 

@@ -17,5 +17,26 @@ namespace Logica
         {
             if (sesion!=null) { return "~/Master2_2.master"; } else { return "~/Master2.master"; }
         }
+        public String aux2_privado(DataRow sesion,string correo)
+        {
+            if (sesion != null) {
+                if (correo!= "")
+                {
+                    return "~/Master1_1.master";
+                }
+                else {
+                    if (Int32.Parse(sesion["id_permisos"].ToString()) == 2)
+                    {
+                        return "~/Master1_1.master";
+                    }
+                    else
+                    {
+                        return "~/Master2.master";
+                    }
+                }
+
+                
+            } else { return "~/Master2.master"; }
+        }
     }
 }

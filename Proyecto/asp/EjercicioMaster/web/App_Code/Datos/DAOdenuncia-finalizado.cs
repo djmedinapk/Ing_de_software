@@ -79,32 +79,32 @@ public class DAOdenuncia
         return respuesta;
     }*/
 
-    public DataTable mostar_denuncia_comentario()
-    {
-        DataTable respuesta = new DataTable();
+    //public DataTable mostar_denuncia_comentario()
+    //{
+    //    DataTable respuesta = new DataTable();
 
-        NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+    //    NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
-        try
-        {
-            NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("denuncia.f_mostar_denuncias_comentario", conectar);
-            dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            conectar.Open();
-            dataAdapter.Fill(respuesta);
-        }
-        catch (Exception Ex)
-        {
-            throw Ex;
-        }
-        finally
-        {
-            if (conectar != null)
-            {
-                conectar.Close();
-            }
-        }
-        return respuesta;
-    }
+    //    try
+    //    {
+    //        NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("denuncia.f_mostar_denuncias_comentario", conectar);
+    //        dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+    //        conectar.Open();
+    //        dataAdapter.Fill(respuesta);
+    //    }
+    //    catch (Exception Ex)
+    //    {
+    //        throw Ex;
+    //    }
+    //    finally
+    //    {
+    //        if (conectar != null)
+    //        {
+    //            conectar.Close();
+    //        }
+    //    }
+    //    return respuesta;
+    //}
 
     /*public DataTable eliminar_denuncia_comentario(int id_denuncia)
     {

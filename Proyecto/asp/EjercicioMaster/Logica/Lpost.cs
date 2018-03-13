@@ -422,6 +422,58 @@ namespace Logica
 
             return mensaje;
         }
+        public String[] agregar_comentario_privado(String userid, String username, Int32 comId, Int32 post_id, String contenido)
+        {
+            String[] mensaje = new String[3];
+            if (userid == null || username == null)
+            {
+                string frase = "Inicia Sesion Para Poder Poder Comentar";
+                mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>  <a href='../login/ingresar.aspx'  class='btn btn-success'>Iniciar Sesion</a>   <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                   "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                mensaje[1] = "";
+            }
+            else
+            {
+                mensaje[0] = "";
+                try
+                {
+                    Dpost comentario = new Dpost();
+                    DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
+                    if (informacion.Rows.Count != 0)
+                    {
+                        string frase = informacion.Rows[0][0].ToString();
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post_udec.aspx?id=" + post_id + "'; }</script>";
+                        mensaje[2] = "";
+                        //Response.Redirect("~/view/post/Post.aspx?id=" + post.ToString());
+                    }
+                    else
+                    {
+                        string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                           "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post_udec.aspx?id=" + post_id + "'; }</script>";
+
+                    }
+                }
+                catch
+                {
+                    string frase = "Ha ocurrido algun error al procesar la solicitud intente recargar la pagina e intentando de nuevo";
+                    mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                       "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
+                           "setInterval('guardar()', 1500);" +
+                           "function guardar() { window.location.href='" + "Post_udec.aspx?id=" + post_id + "'; }</script>";
+
+
+                }
+
+            }
+
+            return mensaje;
+        }
 
         public DataTable listar_categorias()
         {
@@ -504,6 +556,68 @@ namespace Logica
             Dpost visitar = new Dpost();
             DataTable visita = visitar.visita_post(post_id);
             return dp1;
+        }
+
+        public DataTable listar_ver_post_home(String orden)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.ver_post_home(orden);
+            return post;
+        }
+        public DataTable listar_ver_comentarios_post(int post_id, int comentario)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.ver_comentarios(post_id, comentario);
+            return post;
+        }
+        public DataTable listar_ver_post_moderador(String orden)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.listar_post_moderador(orden);
+            return post;
+        }
+        public DataTable listar_busqueda(String info)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.busqueda(info);
+            return post;
+        }
+        public DataTable listar_categorias_home(String orden)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.ver_post_home_categoria(orden);
+            return post;
+        }
+        
+        public DataTable ver_post_home_private(string orden)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.ver_post_home_private(orden);
+            return post;
+        }
+        public DataTable ver_post_home_categoria_private(string orden)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.ver_post_home_categoria_private(orden);
+            return post;
+        }
+        public DataTable listar_busqueda_private(String info)
+        {
+            Dpost solicitud = new Dpost();
+            DataTable post = solicitud.busqueda_private(info);
+            return post;
+        }
+        public DataTable mostar_denuncia_comentario()
+        {
+            DDenuncia solicitud = new DDenuncia();
+            DataTable post = solicitud.mostar_denuncia_comentario();
+            return post;
+        }
+        public DataTable eliminar_denuncia_comentario(Int32 id_denuncia)
+        {
+            DDenuncia solicitud = new DDenuncia();
+            DataTable post = solicitud.eliminar_denuncia_comentario(id_denuncia);
+            return post;
         }
     }
 }

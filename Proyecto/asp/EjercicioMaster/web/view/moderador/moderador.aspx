@@ -104,7 +104,7 @@
                                      </div>
                             </ItemTemplate>
                         </asp:DataList>
-                        <asp:ObjectDataSource ID="ODSlistarPosts" runat="server" SelectMethod="listar_post_moderador" TypeName="DAOpost">
+                                <asp:ObjectDataSource ID="ODSlistarPosts" runat="server" SelectMethod="listar_ver_post_moderador" TypeName="Logica.Lpost">
                             <SelectParameters>
                                         <asp:Parameter DefaultValue="1" Name="orden" Type="String"></asp:Parameter>
                                     </SelectParameters>
@@ -140,7 +140,7 @@
                                      </div>
                             </ItemTemplate>
                         </asp:DataList>
-                        <asp:ObjectDataSource ID="ODSlistarPosts2" runat="server" SelectMethod="listar_post_moderador" TypeName="DAOpost">
+                                <asp:ObjectDataSource ID="ODSlistarPosts2" runat="server" SelectMethod="listar_ver_post_moderador" TypeName="Logica.Lpost">
                             <SelectParameters>
                                         <asp:Parameter DefaultValue="2" Name="orden" Type="String"></asp:Parameter>
                                     </SelectParameters>
@@ -182,7 +182,7 @@
                                
                             </tbody>
                         </table>
-                        <asp:objectdatasource runat="server" id="ODSlistarComentarios" selectmethod="mostar_denuncia_comentario" typename="DAOdenuncia" deletemethod="eliminar_denuncia_comentario">
+                        <asp:ObjectDataSource runat="server" ID="ODSlistarComentarios" SelectMethod="mostar_denuncia_comentario" TypeName="Logica.Lpost" DeleteMethod="eliminar_denuncia_comentario">
                             <DeleteParameters>
                                 <asp:Parameter Name="id_denuncia" Type="Int32"  ></asp:Parameter>
                             </DeleteParameters>

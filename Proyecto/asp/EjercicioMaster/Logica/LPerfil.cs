@@ -186,6 +186,50 @@ namespace Logica
             DataTable posts = solicitud.listar_post(user_id, sesion);
             return posts;
         }
+        public DataTable Llistar_post_perfil_private(Int32 user_id, String sesion)
+        {
+            Dperfil solicitud = new Dperfil();
+            DataTable posts = solicitud.listar_post_private(user_id, sesion);
+            return posts;
+        }
+        public DataTable Llistar_post_perfil_public(Int32 user_id, String sesion)
+        {
+            Dperfil solicitud = new Dperfil();
+            DataTable posts = solicitud.listar_post_public(user_id, sesion);
+            return posts;
+        }
+
+        public Uvista_perfil vista_perfil(Int32 userid)
+        {
+            Dperfil datos_usuario = new Dperfil();
+            DataTable datos_user = datos_usuario.traerDatos_vistaPerfil(userid);
+            Uvista_perfil respuesta = new Uvista_perfil();
+            if (datos_user.Rows.Count > 0)
+            {
+                if (datos_user.Rows[0]["avatar"].ToString() != "")
+                {
+                    respuesta.ImageUrl = datos_user.Rows[0]["avatar"].ToString();
+                }
+                else
+                {
+                    respuesta.ImageUrl = "~\\Imagenes\\Default\\123.jpg";
+                }
+                
+                respuesta.Username= datos_user.Rows[0]["username"].ToString();
+                respuesta.TotalPublic= datos_user.Rows[0]["posts"].ToString();
+                respuesta.Estado= datos_user.Rows[0]["estado"].ToString();
+                respuesta.Nombre= datos_user.Rows[0]["nombre"].ToString();
+                respuesta.Edad= datos_user.Rows[0]["edad"].ToString();
+                respuesta.Genero= datos_user.Rows[0]["sexo"].ToString();
+                respuesta.Response = null;
+            }
+            else
+            {
+                respuesta.Response="~/view/home/index.aspx";
+            }
+            return respuesta;
+        }
+
     }
 }
 

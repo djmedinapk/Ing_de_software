@@ -11,7 +11,12 @@ public partial class view_moderador_moderador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        LverificarSesion verificar = new LverificarSesion();
+        try {
+            Response.Redirect(verificar.verificar_sesion((DataRow)Session["data_user"], "../login/ingresar.aspx"));
+        } catch { }
+
+
         if (Session["username"] == null || Session["user_id"] == null)
         {
             Session["username"] = null;
@@ -29,14 +34,14 @@ public partial class view_moderador_moderador : System.Web.UI.Page
                 //Lusername.Text = Session["username"].ToString();
             }
             else
-            { 
+            {
                 //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
                 //Lusername.Text = Session["username"].ToString();
             }
             var papas = (DataRow)Session["data_user"];
             if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
             {
-                if (int.Parse(papas["id_permisos"].ToString()) == 1 )
+                if (int.Parse(papas["id_permisos"].ToString()) == 1)
                 {
                     Panelprivado.Visible = false;
                 }

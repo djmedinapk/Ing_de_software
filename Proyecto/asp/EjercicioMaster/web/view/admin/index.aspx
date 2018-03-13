@@ -223,7 +223,7 @@
 
                                     </ItemTemplate>
                                 </asp:ListView>
-                                <asp:ObjectDataSource runat="server" ID="ODSposts" SelectMethod="ver_post_home" TypeName="DAOpost">
+                                <asp:ObjectDataSource runat="server" ID="ODSposts" SelectMethod="listar_ver_post_home" TypeName="Logica.Lpost">
                                     <SelectParameters>
                                         <asp:Parameter DefaultValue="1" Name="orden" Type="String"></asp:Parameter>
                                     </SelectParameters>
