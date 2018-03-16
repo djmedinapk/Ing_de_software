@@ -14,7 +14,7 @@ public class ENewPass
         // TODO: Agregar aquí la lógica del constructor
         //
     }
-    private String password;
+    //private String password;
 
-    public string Password { get => password; set => password = value; }
+    //public string Password { get => password; set => password = value; }
 }

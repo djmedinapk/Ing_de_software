@@ -12,48 +12,65 @@ public partial class view_moderador_moderador : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         LverificarSesion verificar = new LverificarSesion();
-        try {
+       try
+        {
             Response.Redirect(verificar.verificar_sesion((DataRow)Session["data_user"], "../login/ingresar.aspx"));
-        } catch { }
-
-
-        if (Session["username"] == null || Session["user_id"] == null)
-        {
-            Session["username"] = null;
-            Session["user_id"] = null;
-            Session["Iperfil_url"] = null;
-            Response.Redirect("../login/ingresar.aspx");
         }
-        else
+        catch
         {
-            // TperfilUsuario.Text = Session["username"].ToString();
-            if (IsPostBack)
+            var papas = (DataRow)Session["data_user"];//"U1", "M1", "U2","M2",
+            String[] permisos = new String[] { "AD", "M1", "M2" };
+            
+            try
             {
-                // BperfilMod_Click(sender, e);
-                //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
-                //Lusername.Text = Session["username"].ToString();
+                Response.Redirect(verificar.verificar_permisos((DataRow)Session["data_user"], permisos, "~\\View\\perfil\\perfil.aspx"));
             }
-            else
+            catch
             {
-                //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
-                //Lusername.Text = Session["username"].ToString();
-            }
-            var papas = (DataRow)Session["data_user"];
-            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
-            {
-                if (int.Parse(papas["id_permisos"].ToString()) == 1)
-                {
-                    Panelprivado.Visible = false;
-                }
-                else { Panelprivado.Visible = true; }
-            }
-            else
-            {
-                Response.Redirect("~\\View\\perfil\\perfil.aspx");
-
+                Panelprivado.Visible = false;
+                String[] permisos1 = new String[] { "AD", "M2" };
+                Panelprivado.Visible = verificar.verificar_permisos_bool((DataRow)Session["data_user"], permisos1, "~\\View\\perfil\\perfil.aspx");
             }
 
         }
+
+        //if (Session["username"] == null || Session["user_id"] == null)
+        //{
+        //    Session["username"] = null;
+        //    Session["user_id"] = null;
+        //    Session["Iperfil_url"] = null;
+        //    Response.Redirect("../login/ingresar.aspx");
+        //}
+        //else
+        //{
+        //    // TperfilUsuario.Text = Session["username"].ToString();
+        //    if (IsPostBack)
+        //    {
+        //        // BperfilMod_Click(sender, e);
+        //        //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
+        //        //Lusername.Text = Session["username"].ToString();
+        //    }
+        //    else
+        //    {
+        //        //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
+        //        //Lusername.Text = Session["username"].ToString();
+        //    }
+        //    var papas = (DataRow)Session["data_user"];
+        //    if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
+        //    {
+        //        if (int.Parse(papas["id_permisos"].ToString()) == 1)
+        //        {
+        //            Panelprivado.Visible = false;
+        //        }
+        //        else { Panelprivado.Visible = true; }
+        //    }
+        //    else
+        //    {
+        //        Response.Redirect("~\\View\\perfil\\perfil.aspx");
+
+        //    }
+
+        //}
     }
 
     protected void Beliminar_Command(object sender, CommandEventArgs e)

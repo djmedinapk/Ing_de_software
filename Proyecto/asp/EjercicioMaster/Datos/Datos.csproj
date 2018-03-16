@@ -53,6 +53,7 @@
     <Compile Include="Dperfil.cs" />
     <Compile Include="Dpost.cs" />
     <Compile Include="Dregistro.cs" />
+    <Compile Include="DResetPass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

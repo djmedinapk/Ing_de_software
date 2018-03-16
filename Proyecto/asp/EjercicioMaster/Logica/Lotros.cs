@@ -38,5 +38,9 @@ namespace Logica
                 
             } else { return "~/Master2.master"; }
         }
+        public bool aux3(bool postback)
+        {
+            if (!postback) { return true; } else { return false; }
+        }
     }
 }

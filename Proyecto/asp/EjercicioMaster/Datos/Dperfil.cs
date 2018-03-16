@@ -113,6 +113,64 @@ namespace Datos
             }
             return post;
         }
+
+
+        public DataTable traerCorreoInstitucional(int user_id)
+        {
+            DataTable correo = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_correo_institucional", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+                dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+                conection.Open();
+                dataAdapter.Fill(correo);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return correo;
+        }
+
+
+        public DataTable traerDatos(int user_id)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_traer_datos", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+                dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
         public DataTable listar_post(int user_id, String Sesion)
         {
             DataTable post = new DataTable();
@@ -253,6 +311,37 @@ namespace Datos
                 }
             }
             return post;
+        }
+
+
+        public DataTable RegistrarCorreoInstitucional(int user_id, String correo, String sesion)
+        {
+            DataTable mensaje = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_ingresar_correo_institucional", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                // dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+                dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Varchar).Value = correo;
+                dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Varchar).Value = sesion;
+                conection.Open();
+                dataAdapter.Fill(mensaje);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return mensaje;
         }
     }
 }

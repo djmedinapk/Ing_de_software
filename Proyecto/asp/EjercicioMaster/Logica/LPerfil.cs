@@ -230,6 +230,96 @@ namespace Logica
             return respuesta;
         }
 
+        public Utraer_datos traer_d(DataRow sesion)
+        {
+            Utraer_datos respuesta = new Utraer_datos();
+            Dperfil old = new Dperfil();
+            DataTable datosold = old.traerDatos(int.Parse(sesion["id"].ToString()));
+            DataTable datosSession = old.traerDatosSesion(int.Parse(sesion["id"].ToString()));
+
+            DataTable correoIns = old.traerCorreoInstitucional(int.Parse(sesion["id"].ToString()));
+
+            if (datosSession.Rows.Count > 0)
+            {
+                respuesta.TperfilAjustesUsername = datosSession.Rows[0]["username"].ToString();
+                respuesta.TperfilAjustesCorreo = datosSession.Rows[0]["correo"].ToString();
+                respuesta.LtotalPublic = datosSession.Rows[0]["posts"].ToString();
+
+
+
+            }
+            if (datosold.Rows.Count > 0)
+            {
+                respuesta.Lpopup = "";
+                respuesta.TperfilNombre= datosold.Rows[0]["nombre"].ToString();
+                respuesta.TperfilApellido = datosold.Rows[0]["apellido"].ToString();
+                respuesta.TperfilEdad = datosold.Rows[0]["edad"].ToString();
+                respuesta.IperfilImage= datosold.Rows[0]["avatar"].ToString();
+                respuesta.RB1= datosold.Rows[0]["sexo"].ToString();
+            }
+            else
+            {
+                respuesta.Lpopup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'>      <div class='modal-header'>     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>         <h4>Bienvenido A ForoUdec</h4>  </div>      <div class='modal-body'>         <h4>Opciones de Perfil</h4>         Antes de comenzar, te surgerimos que completes tu perfil.      </div>      <div class='modal-footer'>     <a href='#v-pills-profile' data-dismiss='modal' data-toggle='pill'  role='tab' aria-controls='v-pills-profile'  class='btn btn-danger'>Ir a Perfil</a>  </div>   </div></div></div>" +
+                    "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
+                respuesta.IperfilImage = "~\\Imagenes\\Default\\123.jpg";
+            }
+            if (correoIns.Rows.Count > 0)
+            {
+                if (correoIns.Rows[0][0].ToString() != "")
+                {
+
+                    respuesta.Bcorreoins= false;
+                    respuesta.Tcorreoins = true;
+                    respuesta.Tcorreoins2 = correoIns.Rows[0][0].ToString();
+                    respuesta.Pprivados = true;
+                }
+                else
+                {
+                    respuesta.Pprivados = false;
+                    respuesta.Bcorreoins = true;
+                    respuesta.Tcorreoins = false;
+                    respuesta.Tcorreoins2 = "";
+                }
+            }
+            else
+            {
+                respuesta.Pprivados= false;
+                respuesta.Bcorreoins = true;
+                respuesta.Tcorreoins = false;
+                respuesta.Tcorreoins2 = "";
+            }
+
+            return respuesta;
+        }
+        public String enviarcodigo(String mail)
+        {
+            //-------------codigo ramdom para verificar token fuente:http://joefay.blogspot.com.co/2012/04/generar-cadenas-de-texto-aleatorio.html
+            Random obj = new Random();
+            string posibles = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            int longitud = posibles.Length;
+            char letra;
+            int longitudnuevacadena = 5;
+            string nuevacadena = "";
+            for (int i = 0; i < longitudnuevacadena; i++)
+            {
+                letra = posibles[obj.Next(longitud)];
+                nuevacadena += letra.ToString();
+            }
+            String auxsinvalor = nuevacadena;
+            Lcorreo correo = new Lcorreo();
+            String mensajecorreo = "<html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><title>Validar Correo</title></head><body><table width='100%' border='0' cellspacing='0' cellpadding='0'>  <tr>  " +
+                    "  <td align='center' valign='top' bgcolor='#FFFFFF' style='background-color:#FFFFFF;'><br>    <tr>        <td colspan='2' align='left' valign='top' bgcolor='#078B0A' style='background-color:#078B0A; padding:10px; font-family:Arial; color:#FFFFFF; font-size:60px;'>ForoUdec</td>    " +
+                    "    </tr>        <td colspan='2' align='left' valign='top' bgcolor='#F2FB06' style='background-color:#F2FB06; padding:5px;'></td>        </tr>      <tr>      <tr>      <td style='background-color:#666666; width:100px; '>      	      </td>          " +
+                    "  <td align='left' valign='top' style='font-family:Verdana, sans-serif; color:#232222;'>            <div style='font-size:24px;'><b>Verificar Correo Institucional</b></div>            <div style='font-size:14px;'><br>              <p>Para registrar el correo ingresa el siguiente codigo de seguridad<br> <b>" + nuevacadena + "</b>.</p></div>    " +
+                    "             <div style='font-size:11px;'><br>                " +
+                    " ForoUdec 2017 © Todos Los Derechos Reservados <br>  <br>               </div></td>          </tr>    <br>        </table>    <br>    <br></td>  </tr></table></body></html>";
+            //*********************************************************************************
+            correo.enviarCorreo(mail, nuevacadena, mensajecorreo);
+            
+            String respuesta = nuevacadena;
+            return respuesta;
+        }
+
     }
 }
 

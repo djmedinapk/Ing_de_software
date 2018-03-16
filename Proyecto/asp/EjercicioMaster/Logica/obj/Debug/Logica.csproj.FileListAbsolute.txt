@@ -108,3 +108,5 @@ C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\Ejercicio
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Logica\obj\Debug\Logica.dll
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Logica\obj\Debug\Logica.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Logica\bin\Debug\Newtonsoft.Json.xml

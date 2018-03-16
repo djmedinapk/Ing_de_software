@@ -126,64 +126,24 @@ public partial class view_Perfil : System.Web.UI.Page
 
     protected void BperfilMod_Click(object sender, EventArgs e)
     {
-        DAOperfil old = new DAOperfil();
-        DataTable datosold = old.traerDatos(int.Parse(Session["user_id"].ToString()));
-        DataTable datosSession = old.traerDatosSesion(int.Parse(Session["user_id"].ToString()));
-        DataTable correoIns = old.traerCorreoInstitucional(int.Parse(Session["user_id"].ToString()));
-
-        if (datosSession.Rows.Count > 0)
-        {
-            TperfilAjustesUsername.Text = datosSession.Rows[0]["username"].ToString();
-            TperfilAjustesCorreo.Text = datosSession.Rows[0]["correo"].ToString();
-            LtotalPublic.Text = datosSession.Rows[0]["posts"].ToString();
-
-
-
-        }
-        if (datosold.Rows.Count > 0)
-        {
-            Lpopup.Text = "";
-            //TperfilUsuario.Text = datosold.Rows[0]["username"].ToString();
-            //TperfilCorreo.Text = datosold.Rows[0]["corrreo"].ToString();
-            TperfilNombre.Text = datosold.Rows[0]["nombre"].ToString();
-            TperfilApellido.Text = datosold.Rows[0]["apellido"].ToString();
-            TperfilEdad.Text = datosold.Rows[0]["edad"].ToString();
-            IperfilImage.ImageUrl = datosold.Rows[0]["avatar"].ToString();
-            Session["Iperfil_url"] = datosold.Rows[0]["avatar"].ToString(); ;
-            RB1.SelectedValue = datosold.Rows[0]["sexo"].ToString();
-        }
-        else
-        {
-            Lpopup.Text = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'>      <div class='modal-header'>     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>         <h4>Bienvenido A ForoUdec</h4>  </div>      <div class='modal-body'>         <h4>Opciones de Perfil</h4>         Antes de comenzar, te surgerimos que completes tu perfil.      </div>      <div class='modal-footer'>     <a href='#v-pills-profile' data-dismiss='modal' data-toggle='pill'  role='tab' aria-controls='v-pills-profile'  class='btn btn-danger'>Ir a Perfil</a>  </div>   </div></div></div>" +
-                "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
-            Session["Iperfil_url"] = "~\\Imagenes\\Default\\123.jpg";
-        }
-        if (correoIns.Rows.Count > 0)
-        {
-            if (correoIns.Rows[0][0].ToString() != "")
-            {
-
-                Bcorreoins.Visible = false;
-                Tcorreoins.Visible = true;
-                Tcorreoins.Text = correoIns.Rows[0][0].ToString();
-                Session["correo_inst"] = correoIns.Rows[0][0].ToString();
-                Pprivados.Visible = true;
-            }
-            else
-            {
-                Pprivados.Visible = false;
-                Bcorreoins.Visible = true;
-                Tcorreoins.Visible = false;
-                Tcorreoins.Text = "";
-            }
-        }
-        else
-        {
-            Pprivados.Visible = false;
-            Bcorreoins.Visible = true;
-            Tcorreoins.Visible = false;
-            Tcorreoins.Text = "";
-        }
+        LPerfil traer_datos = new LPerfil();
+        Utraer_datos datos = traer_datos.traer_d((DataRow)Session["data_user"]);
+        TperfilAjustesUsername.Text = datos.TperfilAjustesUsername;
+        TperfilAjustesCorreo.Text = datos.TperfilAjustesCorreo;
+        LtotalPublic.Text = datos.LtotalPublic;
+        Lpopup.Text = datos.Lpopup;
+        TperfilNombre.Text = datos.TperfilNombre;
+        TperfilApellido.Text = datos.TperfilApellido;
+        TperfilEdad.Text = datos.TperfilEdad;
+        IperfilImage.ImageUrl = datos.IperfilImage;
+        Session["Iperfil_url"] = datos.IperfilImage;
+        RB1.SelectedValue = datos.RB1;
+        Bcorreoins.Visible = datos.Bcorreoins;
+        Tcorreoins.Visible = datos.Tcorreoins;
+        Tcorreoins.Text = datos.Tcorreoins2;
+        Session["correo_inst"] = datos.Tcorreoins2;
+        Pprivados.Visible = datos.Pprivados;
+   
 
     }
 

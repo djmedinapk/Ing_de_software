@@ -14,10 +14,10 @@ public class Elogin
         // TODO: Agregar aquí la lógica del constructor
         //
     }
-    private String username;
-    private String password;
+    //private String username;
+    //private String password;
 
 
-    public string Username { get => username; set => username = value; }
-    public string Password { get => password; set => password = value; }
+    //public string Username { get => username; set => username = value; }
+    //public string Password { get => password; set => password = value; }
 }

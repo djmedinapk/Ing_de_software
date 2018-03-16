@@ -47,10 +47,13 @@
     <Compile Include="Uadmin_ver_usuario.cs" />
     <Compile Include="Uadmin_ver_usuario_2.cs" />
     <Compile Include="Ucontacto.cs" />
+    <Compile Include="UcorreoInst.cs" />
     <Compile Include="Uperfil_campos.cs" />
     <Compile Include="Upost.cs" />
     <Compile Include="Upost2.cs" />
     <Compile Include="Upost3.cs" />
+    <Compile Include="Utraer_datos.cs" />
+    <Compile Include="UuserToken.cs" />
     <Compile Include="Uvista_perfil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

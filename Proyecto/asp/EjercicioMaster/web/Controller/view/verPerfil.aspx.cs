@@ -25,12 +25,7 @@ public partial class view_perfil_verPerfil : System.Web.UI.Page
         try
         {
             userid = Request.QueryString[0].ToString();
-
-            
-            if (!IsPostBack)
-            {
-                cargar_datos_pagina(sender,e);
-            }
+            cargar_datos_pagina(sender,e);
         }
         catch
         {

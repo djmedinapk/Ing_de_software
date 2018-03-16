@@ -1,9 +1,5 @@
 ->private 
 |-->search
-->correoInstitucional
 ->CrearPublicacion
 ->editar-post.aspx
-->nueva_contraseña.aspx
 ->Perfil.aspx
-->restaurar_contraseña.aspx
-->
