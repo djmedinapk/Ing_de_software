@@ -75,56 +75,25 @@ public partial class view_CrearPublicacion : System.Web.UI.Page
     }
     protected String cargarImagen()
     {
-        string carpeta_destino = Server.MapPath("~\\Imagenes\\Post") + "\\" + Session["user_id"]+ "\\"+ TpostNombre.Text;
-        if (Directory.Exists(carpeta_destino))
-        {
-
-        }
-
-        else
-        {
-            Directory.CreateDirectory(carpeta_destino);
-        }
-
-
-        String url = "";
+        Lpost post = new Lpost();
         ClientScriptManager cm = this.ClientScript;
-        string nombreArchivo = System.IO.Path.GetFileName(FUminiatura.PostedFile.FileName);
-        string extension = System.IO.Path.GetExtension(FUminiatura.PostedFile.FileName);
-        if (nombreArchivo != null)
+        String nombreArchivo = System.IO.Path.GetFileName(FUminiatura.PostedFile.FileName);
+        String extension = System.IO.Path.GetExtension(FUminiatura.PostedFile.FileName);
+        String sesion = Session["user_id"].ToString();
+        String tpostnombre = TpostNombre.Text.ToString();
+        String carpeta_destino = Server.MapPath("~\\Imagenes\\Post") + "\\" + sesion + "\\" + tpostnombre;
+        String saveLocation = carpeta_destino + "\\" + nombreArchivo;
+
+        String[] url = post.cargar_Imagen(nombreArchivo,sesion,tpostnombre,extension,carpeta_destino,saveLocation);
+
+        try
         {
-            string saveLocation = Server.MapPath("~\\Imagenes\\Post") + "\\" + Session["user_id"] + "\\" + TpostNombre.Text + "\\" + nombreArchivo;
-
-            if (!(extension.Equals(".jpg") || extension.Equals(".gif") || extension.Equals(".jpge") || extension.Equals(".png")))
-            {
-               // cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido');</script>");
-                url = "error";
-            }
-            else
-            {
-
-                if (System.IO.File.Exists(saveLocation))
-                {
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
-                    url = "~\\Imagenes\\Post" + "\\" + Session["user_id"] + "\\" + TpostNombre.Text + "\\" + nombreArchivo;
-                }
-                else
-                {
-
-                    try
-                    {
-                        FUminiatura.PostedFile.SaveAs(saveLocation);
-                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
-                        url = "~\\Imagenes\\Post" + "\\" + Session["user_id"]+"\\" + TpostNombre.Text + "\\" + nombreArchivo;
-                    }
-                    catch (Exception exc)
-                    {
-                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
-                    }
-                }
-            }
-            return url;
+            FUminiatura.PostedFile.SaveAs(url[1]);
         }
-        else { string nada = ""; return nada; }
+        catch
+        {
+
+        }
+        return url[0];
     }
 }

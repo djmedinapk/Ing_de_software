@@ -7,7 +7,7 @@ using Datos;
 using Utilitarios;
 using Encapsulados;
 using System.Data;
-
+using System.IO;
 namespace Logica
 {
     public class Lpost
@@ -168,6 +168,52 @@ namespace Logica
             return respuesta;
         }
 
+        public String[] cargar_Imagen(String nombreArchivo, String sesion, String tpostnombre, String extension,String carpeta_destino, String saveLocation)
+        {
+            String[] url = new String[2];
+            url[0] = "";
+            if (!Directory.Exists(carpeta_destino))
+            {
+                Directory.CreateDirectory(carpeta_destino);
+            }
+
+            if (nombreArchivo != null)
+            {
+                
+
+                if (!(extension.Equals(".jpg") || extension.Equals(".gif") || extension.Equals(".jpge") || extension.Equals(".png")))
+                {
+                    // cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido');</script>");
+                    url[0] = "error";
+                }
+                else
+                {
+
+                    if (System.IO.File.Exists(saveLocation))
+                    {
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
+                        url[0] = "~\\Imagenes\\Post" + "\\" + sesion + "\\" + tpostnombre + "\\" + nombreArchivo;
+                        url[1] = "";
+                    }
+                    else
+                    {
+
+                        try
+                        {
+                           url[1]= saveLocation;
+                            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
+                            url[0] = "~\\Imagenes\\Post" + "\\" + sesion + "\\" + tpostnombre + "\\" + nombreArchivo;
+                        }
+                        catch (Exception exc)
+                        {
+                            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: al cargar la imagen');</script>");
+                        }
+                    }
+                }
+                return url;
+            }
+            else {  url[0] = ""; return url; }
+        }
         public void aceptar_denuncia(Int32 post_id,String comando)
         {
             if (comando == "eliminar")
