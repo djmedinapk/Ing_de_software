@@ -107,13 +107,13 @@ namespace Logica
                 if (frase == "Registro_exitoso")
                 {
 
-                    popup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Se han guardado Los cambios</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                    popup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Se han guardado Los cambios</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                    "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                     //Response.Redirect("../perfil/Perfil.aspx");
                 }
                 else
                 {
-                    popup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Ha ocurrido algun Error por favor recarga la pagina e intentanuevamente</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
+                    popup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> Ha ocurrido algun Error por favor recarga la pagina e intentanuevamente</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx'   class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                    "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                 }
 

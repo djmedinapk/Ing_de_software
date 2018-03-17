@@ -1,0 +1,17 @@
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Logica.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Logica.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\obj\Debug\Logica.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\obj\Debug\Logica.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Datos.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Npgsql.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Mono.Security.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Datos.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Npgsql.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\Npgsql.xml
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\de\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\es\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\fi\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\fr\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\ja\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Logica\bin\Debug\zh-CN\Npgsql.resources.dll

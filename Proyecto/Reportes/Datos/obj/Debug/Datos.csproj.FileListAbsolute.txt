@@ -1,0 +1,15 @@
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Datos.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Datos.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Npgsql.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Mono.Security.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Npgsql.pdb
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\Npgsql.xml
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\de\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\es\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\fi\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\fr\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\ja\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\obj\Debug\Datos.dll
+C:\Users\juandavid\Documents\Visual Studio 2015\Projects\crasd\Datos\obj\Debug\Datos.pdb

@@ -47,14 +47,14 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
+            <%--<div class="profile clearfix">
               <div class="profile_pic">
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <h2>%Username%</h2>
               </div>
-            </div>
+            </div>--%>
             <!-- /menu profile quick info -->
 
             <br />
@@ -72,23 +72,18 @@
                             <ul class="nav child_menu">
                                 <li><a href="usuario.aspx">Usuarios</a></li>
                                 <li><a href="publicacion.aspx">Publicaciones</a></li>
-                                <li><a href="tables.html">Comentarios</a></li>
-                                <li><a href="tables.html">Denuncias</a></li>
                             </ul>
                         </li>
-                        <li><a href="index.aspx"><i class="fa fa-terminal" aria-hidden="true"></i>Moderadores</a>
+                       <%-- <li><a href="index.aspx"><i class="fa fa-terminal" aria-hidden="true"></i>Moderadores</a>--%>
                     </ul>
                 </div>
               <div class="menu_section">
                 <h3>Reportes</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bug"></i> Reportes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
+                      <li><a href="e_commerce.html">Usuarios</a></li>
+                      <li><a href="projects.html">Post</a></li>
                     </ul>
                   </li>
                 </ul>

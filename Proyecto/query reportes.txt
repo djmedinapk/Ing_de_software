@@ -1,0 +1,124 @@
+-- View: pruebas.v_reporte_publicacion
+
+-- DROP VIEW pruebas.v_reporte_publicacion;
+
+CREATE OR REPLACE VIEW pruebas.v_reporte_publicacion AS
+ SELECT 0::bigint AS id,
+    ''::character varying AS titulo,
+    0 AS visitas,
+    ''::character varying AS fecha;
+
+-- View: pruebas.v_reporte_puntuacion
+
+-- DROP VIEW pruebas.v_reporte_puntuacion;
+
+CREATE OR REPLACE VIEW pruebas.v_reporte_puntuacion AS
+ SELECT 0::bigint AS id_publicacion,
+    0 AS puntos,
+    0::bigint AS id_usuario,
+    ''::character varying AS username;
+
+
+
+
+
+
+
+-- FUNCTION: pruebas.f_reporte_publicacion()
+
+-- DROP FUNCTION pruebas.f_reporte_publicacion();
+
+CREATE OR REPLACE FUNCTION pruebas.f_reporte_publicacion(
+	)
+    RETURNS SETOF pruebas.v_reporte_publicacion 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 10000
+AS $BODY$
+
+		BEGIN
+              
+              	return query 
+              select 
+               post.publicacion.id,
+                post.publicacion.titulo,
+                post.publicacion.visitas::integer,
+                post.publicacion.fecha:: character varying
+              from post.publicacion
+              order by post.publicacion.visitas desc ;
+              
+
+	END
+
+$BODY$;
+
+-- FUNCTION: pruebas.f_reporte_puntuacion()
+
+-- DROP FUNCTION pruebas.f_reporte_puntuacion();
+
+CREATE OR REPLACE FUNCTION pruebas.f_reporte_puntuacion(
+	)
+    RETURNS SETOF pruebas.v_reporte_puntuacion 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 10000
+AS $BODY$
+
+		BEGIN
+              
+              	return query 
+              select 
+               post.publicacion.id,
+                post.puntuacion.puntuacion,
+                usuario.user_session.id,
+                usuario.user_session.username
+              from post.publicacion,post.puntuacion,usuario.user_session
+              where post.puntuacion.id_usuario=usuario.user_session.id 
+              and post.puntuacion.id_publicacion=post.publicacion.id;
+              
+
+	END
+
+$BODY$;
+
+
+
+-- FUNCTION: pruebas.f_reporte_usuario()
+
+-- DROP FUNCTION pruebas.f_reporte_usuario();
+
+CREATE OR REPLACE FUNCTION pruebas.f_reporte_usuario(
+	)
+    RETURNS SETOF usuario.v_traer_datos 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+
+	BEGIN
+    return query 
+		SELECT
+        	usuario.user_session.username AS username,
+            usuario.user_session.correo AS corrreo,
+            usuario.usuario.id :: integer AS id_usuario,
+            usuario.usuario.nombre AS nombre,
+            usuario.usuario.apellido AS apellido,
+            usuario.usuario.edad AS edad,
+            usuario.usuario.avatar AS avatar,
+            usuario.usuario.sexo AS sexo
+        FROM usuario.usuario,usuario.user_session
+		WHERE
+			usuario.user_session.id =usuario.usuario.id_session;	
+	END
+
+$BODY$;
+
+
+
+

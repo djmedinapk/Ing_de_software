@@ -47,50 +47,77 @@ public partial class view_Perfil : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        //String caca = Session["correo_ins"].ToString();
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        if (Session["username"] == null || Session["user_id"] == null)
+        LverificarSesion verificar = new LverificarSesion();//"U1", "M1", "U2","M2",
+        Lotros aux = new Lotros();
+        int aux1;
+        try
         {
-            Session["username"] = null;
-            Session["user_id"] = null;
-            Session["Iperfil_url"] = null;
-            Response.Redirect("~\\view\\login\\ingresar.aspx");
+            String url = verificar.verificar_sesion((DataRow)Session["data_user"], "../home/index.aspx");
+            Response.Redirect(url);
         }
-        else
+        catch
         {
-            // TperfilUsuario.Text = Session["username"].ToString();
-            if (IsPostBack)
-            {
-                // BperfilMod_Click(sender, e);
-                //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
-                //Lusername.Text = Session["username"].ToString();
-            }
-            else
-            {
+            
+            try {
+                aux1 = Int32.Parse(aux.aux1(IsPostBack));
                 BperfilMod_Click(sender, e);
                 Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
                 Lusername.Text = Session["username"].ToString();
-            }
-            var papas = (DataRow)Session["data_user"];
-            if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
-            {
-                Bmoderador.Visible = true;
-                if (int.Parse(papas["id_permisos"].ToString()) == 2)
-                {
-                    Badmin.Visible = true;
-                }
-                else
-                {
-                    Badmin.Visible = false;
-                }
-            }
-            else
-            {
-                Bmoderador.Visible = false;
-                Badmin.Visible = false;
+            } catch {
+
             }
 
+            String[] permisos1 = new String[] { "M1", "M2", "AD" };
+            Bmoderador.Visible = false;
+            Bmoderador.Visible = verificar.verificar_permisos_bool((DataRow)Session["data_user"], permisos1, "nA");
+            String[] permisos2 = new String[] {"AD" };
+            Badmin.Visible = false;
+            Badmin.Visible = verificar.verificar_permisos_bool((DataRow)Session["data_user"], permisos2, "nA");
         }
+        ////String caca = Session["correo_ins"].ToString();
+        //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //if (Session["username"] == null || Session["user_id"] == null)
+        //{
+        //    Session["username"] = null;
+        //    Session["user_id"] = null;
+        //    Session["Iperfil_url"] = null;
+        //    Response.Redirect("~\\view\\login\\ingresar.aspx");
+        //}
+        //else
+        //{
+        //    // TperfilUsuario.Text = Session["username"].ToString();
+        //    if (IsPostBack)
+        //    {
+        //        // BperfilMod_Click(sender, e);
+        //        //Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
+        //        //Lusername.Text = Session["username"].ToString();
+        //    }
+        //    else
+        //    {
+        //        BperfilMod_Click(sender, e);
+        //        Iperfil.ImageUrl = Session["Iperfil_url"].ToString();
+        //        Lusername.Text = Session["username"].ToString();
+        //    }
+        //    var papas = (DataRow)Session["data_user"];
+        //    if (int.Parse(papas["id_permisos"].ToString()) == 1 || int.Parse(papas["id_permisos"].ToString()) == 4 || int.Parse(papas["id_permisos"].ToString()) == 2)
+        //    {
+        //        Bmoderador.Visible = true;
+        //        if (int.Parse(papas["id_permisos"].ToString()) == 2)
+        //        {
+        //            Badmin.Visible = true;
+        //        }
+        //        else
+        //        {
+        //            Badmin.Visible = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Bmoderador.Visible = false;
+        //        Badmin.Visible = false;
+        //    }
+
+        //}
     }
 
     protected void Blogout_Click(object sender, EventArgs e)

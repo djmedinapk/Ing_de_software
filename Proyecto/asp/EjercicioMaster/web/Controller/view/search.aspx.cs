@@ -22,18 +22,16 @@ public partial class view_search : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+
+        Lotros aux = new Lotros();
+        Int32 aux1;
+        try
         {
-            try
-            {
-                busqueda = Request.QueryString["search"].ToString();
-                Tsearch.Text = busqueda;
-            }
-            catch
-            {
-                busqueda = "";
-            }
+            aux1 = Int32.Parse(aux.aux1(IsPostBack));
+            busqueda = Request.QueryString["search"].ToString();
+            Tsearch.Text = busqueda;
         }
-        
+        catch { busqueda = ""; }
+
     }
 }

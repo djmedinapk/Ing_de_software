@@ -79,7 +79,6 @@ public partial class view_post_editar_post : System.Web.UI.Page
 
     protected void BcrearpostTerminar_Click(object sender, EventArgs e)
     {
-        DAOpost publicar = new DAOpost();
         Upost post = new Upost();
         Lpost modificar = new Lpost();
         post.Nombre = TpostNombre.Text;

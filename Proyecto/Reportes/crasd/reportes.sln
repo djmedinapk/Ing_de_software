@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "crasd", ".", "{23AD9BEE-9994-4C6B-9237-891C7B20C62E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59595"
+		Debug.AspNetCompiler.PhysicalPath = "..\crasd\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59595\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59595"
+		Release.AspNetCompiler.PhysicalPath = "..\crasd\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59595\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59595"
+		SlnRelativePath = "..\crasd\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "..\Datos\Datos.csproj", "{25B86CFD-9958-49E2-AF6C-AF8660A4C73A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\Logica\Logica.csproj", "{58038712-D712-414A-B337-71777D2A1EE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23AD9BEE-9994-4C6B-9237-891C7B20C62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AD9BEE-9994-4C6B-9237-891C7B20C62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23AD9BEE-9994-4C6B-9237-891C7B20C62E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AD9BEE-9994-4C6B-9237-891C7B20C62E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{25B86CFD-9958-49E2-AF6C-AF8660A4C73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B86CFD-9958-49E2-AF6C-AF8660A4C73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B86CFD-9958-49E2-AF6C-AF8660A4C73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B86CFD-9958-49E2-AF6C-AF8660A4C73A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58038712-D712-414A-B337-71777D2A1EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58038712-D712-414A-B337-71777D2A1EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58038712-D712-414A-B337-71777D2A1EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58038712-D712-414A-B337-71777D2A1EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -12,20 +12,20 @@ public partial class Master1 : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["username"] == null || Session["user_id"] == null || Session["data_user"] == null)
+        LverificarSesion verificar = new LverificarSesion();
+        try
         {
-            Session["username"] = null;
-            Session["user_id"] = null;
-            Session["Iperfil_url"] = null;
-            
+            Response.Redirect(verificar.verificar_sesion((DataRow)Session["data_user"], "../login/ingresar.aspx"));
         }
-        else
+        catch
         {
-           var datos_user = (DataRow)Session["data_user"];
-            try {
-                
-               LmasterUsername.Text = datos_user["username"].ToString();
-            } catch { }
+            var datos_user = (DataRow)Session["data_user"];
+            try
+            {
+
+                LmasterUsername.Text = datos_user["username"].ToString();
+            }
+            catch { }
             try
             {
                 LPerfil datos_usuario = new LPerfil();
@@ -35,6 +35,8 @@ public partial class Master1 : System.Web.UI.MasterPage
             catch { }
 
         }
+
+        
 
     }
     protected void Bminiatura_salir_Click(object sender, EventArgs e)
