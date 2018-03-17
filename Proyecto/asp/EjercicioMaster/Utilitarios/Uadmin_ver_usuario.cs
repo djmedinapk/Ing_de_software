@@ -13,11 +13,13 @@ namespace Utilitarios
         private String username;
         private String correo;
         private String password;
+        private String nsesion;
 
         public string Alerta { get => alerta; set => alerta = value; }
         public string Id { get => id; set => id = value; }
         public string Username { get => username; set => username = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Password { get => password; set => password = value; }
+        public string Nsesion { get => nsesion; set => nsesion = value; }
     }
 }

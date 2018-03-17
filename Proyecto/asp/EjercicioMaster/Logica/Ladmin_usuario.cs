@@ -62,6 +62,7 @@ namespace Logica
                     usuario.Username = dato.Rows[0]["username"].ToString();
                     usuario.Correo = dato.Rows[0]["correo"].ToString();
                     usuario.Password = dato.Rows[0]["pasword"].ToString();
+                    usuario.Nsesion= dato.Rows[0]["n_sesiones"].ToString();
                 }
                 else
                 {
@@ -160,6 +161,8 @@ namespace Logica
             else { admin = 0; }
 
             DataTable r=solicitud.actualizar_sesion(admin,id,usuario);
+
+            solicitud.n_sesiones(usuario.Username, Int32.Parse(registro.Nsesion));
 
             
         }

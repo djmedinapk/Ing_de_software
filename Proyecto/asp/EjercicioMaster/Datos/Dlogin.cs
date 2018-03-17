@@ -233,5 +233,32 @@ namespace Datos
             }
             return Usuario;
         }
+        public DataTable traer_n_sesiones(String username)
+        {
+            DataTable datos = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("admin.f_traer_bloqueo_sesiones", conectar);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_username", NpgsqlDbType.Varchar).Value = username;
+                conectar.Open();
+                dataAdapter.Fill(datos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datos;
+        }
     }
 }

@@ -50,6 +50,13 @@
                                     <asp:CheckBox ID="RBadmin" runat="server" Class="js-switch" data-switchery="true"/>Admin
                                     <div class="ln_solid"></div>
                                 </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                    <asp:TextBox ID="Tnsesion" runat="server" CssClass="form-control has-feedback-left" ValidationGroup="sesion"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tnsesion" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
+                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-ñ.@" TargetControlID="Tnsesion" />
+                                    <%--<input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">--%>
+                                    <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                         <span class="right">

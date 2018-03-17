@@ -13,12 +13,14 @@ namespace Utilitarios
         private String correo;
         private String session;
         private bool admin;
+        private String nsesion;
 
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Session { get => session; set => session = value; }
         public bool Admin { get => admin; set => admin = value; }
+        public string Nsesion { get => nsesion; set => nsesion = value; }
     }
     public class Uadmin_actualizar_usuario2     //Cascaron para informacion personal del usuario
     {

@@ -50,7 +50,9 @@ public partial class view_admin_usuario : System.Web.UI.Page
         PanelUser.Visible = accion.ver_estado_paneles(e.CommandName);//%si command name es ver entonces es true
         Uadmin_ver_usuario usuario = accion.ver_llenar_campos_usuario(e.CommandName,id);
         Uadmin_ver_usuario_2 usuario2 = accion.ver_llenar_campos_usuario_perfil(e.CommandName, id);
-        try {
+        try
+        {
+            Tnsesion.Text = usuario.Nsesion;
             Tid.Text = usuario.Id;
             id = Int32.Parse(usuario.Id);
             Tusername.Text = usuario.Username;
@@ -89,8 +91,10 @@ public partial class view_admin_usuario : System.Web.UI.Page
         registro.Password = Tpass.Text.ToString();
         registro.Session = Session.SessionID;
         registro.Admin = RBadmin.Checked;
+        registro.Nsesion = Tnsesion.Text.ToString();
         solicitud.actualizarsesion(registro, id);
         Response.Redirect("usuario.aspx");
+
     }
     protected void BTNactualizarPerfil_Click(object sender, EventArgs e)
     {

@@ -28,7 +28,10 @@ namespace Logica
                 DataTable contador_sesiones = ingresar.solicitar_conteo_sesion(usuario.Username);
                 if (contador_sesiones.Rows.Count>0)
                 {
-                    if (Int32.Parse(contador_sesiones.Rows[0][0].ToString())<3)
+                    DataTable n_sesiones=ingresar.traer_n_sesiones(usuario.Username);
+                    Int32 n =Int32.Parse( n_sesiones.Rows[0][0].ToString());
+
+                    if (Int32.Parse(contador_sesiones.Rows[0][0].ToString())<n)
                     {
                         if (verificar.Rows[0][0].ToString() == "1")
                         {
