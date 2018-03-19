@@ -12,10 +12,10 @@
     </div>
     <div class="row">
   			<div class="col text-right">
-  				<label class="mr-5 mt-3 "><h2>Iniciar Sesion</h2></label>
+  				<label class="mr-5 mt-3 "><h2><asp:Label ID="L_iniciar_sesion" runat="server" Text="Iniciar Sesion"></asp:Label></h2></label>
   			</div>
   			<div class="col">
-  				<label class="ml-3 mt-3 "><h2>Registrarse</h2></label>
+  				<label class="ml-3 mt-3 "><h2><asp:Label ID="L_registrarse" runat="server" Text="Registrarse"></asp:Label></h2></label>
   			</div>
   		</div>	
 		 <div class="row align-items-center ">
@@ -35,7 +35,7 @@
 						  </div>
 
 					   </dd>
-                        <form >
+                       
 					  <dt class="col-sm-3"></dt>
 					  <dd class="col-sm-8">
 					    <div class="form-group">
@@ -51,10 +51,10 @@
 					    <div class="form-group">
 						    <label for="inputlg"></label>
                             <asp:Button ID="Blogin" runat="server" Text="Ingresar" class="btn btn-block" ValidationGroup="h" OnClick="Blogin_Click" />
-                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/view/login/restaurar_contraseña.aspx">Recuperar Contraseña</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/view/login/restaurar_contraseña.aspx"><asp:Label ID="L_recuperar_contraseña" runat="server" Text="Recuperar Contraseña"></asp:Label></asp:HyperLink>
 						    <%--<button type="button" class="btn btn-block">Ingresar</button>--%>
 						  </div>
-                          </form>
+                          
 					  </dd>			  
 					</dl>
 		    </div>

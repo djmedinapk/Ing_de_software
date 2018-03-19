@@ -6,7 +6,7 @@
       
 		    <div class="row " style="padding-bottom:200px;">		    
 		     		<dl >
-					  <dt class="col-sm-12">Por favor digite su nombre de usuario</dt>
+					  <dt class="col-sm-12"> <asp:Label ID="L_digite_nombre" runat="server" Text="Por favor digite su nombre de usuario"></asp:Label></dt>
 					  <dd class="col-sm-10">
                           <div class="form-group">
                               <label for="inputlg"></label>

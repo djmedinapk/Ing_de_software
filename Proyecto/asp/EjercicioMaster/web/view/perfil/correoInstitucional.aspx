@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-center">
         <div class="p-4 card">
             <div class="">
-                <h2>Registrar Correo Institucional</h2>
+                <h2><asp:Label ID="L_registrar_correo" runat="server" Text="Registrar Correo Institucional"></asp:Label></h2>
             </div>
            <div class="card-body">
                <asp:TextBox ID="Tcorreo" runat="server" CssClass="form-control"  ValidationGroup="correo"></asp:TextBox><input type="text" disabled class="form-control" value="@ucundinamarca.edu.co" />
@@ -18,7 +18,7 @@
            </div>
             <div class="card-footer">
                 <asp:Button ID="Bterminar" runat="server" Text="Enviar" CssClass="btn btn-outline-success btn-block btn-lg" OnClick="Bterminar_Click" ValidationGroup="correo" />
-                <asp:HyperLink runat="server" ID="HL1" NavigateUrl="~/view/perfil/Perfil.aspx"><span class="text-info">Volver</span></asp:HyperLink>
+                <asp:HyperLink runat="server" ID="HL1" NavigateUrl="~/view/perfil/Perfil.aspx"><span class="text-info"><asp:Label ID="L_volver1" runat="server" Text="Volver"></asp:Label></span></asp:HyperLink>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="d-flex justify-content-center">
         <div class="p-4 card">
             <div class="">
-                <h2>Verificar Correo Institucional</h2>
+                <h2><asp:Label ID="L_verificar" runat="server" Text="Verificar Correo Institucional"></asp:Label></h2>
             </div>
            <div class="card-body">
                <asp:TextBox ID="Tcodigo" runat="server" CssClass="form-control" ValidationGroup="verificar"></asp:TextBox>
@@ -37,7 +37,7 @@
            </div>
             <div class="card-footer">
                 <asp:Button ID="Bcodigo" runat="server" Text="Terminar" CssClass="btn btn-outline-success btn-block btn-lg" OnClick="Bcodigo_Click" ValidationGroup="verificar" />
-                <asp:HyperLink runat="server" ID="HyperLink1" NavigateUrl="~/view/perfil/Perfil.aspx"><span class="text-info">Volver</span></asp:HyperLink>
+                <asp:HyperLink runat="server" ID="HyperLink1" NavigateUrl="~/view/perfil/Perfil.aspx"><span class="text-info"><asp:Label ID="L_volver" runat="server" Text="Volver"></asp:Label></span></asp:HyperLink>
             </div>
         </div>
     </div>

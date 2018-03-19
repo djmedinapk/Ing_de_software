@@ -63,14 +63,14 @@
                 <div class="col">
                   <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link btn-outline-success active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Publicaciones</a>
+                      <a class="nav-link btn-outline-success active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"> <asp:Label ID="L_publicaciones" runat="server" Text="Publicaciones"></asp:Label></a>
                     </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link btn-outline-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Denuncias</a>
+                        <a class="nav-link btn-outline-success dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><asp:Label ID="L_denuncias" runat="server" Text="Denuncias"></asp:Label></a>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false">Comentarios</a>
+                          <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false"><asp:Label ID="L_comentarios" runat="server" Text="Comentarios"></asp:Label></a>
                             
-                          <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false">Comentarios</a>
+                          <a class="dropdown-item" id="denunciaComentario-tab" data-toggle="tab" href="#denunciaComentario" role="tab" aria-controls="denunciaComentario" aria-selected="false"><asp:Label ID="L_publicaciones1" runat="server" Text="Comentarios"></asp:Label></a>
                          <div class="dropdown-divider"></div>
                         </div>
                       </li>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3>Publicas</h3>
+                        <h3><asp:Label ID="L_publicas" runat="server" Text="Publicas"></asp:Label></h3>
                         <div class="list-group">
                             <asp:Panel id="panelpublico" runat="server">
                         <asp:DataList ID="DLlistarPosts" runat="server" DataSourceID="ODSlistarPosts">
@@ -116,7 +116,7 @@
                         
                         <div class="list-group">
                             <asp:Panel id="Panelprivado" runat="server">
-                    <h3>Privadas</h3>
+                    <h3><asp:Label ID="L_privadas" runat="server" Text="Privadas"></asp:Label></h3>
                         <asp:DataList ID="DataList1" runat="server" DataSourceID="ODSlistarPosts2">
                             <ItemTemplate>
                                  <div class="d-flex w-10 justify-content-end" style="margin-bottom:0px;">
@@ -157,9 +157,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Descripcion</th>
-                                    <th scope="col">comentario</th>
-                                    <th scope="col">accion</th>
+                                    <th scope="col"><asp:Label ID="L_descripcion" runat="server" Text="Descripcion"></asp:Label></th>
+                                    <th scope="col"><asp:Label ID="L_comentario" runat="server" Text="comentario"></asp:Label></th>
+                                    <th scope="col"><asp:Label ID="L_accion" runat="server" Text="accion"></asp:Label></th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -54,7 +54,7 @@
           </div>
           <div class="row" style="padding-top: 10px;">
             <div class="col">--%>
-              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"  /></asp:Button>
+              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"></asp:Button>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
     	<div class="container-fluid" style="background-color: #01662e;">
     		<!-- menu-->
 				<nav class="navbar navbar-expand-lg navbar-dark">
-                  <a class="navbar-brand" href="#">Bienvenido</a>
+                  <a class="navbar-brand" href="#"><asp:Label ID="L_bienvenido" runat="server" Text="Bienvenido"></asp:Label></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -72,13 +72,13 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="../home/index.aspx">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio" runat="server" Text="Inicio"></asp:Label></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="../home/categoria.aspx">Categorias</a>
+                        <a class="nav-link" href="../home/categoria.aspx"><asp:Label ID="L_categorias" runat="server" Text="Categorias"></asp:Label></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link"  href="../home/contacto.aspx">Contacto</a>
+                        <a class="nav-link"  href="../home/contacto.aspx"><asp:Label ID="L_contacto" runat="server" Text="Contacto"></asp:Label></a>
                       </li>
 
                     </ul>
@@ -109,18 +109,18 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                     <ul class="navbar-nav ml-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="../home/index.aspx">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio2" runat="server" Text="Inicio"></asp:Label></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="../home/categoria.aspx">Categorias</a>
+                        <a class="nav-link" href="../home/categoria.aspx"><asp:Label ID="L_categoarias1" runat="server" Text="Categorias"></asp:Label></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link"  href="../home/contacto.aspx">Contacto</a>
+                        <a class="nav-link"  href="../home/contacto.aspx"><asp:Label ID="L_contacto2" runat="server" Text="Contacto"></asp:Label></a>
                       </li>
                       <li class="nav-item">
-                        <a href="../login/ingresar.aspx" class="nav-link">Registrarse</a>
+                        <a href="../login/ingresar.aspx" class="nav-link"><asp:Label ID="L_registarse1" runat="server" Text="Registrarse"></asp:Label></a>
                       </li>
-                        <li class="nav-item"><a href="../login/ingresar.aspx" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="../login/ingresar.aspx" class="nav-link"><asp:Label ID="L_login" runat="server" Text="Login"></asp:Label></a></li>
                       </ul>
                       <asp:TextBox ID="Tsearch2" runat="server" CssClass="form-control " Width="300px" ValidationGroup="tse2"></asp:TextBox> 
                       <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"  ControlToValidate="Tsearch2" ForeColor="Red" ValidationExpression="[a-zA-Z ]*" ValidationGroup="tse2"></asp:RegularExpressionValidator>
@@ -152,16 +152,16 @@
                <img src="../../img/escudo-ucundinamarca.png" class="img-fluid pt-5" width="140px" >
             </div>
             <div class="col col-sm-4  fixed-left pt-5 ">
-                <h4> Mapa del Sitio</h4>
+                <%--<h4> Mapa del Sitio</h4>
                 <ul>
                     <li>inicio</li>
                     <li>categorias</li>
                     <li>contacto</li>
                     <li>Foro estudiante</li>
-                </ul>
+                </ul>--%>
             </div>
             <div class="col col-sm-4  pt-5">
-                <h4>Contacto</h4>
+                <h4><asp:Label ID="L_contacto1" runat="server" Text="Contacto"></asp:Label></h4>
                 <h4>
                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -170,7 +170,7 @@
             </div>
         </div>
         <div class="row text-grey pl-4">
-            <p>Todos los derechos reservados  MetapodSoft &#174; 2017</p>
+            <p><asp:Label ID="L_derechos_reservados" runat="server" Text="Todos los derechos reservados  MetapodSoft &#174; 2017"></asp:Label></p>
         </div>
             
     </div>

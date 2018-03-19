@@ -9,7 +9,7 @@
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-$ñ " TargetControlID="Tsearch" />
     </div>
     <div class="col col-12">
-        <h3>Resultados de la Busqeuda</h3>
+        <h3><asp:Label ID="L_resultado_busqueda" runat="server" Text="Resultados de la Busqeuda"></asp:Label></h3>
         <hr>
     </div>
     <div class="col col-12">

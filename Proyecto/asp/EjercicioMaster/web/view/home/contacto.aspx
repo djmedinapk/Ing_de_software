@@ -7,7 +7,7 @@
             <div class="well well-sm">
                 <form class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center header">Contactenos</legend>
+                        <legend class="text-center header"><asp:Label ID="L_contactenos" runat="server" Text="Contactenos"></asp:Label></legend>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>

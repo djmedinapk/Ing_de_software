@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
             <div class="row " >		    
 		     		<dl >
-					  <dt class="col-sm-15">Escriba su nueva contraseña</dt>
+					  <dt class="col-sm-15"><asp:Label ID="L_nueva_contraseña" runat="server" Text="Escriba su nueva contraseña"></asp:Label></dt>
 					  <dd class="col-sm-10">
                           <div class="form-group">
                               <label for="inputlg"></label>

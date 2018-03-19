@@ -13,7 +13,7 @@
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                     </ul>
-                    <h2>Publicas</h2>
+                    <h2><asp:Label ID="L_publicas" runat="server" Text="Publicas"></asp:Label></h2>
                     <div class="clearfix"></div>
                 </div>
 
@@ -22,12 +22,12 @@
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>
                                 <tr class="headings">
-                                    <th class="column-title">id </th>
-                                    <th class="column-title">Titulo</th>
-                                    <th class="column-title">Descripcion </th>
-                                    <th class="column-title">estado</th>
-                                    <th class="column-title">Fecha </th>
-                                    <th colspan="2" class="column-title no-link last"><span class="nobr">Action</span></th>
+                                    <th class="column-title"><asp:Label ID="L_id" runat="server" Text="id"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_titulo" runat="server" Text="Titulo"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_descripcion" runat="server" Text="Descripcion"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_estado" runat="server" Text="estado"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_fecha" runat="server" Text="Fecha"></asp:Label></th>
+                                    <th colspan="2" class="column-title no-link last"><span class="nobr"><asp:Label ID="L_action" runat="server" Text="Action"></asp:Label></span></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,21 +76,21 @@
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                     </ul>
-                    <h2>Privadas</h2>
+                    <h2><asp:Label ID="L_privadas" runat="server" Text="Privadas"></asp:Label></h2>
                     <div class="clearfix"></div>
                 </div>
 
                 <div class="x_content">
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
-                            <thead>
+                           <thead>
                                 <tr class="headings">
-                                    <th class="column-title">id </th>
-                                    <th class="column-title">username</th>
-                                    <th class="column-title">correo </th>
-                                    <th class="column-title">estado</th>
-                                    <th class="column-title">Permisos </th>
-                                    <th colspan="2" class="column-title no-link last"><span class="nobr">Action</span></th>
+                                    <th class="column-title"><asp:Label ID="L_id1" runat="server" Text="id"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_titulo1" runat="server" Text="Titulo"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_descripcion1" runat="server" Text="Descripcion"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_estado1" runat="server" Text="estado"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_fecha1" runat="server" Text="Fecha"></asp:Label></th>
+                                    <th colspan="2" class="column-title no-link last"><span class="nobr"><asp:Label ID="L_action1" runat="server" Text="Action"></asp:Label></span></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,7 +110,8 @@
                                             <td class="">
                                              <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Bind("id_post") %>'>Ver</asp:HyperLink></td>
                                             </td>
-                                            <td class="">
+                                             <td class="">
+                                                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# Bind("id_post2") %>'>Modificar</asp:HyperLink></td>
                                                 <%--<asp:Button ID="Beliminar" class="" Text="Suspender" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id") %>' OnCommand="Beliminar_Command" />--%>
 
                                             </td>

@@ -16,7 +16,7 @@
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
                             </ul>
-                            <h2>Datos de Sesion:  <small><asp:Label ID="Lheader" runat="server" Text="Label"></asp:Label></small></h2>
+                            <h2><asp:Label ID="L_datos_sesion" runat="server" Text="Datos de Sesion:  "></asp:Label><small><asp:Label ID="Lheader" runat="server" Text="Label"></asp:Label></small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -75,7 +75,7 @@
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
                             </ul>
-                            <h2>Datos Perfil <small><asp:Label ID="Lheader2" runat="server" Text="Label"></asp:Label></small></h2>
+                            <h2><asp:Label ID="L_datos_perfil" runat="server" Text="Datos Perfil "></asp:Label><small><asp:Label ID="Lheader2" runat="server" Text="Label"></asp:Label></small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -160,7 +160,7 @@
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                     </ul>
-                    <h2>Usuarios</h2>
+                    <h2><asp:Label ID="L_usuarios" runat="server" Text="Usuarios"></asp:Label></h2>
                     <div class="clearfix"></div>
                 </div>
 
@@ -169,12 +169,12 @@
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>
                                 <tr class="headings">
-                                    <th class="column-title">id </th>
-                                    <th class="column-title">username</th>
-                                    <th class="column-title">correo </th>
-                                    <th class="column-title">estado</th>
-                                    <th class="column-title">Permisos </th>
-                                    <th colspan="2" class="column-title no-link last"><span class="nobr">Action</span></th>
+                                    <th class="column-title"><asp:Label ID="L_id" runat="server" Text="id"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_username" runat="server" Text="username"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_correo" runat="server" Text="correo"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_estado" runat="server" Text="estado"></asp:Label></th>
+                                    <th class="column-title"><asp:Label ID="L_permisos" runat="server" Text="Permisos"></asp:Label></th>
+                                    <th colspan="2" class="column-title no-link last"><span class="nobr"><asp:Label ID="L_action" runat="server" Text="Action"></asp:Label></span></th>
                                 </tr>
                             </thead>
                             <tbody>

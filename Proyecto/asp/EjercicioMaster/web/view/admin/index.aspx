@@ -8,27 +8,28 @@
         <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count"></div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i>Total usuarios</span>
+                <span class="count_top"><i class="fa fa-user"></i>
+                    <asp:Label ID="L_total_usuarios" runat="server" Text="Total usuarios"></asp:Label></span>
                 <div class="count green">
                     <asp:HyperLink ID="HLtotalUser" runat="server" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom">
                         <asp:Label ID="LtotalUsers" runat="server" Text="" class="count green"></asp:Label></asp:HyperLink>
                 </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-file-text" aria-hidden="true"></i>Total Publicaciones</span>
+                <span class="count_top"><i class="fa fa-file-text" aria-hidden="true"></i><asp:Label ID="L_total_publicaciones" runat="server" Text="Total Publicaciones"></asp:Label></span>
                 <div class="count green">
                     <asp:HyperLink ID="HLtotalPost" runat="server" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="bottom">
                         <asp:Label ID="LtotalPost" runat="server" Text="" class="count green"></asp:Label></asp:HyperLink>
                 </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-comments" aria-hidden="true"></i>Total Comentarios</span>
+                <span class="count_top"><i class="fa fa-comments" aria-hidden="true"></i><asp:Label ID="L_total_comentarios" runat="server" Text="Total Comentarios"></asp:Label></span>
                 <div class="count green">
                     <asp:Label ID="LtotalComentarios" runat="server" Text="" class="count"></asp:Label>
                 </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Total puntos</span>
+                <span class="count_top"><i class="fa fa-thumbs-up" aria-hidden="true"></i><asp:Label ID="L_total_puntos" runat="server" Text="Total puntos"></asp:Label></span>
                 <div class="count green">
                     <asp:Label ID="LtotalPuntos" runat="server" Text="" class="count"></asp:Label>
                 </div>
@@ -44,7 +45,8 @@
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                         </ul>
-                        <h2>Top Perfiles Publicaciones</h2>
+                        <h2>
+                            <asp:Label ID="L_top_perfiles_publicaciones" runat="server" Text="Top Perfiles Publicaciones"></asp:Label></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -52,7 +54,8 @@
                             <ItemTemplate>
                                 <article class="media event" style="padding-top: 10px;">
                                     <a class="pull-left date">
-                                        <p class="month">publicaciones</p>
+                                        <p class="month">
+                                            <asp:Label ID="L_publicaciones" runat="server" Text="publicaciones"></asp:Label></p>
                                         <p class="day">
                                             <asp:Label ID="Lpubs" runat="server" Text='<%# Bind("publicaciones") %>'></asp:Label>
                                         </p>
@@ -78,7 +81,8 @@
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                         </ul>
-                        <h2>Top Perfiles Puntos</h2>
+                        <h2>
+                            <asp:Label ID="L_top_perfiles_puntos" runat="server" Text="Top Perfiles Puntos"></asp:Label></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -86,7 +90,8 @@
                             <ItemTemplate>
                                 <article class="media event" style="padding-top: 10px;">
                                     <a class="pull-left date">
-                                        <p class="month">puntos</p>
+                                        <p class="month">
+                                            <asp:Label ID="L_puntos" runat="server" Text="puntos"></asp:Label></p>
                                         <p class="day">
                                             <asp:Label ID="Lpubs" runat="server" Text='<%# Bind("puntos") %>'></asp:Label>
                                         </p>
@@ -105,10 +110,11 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <%--<div class="col-md-4">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Top Profiles <small>Sessions</small></h2>
+                        <h2>
+                            <asp:Label ID="L_top_perfiles" runat="server" Text="Top Profiles "></asp:Label><small><asp:Label ID="L_sessions" runat="server" Text="Sessions"></asp:Label></small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -179,7 +185,7 @@
                         </article>
                     </div>
                 </div>
-            </div>
+            </div>--%>
         </div>
         <!--.------ /top perfiles de usuario-->
         <!-----------top publicaciones mas puntuadas----------------->
@@ -192,7 +198,8 @@
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                     </ul>
-                    <h2>Publicaciones Mas Populares<small>visitas</small></h2>
+                    <h2>
+                        <asp:Label ID="L_top_publicaciones_populares" runat="server" Text="Publicaciones Mas Populares"></asp:Label><small><asp:Label ID="L_visitas" runat="server" Text="visitas"></asp:Label></small></h2>
                     <div class="clearfix"></div>
                 </div>
 
@@ -201,10 +208,14 @@
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>
                                 <tr class="headings">
-                                    <th class="column-title">Titulo </th>
-                                    <th class="column-title">Fecha</th>
-                                    <th class="column-title">Visitas </th>
-                                    <th class="column-title no-link last"><span class="nobr">Action</span></th>
+                                    <th class="column-title">
+                                        <asp:Label ID="L_titulo" runat="server" Text="Titulo"></asp:Label> </th>
+                                    <th class="column-title">
+                                        <asp:Label ID="L_fecha" runat="server" Text="Fecha"></asp:Label></th>
+                                    <th class="column-title">
+                                        <asp:Label ID="L_visitas1" runat="server" Text="Visitas "></asp:Label></th>
+                                    <th class="column-title no-link last"><span class="nobr">
+                                        <asp:Label ID="L_action" runat="server" Text="Action"></asp:Label></span></th>
                                 </tr>
                             </thead>
                             <tbody>

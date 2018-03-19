@@ -9,7 +9,7 @@
         <div class="p-3"> 
             <div class="card" style="width: 100%; border-color: #FFDF05; ">
               <div class="card-header" style="font-size: 20px; background-color: #FFDF05;">
-                Mas Vistos
+                <asp:Label ID="L_mas_vistos" runat="server" Text="Mas Vistos"></asp:Label>
                </div>
               <div class="card-body">
                 <!--- datalist here my friends-->
@@ -19,7 +19,7 @@
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Ltitulo" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label1" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
-                                <asp:HyperLink runat="server" id="HyperLink2" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' > Ir a</asp:HyperLink>
+                                <asp:HyperLink runat="server" id="HyperLink2" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' ><asp:Label ID="L_ir_a2" runat="server" Text="Ir a"></asp:Label> </asp:HyperLink>
                               </div>
                             </div>
                       </ItemTemplate>
@@ -40,7 +40,7 @@
         <div class="p-3"> 
             <div class="card" style="width: 100%; border-color: #E4E056; ">
               <div class="card-header" style="font-size: 20px; background-color: #E4E056;">
-                Mas Votados
+                <asp:Label ID="L_mas_votados" runat="server" Text="Mas Votados"></asp:Label>
                </div>
               <div class="card-body">
                  <!--- datalist here my friends-->
@@ -51,7 +51,7 @@
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Label4" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label5" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
-                                 <asp:HyperLink runat="server" id="HLhome" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' > Ir a</asp:HyperLink>
+                                 <asp:HyperLink runat="server" id="HLhome" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' ><asp:Label ID="L_ir_a1" runat="server" Text="Ir a"></asp:Label> </asp:HyperLink>
                                 
                               </div>
                             </div>
@@ -72,7 +72,7 @@
         <div class="p-3"> 
             <div class="card" style="width: 100%; border-color: #84E41F;">
               <div class="card-header" style="font-size: 20px; background-color: #84E41F;"">
-                Recientes
+                 <asp:Label ID="L_recientes" runat="server" Text="Recientes"></asp:Label>
                </div>
               <div class="card-body">
                  <!--- datalist here my friends-->
@@ -82,7 +82,7 @@
                               <div class="card-body">
                                 <h4 class="card-title"><asp:Label id="Label2" runat="server" Text='<%# Bind("titulo") %>'></asp:Label></h4>
                                 <p class="card-text"><asp:Label id="Label3" runat="server" Text='<%# Bind("descripcion") %>'></asp:Label></p>
-                                <asp:HyperLink runat="server" id="HyperLink1" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' > Ir a</asp:HyperLink>
+                                <asp:HyperLink runat="server" id="HyperLink1" class="btn btn-primary" NavigateUrl='<%# Bind("id_post") %>' ><asp:Label ID="L_ir_a" runat="server" Text="Ir a"></asp:Label> </asp:HyperLink>
                               </div>
                             </div>
                       </ItemTemplate>

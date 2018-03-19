@@ -20,7 +20,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="row" style="height:50px;s"></div>
     <div class="col col-12">
-        <h2>Categorias</h2>
+        <h2><asp:Label ID="L_categoria" runat="server" Text="Categorias"></asp:Label></h2>
         <h6>
             <asp:DropDownList ID="DDLbusqueda" runat="server" DataSourceID="ODScategorias" AutoPostBack="True" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
         <asp:ObjectDataSource runat="server" ID="ODScategorias" SelectMethod="listar_categoria" TypeName="DAOpost"></asp:ObjectDataSource>

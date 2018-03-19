@@ -59,7 +59,7 @@
                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" data-toggle="modal"onclick="denunciapost()">Reportar</a>
+                                <a class="dropdown-item" data-toggle="modal"onclick="denunciapost()"><asp:Label ID="L_reportar" runat="server" Text="Reportar"></asp:Label></a>
                               </div>
                             </div>
                         </div>
@@ -92,8 +92,8 @@
           </h5>
           <p class="text-muted" >
             <ul>
-              <li>estado: <asp:Label ID="Label1" runat="server" Text="<span style='color: #02FF32'>online</span>"></asp:Label></li>
-                <li>total Post:<asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label> </li>    
+              <li><asp:Label ID="L_estado" runat="server" Text="estado"></asp:Label>: <asp:Label ID="Label1" runat="server" Text="<span style='color: #02FF32'>online</span>"></asp:Label></li>
+                <li><asp:Label ID="L_total_post" runat="server" Text="total Post"></asp:Label>:<asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label> </li>    
               
                </ul>
           </p>
@@ -132,7 +132,7 @@
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tidcomentario" />
              <div class="col-12">
                   <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Agregar Comentario</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="exampleFormControlTextarea1"><asp:Label ID="L_agregar_comentario" runat="server" Text="Agregar Comentario"></asp:Label></label>&nbsp;&nbsp;&nbsp;&nbsp;
                        <%-- <textarea class="form-control" id="TAcomentario" rows="2" runat="server"></textarea>--%>
                         <asp:TextBox ID="TAcomentario" runat="server" class="form-control input-lg" MaxLength=2000 placeholder="Escriba aquí su comentario" TextMode="MultiLine" Rows="3"  ></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TAcomentario" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="comentario"></asp:RequiredFieldValidator>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="p-2">
                                  <asp:Label id="Label7" runat="server" Text='<%# Bind("denuncia") %>'></asp:Label>
-                                    <small>Reportar</small>
+                                    <small><asp:Label ID="L_reportar1" runat="server" Text="Reportar"></asp:Label></small>
                                   </a>
                                 </div>
                          
@@ -168,10 +168,10 @@
                               <asp:Label id="Label2" runat="server" Text='<%# Bind("contenido") %>'></asp:Label><br />
                           
                                     <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                      <asp:Label id="Label3" runat="server" Text='<%# Bind("respuestas") %>'></asp:Label> Respuestas
+                                                      <asp:Label id="Label3" runat="server" Text='<%# Bind("respuestas") %>'></asp:Label> <asp:Label ID="L_respuestas" runat="server" Text="Respuestas"></asp:Label>
                                                     </a>
                                                   <asp:Label id="Label8" runat="server" Text='<%# Bind("comentaridpost") %>'></asp:Label>
-                                                   <small>responder</small> </a>
+                                                   <small><asp:Label ID="L_responder" runat="server" Text="responder"></asp:Label></small> </a>
                                                         <asp:DataList ID="DLComentarios" runat="server" DataSourceID="ODScargarRespuestas" style="width:100%;" >
                                                             <ItemTemplate>
                                                                 <!----------------------------------inicio comentario------------------------>
@@ -182,7 +182,7 @@
                                                                                 </div>
                                                                                 <div class="p-2">
                                                                                     <asp:Label id="Label6" runat="server" Text='<%# Bind("denuncia") %>'></asp:Label>
-                                                                                    <small>Reportar</small>
+                                                                                    <small><asp:Label ID="L_resportar2" runat="server" Text="Reportar"></asp:Label></small>
                                                                                     </a>
                                                                                 </div>
                          
@@ -219,7 +219,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Denunciar Comentario</h5>
+              <h5 class="modal-title"><asp:Label ID="L_denunciar_comentario" runat="server" Text="Denunciar Comentario"></asp:Label></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -234,7 +234,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Razon De La Denúncia</label>
+                  <label for="exampleFormControlTextarea1"><asp:Label ID="L_razon_denuncia" runat="server" Text="Razon De La Denúncia"></asp:Label></label>
                   <%--<textarea class="form-control" id="TdenunciaComentarioText" rows="3" runat="server"></textarea>--%>
                     <asp:TextBox ID="TdenunciaComentarioText" runat="server" class="form-control input-lg" MaxLength=240 placeholder="" TextMode="MultiLine" Rows="3"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TdenunciaComentarioText" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="denunciacomentario"></asp:RequiredFieldValidator>
@@ -245,7 +245,7 @@
             <div class="modal-footer">
                 <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BenviarDenuncia" OnClick="BDenuncia_comentario" ValidationGroup="denunciacomentario" />
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><asp:Label ID="L_cerrar" runat="server" Text="Close"></asp:Label></button>
             </div>
           </div>
         </div>
@@ -254,7 +254,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Denunciar Publicacion</h5>
+              <h5 class="modal-title"><asp:Label ID="L_denuncia_publicacion" runat="server" Text="Denunciar Publicacion"></asp:Label></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -263,7 +263,7 @@
                   <div class="form-group row">
                  <%-- <label for="staticEmail" class="col-sm-2 col-form-label" >Id</label>--%>
                   <div class="col-sm-10">
-                      <label for="DDLopcion">Razón de la denuncia</label>
+                      <label for="DDLopcion"><asp:Label ID="L_razon_denuncia1" runat="server" Text="Razón de la denuncia"></asp:Label></label>
                       <asp:DropDownList ID="DDLopcion" runat="server" class="form-control">
                             <asp:ListItem Value="1" Text="Viola derechos de autor"></asp:ListItem> 
                             <asp:ListItem Value="2" Text="Contenido Inapropiado"></asp:ListItem> 
@@ -273,7 +273,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Descripcion</label>
+                  <label for="exampleFormControlTextarea1"><asp:Label ID="L_descripcion1" runat="server" Text="Descripcion"></asp:Label></label>
                   <%--<textarea class="form-control" id="TdenunciaPostText" rows="3" runat="server"></textarea>--%>
                     <asp:TextBox ID="TdenunciaPostText" runat="server" class="form-control input-lg" MaxLength=240 placeholder="" TextMode="MultiLine" Rows="3" ValidationGroup="denunciapost" ></asp:TextBox>
                     
@@ -283,7 +283,7 @@
             <div class="modal-footer">
                 <asp:button runat="server" text="Enviar Denuncia" class="btn btn-primary" id="BdenunciaPost" OnClick="Bdenuncia_Post" ValidationGroup="denunciapost"/>
               <%--<button type="button" class="btn btn-primary">Enviar Denuncia</button>--%>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><asp:Label ID="L_cerrrar1" runat="server" Text="Close"></asp:Label></button>
             </div>
           </div>
         </div>

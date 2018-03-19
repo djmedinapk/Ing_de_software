@@ -27,12 +27,12 @@
         <div class="p-2">
                  <div class="d-flex justify-content-around">
                      <a href="../Post/crearPublicacion.aspx?m=1" class="p-2 text-center"><i class="fa fa-pencil-square-o text-success" aria-hidden="true" style="font-size:25px;"></i></a>
-                    <a href="../private/index.aspx" class="p-2 text-center item-menu">Inicio</a>
-                     <a href="../home/index.aspx" class="p-2 text-center item-menu">ForoPublico</a>
-                    <a href="../private/categoria.aspx" class="p-2 text-center item-menu">Categorias</a>
+                    <a href="../private/index.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_inicio" runat="server" Text="Inicio"></asp:Label></a>
+                     <a href="../home/index.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_foropublico" runat="server" Text="ForoPublico"></asp:Label></a>
+                    <a href="../private/categoria.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_categorias" runat="server" Text="Categorias"></asp:Label></a>
                     <a href="" class="p-2 text-center item-menu dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><asp:Label ID="Lusername" runat="server"></asp:Label></a>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                         <a class="dropdown-item" href="../perfil/perfil.aspx?m=1">Perfil</a>
+                         <a class="dropdown-item" href="../perfil/perfil.aspx?m=1"><asp:Label ID="L_perfil" runat="server" Text="Perfil"></asp:Label></a>
                         <%--<asp:Button ID="Bminiatura_settings" runat="server" Text="Perfil" CssClass="dropdown-item" OnClick="Bminiatura_settings_Click" />
                         <asp:Button ID="Bminiatura_salir" runat="server" Text="Cerrar Sesion" CssClass="dropdown-item" OnClick="Bminiatura_salir_Click"/>--%>
                       </div>
@@ -52,7 +52,7 @@
         </asp:ContentPlaceHolder>
    </div>
     <div class="footer">
-      <p>Todos los derechos reservados  MetapodSoft &#174; 2017</p>
+      <p><asp:Label ID="L_derechos_reservados" runat="server" Text="Todos los derechos reservados  MetapodSoft &#174; 2017"></asp:Label></p>
     </div>
 
     <!-- Optional JavaScript -->

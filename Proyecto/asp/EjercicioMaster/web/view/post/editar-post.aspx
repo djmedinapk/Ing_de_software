@@ -34,7 +34,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Label ID="Lpopup" runat="server"></asp:Label>
     <div class="row">
-      <div class="col-12 m-2 bg-success text-white" style="padding: 10px;">Modificar Publicacion</div>
+      <div class="col-12 m-2 bg-success text-white" style="padding: 10px;"><asp:Label ID="L_modificar_post" runat="server" Text="Modificar Publicacion"></asp:Label></div>
     </div>
      <div class="row ">
 
@@ -43,7 +43,7 @@
           <div class="container-fluid" style="height: 3px; background-color: #f4e542"></div>
          <div class="jumbotron">
             <div class="container contenedor-cuerpo">
-              <label for="Nombre-post">Nombre Post</label>
+              <label for="Nombre-post"><asp:Label ID="L_nombre_post" runat="server" Text="Nombre Post"></asp:Label></label>
               <div class="input-group"> 
                   <asp:TextBox ID="TpostNombre" runat="server"  class="form-control" MaxLength="100"></asp:TextBox>
                   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -52,7 +52,7 @@
                   <%-- <input type="text" id="Nombre-post" name="a">--%>
 
                </div>
-               <label for="Descripcion-post">Descripcion</label>
+               <label for="Descripcion-post"><asp:Label ID="L_descripcion" runat="server" Text="Descripcion"></asp:Label></label>
               <div class="input-group">
                   <asp:TextBox ID="Tpostdescripcion" runat="server"  class="form-control" MaxLength="200"></asp:TextBox>
                   <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ " TargetControlID="Tpostdescripcion" />
@@ -60,7 +60,7 @@
 
                 <%--<input type="text" class="form-control" id="Descripcion-post" >--%>
                </div>
-                <label for="DDLcategoria">Categoria</label>
+                <label for="DDLcategoria"><asp:Label ID="L_categoria" runat="server" Text="Categoria"></asp:Label></label>
             <div class="input-group">
                 <asp:dropdownlist runat="server" id="DDLcategoria" class="form-control" DataSourceID="ODSlistarCategoria" DataTextField="nombre" DataValueField="id"></asp:dropdownlist>
                 <asp:ObjectDataSource ID="ODSlistarCategoria" runat="server" SelectMethod="listar_categorias" TypeName="Logica.Lpost"></asp:ObjectDataSource>
@@ -75,7 +75,7 @@
                  
                   <asp:Label ID="Label1" runat="server" Text="" Visible="False"></asp:Label>
                </div>
-                 <label for="Descripcion-post">Fuente(s)</label>
+                 <label for="Descripcion-post"><asp:Label ID="L_fuentes" runat="server" Text="Fuente(s)"></asp:Label></label>
                  <div class="input-group editor1">
                    <asp:RadioButton ID="RBpostfuentes1" runat="server" Text="El contenido es de mi autoria y/o recopilacion de varias fuentes" GroupName="fuentes" />
                   </div>
@@ -89,18 +89,18 @@
           </div>
         </div>
       <div class="col-md-3">
-          <label for="Nombre-post">Miniatura</label>
+          <label for="Nombre-post"><asp:Label ID="L_miniatura" runat="server" Text="Miniatura"></asp:Label></label>
           <asp:Image ID="Iminiaturapost" runat="server" Width="50px" Height="50px" />
               <div class="input-group" style="padding-bottom:15px;">  
                   
                   <asp:FileUpload ID="FUminiatura" runat="server" class="form-control" />
               </div>
-          <label for="Nombre-post">Etiquetas</label>
+          <label for="Nombre-post"><asp:Label ID="L_etiquetas" runat="server" Text="Etiquetas"></asp:Label></label>
               <div class="input-group">
                   <%--<input type="text" value="" data-role="tagsinput"  class="input-group"/>--%>
                   <asp:TextBox ID="TpostEtiquetas" runat="server" data-role="tagsinput" class="input-group" MaxLength="240">,</asp:TextBox>
               </div>
-          <label for="Nombre-post"><sub>las etiquetas deben ir separadas por una coma</sub></label>
+          <label for="Nombre-post"><sub><asp:Label ID="L_etiquetas_secund" runat="server" Text="las etiquetas deben ir separadas por una coma"></asp:Label></sub></label>
 
           
        </div>  

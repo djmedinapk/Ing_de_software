@@ -34,7 +34,7 @@
                     </div>
 
                     <h5><asp:Label ID="Lusername" runat="server" Text=""></asp:Label> <br>
-                        <small class="text-muted">%%TRAngo%%</small>
+                        <%--<small class="text-muted">%%TRAngo%%</small>--%>
                     </h5>
                     <h6 class="text-muted">
                         <ul>
@@ -51,10 +51,10 @@
                 <div class="col">
                   <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link btn-outline-success active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Publicacion</a>
+                      <a class="nav-link btn-outline-success active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"><asp:Label ID="L_publicaciones" runat="server" Text="Publicacion"></asp:Label></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link btn-outline-success" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Informacion</a>
+                      <a class="nav-link btn-outline-success" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><asp:Label ID="L_informacion" runat="server" Text="Informacion"></asp:Label></a>
                     </li>
                   </ul>
                 </div>
@@ -82,13 +82,13 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                       <p>
-                          <strong>Nombre</strong><asp:Label ID="Lnombre" runat="server" Text=""></asp:Label>
+                          <strong><asp:Label ID="L_nombre" runat="server" Text="Nombre"></asp:Label></strong><asp:Label ID="Lnombre" runat="server" Text=""></asp:Label>
                       </p>
                         <p>
-                          <strong>Edad</strong><asp:Label ID="Ledad" runat="server" Text=""></asp:Label>
+                          <strong><asp:Label ID="L_edad" runat="server" Text="Edad"></asp:Label></strong><asp:Label ID="Ledad" runat="server" Text=""></asp:Label>
                       </p>
                         <p>
-                          <strong>Genero</strong><asp:Label ID="Lgenero" runat="server" Text=""></asp:Label>
+                          <strong><asp:Label ID="L_genero" runat="server" Text="Genero"></asp:Label></strong><asp:Label ID="Lgenero" runat="server" Text=""></asp:Label>
                       </p>
                     </div>
                   </div>

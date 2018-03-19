@@ -39,17 +39,17 @@
                     </h5>
                     <h6 class="text-muted">
                         <ul>
-                            <li>estado: <span style="color: #02FF32">online</span></li>
-                            <li>total Post: <asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label></li>
+                           <%-- <li>estado: <span style="color: #02FF32">online</span></li>--%>
+                            <li><asp:Label ID="L_total_post" runat="server" Text="total Post"></asp:Label>: <asp:Label ID="LtotalPublic" runat="server" Text=""></asp:Label></li>
 
                         </ul>
                     </h6>
                     <div style="height: 100px"></div>
                     <div class="btn-group-vertical">
-                        <button type="button" class="btn btn-outline-success  btn-block active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home">Publicaciones</button>
+                        <button type="button" class="btn btn-outline-success  btn-block active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"><asp:Label ID="L_mpublicaciones" runat="server" Text="Publicaciones"></asp:Label></button>
                         <%--<button type="button" class="btn btn-outline-success  btn-block" OnClick="BperfilMod_Click" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false">perfil</button>--%>
-                        <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false">Perfil</button>
-                        <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-ajustes-tab" data-toggle="pill" href="#v-pills-ajustes" role="tab" aria-controls="v-pills-ajustes" aria-expanded="false">Ajustes</button>
+                        <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false"><asp:Label ID="L_mperfil" runat="server" Text="Perfil"></asp:Label></button>
+                        <button type="button" class="btn btn-outline-success  btn-block" id="v-pills-ajustes-tab" data-toggle="pill" href="#v-pills-ajustes" role="tab" aria-controls="v-pills-ajustes" aria-expanded="false"><asp:Label ID="L_majustes" runat="server" Text="Ajustes"></asp:Label></button>
                         <asp:Button ID="Bmoderador" runat="server" Text="Moderador" class="btn btn-outline-warning  btn-block" role="tab" OnClick="Bmoderador_Click" />
                         <asp:Button ID="Badmin" runat="server" Text="Admin" class="btn btn-outline-dark  btn-block" role="tab" OnClick="Badmin_Click" />
                         <%--<asp:Button ID="BperfilMod" runat="server" Text="Perfil"   class="btn btn-outline-success  btn-block"  href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="false" />--%>
@@ -60,7 +60,7 @@
             <div class="col-9 panel-derecho">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" aria-expanded="true">
-                        <h3>Foro Publico</h3><hr />
+                        <h3><asp:Label ID="L_foro_publico" runat="server" Text="Foro Publico"></asp:Label></h3><hr />
                         <div class="d-flex flex-row-reverse">
                             <asp:hyperlink id="HLperfilCrear" runat="server" Font-Size="34pt" NavigateUrl="~/view/post/CrearPublicacion.aspx" ><i class="fa fa-pencil-square-o text-success" aria-hidden="true" class="btn btn-warning"></i></asp:hyperlink>
                             <%--<asp:Button ID="BperfilCrearpost" runat="server" Text="Crear Publicacion" class="btn btn-warning"/>--%>
@@ -97,7 +97,7 @@
                             </asp:ObjectDataSource>
                         </div>
                         <asp:Panel ID="Pprivados" runat="server" >
-                            <h3>Foro Privado</h3><hr />
+                            <h3><asp:Label ID="L_foro_privado" runat="server" Text="Foro Privado"></asp:Label></h3><hr />
                             <div class="list-group" style="padding-bottom:60px;">
                             <asp:datalist runat="server" repeatlayout="Flow" DataSourceID="ODSpostperfilPrivado" DataKeyField="id" OnItemCommand="Unnamed1_ItemCommand" >
                                 <ItemTemplate>
@@ -135,7 +135,7 @@
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" aria-expanded="false">
                         <dl class="row">
 
-                            <dt class="col-sm-3 text-right">Imagen de Perfil</dt>
+                            <dt class="col-sm-3 text-right"><asp:Label ID="L_imagen_pefil" runat="server" Text="Imagen de Perfil"></asp:Label></dt>
                             <dd class="col-sm-9">
                                 <dl class="row">
                                     <dt class="col-sm-4">
@@ -145,11 +145,11 @@
                                     <dd class="col-sm-8">
                                         <asp:fileupload id="FUperfilImagen" runat="server" class="form-control input-lg"></asp:fileupload>
                                         <%--<input class="form-control input-lg" id="inputlg" type="file" >--%>
-                                        <span class="badge badge-secondary">tamaño maximo 4MB</span>
+                                        <span class="badge badge-secondary"><asp:Label ID="L_tamano_maximo_imagen" runat="server" Text="tamaño maximo 4MB"></asp:Label></span>
                                     </dd>
                                 </dl>
                             </dd>
-                            <dt class="col-sm-3 mt-5 text-right">Nombre</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_nombre" runat="server" Text="Nombre"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilNombre" placeholder="Nombre" ValidationGroup="perfil" ></asp:textbox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilNombre" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="perfil"></asp:RequiredFieldValidator>
@@ -160,7 +160,7 @@
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Nombre">--%>
                             </dd>
 
-                            <dt class="col-sm-3 mt-5 text-right">Apellido</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_apellido" runat="server" Text="Apellido"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilApellido" placeholder="Apellido" ValidationGroup="perfil"></asp:textbox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilApellido" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="perfil"></asp:RequiredFieldValidator>
@@ -168,7 +168,7 @@
                                 <%-- <input class="form-control input-lg" id="inputlg" type="text" placeholder="Apellido">--%>
                             </dd>
 
-                            <dt class="col-sm-3 mt-5 text-right">Edad</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_edad" runat="server" Text="Edad"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilEdad" placeholder="Edad" textmode="number" MaxLength="2" ValidationGroup="perfil"></asp:textbox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilEdad" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="perfil"></asp:RequiredFieldValidator>
@@ -177,7 +177,7 @@
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Edad">--%>
                             </dd>
 
-                            <dt class="col-sm-3 mt-5 text-right">Sexo</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_sexo" runat="server" Text="Sexo"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:RadioButtonList ID="RB1" runat="server" ValidationGroup="perfil">
                                     <asp:ListItem Selected="True">Masculino</asp:ListItem>
@@ -196,7 +196,7 @@
 
                     <div class="tab-pane fade" id="v-pills-ajustes" role="tabpanel" aria-labelledby="v-pills-profile-tab" aria-expanded="false">
                         <dl class="row">
-                            <dt class="col-sm-3 mt-5 text-right">Usuario</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_usuario" runat="server" Text="Usuario"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesUsername" placeholder="Usuario"  ValidationGroup="ajustes"></asp:textbox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilAjustesUsername" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="ajustes"></asp:RequiredFieldValidator>
@@ -204,14 +204,14 @@
                                 <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Usuario">--%>
                             </dd>
 
-                            <dt class="col-sm-3 mt-5 text-right">correo</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_correo" runat="server" Text="correo"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                         <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesCorreo"  placeholder="Correo"  TextMode="Email"  ValidationGroup="ajustes"></asp:textbox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TperfilAjustesCorreo" ForeColor="Red" Font-Size="XX-Small"  ValidationGroup="ajustes"></asp:RequiredFieldValidator>
                                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-ñ.@" TargetControlID="TperfilAjustesCorreo" />
                                         <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Correo">--%>
                             </dd>
-                            <dt class="col-sm-3 mt-5 text-right">correo Institucional</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_correo_ins" runat="server" Text="correo Institucional"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                         <asp:Button ID="Bcorreoins" runat="server" Text="Registrar Correo"  CssClass="btn btn-success" OnClick="Bcorreoins_Click"/>
                                         
@@ -220,7 +220,7 @@
                                         <%--<input class="form-control input-lg" id="inputlg" type="text" placeholder="Correo">--%>
                             </dd>
 
-                            <dt class="col-sm-3 mt-5 text-right">Contraseña</dt>
+                            <dt class="col-sm-3 mt-5 text-right"><asp:Label ID="L_contrasena" runat="server" Text="Contraseña"></asp:Label></dt>
                             <dd class="col-sm-9 mt-5">
                                 <asp:textbox runat="server" class="form-control input-lg" id="TperfilAjustesContrasena" placeholder="Contraseña" TextMode="Password"></asp:textbox>
                                 <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers,LowercaseLetters, UppercaseLetters, Custom" ValidChars="_-`$'ñ" TargetControlID="TperfilAjustesContrasena" />
