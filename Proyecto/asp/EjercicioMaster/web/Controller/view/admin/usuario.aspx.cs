@@ -9,6 +9,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using System.Collections;
+
 public partial class view_admin_usuario : System.Web.UI.Page
 {
     public Int32 id;
@@ -36,6 +38,38 @@ public partial class view_admin_usuario : System.Web.UI.Page
         Lalert.Text = "";
         Paneldatos.Visible = !IsPostBack;
         PanelUser.Visible = IsPostBack;
+        Int32 idioma = 2;
+        Int32 id_pagina = 3;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_datos_sesion.Text = controles["L_datos_sesion"].ToString();
+        BTNactualizarsesion.Text = controles["BTNactualizarsesion"].ToString();
+        L_datos_perfil.Text = controles["L_datos_perfil"].ToString();
+        RM.Text = controles["RM"].ToString();
+        RF.Text = controles["RF"].ToString();
+        RO.Text = controles["RO"].ToString();
+        BTNactualizarPerfil.Text = controles["BTNactualizarPerfil"].ToString();
+        Bvolver.Text = controles["Bvolver"].ToString();
+        L_usuarios.Text = controles["L_usuarios"].ToString();
+        L_id.Text = controles["L_id"].ToString();
+        L_username.Text = controles["L_username"].ToString();
+        L_correo.Text = controles["L_correo"].ToString();
+        L_estado.Text = controles["L_estado"].ToString();
+        L_permisos.Text = controles["L_permisos"].ToString();
+        L_action.Text = controles["L_action"].ToString();
+        //Bver.Text = controles["Bver"].ToString();
+        //Beliminar.Text = controles["Beliminar"].ToString();
+
     }
     protected void Beliminar_Command(object sender, CommandEventArgs e)
     {

@@ -1,0 +1,32 @@
+SELECT idioma.f_update_idioma_control(
+	<_control integer>, 
+	<_valor text>
+)
+SELECT idioma.f_obtener_idioma_formulario(
+	<_formulario_id integer>, 
+	<_idioma_id integer>
+)
+SELECT idioma.f_listar_formulario()
+SELECT idioma.f_listar_controles(
+	<_formulario integer>
+)
+SELECT idioma.f_ingresar_idioma_control(
+	<_idioma integer>, 
+	<_control text>, 
+	<_formulario integer>, 
+	<_valor text>
+)
+
+
+SELECT idioma.f_agregar_control(
+	<_control text>, 
+	<_formulario integer>
+)
+
+
+
+SELECT idioma.f_ingresar_idioma(
+	<_idioma character varying>, 
+	<_cultura character varying>
+)
+SELECT idioma.f_cargar_idiomas()

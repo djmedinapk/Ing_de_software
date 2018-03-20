@@ -55,7 +55,7 @@
                                 <article class="media event" style="padding-top: 10px;">
                                     <a class="pull-left date">
                                         <p class="month">
-                                            <asp:Label ID="L_publicaciones" runat="server" Text="publicaciones"></asp:Label></p>
+                                            <asp:Label ID="L_publicaciones" runat="server" Text="Publicaciones"></asp:Label></p>
                                         <p class="day">
                                             <asp:Label ID="Lpubs" runat="server" Text='<%# Bind("publicaciones") %>'></asp:Label>
                                         </p>
@@ -82,7 +82,7 @@
                             </li>
                         </ul>
                         <h2>
-                            <asp:Label ID="L_top_perfiles_puntos" runat="server" Text="Top Perfiles Puntos"></asp:Label></h2>
+                            <asp:Label ID="L_top_perfiles_puntos" runat="server"  Text="Top Perfiles Puntos"></asp:Label></h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">

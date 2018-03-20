@@ -38,6 +38,12 @@
         <div class="p-4">
           <div class="row">
             <div class="col">
+                <asp:Label ID="L_lenguaje" runat="server" ></asp:Label>
+                <asp:DropDownList ID="DDL_lenguaje" runat="server" DataSourceID="ODS_idiomas" DataTextField="nombre" DataValueField="id" OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged" ValidationGroup="idioma" AutoPostBack="True">
+                </asp:DropDownList>
+                <asp:ObjectDataSource runat="server" ID="ODS_idiomas" SelectMethod="cargar_idioma" TypeName="Logica.Lidioma"></asp:ObjectDataSource>
+            </div>
+            <div class="col">
               <%--<h5>Usuario </h5>
             </div>
             <div class="col">
@@ -54,7 +60,7 @@
           </div>
           <div class="row" style="padding-top: 10px;">
             <div class="col">--%>
-              <asp:Button ID="Button1" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"></asp:Button>
+              <asp:Button ID="B_entrar" runat="server" Text="Entrar" class="btn btn-success btn-block" ValidationGroup="master" OnClick="Button1_Click"></asp:Button>
             </div>
           </div>
         </div>
@@ -109,7 +115,7 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                     <ul class="navbar-nav ml-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio2" runat="server" Text="Inicio"></asp:Label></a>
+                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio1" runat="server" Text="Inicio"></asp:Label></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="../home/categoria.aspx"><asp:Label ID="L_categoarias1" runat="server" Text="Categorias"></asp:Label></a>

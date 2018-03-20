@@ -52,6 +52,7 @@
     <Compile Include="Lcontacto.cs" />
     <Compile Include="Lcorreo.cs" />
     <Compile Include="LcorreoInst.cs" />
+    <Compile Include="Lidioma.cs" />
     <Compile Include="Llogin.cs" />
     <Compile Include="Lotros.cs" />
     <Compile Include="LPerfil.cs" />

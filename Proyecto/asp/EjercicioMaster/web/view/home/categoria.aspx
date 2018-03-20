@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="categoria.aspx.cs" Inherits="view_home_categoria" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.master" AutoEventWireup="true" CodeFile="~/Controller/view/categoria.aspx.cs" Inherits="view_home_categoria" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">

@@ -49,6 +49,7 @@
     <Compile Include="Dcontacto.cs" />
     <Compile Include="DcorreoInst.cs" />
     <Compile Include="DDenuncia.cs" />
+    <Compile Include="Didioma.cs" />
     <Compile Include="Dlogin.cs" />
     <Compile Include="Dperfil.cs" />
     <Compile Include="Dpost.cs" />
