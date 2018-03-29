@@ -545,7 +545,7 @@ namespace Logica
                     dp1.Urlperfil = "~/view/perfil/verPerfil.aspx?id=" + datospost.Rows[0]["id_usuario"].ToString();
                     dp1.Avatarimg = dp1.Urlperfil;
                     dp1.Totalpubs = datospost.Rows[0]["posts"].ToString();
-                    dp1.Totalcoments = datospost.Rows[0]["comentarios"].ToString() + " Comentarios";
+                    dp1.Totalcoments = datospost.Rows[0]["comentarios"].ToString();
                     dp1.P1 = true;
                     dp1.P2 = true;
                     dp1.P3 = true;

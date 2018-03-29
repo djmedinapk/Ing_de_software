@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Utilitarios;
 using Logica;
+using System.Collections;
 
 public partial class view_Perfil : System.Web.UI.Page
 {
@@ -118,6 +119,49 @@ public partial class view_Perfil : System.Web.UI.Page
         //    }
 
         //}
+        Int32 idioma = 2;
+        Int32 id_pagina = 14;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_total_post.Text = controles["L_total_post"].ToString();
+        L_mpublicaciones.Text = controles["L_mpublicaciones"].ToString();
+        L_mperfil.Text = controles["L_mperfil"].ToString();
+        L_majustes.Text = controles["L_majustes"].ToString();
+        Bmoderador.Text = controles["Bmoderador"].ToString();
+        Badmin.Text = controles["Badmin"].ToString();
+        Blogout.Text = controles["Blogout"].ToString();
+        L_foro_publico.Text = controles["L_foro_publico"].ToString();
+        L_foro_privado.Text = controles["L_foro_privado"].ToString();
+        L_nombre.Text = controles["L_nombre"].ToString();
+        TperfilNombre.Attributes["placeholder"] = controles["TperfilNombre"].ToString();
+        L_apellido.Text = controles["L_apellido"].ToString();
+        TperfilApellido.Attributes["placeholder"] = controles["TperfilApellido"].ToString();
+        L_edad.Text = controles["L_edad"].ToString();
+        TperfilEdad.Attributes["placeholder"] = controles["TperfilEdad"].ToString();
+        L_sexo.Text = controles["L_sexo"].ToString();
+        RB1.Text = controles["RB1"].ToString();
+        L_usuario.Text = controles["L_usuario"].ToString();
+        TperfilAjustesUsername.Attributes["placeholder"] = controles["TperfilAjustesUsername"].ToString();
+        L_correo.Text = controles["L_correo"].ToString();
+        TperfilAjustesCorreo.Attributes["placeholder"] = controles["TperfilAjustesCorreo"].ToString();
+        L_correo_ins.Text = controles["L_correo_ins"].ToString();
+        Bcorreoins.Text = controles["Bcorreoins"].ToString();
+        L_contrasena.Text = controles["L_contrasena"].ToString();
+        TperfilAjustesContrasena.Attributes["placeholder"] = controles["TperfilAjustesContrasena"].ToString();
+        TperfilAjustesContrasena2.Attributes["placeholder"] = controles["TperfilAjustesContrasena2"].ToString();
+        BajustesGuardar.Text = controles["BajustesGuardar"].ToString();
+
+
     }
 
     protected void Blogout_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
+using System.Collections;
 
 public partial class view_login_ingresar : System.Web.UI.Page
 {
@@ -35,6 +36,33 @@ public partial class view_login_ingresar : System.Web.UI.Page
         //{
 
         //}
+        Int32 idioma = 2;
+        Int32 id_pagina = 8;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+
+        L_iniciar_sesion.Text = controles["L_iniciar_sesion"].ToString();
+        L_registrarse.Text = controles["L_registrarse"].ToString();
+        TloginUser.Attributes["placeholder"] = controles["TloginUser"].ToString();
+        TloginPassword.Attributes["placeholder"] = controles["TloginPassword"].ToString();
+        Blogin.Text = controles["Blogin"].ToString();
+        L_recuperar_contraseña.Text = controles["L_recuperar_contraseña"].ToString();
+        TregistroCorreo.Attributes["placeholder"] = controles["TregistroCorreo"].ToString();
+        TregistroUser.Attributes["placeholder"] = controles["TregistroUser"].ToString();
+        TregistroPassword.Attributes["placeholder"] = controles["TregistroPassword"].ToString();
+        TregistroPassword2.Attributes["placeholder"] = controles["TregistroPassword2"].ToString();
+        Bregistro.Text = controles["Bregistro"].ToString();
+
 
     }
 

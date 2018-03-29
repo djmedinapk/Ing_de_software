@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using System.Collections;
 
 public partial class view_post_editar_post : System.Web.UI.Page
 {
@@ -50,9 +51,33 @@ public partial class view_post_editar_post : System.Web.UI.Page
             catch{  }
         }
         catch { }
-            
-            
-        
+
+        Int32 idioma = 2;
+        Int32 id_pagina = 16;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_modificar_post.Text = controles["L_modificar_post"].ToString();
+        L_nombre_post.Text = controles["L_nombre_post"].ToString();
+        L_descripcion.Text = controles["L_descripcion"].ToString();
+        L_categoria.Text = controles["L_categoria"].ToString();
+        L_fuentes.Text = controles["L_fuentes"].ToString();
+        RBpostfuentes1.Text = controles["RBpostfuentes1"].ToString();
+        RBpostfuentes2.Text = controles["RBpostfuentes2"].ToString();
+        L_miniatura.Text = controles["L_miniatura"].ToString();
+        L_etiquetas.Text = controles["L_etiquetas"].ToString();
+        L_etiquetas_secund.Text = controles["L_etiquetas_Secund"].ToString();
+        BcrearpostTerminar.Text = controles["BcrearpostTerminar"].ToString();
+
     }
     protected void RBpostfuentes2_CheckedChanged(object sender, EventArgs e)
     {

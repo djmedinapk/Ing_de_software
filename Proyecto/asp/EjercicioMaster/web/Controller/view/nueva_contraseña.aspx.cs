@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using System.Collections;
 
 public partial class view_nueva_contraseña : System.Web.UI.Page
 {
@@ -37,6 +38,24 @@ public partial class view_nueva_contraseña : System.Web.UI.Page
         //if(int.Parse(validez.Rows[0][0].ToString()) != 1) {
         //    Response.Redirect("ingresar.aspx");
         //}
+        Int32 idioma = 2;
+        Int32 id_pagina = 9;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_nueva_contraseña.Text = controles["L_nueva_contraseña"].ToString();
+        TNewPassUser.Attributes["placeholder"] = controles["TNewPassUser"].ToString();
+        TNewPassUser2.Attributes["placeholder"] = controles["TNewPassUser2"].ToString();
+        BCambiarcontraseña.Text = controles["BCambiarcontraseña"].ToString();
     }
 
     protected void BCambiarcontraseña_Click(object sender, EventArgs e)

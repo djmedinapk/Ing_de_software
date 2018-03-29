@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
+using System.Collections;
 
 public partial class view_moderador_moderador : System.Web.UI.Page
 {
@@ -71,6 +72,28 @@ public partial class view_moderador_moderador : System.Web.UI.Page
         //    }
 
         //}
+        Int32 idioma = 2;
+        Int32 id_pagina = 12;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_comentarios.Text = controles["L_comentarios"].ToString();
+        L_publicaciones1.Text = controles["L_publicaciones1"].ToString();
+        L_publicas.Text = controles["L_publicas"].ToString();
+        L_privadas.Text = controles["L_privadas"].ToString();
+        //L_denuncias.Text = controles["L_denuncias"].ToString();
+        //L_denuncias.Text = controles["L_denuncias"].ToString();
+        //Beliminar.Text = controles["Beliminar"].ToString();
+
     }
 
     protected void Beliminar_Command(object sender, CommandEventArgs e)

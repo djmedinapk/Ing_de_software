@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using System.Collections;
 
 public partial class view_post_Post : System.Web.UI.Page
 {
@@ -32,7 +33,40 @@ public partial class view_post_Post : System.Web.UI.Page
         {
             Response.Redirect("~/view/home/index.aspx");
         }
-        
+
+        Int32 idioma = 2;
+        Int32 id_pagina = 17;
+        try
+        {
+            idioma = Int32.Parse(Session["idioma"].ToString());
+            Lotros post = new Lotros();
+        }
+        catch
+        {
+            idioma = 2;
+        }
+
+        Lidioma cargar_controles = new Lidioma();
+        Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
+        L_reportar.Text = controles["L_reportar"].ToString();
+        L_estado.Text = controles["L_estado"].ToString();
+        L_total_post.Text = controles["L_total_post"].ToString();
+        Lpuntuacionn.Text = controles["Lpuntuacionn"].ToString();
+        L_agregar_comentario.Text = controles["L_agregar_comentario"].ToString();
+        TAcomentario.Attributes["placeholder"] = controles["TAcomentario"].ToString();
+        BagregarComentario.Text = controles["BagregarComentario"].ToString();
+        L_denunciar_comentario.Text = controles["L_denunciar_comentario"].ToString();
+        L_razon_denuncia.Text = controles["L_razon_denuncia"].ToString();
+        BenviarDenuncia.Text = controles["BenviarDenuncia"].ToString();
+        L_cerrrar.Text = controles["L_cerrrar"].ToString();
+        L_denuncia_publicacion.Text = controles["L_denuncia_publicacion"].ToString();
+        L_razon_denuncia1.Text = controles["L_razon_denuncia1"].ToString();
+        DDLopcion.Text = controles["DDLopcion"].ToString();
+        L_descripcion.Text = controles["L_descripcion"].ToString();
+        BdenunciaPost.Text = controles["BdenunciaPost"].ToString();
+        L_cerrar.Text = controles["L_cerrar"].ToString();
+        //L_totalcomentarios.Text = controles["L_totalcomentarios"].ToString();
+
     }
     protected void cargar_post()
     {
