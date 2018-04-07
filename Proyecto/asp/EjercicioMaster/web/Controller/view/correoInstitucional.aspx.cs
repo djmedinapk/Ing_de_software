@@ -59,7 +59,7 @@ public partial class view_perfil_correoInstitucional : System.Web.UI.Page
         Bterminar.Text = controles["Bterminar"].ToString();
         L_verificar.Text = controles["L_verificar"].ToString();
         Bcodigo.Text = controles["Bcodigo"].ToString();
-        //L_volver1.Text = controles["L_volver1"].ToString();
+        L_volver1.Text = controles["L_volver1"].ToString();
 
     }
 

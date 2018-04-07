@@ -90,10 +90,12 @@ public partial class view_moderador_moderador : System.Web.UI.Page
         L_publicaciones1.Text = controles["L_publicaciones1"].ToString();
         L_publicas.Text = controles["L_publicas"].ToString();
         L_privadas.Text = controles["L_privadas"].ToString();
-        //L_denuncias.Text = controles["L_denuncias"].ToString();
-        //L_denuncias.Text = controles["L_denuncias"].ToString();
-        //Beliminar.Text = controles["Beliminar"].ToString();
-
+        L_publicaciones.Text = controles["L_publicaciones"].ToString();
+        L_denuncias.Text = controles["L_denuncias"].ToString();
+        //for(Int32 i=0; i <= ListView1.Items.Count -1; i++)
+        //{
+            //Beliminar.Text = controles["Beliminar"].ToString();
+        //}
     }
 
     protected void Beliminar_Command(object sender, CommandEventArgs e)

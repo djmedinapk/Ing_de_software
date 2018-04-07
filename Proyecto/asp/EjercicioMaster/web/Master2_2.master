@@ -38,6 +38,12 @@
         <div class="p-2">
             <div class="row">
                 <div class="col">
+                    <asp:Label ID="L_lenguaje" runat="server" ></asp:Label>
+                    <asp:DropDownList ID="DDL_lenguaje" runat="server" DataSourceID="ODS_idiomas" DataTextField="nombre" DataValueField="id" OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged" ValidationGroup="idioma" AutoPostBack="True">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource runat="server" ID="ODS_idiomas" SelectMethod="cargar_idioma" TypeName="Logica.Lidioma"></asp:ObjectDataSource>
+                </div>
+                <div class="col">
                     <strong><asp:Label ID="LmasterUsername" runat="server" Text=""></asp:Label></strong>
                 </div>
                 <div class="col">
@@ -157,7 +163,7 @@
                 </ul>--%>
             </div>
             <div class="col col-sm-4  pt-5">
-                <h4><asp:Label ID="Label1" runat="server" Text="Contacto"></asp:Label></h4>
+                <h4><asp:Label ID="L_contacto2" runat="server" Text="Contacto"></asp:Label></h4>
                 <h4>
                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>

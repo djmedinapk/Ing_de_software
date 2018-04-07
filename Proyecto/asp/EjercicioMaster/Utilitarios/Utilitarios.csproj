@@ -49,6 +49,7 @@
     <Compile Include="Ucontacto.cs" />
     <Compile Include="UcorreoInst.cs" />
     <Compile Include="Uidioma_agregar.cs" />
+    <Compile Include="Uidioma_controles.cs" />
     <Compile Include="Uperfil_campos.cs" />
     <Compile Include="Upost.cs" />
     <Compile Include="Upost2.cs" />

@@ -74,6 +74,8 @@
                                 <li><a href="publicacion.aspx"><asp:Label ID="L_publicaciones" runat="server" Text="Publicaciones"></asp:Label></a></li>
                             </ul>
                         </li>
+                        <li><a href="idioma.aspx"><i class="fa fa-language"></i><asp:Label ID="L_idioma" runat="server" Text="Idiomas"></asp:Label></a>
+                        </li>
                        <%-- <li><a href="index.aspx"><i class="fa fa-terminal" aria-hidden="true"></i>Moderadores</a>--%>
                     </ul>
                 </div>

@@ -25,11 +25,9 @@ public partial class view_login_redirect_login : System.Web.UI.Page
 
         Lidioma cargar_controles = new Lidioma();
         Hashtable controles = cargar_controles.cargar_controles(id_pagina, idioma);
-       Bredirect.Text = controles["L_nueva_contraseña"].ToString();
-       //L_continuar.Text = controles["L_continuar"].ToString();
-       //L_restaurada.Text = controles["L_restaurada"].ToString();
-
-
+       Bredirect.Text = controles["Bredirect"].ToString();
+       L_continuar.Text = controles["L_continuar"].ToString();
+       L_restaurada.Text = controles["L_restaurada"].ToString();
     }
 
     protected void Bredirect_Click(object sender, EventArgs e)

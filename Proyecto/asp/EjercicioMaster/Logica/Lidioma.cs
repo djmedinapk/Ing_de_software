@@ -26,6 +26,13 @@ namespace Logica
             DataTable datos = idiomas.cargar_form();
             return datos;
         }
+        public DataTable cargar_ctrl(Int32 form, Int32 idioma)
+        {
+            Didioma idiomas = new Didioma();
+            DataTable datos = idiomas.cargar_ctrl(form,idioma);
+            return datos;
+        }
+
         public String select_idioma(Int32 idioma)
         {
             String cultura="es-CO";
@@ -67,6 +74,11 @@ namespace Logica
             } catch { return "error Al agregar Idioma"; }
 
             
+        }
+        public void modificar_control(String control,Int32 idioma, Int32 formulario, String texto)
+        {
+            Didioma idiomas = new Didioma();
+            idiomas.guardar_ctrl(control, idioma, formulario, texto);
         }
     }
 }

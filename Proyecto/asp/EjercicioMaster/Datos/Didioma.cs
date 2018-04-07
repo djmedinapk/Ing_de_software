@@ -121,5 +121,65 @@ namespace Datos
             }
             return datos;
         }
+
+        public DataTable cargar_ctrl(Int32 formulario, Int32 idioma)
+        {
+            DataTable datos = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_controles", conectar);
+                dataAdapter.SelectCommand.Parameters.Add("_formulario", NpgsqlDbType.Integer).Value = formulario;
+                dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Integer).Value = idioma;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                conectar.Open();
+                dataAdapter.Fill(datos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datos;
+        }
+
+        public DataTable guardar_ctrl(String control, int idioma,int formulario, String texto)
+        {
+            DataTable datos = new DataTable();
+
+            NpgsqlConnection conectar = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_agregar_control", conectar);
+                dataAdapter.SelectCommand.Parameters.Add("_idioma", NpgsqlDbType.Integer).Value = idioma;
+                dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Text).Value = control;
+                dataAdapter.SelectCommand.Parameters.Add("_formulario", NpgsqlDbType.Integer).Value = formulario;
+                dataAdapter.SelectCommand.Parameters.Add("_valor", NpgsqlDbType.Text).Value = texto;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                conectar.Open();
+                dataAdapter.Fill(datos);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conectar != null)
+                {
+                    conectar.Close();
+                }
+            }
+            return datos;
+        }
     }
 }

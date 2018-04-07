@@ -65,7 +65,7 @@ public partial class view_post_Post : System.Web.UI.Page
         L_descripcion.Text = controles["L_descripcion"].ToString();
         BdenunciaPost.Text = controles["BdenunciaPost"].ToString();
         L_cerrar.Text = controles["L_cerrar"].ToString();
-        //L_totalcomentarios.Text = controles["L_totalcomentarios"].ToString();
+        L_totalcomentarios.Text = controles["L_totalcomentarios"].ToString();
 
     }
     protected void cargar_post()
