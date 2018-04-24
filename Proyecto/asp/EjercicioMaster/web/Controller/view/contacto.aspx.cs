@@ -6,8 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using System.Data;
-using Utilitarios;
+using Tilitarios;
 using System.Collections;
+using Utilitarios;
 
 public partial class view_home_contacto : System.Web.UI.Page
 {
@@ -43,14 +44,15 @@ public partial class view_home_contacto : System.Web.UI.Page
 
     protected void B_contacto_Click(object sender, EventArgs e)
     {
-        Ucontacto contacto = new Ucontacto();
-        contacto.Nombre = Tcontacto_nombre.Text;
-        contacto.Apellido = Tcontacto_apellido.Text;
-        contacto.Correo = Tcontacto_correo.Text;
-        contacto.Telefono = Tcontacto_telefono.Text;
-        contacto.Contenido = Tcontacto_contenido.Text;
+        Ucontacto contactoa = new Ucontacto();
+        contactoa.Nombre = Tcontacto_nombre.Text;
+        contactoa.Apellido = Tcontacto_apellido.Text;
+        contactoa.Correo = Tcontacto_correo.Text;
+        contactoa.Telefono = Tcontacto_telefono.Text;
+        contactoa.Contenido = Tcontacto_contenido.Text;
+
         Lcontacto solicitud = new Lcontacto();
-        solicitud.enviarSolicitud(contacto);
+        solicitud.enviarSolicitud(contactoa);
         //Correo correo = new Correo();
         //String mensaje = "<!DOCTYPE html><html><head>	<title>Sin titulo</title></head><body style='font-family: Arial'>	"+
         //    "<div>		<div>			<b>Email: </b> "+contacto.Correo+"		</div>			<div>		"+

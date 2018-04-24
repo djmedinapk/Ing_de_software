@@ -1,0 +1,1601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Provider="Npgsql" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="denuncia_comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="id_comentario" Type="int8" />
+          <Property Name="id_denunciante" Type="int8" />
+          <Property Name="id_estado" Type="int4" />
+        </EntityType>
+        <EntityType Name="denuncia_publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="id_publicacion" Type="int8" />
+          <Property Name="id_denunciante" Type="int8" Nullable="false" />
+          <Property Name="id_estado" Type="int4" />
+        </EntityType>
+        <EntityType Name="estado_denuncia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="controles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="control" Type="varchar" MaxLength="8000" />
+          <Property Name="idioma_id" Type="int4" />
+          <Property Name="formulario_id" Type="int4" />
+          <Property Name="texto" Type="text" />
+        </EntityType>
+        <EntityType Name="formulario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="8000" />
+          <Property Name="url" Type="text" />
+        </EntityType>
+        <EntityType Name="idioma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="text" Nullable="false" />
+          <Property Name="terminacion" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="lcontroles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="control" Type="text" />
+          <Property Name="formulario_id" Type="int4" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contenido" Type="text" />
+          <Property Name="fecha" Type="timestamp" />
+          <Property Name="id_comentario" Type="int8" />
+          <Property Name="id_usuario" Type="int8" />
+          <Property Name="id_publicacion" Type="int8" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="8000" />
+          <Property Name="descripcion" Type="varchar" MaxLength="8000" />
+          <Property Name="contenido" Type="text" />
+          <Property Name="visitas" Type="int8" />
+          <Property Name="fecha" Type="timestamp" />
+          <Property Name="fuente" Type="varchar" MaxLength="8000" />
+          <Property Name="id_estado" Type="int4" />
+          <Property Name="id_usuario" Type="int8" />
+          <Property Name="miniatura" Type="varchar" MaxLength="8000" />
+          <Property Name="etiquetas" Type="text" />
+          <Property Name="id_categoria" Type="int4" />
+          <Property Name="seccion" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="puntuacion" Type="int4" />
+          <Property Name="fecha" Type="timestamp" />
+          <Property Name="id_usuario" Type="int8" Nullable="false" />
+          <Property Name="id_publicacion" Type="int8" />
+        </EntityType>
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" />
+          <Property Name="correo" Type="varchar" MaxLength="200" />
+          <Property Name="telefono" Type="varchar" MaxLength="100" />
+          <Property Name="contenido" Type="text" />
+          <Property Name="fecha_solicitud" Type="timestamp" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6005: Actualmente, no se admite el tipo de datos 'jsonb' para la versión de Entity Framework de destino; se excluyó la columna 'data' de la tabla 'ForoUdec.seguridad_registros.auditoria'.-->
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="timestamptz" Precision="7" Nullable="false" />
+          <Property Name="accion" Type="varchar" MaxLength="100" />
+          <Property Name="schema" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tabla" Type="varchar" MaxLength="200" />
+          <Property Name="pk" Type="text" Nullable="false" />
+          <Property Name="session" Type="text" Nullable="false" />
+          <Property Name="user_bd" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bloqueo_configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="8000" />
+          <Property Name="tiempo" Type="int4" />
+          <Property Name="tipo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6005: Actualmente, no se admite el tipo de datos 'timetz' para la versión de Entity Framework de destino; se excluyó la columna 'fecha_fin' de la tabla 'ForoUdec.seguridad_registros.ingresos'.-->
+        <EntityType Name="ingresos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int4" />
+          <Property Name="user_mac" Type="varchar" MaxLength="8000" />
+          <Property Name="user_session" Type="text" />
+          <Property Name="fecha_inicio" Type="time" Precision="6" />
+          <Property Name="user_ip" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="bloqueo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_bloqueo" Type="timestamp" />
+          <Property Name="id_user" Type="int8" />
+          <Property Name="fecha_teminacion" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="correo_institucional">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_session" Type="int8" />
+          <Property Name="correo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="estado1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="token">
+          <Property Name="user_id" Type="int8" />
+          <Property Name="token" Type="text" />
+          <Property Name="fecha_creado" Type="timestamp" />
+          <Property Name="fecha_vigencia" Type="timestamp" />
+        </EntityType>-->
+        <EntityType Name="user_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="8000" />
+          <Property Name="pasword" Type="varchar" MaxLength="8000" />
+          <Property Name="fecha_ult_session" Type="timestamp" />
+          <Property Name="correo" Type="varchar" MaxLength="8000" />
+          <Property Name="estado_session" Type="int4" />
+          <Property Name="session" Type="text" />
+          <Property Name="id_permisos" Type="int4" />
+          <Property Name="id_estado" Type="int4" />
+          <Property Name="intentos_acceso" Type="int4" />
+          <Property Name="n_sesiones" Type="int4" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="8000" />
+          <Property Name="apellido" Type="varchar" MaxLength="8000" />
+          <Property Name="avatar" Type="varchar" MaxLength="8000" />
+          <Property Name="edad" Type="int4" />
+          <Property Name="id_session" Type="int8" />
+          <Property Name="sexo" Type="varchar" MaxLength="8000" />
+          <Property Name="session" Type="text" />
+        </EntityType>
+        <Association Name="bloqueo_id_user_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="bloqueo" Type="Self.bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bloqueo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comentario1" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario1">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_idioma_id_fkey">
+          <End Role="idioma" Type="Self.idioma" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idioma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="idioma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="correo_institucional_id_session_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="correo_institucional" Type="Self.correo_institucional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="correo_institucional">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_session">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lcontroles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="lcontroles" Type="Self.lcontroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lcontroles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_categoria_fkey">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_estado_fkey">
+          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_estado_fkey">
+          <End Role="estado1" Type="Self.estado1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_permisos_fkey">
+          <End Role="permisos" Type="Self.permisos" Multiplicity="0..1" />
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_permisos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="denuncia_comentario" EntityType="Self.denuncia_comentario" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="denuncia_publicacion" EntityType="Self.denuncia_publicacion" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="estado_denuncia" EntityType="Self.estado_denuncia" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="controles" EntityType="Self.controles" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="formulario" EntityType="Self.formulario" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="idioma" EntityType="Self.idioma" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="lcontroles" EntityType="Self.lcontroles" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="post" store:Type="Tables" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" Schema="post" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="post" store:Type="Tables" />
+          <EntitySet Name="publicacion" EntityType="Self.publicacion" Schema="post" store:Type="Tables" />
+          <EntitySet Name="puntuacion" EntityType="Self.puntuacion" Schema="post" store:Type="Tables" />
+          <EntitySet Name="contacto" EntityType="Self.contacto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="bloqueo_configuration" EntityType="Self.bloqueo_configuration" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="ingresos" EntityType="Self.ingresos" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="bloqueo" EntityType="Self.bloqueo" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="correo_institucional" EntityType="Self.correo_institucional" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="estado1" EntityType="Self.estado1" Schema="usuario" Table="estado" store:Type="Tables" />
+          <EntitySet Name="permisos" EntityType="Self.permisos" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="user_session" EntityType="Self.user_session" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="usuario" store:Type="Tables" />
+          <AssociationSet Name="bloqueo_id_user_fkey" Association="Self.bloqueo_id_user_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="bloqueo" EntitySet="bloqueo" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_comentario_fkey" Association="Self.comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="comentario1" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_publicacion_fkey" Association="Self.comentario_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_usuario_fkey" Association="Self.comentario_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="controles_formulario_id_fkey" Association="Self.controles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_idioma_id_fkey" Association="Self.controles_idioma_id_fkey">
+            <End Role="idioma" EntitySet="idioma" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="correo_institucional_id_session_fkey" Association="Self.correo_institucional_id_session_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="correo_institucional" EntitySet="correo_institucional" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_comentario_fkey" Association="Self.denuncia_comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_denunciante_fkey" Association="Self.denuncia_comentario_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_estado_fkey" Association="Self.denuncia_comentario_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_denunciante_fkey" Association="Self.denuncia_publicacion_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_estado_fkey" Association="Self.denuncia_publicacion_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_publicacion_fkey" Association="Self.denuncia_publicacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="id_session" Association="Self.id_session">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="lcontroles_formulario_id_fkey" Association="Self.lcontroles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="lcontroles" EntitySet="lcontroles" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_categoria_fkey" Association="Self.publicacion_id_categoria_fkey">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_estado_fkey" Association="Self.publicacion_id_estado_fkey">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_usuario_fkey" Association="Self.publicacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_publicacion_fkey" Association="Self.puntuacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Self.puntuacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_estado_fkey" Association="Self.user_session_id_estado_fkey">
+            <End Role="estado1" EntitySet="estado1" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_permisos_fkey" Association="Self.user_session_id_permisos_fkey">
+            <End Role="permisos" EntitySet="permisos" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="denuncia_comentario" EntityType="Model1.denuncia_comentario" />
+          <EntitySet Name="denuncia_publicacion" EntityType="Model1.denuncia_publicacion" />
+          <EntitySet Name="estado_denuncia" EntityType="Model1.estado_denuncia" />
+          <EntitySet Name="controles" EntityType="Model1.controle" />
+          <EntitySet Name="formularios" EntityType="Model1.formulario" />
+          <EntitySet Name="idiomas" EntityType="Model1.idioma" />
+          <EntitySet Name="lcontroles" EntityType="Model1.lcontrole" />
+          <EntitySet Name="categorias" EntityType="Model1.categoria" />
+          <EntitySet Name="comentarios" EntityType="Model1.comentario" />
+          <EntitySet Name="estadoes" EntityType="Model1.estado" />
+          <EntitySet Name="publicacions" EntityType="Model1.publicacion" />
+          <EntitySet Name="puntuacions" EntityType="Model1.puntuacion" />
+          <EntitySet Name="contactoes" EntityType="Model1.contacto" />
+          <EntitySet Name="auditorias" EntityType="Model1.auditoria" />
+          <EntitySet Name="bloqueo_configuration" EntityType="Model1.bloqueo_configuration" />
+          <EntitySet Name="ingresos" EntityType="Model1.ingreso" />
+          <EntitySet Name="bloqueos" EntityType="Model1.bloqueo" />
+          <EntitySet Name="correo_institucional" EntityType="Model1.correo_institucional" />
+          <EntitySet Name="estado1" EntityType="Model1.estado1" />
+          <EntitySet Name="permisos" EntityType="Model1.permiso" />
+          <EntitySet Name="user_session" EntityType="Model1.user_session" />
+          <EntitySet Name="usuarios" EntityType="Model1.usuario" />
+          <AssociationSet Name="denuncia_comentario_id_comentario_fkey" Association="Model1.denuncia_comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentarios" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_denunciante_fkey" Association="Model1.denuncia_comentario_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_estado_fkey" Association="Model1.denuncia_comentario_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_denunciante_fkey" Association="Model1.denuncia_publicacion_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_estado_fkey" Association="Model1.denuncia_publicacion_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_publicacion_fkey" Association="Model1.denuncia_publicacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacions" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="controles_formulario_id_fkey" Association="Model1.controles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formularios" />
+            <End Role="controle" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_idioma_id_fkey" Association="Model1.controles_idioma_id_fkey">
+            <End Role="idioma" EntitySet="idiomas" />
+            <End Role="controle" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="lcontroles_formulario_id_fkey" Association="Model1.lcontroles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formularios" />
+            <End Role="lcontrole" EntitySet="lcontroles" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_categoria_fkey" Association="Model1.publicacion_id_categoria_fkey">
+            <End Role="categoria" EntitySet="categorias" />
+            <End Role="publicacion" EntitySet="publicacions" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_comentario_fkey" Association="Model1.comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentarios" />
+            <End Role="comentario1" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_publicacion_fkey" Association="Model1.comentario_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacions" />
+            <End Role="comentario" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_usuario_fkey" Association="Model1.comentario_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="comentario" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_estado_fkey" Association="Model1.publicacion_id_estado_fkey">
+            <End Role="estado" EntitySet="estadoes" />
+            <End Role="publicacion" EntitySet="publicacions" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_usuario_fkey" Association="Model1.publicacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="publicacion" EntitySet="publicacions" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_publicacion_fkey" Association="Model1.puntuacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacions" />
+            <End Role="puntuacion" EntitySet="puntuacions" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Model1.puntuacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="puntuacion" EntitySet="puntuacions" />
+          </AssociationSet>
+          <AssociationSet Name="bloqueo_id_user_fkey" Association="Model1.bloqueo_id_user_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="bloqueo" EntitySet="bloqueos" />
+          </AssociationSet>
+          <AssociationSet Name="correo_institucional_id_session_fkey" Association="Model1.correo_institucional_id_session_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="correo_institucional" EntitySet="correo_institucional" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_estado_fkey" Association="Model1.user_session_id_estado_fkey">
+            <End Role="estado1" EntitySet="estado1" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_permisos_fkey" Association="Model1.user_session_id_permisos_fkey">
+            <End Role="permiso" EntitySet="permisos" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="id_session" Association="Model1.id_session">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="usuario" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="denuncia_comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_comentario" Type="Int64" />
+          <Property Name="id_denunciante" Type="Int64" />
+          <Property Name="id_estado" Type="Int32" />
+          <NavigationProperty Name="comentario" Relationship="Model1.denuncia_comentario_id_comentario_fkey" FromRole="denuncia_comentario" ToRole="comentario" />
+          <NavigationProperty Name="user_session" Relationship="Model1.denuncia_comentario_id_denunciante_fkey" FromRole="denuncia_comentario" ToRole="user_session" />
+          <NavigationProperty Name="estado_denuncia" Relationship="Model1.denuncia_comentario_id_estado_fkey" FromRole="denuncia_comentario" ToRole="estado_denuncia" />
+        </EntityType>
+        <EntityType Name="denuncia_publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <Property Name="id_denunciante" Type="Int64" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" />
+          <NavigationProperty Name="user_session" Relationship="Model1.denuncia_publicacion_id_denunciante_fkey" FromRole="denuncia_publicacion" ToRole="user_session" />
+          <NavigationProperty Name="estado_denuncia" Relationship="Model1.denuncia_publicacion_id_estado_fkey" FromRole="denuncia_publicacion" ToRole="estado_denuncia" />
+          <NavigationProperty Name="publicacion" Relationship="Model1.denuncia_publicacion_id_publicacion_fkey" FromRole="denuncia_publicacion" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="estado_denuncia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Model1.denuncia_comentario_id_estado_fkey" FromRole="estado_denuncia" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Model1.denuncia_publicacion_id_estado_fkey" FromRole="estado_denuncia" ToRole="denuncia_publicacion" />
+        </EntityType>
+        <EntityType Name="controle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="control" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="idioma_id" Type="Int32" />
+          <Property Name="formulario_id" Type="Int32" />
+          <Property Name="texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="formulario" Relationship="Model1.controles_formulario_id_fkey" FromRole="controle" ToRole="formulario" />
+          <NavigationProperty Name="idioma" Relationship="Model1.controles_idioma_id_fkey" FromRole="controle" ToRole="idioma" />
+        </EntityType>
+        <EntityType Name="formulario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="controles" Relationship="Model1.controles_formulario_id_fkey" FromRole="formulario" ToRole="controle" />
+          <NavigationProperty Name="lcontroles" Relationship="Model1.lcontroles_formulario_id_fkey" FromRole="formulario" ToRole="lcontrole" />
+        </EntityType>
+        <EntityType Name="idioma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="terminacion" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="controles" Relationship="Model1.controles_idioma_id_fkey" FromRole="idioma" ToRole="controle" />
+        </EntityType>
+        <EntityType Name="lcontrole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="control" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formulario_id" Type="Int32" />
+          <NavigationProperty Name="formulario" Relationship="Model1.lcontroles_formulario_id_fkey" FromRole="lcontrole" ToRole="formulario" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="publicacions" Relationship="Model1.publicacion_id_categoria_fkey" FromRole="categoria" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="6" />
+          <Property Name="id_comentario" Type="Int64" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Model1.denuncia_comentario_id_comentario_fkey" FromRole="comentario" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="comentario1" Relationship="Model1.comentario_id_comentario_fkey" FromRole="comentario" ToRole="comentario1" />
+          <NavigationProperty Name="comentario2" Relationship="Model1.comentario_id_comentario_fkey" FromRole="comentario1" ToRole="comentario" />
+          <NavigationProperty Name="publicacion" Relationship="Model1.comentario_id_publicacion_fkey" FromRole="comentario" ToRole="publicacion" />
+          <NavigationProperty Name="user_session" Relationship="Model1.comentario_id_usuario_fkey" FromRole="comentario" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="publicacions" Relationship="Model1.publicacion_id_estado_fkey" FromRole="estado" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="visitas" Type="Int64" />
+          <Property Name="fecha" Type="DateTime" Precision="6" />
+          <Property Name="fuente" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="id_estado" Type="Int32" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="miniatura" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="etiquetas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="seccion" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Model1.denuncia_publicacion_id_publicacion_fkey" FromRole="publicacion" ToRole="denuncia_publicacion" />
+          <NavigationProperty Name="categoria" Relationship="Model1.publicacion_id_categoria_fkey" FromRole="publicacion" ToRole="categoria" />
+          <NavigationProperty Name="comentarios" Relationship="Model1.comentario_id_publicacion_fkey" FromRole="publicacion" ToRole="comentario" />
+          <NavigationProperty Name="estado" Relationship="Model1.publicacion_id_estado_fkey" FromRole="publicacion" ToRole="estado" />
+          <NavigationProperty Name="user_session" Relationship="Model1.publicacion_id_usuario_fkey" FromRole="publicacion" ToRole="user_session" />
+          <NavigationProperty Name="puntuacions" Relationship="Model1.puntuacion_id_publicacion_fkey" FromRole="publicacion" ToRole="puntuacion" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="puntuacion1" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="6" />
+          <Property Name="id_usuario" Type="Int64" Nullable="false" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <NavigationProperty Name="publicacion" Relationship="Model1.puntuacion_id_publicacion_fkey" FromRole="puntuacion" ToRole="publicacion" />
+          <NavigationProperty Name="user_session" Relationship="Model1.puntuacion_id_usuario_fkey" FromRole="puntuacion" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_solicitud" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="accion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="schema" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="tabla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="pk" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_bd" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bloqueo_configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="tiempo" Type="Int32" />
+          <Property Name="tipo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ingreso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="user_mac" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="user_session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_inicio" Type="Time" Precision="6" />
+          <Property Name="user_ip" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bloqueo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_bloqueo" Type="DateTime" Precision="6" />
+          <Property Name="id_user" Type="Int64" />
+          <Property Name="fecha_teminacion" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="user_session" Relationship="Model1.bloqueo_id_user_fkey" FromRole="bloqueo" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="correo_institucional">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_session" Type="Int64" />
+          <Property Name="correo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Model1.correo_institucional_id_session_fkey" FromRole="correo_institucional" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="estado1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Model1.user_session_id_estado_fkey" FromRole="estado1" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="permiso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Model1.user_session_id_permisos_fkey" FromRole="permiso" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="user_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="pasword" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_session" Type="DateTime" Precision="6" />
+          <Property Name="correo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="estado_session" Type="Int32" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_permisos" Type="Int32" />
+          <Property Name="id_estado" Type="Int32" />
+          <Property Name="intentos_acceso" Type="Int32" />
+          <Property Name="n_sesiones" Type="Int32" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Model1.denuncia_comentario_id_denunciante_fkey" FromRole="user_session" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Model1.denuncia_publicacion_id_denunciante_fkey" FromRole="user_session" ToRole="denuncia_publicacion" />
+          <NavigationProperty Name="comentarios" Relationship="Model1.comentario_id_usuario_fkey" FromRole="user_session" ToRole="comentario" />
+          <NavigationProperty Name="publicacions" Relationship="Model1.publicacion_id_usuario_fkey" FromRole="user_session" ToRole="publicacion" />
+          <NavigationProperty Name="puntuacions" Relationship="Model1.puntuacion_id_usuario_fkey" FromRole="user_session" ToRole="puntuacion" />
+          <NavigationProperty Name="bloqueos" Relationship="Model1.bloqueo_id_user_fkey" FromRole="user_session" ToRole="bloqueo" />
+          <NavigationProperty Name="correo_institucional" Relationship="Model1.correo_institucional_id_session_fkey" FromRole="user_session" ToRole="correo_institucional" />
+          <NavigationProperty Name="estado1" Relationship="Model1.user_session_id_estado_fkey" FromRole="user_session" ToRole="estado1" />
+          <NavigationProperty Name="permiso" Relationship="Model1.user_session_id_permisos_fkey" FromRole="user_session" ToRole="permiso" />
+          <NavigationProperty Name="usuarios" Relationship="Model1.id_session" FromRole="user_session" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="id_session" Type="Int64" />
+          <Property Name="sexo" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Model1.id_session" FromRole="usuario" ToRole="user_session" />
+        </EntityType>
+        <Association Name="denuncia_comentario_id_comentario_fkey">
+          <End Type="Model1.comentario" Role="comentario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_comentario" Role="denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_denunciante_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_comentario" Role="denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_estado_fkey">
+          <End Type="Model1.estado_denuncia" Role="estado_denuncia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_comentario" Role="denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_denunciante_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_publicacion" Role="denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_estado_fkey">
+          <End Type="Model1.estado_denuncia" Role="estado_denuncia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_publicacion" Role="denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_publicacion_fkey">
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.denuncia_publicacion" Role="denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_formulario_id_fkey">
+          <End Type="Model1.formulario" Role="formulario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.controle" Role="controle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controle">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_idioma_id_fkey">
+          <End Type="Model1.idioma" Role="idioma" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.controle" Role="controle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idioma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controle">
+              <PropertyRef Name="idioma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lcontroles_formulario_id_fkey">
+          <End Type="Model1.formulario" Role="formulario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.lcontrole" Role="lcontrole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lcontrole">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_categoria_fkey">
+          <End Type="Model1.categoria" Role="categoria" Multiplicity="0..1" />
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_comentario_fkey">
+          <End Type="Model1.comentario" Role="comentario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.comentario" Role="comentario1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario1">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_publicacion_fkey">
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.comentario" Role="comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_usuario_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.comentario" Role="comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_estado_fkey">
+          <End Type="Model1.estado" Role="estado" Multiplicity="0..1" />
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_usuario_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1" />
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_publicacion_fkey">
+          <End Type="Model1.publicacion" Role="publicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.puntuacion" Role="puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.puntuacion" Role="puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bloqueo_id_user_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.bloqueo" Role="bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bloqueo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="correo_institucional_id_session_fkey">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.correo_institucional" Role="correo_institucional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="correo_institucional">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_estado_fkey">
+          <End Type="Model1.estado1" Role="estado1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_permisos_fkey">
+          <End Type="Model1.permiso" Role="permiso" Multiplicity="0..1" />
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permiso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_permisos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_session">
+          <End Type="Model1.user_session" Role="user_session" Multiplicity="0..1" />
+          <End Type="Model1.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
+          <EntitySetMapping Name="denuncia_comentario">
+            <EntityTypeMapping TypeName="Model1.denuncia_comentario">
+              <MappingFragment StoreEntitySet="denuncia_comentario">
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="denuncia_publicacion">
+            <EntityTypeMapping TypeName="Model1.denuncia_publicacion">
+              <MappingFragment StoreEntitySet="denuncia_publicacion">
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado_denuncia">
+            <EntityTypeMapping TypeName="Model1.estado_denuncia">
+              <MappingFragment StoreEntitySet="estado_denuncia">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="controles">
+            <EntityTypeMapping TypeName="Model1.controle">
+              <MappingFragment StoreEntitySet="controles">
+                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+                <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formularios">
+            <EntityTypeMapping TypeName="Model1.formulario">
+              <MappingFragment StoreEntitySet="formulario">
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="idiomas">
+            <EntityTypeMapping TypeName="Model1.idioma">
+              <MappingFragment StoreEntitySet="idioma">
+                <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lcontroles">
+            <EntityTypeMapping TypeName="Model1.lcontrole">
+              <MappingFragment StoreEntitySet="lcontroles">
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="Model1.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentarios">
+            <EntityTypeMapping TypeName="Model1.comentario">
+              <MappingFragment StoreEntitySet="comentario">
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estadoes">
+            <EntityTypeMapping TypeName="Model1.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="publicacions">
+            <EntityTypeMapping TypeName="Model1.publicacion">
+              <MappingFragment StoreEntitySet="publicacion">
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puntuacions">
+            <EntityTypeMapping TypeName="Model1.puntuacion">
+              <MappingFragment StoreEntitySet="puntuacion">
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="puntuacion1" ColumnName="puntuacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactoes">
+            <EntityTypeMapping TypeName="Model1.contacto">
+              <MappingFragment StoreEntitySet="contacto">
+                <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditorias">
+            <EntityTypeMapping TypeName="Model1.auditoria">
+              <MappingFragment StoreEntitySet="auditoria">
+                <ScalarProperty Name="user_bd" ColumnName="user_bd" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="pk" ColumnName="pk" />
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="schema" ColumnName="schema" />
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bloqueo_configuration">
+            <EntityTypeMapping TypeName="Model1.bloqueo_configuration">
+              <MappingFragment StoreEntitySet="bloqueo_configuration">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ingresos">
+            <EntityTypeMapping TypeName="Model1.ingreso">
+              <MappingFragment StoreEntitySet="ingresos">
+                <ScalarProperty Name="user_ip" ColumnName="user_ip" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="user_session" ColumnName="user_session" />
+                <ScalarProperty Name="user_mac" ColumnName="user_mac" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bloqueos">
+            <EntityTypeMapping TypeName="Model1.bloqueo">
+              <MappingFragment StoreEntitySet="bloqueo">
+                <ScalarProperty Name="fecha_teminacion" ColumnName="fecha_teminacion" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="fecha_bloqueo" ColumnName="fecha_bloqueo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="correo_institucional">
+            <EntityTypeMapping TypeName="Model1.correo_institucional">
+              <MappingFragment StoreEntitySet="correo_institucional">
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="id_session" ColumnName="id_session" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado1">
+            <EntityTypeMapping TypeName="Model1.estado1">
+              <MappingFragment StoreEntitySet="estado1">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permisos">
+            <EntityTypeMapping TypeName="Model1.permiso">
+              <MappingFragment StoreEntitySet="permisos">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_session">
+            <EntityTypeMapping TypeName="Model1.user_session">
+              <MappingFragment StoreEntitySet="user_session">
+                <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+                <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="Model1.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="id_session" ColumnName="id_session" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
