@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Proyecto", ".", "{4F68859A-4D10-4826-80C8-2F8AF5015436}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		ProjectReferences = "{62f04007-d002-46c1-81c9-625202f8461d}|Utilitarios.dll;{BD15D181-B4F3-4E29-BA74-060D8C586664}|Datos.dll;{F60280C1-4974-40AA-BF67-D7F7B9019667}|Encapsulados.dll;{390fc2ca-1077-49be-b185-27717189cbdc}|Tilitarios.dll;{868b6d01-7167-406e-8e68-7d453dd2b9fd}|Logica.dll;"
+		ProjectReferences = "{868b6d01-7167-406e-8e68-7d453dd2b9fd}|Logica.dll;{62f04007-d002-46c1-81c9-625202f8461d}|Utilitarios.dll;{BD15D181-B4F3-4E29-BA74-060D8C586664}|Datos.dll;{F60280C1-4974-40AA-BF67-D7F7B9019667}|Encapsulados.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54836"
 		Debug.AspNetCompiler.PhysicalPath = "..\web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54836\"
@@ -32,10 +32,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\Logica\Logica.csproj", "{868B6D01-7167-406E-8E68-7D453DD2B9FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilitarios", "..\Utilitarios\Utilitarios.csproj", "{62F04007-D002-46C1-81C9-625202F8461D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "..\Persistencia\Persistencia.csproj", "{593BA1BC-7454-4BFE-867C-3BD82AE80E3C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tilitarios", "..\Tilitarios\Tilitarios.csproj", "{390FC2CA-1077-49BE-B185-27717189CBDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,14 +59,6 @@ Global
 		{62F04007-D002-46C1-81C9-625202F8461D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62F04007-D002-46C1-81C9-625202F8461D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62F04007-D002-46C1-81C9-625202F8461D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{593BA1BC-7454-4BFE-867C-3BD82AE80E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{593BA1BC-7454-4BFE-867C-3BD82AE80E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{593BA1BC-7454-4BFE-867C-3BD82AE80E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{593BA1BC-7454-4BFE-867C-3BD82AE80E3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{390FC2CA-1077-49BE-B185-27717189CBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{390FC2CA-1077-49BE-B185-27717189CBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{390FC2CA-1077-49BE-B185-27717189CBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{390FC2CA-1077-49BE-B185-27717189CBDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

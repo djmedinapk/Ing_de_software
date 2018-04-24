@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="right_col" role="main">
-        <!-----------DatosIdioma----------------->
+        <!-----------DatosUser----------------->
         <asp:Label ID="Lalert" runat="server" Text=""></asp:Label>
         <asp:Panel ID="PanelUser" runat="server" Visible="True">
             <div class="row">
@@ -29,10 +29,10 @@
                                 
                                 <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
                                     
-                                    <asp:TextBox ID="Tnombre" runat="server" CssClass="form-control has-feedback-left" ValidationGroup="idioma" Placeholder="idioma" >
+                                    <asp:TextBox ID="Tnombre" runat="server" CssClass="form-control has-feedback-left" ValidationGroup="idioma" Placeholder="idioma">
                                        
                                     </asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tnombre" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="idioma"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tnombre" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
                                     
                                     <%--<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">--%>
                                     <span class="fa fa-flag form-control-feedback left" aria-hidden="true"></span>
@@ -40,7 +40,7 @@
                                 
                                 <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
                                     <asp:TextBox ID="Tcultura" runat="server" CssClass="form-control has-feedback-left" ValidationGroup="idioma" Placeholder="Terminacion"></asp:TextBox>
-                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tcultura" ForeColor="Red" Font-Size="XX-Small" ValidationGroup="idioma"></asp:RequiredFieldValidator>
+                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="Tcultura" ForeColor="Red" Font-Size="XX-Small"></asp:RequiredFieldValidator>
                                     <%-- <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">--%>
                                     <span class="fa fa-star form-control-feedback left" aria-hidden="true"></span>
                                 </div>

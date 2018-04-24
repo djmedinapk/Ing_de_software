@@ -1,6 +1,0 @@
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\obj\Debug\Tilitarios.csprojResolveAssemblyReference.cache
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\obj\Debug\Tilitarios.csproj.CoreCompileInputs.cache
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\bin\Debug\Tilitarios.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\bin\Debug\Tilitarios.pdb
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\obj\Debug\Tilitarios.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Tilitarios\obj\Debug\Tilitarios.pdb

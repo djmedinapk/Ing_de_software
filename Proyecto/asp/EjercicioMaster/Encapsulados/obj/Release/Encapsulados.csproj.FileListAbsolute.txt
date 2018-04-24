@@ -1,6 +1,0 @@
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\bin\Release\Encapsulados.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\bin\Release\Encapsulados.pdb
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Release\Encapsulados.csprojResolveAssemblyReference.cache
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Release\Encapsulados.csproj.CoreCompileInputs.cache
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Release\Encapsulados.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Encapsulados\obj\Release\Encapsulados.pdb
