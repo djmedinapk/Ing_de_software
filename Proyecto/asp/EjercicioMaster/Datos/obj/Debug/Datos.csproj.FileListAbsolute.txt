@@ -5,15 +5,7 @@ C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\ob
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\obj\Debug\Datos.dll
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\obj\Debug\Datos.pdb
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Npgsql.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Mono.Security.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Npgsql.pdb
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Npgsql.xml
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\de\Npgsql.resources.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\es\Npgsql.resources.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\fi\Npgsql.resources.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\fr\Npgsql.resources.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\ja\Npgsql.resources.dll
-C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\zh-CN\Npgsql.resources.dll
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Encapsulados.dll
 C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Encapsulados.pdb
 C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\Datos.dll
@@ -67,3 +59,5 @@ C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\Ejercicio
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\obj\Debug\Datos.dll
 C:\Users\ledua\OneDrive\Documentos\GitHub\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\obj\Debug\Datos.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\Datos\bin\Debug\System.Threading.Tasks.Extensions.xml

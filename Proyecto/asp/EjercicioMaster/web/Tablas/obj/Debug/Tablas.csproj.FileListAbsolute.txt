@@ -1,0 +1,6 @@
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\bin\Debug\Tablas.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\bin\Debug\Tablas.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\obj\Debug\Tablas.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\obj\Debug\Tablas.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\obj\Debug\Tablas.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\EjercicioMaster\web\Tablas\obj\Debug\Tablas.pdb

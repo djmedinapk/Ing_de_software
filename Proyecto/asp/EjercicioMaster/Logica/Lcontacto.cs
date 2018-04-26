@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Datos;
 using Encapsulados;
 using Utilitarios;
+using Persistencia;
+using Tablas;
 
 namespace Logica
 {
@@ -14,14 +16,17 @@ namespace Logica
         public void enviarSolicitud(Ucontacto contacto)
         {
             Dcontacto solicitud = new Dcontacto();
-            Econtacto datos = new Econtacto();
-            datos.Nombre = contacto.Nombre;
-            datos.Apellido=contacto.Apellido;
-            datos.Correo=contacto.Correo;
-            datos.Telefono=contacto.Telefono;
-            datos.Contenido=contacto.Contenido;
-            
-            solicitud.Enviar_solicitud(datos);
+            contacto datos = new contacto();
+            datos.nombre = contacto.Nombre;
+            datos.apellido=contacto.Apellido;
+            datos.correo=contacto.Correo;
+            datos.telefono=contacto.Telefono;
+            datos.contenido=contacto.Contenido;
+
+            Persistencia.ForoUdecContext db = new ForoUdecContext();
+            db.contactos.Add(datos);
+            db.SaveChanges();
+            //solicitud.Enviar_solicitud(datos);
             Lcorreo correo = new Lcorreo();
             String mensaje = "<!DOCTYPE html><html><head>	<title>Sin titulo</title></head><body style='font-family: Arial'>	" +
                 "<div>		<div>			<b>Email: </b> " + contacto.Correo + "		</div>			<div>		" +
