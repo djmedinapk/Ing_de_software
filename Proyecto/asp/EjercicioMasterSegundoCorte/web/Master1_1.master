@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/master/Master1_1.master.cs" Inherits="Master1" %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="App_Themes/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="App_Themes/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href="App_Themes/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />   
+    <link href="App_Themes/css/master.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="header fixed-top">
+      <div class="d-flex justify-content-sm-between justify-content-center menu-header">
+      <div class="img-logo">
+        <img src="../../img/logo.png" width="200px" height="100px" style="position: fixed;">
+      </div>
+        <div class="p-2 logo"></div>  
+        <div class="p-2">
+                 <div class="d-flex justify-content-around">
+                     <a href="../Post/crearPublicacion.aspx?m=1" class="p-2 text-center"><i class="fa fa-pencil-square-o text-success" aria-hidden="true" style="font-size:25px;"></i></a>
+                    <a href="../private/index.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_inicio" runat="server" Text="Inicio"></asp:Label></a>
+                     <a href="../home/index.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_foropublico" runat="server" Text="ForoPublico"></asp:Label></a>
+                    <a href="../private/categoria.aspx" class="p-2 text-center item-menu"><asp:Label ID="L_categorias" runat="server" Text="Categorias"></asp:Label></a>
+                    <a href="" class="p-2 text-center item-menu dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><asp:Label ID="Lusername" runat="server"></asp:Label></a>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="../perfil/perfil.aspx?m=1"><asp:Label ID="L_perfil" runat="server" Text="Perfil"></asp:Label></a>
+                        <%--<asp:Button ID="Bminiatura_settings" runat="server" Text="Perfil" CssClass="dropdown-item" OnClick="Bminiatura_settings_Click" />
+                        <asp:Button ID="Bminiatura_salir" runat="server" Text="Cerrar Sesion" CssClass="dropdown-item" OnClick="Bminiatura_salir_Click"/>--%>
+                      </div>
+                    
+                        <asp:TextBox ID="Tsearch" runat="server" CssClass="form-control mr-sm-2 " placeholder="buscar.." ValidationGroup="busqueda"></asp:TextBox>
+                      <%--<input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">--%>
+                        <asp:Button ID="BTNsearch" runat="server" CssClass="btn btn-outline-success my-2 my-sm-0" Text="Buscar" ValidationGroup="busqueda" OnClick="BTNsearch_Click"/>
+                      <%--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+                    
+                  </div>  
+        </div>  
+      </div>
+    </div>
+    <div class="body" style="margin-top:50px; padding:50px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+   </div>
+    <div class="footer">
+      <p><asp:Label ID="L_derechos_reservados" runat="server" Text="Todos los derechos reservados  MetapodSoft &#174; 2017"></asp:Label></p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+          <script src="../../App_Themes/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </form>
+ </body>
+</html>

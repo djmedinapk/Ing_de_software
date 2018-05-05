@@ -98,7 +98,7 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter(" post.f_cargar_mod_post", conectar);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_usertid", NpgsqlDbType.Integer).Value = user_id;
+                dataAdapter.SelectCommand.Parameters.Add("_userid", NpgsqlDbType.Integer).Value = user_id;
                 dataAdapter.SelectCommand.Parameters.Add("_postid", NpgsqlDbType.Integer).Value = post_id;
 
                 conectar.Open();
