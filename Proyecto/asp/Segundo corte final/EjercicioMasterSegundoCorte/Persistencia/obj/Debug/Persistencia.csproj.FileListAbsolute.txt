@@ -64,3 +64,17 @@ D:\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.csprojResolve
 D:\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.dll
 D:\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Persistencia.dll.config
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Persistencia.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Persistencia.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Tablas.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Tablas.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\EntityFramework.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\EntityFramework6.Npgsql.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\Npgsql.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Persistencia\obj\Debug\Persistencia.pdb

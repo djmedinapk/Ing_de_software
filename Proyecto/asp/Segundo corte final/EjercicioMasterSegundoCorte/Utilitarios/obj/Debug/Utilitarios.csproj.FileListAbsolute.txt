@@ -40,3 +40,9 @@ D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csprojResolveAs
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.dll
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.pdb

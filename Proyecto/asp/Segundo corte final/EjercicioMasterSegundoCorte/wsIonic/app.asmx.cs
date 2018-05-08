@@ -109,7 +109,7 @@ namespace wsIonic
                 contacto.Correo = correo;
                 contacto.Telefono = telefono;
                 contacto.Contenido = contenido;
-                Lcontacto solicitud = new Lcontacto();
+                Lservicios solicitud = new Lservicios();
                 solicitud.enviarSolicitud(contacto);
                 return "Recibido Con Exito";
             }

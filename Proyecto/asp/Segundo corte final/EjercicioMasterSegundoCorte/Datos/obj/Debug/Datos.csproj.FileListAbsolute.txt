@@ -85,3 +85,15 @@ D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csprojResolveAssemblyRefere
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.dll
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Datos.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Datos.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Encapsulados.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Npgsql.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Encapsulados.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\Npgsql.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\Segundo corte final\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.pdb
