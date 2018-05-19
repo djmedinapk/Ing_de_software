@@ -1,0 +1,210 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Controller/master/Master2_2.master.cs" Inherits="Master1"  %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="App_Themes/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="../../App_Themes/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href="App_Themes/css/styleMaster.css" rel="stylesheet" />
+    <link href="App_Themes/assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />   
+    
+    
+    <style type="text/css">
+   
+     @font-face {
+    font-family: "HelveticaLTStd-Light";
+    src: url('../../App_Themes/assets/fonts/HelveticaLTStd-Light.otf') format("opentype");
+        }
+     .menus{
+        -webkit-transition:all 2s; 
+         transition: all 2s ease;
+ </style>
+ 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="container menus " id="header" style=" position: relative;  top:0px; " >
+        <div class="d-flex justify-content-md-between">
+        <div class="p-2">
+            <a href="../home/Index.aspx"><img src="../../img/logo1.svg" class="img-fluid" width="200px" style="font-family:'HelveticaLTStd-Light'";></a></div>
+        <div class="p-2">
+            <div class="row">
+                <div class="col">
+                    <asp:Label ID="L_lenguaje" runat="server" ></asp:Label>
+                    <asp:DropDownList ID="DDL_lenguaje" runat="server" DataSourceID="ODS_idiomas" DataTextField="nombre" DataValueField="id" OnSelectedIndexChanged="DDL_lenguaje_SelectedIndexChanged" ValidationGroup="idioma" AutoPostBack="True">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource runat="server" ID="ODS_idiomas" SelectMethod="cargar_idioma" TypeName="Logica.Lidioma"></asp:ObjectDataSource>
+                </div>
+                <div class="col">
+                    <strong><asp:Label ID="LmasterUsername" runat="server" Text=""></asp:Label></strong>
+                </div>
+                <div class="col">
+                    <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <asp:Image ID="ImasterAvatar" runat="server"  width="100px" class="img-thumbnail" style="float: right;" />
+                    <%--<img src="../../img/default-perfil.jpg" width="100px" class="img-thumbnail" style="float: right;"> --%></a>
+                     
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-top: 60px;"><!--dropdown-item   dropdown-item  -->
+                        
+                        <asp:Button ID="Bminiatura_settings" runat="server" Text="Perfil" CssClass="dropdown-item" OnClick="Bminiatura_settings_Click" />
+                        <asp:Button ID="Bminiatura_salir" runat="server" Text="Cerrar Sesion" CssClass="dropdown-item" OnClick="Bminiatura_salir_Click"/>
+                
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+      </div>
+
+      <div class="container-fluid" style="height: 5px; background-color: #f4e542"></div>
+        <div class="container-fluid" style="background-color: #01662e;">
+            <!-- menu-->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                  <a class="navbar-brand" href="#"><asp:Label ID="L_bienvenido" runat="server" Text="Bienvenido"></asp:Label></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        
+                      <li class="nav-item active">
+                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio" runat="server" Text="Inicio"></asp:Label></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../home/categoria.aspx"><asp:Label ID="L_categorias" runat="server" Text="Categorias"></asp:Label></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link"  href="../home/contacto.aspx"><asp:Label ID="L_contacto" runat="server" Text="Contacto"></asp:Label></a>
+                      </li>
+
+                    </ul>
+                      <asp:TextBox ID="Tsearch" runat="server" CssClass="form-control " Width="300px" ValidationGroup="busqueda" ></asp:TextBox> 
+                      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Tsearch" ForeColor="Red" ValidationExpression="[a-zA-Z ]*" ValidationGroup="busqueda" ></asp:RegularExpressionValidator>
+                      <asp:Button ID="BTNsearch" runat="server" CssClass="btn btn-outline-success text-white" Text="Buscar" ValidationGroup="busqueda" OnClick="BTNsearch_Click" />
+                      <%--<asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn btn-outline-success text-white"><i class='fa fa-search' aria-hidden='true'></i></asp:HyperLink>--%>
+                  </div>
+                </nav>
+            <!--- fin menu-->
+        </div>
+        <div class="container-fluid" style="height: 5px; background-color: #f4e542"></div>
+    </div>  
+    <div id="Menu-2" class="row fixed-top menus">
+        
+        <div class="container-fluid " style="height: 5px; background-color: #f4e542"></div>        
+        <div class="container-fluid" style="background-color: #01662e;">
+            <!-- menu-->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container-fluid" style="position: relative;  top:0px;  left: 0px; max-width:200px;  margin-left: 0px; margin-top: 0px; height: 0px;" >
+                      <a class="navbar-brand" href="../home/Index.aspx"><img src="../../img/logo2.svg" class="img-fluid" width="200px" ></a>
+                    </div>
+                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="../home/index.aspx"><asp:Label ID="L_inicio1" runat="server" Text="Inicio"></asp:Label></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../home/categoria.aspx"><asp:Label ID="L_categorias1" runat="server" Text="Categorias"></asp:Label></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link"  href="../home/contacto.aspx"><asp:Label ID="L_contacto1" runat="server" Text="Contacto"></asp:Label></a>
+                      </li>
+                      </ul>
+                      <asp:TextBox ID="Tsearch2" runat="server" CssClass="form-control " Width="300px" ValidationGroup="tse2"></asp:TextBox> 
+                      <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"  ControlToValidate="Tsearch2" ForeColor="Red" ValidationExpression="[a-zA-Z ]*" ValidationGroup="tse2"></asp:RegularExpressionValidator>
+                      <asp:Button ID="BTNsearch2" runat="server" CssClass="btn btn-outline-success text-white" Text="Buscar" ValidationGroup="tse2" OnClick="BTNsearch2_Click" />
+                      <%--<asp:HyperLink ID="HyperLsink2" runat="server" CssClass="btn btn-outline-success text-white"><i class='fa fa-search' aria-hidden='true'></i></asp:HyperLink>--%>
+                      
+                    
+                  </div>
+                </nav>
+            <!--- fin menu-->
+        </div>
+        <div class="container-fluid " style="height: 5px; background-color: #f4e542"></div>
+        
+
+        
+        
+    </div>
+    
+    <div class="container" style="padding-top: 125PX;">
+        <div class="botonForoUdec rotar">
+		<ul>
+			<li><a href="../private/index.aspx"  class="icon-facebook"><asp:Label ID="L_foro_estudiantes" runat="server" Text="Foro Estudiantes"></asp:Label></a></li>			
+		</ul>
+	</div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="container-fuid" style="background-color:#000 ">
+        <div class="row text-white">
+            <div class="col col-sm-4  text-center pb-4">
+               <img src="../../img/escudo-ucundinamarca.png" class="img-fluid pt-5" width="140px" >
+            </div>
+            <div class="col col-sm-4  fixed-left pt-5 ">
+                <%--<h4> Mapa del Sitio</h4>
+                <ul>
+                    <li>inicio</li>
+                    <li>categorias</li>
+                    <li>contacto</li>
+                    <li>Foro estudiante</li>
+                </ul>--%>
+            </div>
+            <div class="col col-sm-4  pt-5">
+                <h4><asp:Label ID="L_contacto2" runat="server" Text="Contacto"></asp:Label></h4>
+                <h4>
+                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                </h4>
+            </div>
+        </div>
+        <div class="row text-grey pl-4">
+            <p><asp:Label ID="L_derechos_reservados" runat="server" Text="Todos los derechos reservados  MetapodSoft &#174; 2017"></asp:Label></p>
+        </div>
+            
+    </div>
+
+<script type="text/javascript">
+document.getElementById("Menu-2").style.display = "none"; 
+var header= document.getElementById("header");
+var meniu= document.getElementById("Menu-2");
+//var tope= header.offsetTop;
+//alert(window.pageYOffset);
+var showStaticMenuBar = false;
+ 
+$(window).scroll(function() {
+    if(showStaticMenuBar == false){
+        if($(window).scrollTop() > 110){
+            document.getElementById("Menu-2").style.display = "block";
+            document.getElementById("header").style.display = "none";
+            showStaticMenuBar=true;            
+        }
+    }else{
+        if($(window).scrollTop() <= 0){
+            
+            document.getElementById("Menu-2").style.display = "none";
+            document.getElementById("header").style.display = "block";
+            showStaticMenuBar=false;            
+        }   
+    }
+}
+ 
+);
+</script>
+        
+    </form>
+</body>
+</html>
