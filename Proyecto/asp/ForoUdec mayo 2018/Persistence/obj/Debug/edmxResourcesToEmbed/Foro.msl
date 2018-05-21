@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ForoUdecModelStoreContainer" CdmEntityContainer="ForoUdecEntities1">
+    <EntitySetMapping Name="contacto">
+      <EntityTypeMapping TypeName="ForoUdecModel.contacto">
+        <MappingFragment StoreEntitySet="contacto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="denuncia_comentario">
+      <EntityTypeMapping TypeName="ForoUdecModel.denuncia_comentario">
+        <MappingFragment StoreEntitySet="denuncia_comentario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+          <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="denuncia_publicacion">
+      <EntityTypeMapping TypeName="ForoUdecModel.denuncia_publicacion">
+        <MappingFragment StoreEntitySet="denuncia_publicacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+          <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado_denuncia">
+      <EntityTypeMapping TypeName="ForoUdecModel.estado_denuncia">
+        <MappingFragment StoreEntitySet="estado_denuncia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="controles">
+      <EntityTypeMapping TypeName="ForoUdecModel.controles">
+        <MappingFragment StoreEntitySet="controles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="control" ColumnName="control" />
+          <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
+          <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formulario">
+      <EntityTypeMapping TypeName="ForoUdecModel.formulario">
+        <MappingFragment StoreEntitySet="formulario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="idioma">
+      <EntityTypeMapping TypeName="ForoUdecModel.idioma">
+        <MappingFragment StoreEntitySet="idioma">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lcontroles">
+      <EntityTypeMapping TypeName="ForoUdecModel.lcontroles">
+        <MappingFragment StoreEntitySet="lcontroles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="control" ColumnName="control" />
+          <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="ForoUdecModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comentario">
+      <EntityTypeMapping TypeName="ForoUdecModel.comentario">
+        <MappingFragment StoreEntitySet="comentario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado">
+      <EntityTypeMapping TypeName="ForoUdecModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publicacion">
+      <EntityTypeMapping TypeName="ForoUdecModel.publicacion">
+        <MappingFragment StoreEntitySet="publicacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puntuacion">
+      <EntityTypeMapping TypeName="ForoUdecModel.puntuacion">
+        <MappingFragment StoreEntitySet="puntuacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="puntuacion1" ColumnName="puntuacion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auditoria">
+      <EntityTypeMapping TypeName="ForoUdecModel.auditoria">
+        <MappingFragment StoreEntitySet="auditoria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="accion" ColumnName="accion" />
+          <ScalarProperty Name="schema" ColumnName="schema" />
+          <ScalarProperty Name="tabla" ColumnName="tabla" />
+          <ScalarProperty Name="pk" ColumnName="pk" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="user_bd" ColumnName="user_bd" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bloqueo_configuration">
+      <EntityTypeMapping TypeName="ForoUdecModel.bloqueo_configuration">
+        <MappingFragment StoreEntitySet="bloqueo_configuration">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingresos">
+      <EntityTypeMapping TypeName="ForoUdecModel.ingresos">
+        <MappingFragment StoreEntitySet="ingresos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_mac" ColumnName="user_mac" />
+          <ScalarProperty Name="user_session" ColumnName="user_session" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="user_ip" ColumnName="user_ip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bloqueo">
+      <EntityTypeMapping TypeName="ForoUdecModel.bloqueo">
+        <MappingFragment StoreEntitySet="bloqueo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha_bloqueo" ColumnName="fecha_bloqueo" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="fecha_teminacion" ColumnName="fecha_teminacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="correo_institucional">
+      <EntityTypeMapping TypeName="ForoUdecModel.correo_institucional">
+        <MappingFragment StoreEntitySet="correo_institucional">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_session" ColumnName="id_session" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado1">
+      <EntityTypeMapping TypeName="ForoUdecModel.estado1">
+        <MappingFragment StoreEntitySet="estado1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permisos">
+      <EntityTypeMapping TypeName="ForoUdecModel.permisos">
+        <MappingFragment StoreEntitySet="permisos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_session">
+      <EntityTypeMapping TypeName="ForoUdecModel.user_session">
+        <MappingFragment StoreEntitySet="user_session">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pasword" ColumnName="pasword" />
+          <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+          <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="ForoUdecModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="id_session" ColumnName="id_session" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="session" ColumnName="session" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_caragr_datos_admin_chart" FunctionName="ForoUdecModel.Store.f_caragr_datos_admin_chart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_caragr_datos_admin_chart_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_caragr_datos_admin_home" FunctionName="ForoUdecModel.Store.f_caragr_datos_admin_home">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_caragr_datos_admin_home_Result">
+          <ScalarProperty Name="totalusere" ColumnName="totalusere" />
+          <ScalarProperty Name="totalusere1" ColumnName="totalusere1" />
+          <ScalarProperty Name="totalusere2" ColumnName="totalusere2" />
+          <ScalarProperty Name="totalusere3" ColumnName="totalusere3" />
+          <ScalarProperty Name="totalusere4" ColumnName="totalusere4" />
+          <ScalarProperty Name="totalusere5" ColumnName="totalusere5" />
+          <ScalarProperty Name="totalusere6" ColumnName="totalusere6" />
+          <ScalarProperty Name="totalusere7" ColumnName="totalusere7" />
+          <ScalarProperty Name="totalusere8" ColumnName="totalusere8" />
+          <ScalarProperty Name="totalusere9" ColumnName="totalusere9" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_cargar_usuariospoints" FunctionName="ForoUdecModel.Store.f_cargar_usuariospoints" />
+    <FunctionImportMapping FunctionImportName="f_cargar_usuariospubl" FunctionName="ForoUdecModel.Store.f_cargar_usuariospubl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_usuariospubl_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="contador" ColumnName="contador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_crud_mod_post" FunctionName="ForoUdecModel.Store.f_crud_mod_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_mod_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_crud_post" FunctionName="ForoUdecModel.Store.f_crud_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_crud_usuarios_delete" FunctionName="ForoUdecModel.Store.f_crud_usuarios_delete" />
+    <FunctionImportMapping FunctionImportName="f_crud_usuarios_delete2" FunctionName="ForoUdecModel.Store.f_crud_usuarios_delete2" />
+    <FunctionImportMapping FunctionImportName="f_crud_usuarios_listar" FunctionName="ForoUdecModel.Store.f_crud_usuarios_listar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_usuarios_listar_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_modificar_perfil" FunctionName="ForoUdecModel.Store.f_modificar_perfil" />
+    <FunctionImportMapping FunctionImportName="f_modificar_perfil_usuario" FunctionName="ForoUdecModel.Store.f_modificar_perfil_usuario" />
+    <FunctionImportMapping FunctionImportName="f_traer_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_traer_bloqueo_sesiones" />
+    <FunctionImportMapping FunctionImportName="f_traer_datos_perfil" FunctionName="ForoUdecModel.Store.f_traer_datos_perfil">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_perfil_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="id_session" ColumnName="id_session" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="session" ColumnName="session" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_traer_datos_sesion" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pasword" ColumnName="pasword" />
+          <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+          <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_agregar_contacto" FunctionName="ForoUdecModel.Store.f_agregar_contacto" />
+    <FunctionImportMapping FunctionImportName="f_modificar_perfil_ajustes" FunctionName="ForoUdecModel.Store.f_modificar_perfil_ajustes" />
+    <FunctionImportMapping FunctionImportName="f_modificar_usuario" FunctionName="ForoUdecModel.Store.f_modificar_usuario" />
+    <FunctionImportMapping FunctionImportName="f_registro_usuario" FunctionName="ForoUdecModel.Store.f_registro_usuario" />
+    <FunctionImportMapping FunctionImportName="f_aceptar_denuncia_comentario" FunctionName="ForoUdecModel.Store.f_aceptar_denuncia_comentario" />
+    <FunctionImportMapping FunctionImportName="f_denunciar_comentario" FunctionName="ForoUdecModel.Store.f_denunciar_comentario" />
+    <FunctionImportMapping FunctionImportName="f_denunciar_publicacion" FunctionName="ForoUdecModel.Store.f_denunciar_publicacion" />
+    <FunctionImportMapping FunctionImportName="f_eliminar_denuncia_comentario" FunctionName="ForoUdecModel.Store.f_eliminar_denuncia_comentario" />
+    <FunctionImportMapping FunctionImportName="f_mostar_denuncias_comentario" FunctionName="ForoUdecModel.Store.f_mostar_denuncias_comentario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_mostar_denuncias_comentario_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+          <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="id_denunciante1" ColumnName="id_denunciante1" />
+          <ScalarProperty Name="id_denunciante2" ColumnName="id_denunciante2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_agregar_control" FunctionName="ForoUdecModel.Store.f_agregar_control" />
+    <FunctionImportMapping FunctionImportName="f_cargar_idiomas" FunctionName="ForoUdecModel.Store.f_cargar_idiomas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_idiomas_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_ingresar_idioma" FunctionName="ForoUdecModel.Store.f_ingresar_idioma" />
+    <FunctionImportMapping FunctionImportName="f_ingresar_idioma_control" FunctionName="ForoUdecModel.Store.f_ingresar_idioma_control" />
+    <FunctionImportMapping FunctionImportName="f_listar_controles" FunctionName="ForoUdecModel.Store.f_listar_controles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="control" ColumnName="control" />
+          <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_controles2" FunctionName="ForoUdecModel.Store.f_listar_controles2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles2_Result">
+          <ScalarProperty Name="control" ColumnName="control" />
+          <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
+          <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_formulario" FunctionName="ForoUdecModel.Store.f_listar_formulario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_formulario_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_obtener_idioma_formulario" FunctionName="ForoUdecModel.Store.f_obtener_idioma_formulario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_obtener_idioma_formulario_Result">
+          <ScalarProperty Name="control" ColumnName="control" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_update_idioma_control" FunctionName="ForoUdecModel.Store.f_update_idioma_control" />
+    <FunctionImportMapping FunctionImportName="f_busqueda" FunctionName="ForoUdecModel.Store.f_busqueda">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_busqueda_private" FunctionName="ForoUdecModel.Store.f_busqueda_private">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_private_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_cargar_mod_post" FunctionName="ForoUdecModel.Store.f_cargar_mod_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_mod_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="seccion" ColumnName="seccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_comentar_post" FunctionName="ForoUdecModel.Store.f_comentar_post" />
+    <FunctionImportMapping FunctionImportName="f_ingresar_post" FunctionName="ForoUdecModel.Store.f_ingresar_post" />
+    <FunctionImportMapping FunctionImportName="f_ingresar_post_privado" FunctionName="ForoUdecModel.Store.f_ingresar_post_privado" />
+    <FunctionImportMapping FunctionImportName="f_ingreso_categoria" FunctionName="ForoUdecModel.Store.f_ingreso_categoria" />
+    <FunctionImportMapping FunctionImportName="f_listar_categoria" FunctionName="ForoUdecModel.Store.f_listar_categoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_categoria_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_comentarios_post" FunctionName="ForoUdecModel.Store.f_listar_comentarios_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_comentarios_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post" FunctionName="ForoUdecModel.Store.f_listar_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_home" FunctionName="ForoUdecModel.Store.f_listar_post_home">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias_private">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_private_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_home_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_private">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_private_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_home_servicios" FunctionName="ForoUdecModel.Store.f_listar_post_home_servicios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_servicios_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_moderador" FunctionName="ForoUdecModel.Store.f_listar_post_moderador">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_moderador_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_private" FunctionName="ForoUdecModel.Store.f_listar_post_private">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_private_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_listar_post_public" FunctionName="ForoUdecModel.Store.f_listar_post_public">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_public_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_modificar_post" FunctionName="ForoUdecModel.Store.f_modificar_post" />
+    <FunctionImportMapping FunctionImportName="f_puntuar_post" FunctionName="ForoUdecModel.Store.f_puntuar_post" />
+    <FunctionImportMapping FunctionImportName="f_suspender_post" FunctionName="ForoUdecModel.Store.f_suspender_post" />
+    <FunctionImportMapping FunctionImportName="f_validar_post" FunctionName="ForoUdecModel.Store.f_validar_post" />
+    <FunctionImportMapping FunctionImportName="f_ver_post" FunctionName="ForoUdecModel.Store.f_ver_post">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_ver_post2" FunctionName="ForoUdecModel.Store.f_ver_post2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post2_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fuente" ColumnName="fuente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_visita_post" FunctionName="ForoUdecModel.Store.f_visita_post" />
+    <FunctionImportMapping FunctionImportName="f_reporte_publicacion" FunctionName="ForoUdecModel.Store.f_reporte_publicacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_publicacion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="visitas" ColumnName="visitas" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_reporte_puntuacion" FunctionName="ForoUdecModel.Store.f_reporte_puntuacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_puntuacion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_reporte_usuario" FunctionName="ForoUdecModel.Store.f_reporte_usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_usuario_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesion" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesion" />
+    <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesion2" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesion2" />
+    <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesiones" />
+    <FunctionImportMapping FunctionImportName="f_actualizar_estado" FunctionName="ForoUdecModel.Store.f_actualizar_estado" />
+    <FunctionImportMapping FunctionImportName="f_almacenar_token" FunctionName="ForoUdecModel.Store.f_almacenar_token" />
+    <FunctionImportMapping FunctionImportName="f_cambiar_password" FunctionName="ForoUdecModel.Store.f_cambiar_password" />
+    <FunctionImportMapping FunctionImportName="f_ingresar_bloqueo_sesion" FunctionName="ForoUdecModel.Store.f_ingresar_bloqueo_sesion" />
+    <FunctionImportMapping FunctionImportName="f_ingresar_correo_institucional" FunctionName="ForoUdecModel.Store.f_ingresar_correo_institucional" />
+    <FunctionImportMapping FunctionImportName="f_limpiar_bloqueo" FunctionName="ForoUdecModel.Store.f_limpiar_bloqueo" />
+    <FunctionImportMapping FunctionImportName="f_modificar_perfil_ajustes1" FunctionName="ForoUdecModel.Store.f_modificar_perfil_ajustes1" />
+    <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo" />
+    <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo_preingreso" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo_preingreso" />
+    <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo_sesiones" />
+    <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo2" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_solicitar_bloqueo2_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_solicitar_contador_sesiones" FunctionName="ForoUdecModel.Store.f_solicitar_contador_sesiones" />
+    <FunctionImportMapping FunctionImportName="f_traer_correo_institucional" FunctionName="ForoUdecModel.Store.f_traer_correo_institucional" />
+    <FunctionImportMapping FunctionImportName="f_traer_datos" FunctionName="ForoUdecModel.Store.f_traer_datos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_traer_datos_sesion1" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion1_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pasword" ColumnName="pasword" />
+          <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+          <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_traer_datos_sesion2" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion2_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pasword" ColumnName="pasword" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_traer_datos_vista_perfil" FunctionName="ForoUdecModel.Store.f_traer_datos_vista_perfil">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_vista_perfil_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+          <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_validar_token" FunctionName="ForoUdecModel.Store.f_validar_token" />
+    <FunctionImportMapping FunctionImportName="f_validar_usuario" FunctionName="ForoUdecModel.Store.f_validar_usuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_validar_usuario_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+          <ScalarProperty Name="Column4" ColumnName="Column4" />
+          <ScalarProperty Name="Column5" ColumnName="Column5" />
+          <ScalarProperty Name="Column6" ColumnName="Column6" />
+          <ScalarProperty Name="Column7" ColumnName="Column7" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

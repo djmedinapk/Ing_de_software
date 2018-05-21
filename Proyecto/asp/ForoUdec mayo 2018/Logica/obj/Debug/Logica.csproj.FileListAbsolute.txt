@@ -180,3 +180,34 @@ D:\EjercicioMasterSegundoCorte\Logica\obj\Debug\Logica.csprojResolveAssemblyRefe
 D:\EjercicioMasterSegundoCorte\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Logica\obj\Debug\Logica.dll
 D:\EjercicioMasterSegundoCorte\Logica\obj\Debug\Logica.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Logica.dll.config
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Logica.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Logica.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Datos.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Encapsulados.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\EntityFramework.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Npgsql.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistence.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistencia.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Tablas.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Utilitarios.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Datos.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Encapsulados.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistence.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistence.dll.config
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistencia.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Persistencia.dll.config
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Tablas.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Utilitarios.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\EntityFramework.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\Npgsql.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\obj\Debug\Logica.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Logica\obj\Debug\Logica.pdb

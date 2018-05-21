@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="ConverToDataTable.cs" />
     <Compile Include="encryption.cs" />
     <Compile Include="Ladmin_main.cs" />
     <Compile Include="Ladmin_post.cs" />
@@ -87,6 +86,10 @@
     <ProjectReference Include="..\Encapsulados\Encapsulados.csproj">
       <Project>{f60280c1-4974-40aa-bf67-d7f7b9019667}</Project>
       <Name>Encapsulados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{9819ce73-79f9-4242-95a3-69f148439fff}</Project>
+      <Name>Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\Persistencia\Persistencia.csproj">
       <Project>{5e7d3ffd-ac17-4096-9992-8059b7fb6e1f}</Project>

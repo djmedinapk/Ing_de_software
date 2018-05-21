@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Proyecto", ".", "{4F68859A-4D10-4826-80C8-2F8AF5015436}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		ProjectReferences = "{868b6d01-7167-406e-8e68-7d453dd2b9fd}|Logica.dll;{62f04007-d002-46c1-81c9-625202f8461d}|Utilitarios.dll;{BD15D181-B4F3-4E29-BA74-060D8C586664}|Datos.dll;{F60280C1-4974-40AA-BF67-D7F7B9019667}|Encapsulados.dll;{5E7D3FFD-AC17-4096-9992-8059B7FB6E1F}|Persistencia.dll;{D6F83E1A-DA5E-4216-B563-441697448895}|Tablas.dll;"
+		ProjectReferences = "{868b6d01-7167-406e-8e68-7d453dd2b9fd}|Logica.dll;{62f04007-d002-46c1-81c9-625202f8461d}|Utilitarios.dll;{BD15D181-B4F3-4E29-BA74-060D8C586664}|Datos.dll;{F60280C1-4974-40AA-BF67-D7F7B9019667}|Encapsulados.dll;{5E7D3FFD-AC17-4096-9992-8059B7FB6E1F}|Persistencia.dll;{D6F83E1A-DA5E-4216-B563-441697448895}|Tablas.dll;{9819CE73-79F9-4242-95A3-69F148439FFF}|Persistence.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54836"
 		Debug.AspNetCompiler.PhysicalPath = "..\web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54836\"
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "..\Persistencia\Persistencia.csproj", "{5E7D3FFD-AC17-4096-9992-8059B7FB6E1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wsIonic", "..\wsIonic\wsIonic.csproj", "{848B52F7-DCCA-4CAC-8C03-5E6A8B00FB7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "..\Persistence\Persistence.csproj", "{9819CE73-79F9-4242-95A3-69F148439FFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{848B52F7-DCCA-4CAC-8C03-5E6A8B00FB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848B52F7-DCCA-4CAC-8C03-5E6A8B00FB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848B52F7-DCCA-4CAC-8C03-5E6A8B00FB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9819CE73-79F9-4242-95A3-69F148439FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9819CE73-79F9-4242-95A3-69F148439FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9819CE73-79F9-4242-95A3-69F148439FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9819CE73-79F9-4242-95A3-69F148439FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -164,7 +164,8 @@ namespace Logica
 
             if (comando == "eliminar")
             {
-                Dadmin eliminar = new Dadmin();
+                // Dadmin eliminar = new Dadmin();
+                PsqlAdmin eliminar = new PsqlAdmin();
                 DataTable informacion = eliminar.suspender_usuario(id, sessionId);
                 respueta= "usuario.aspx";
             }

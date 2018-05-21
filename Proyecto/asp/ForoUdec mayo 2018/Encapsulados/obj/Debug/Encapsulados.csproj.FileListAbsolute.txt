@@ -34,3 +34,8 @@ D:\EjercicioMasterSegundoCorte\Encapsulados\obj\Debug\Encapsulados.csprojResolve
 D:\EjercicioMasterSegundoCorte\Encapsulados\obj\Debug\Encapsulados.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Encapsulados\obj\Debug\Encapsulados.dll
 D:\EjercicioMasterSegundoCorte\Encapsulados\obj\Debug\Encapsulados.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Encapsulados\bin\Debug\Encapsulados.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Encapsulados\bin\Debug\Encapsulados.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Encapsulados\obj\Debug\Encapsulados.csproj.CoreCompileInputs.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Encapsulados\obj\Debug\Encapsulados.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Encapsulados\obj\Debug\Encapsulados.pdb

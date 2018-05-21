@@ -40,3 +40,9 @@ D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csprojResolveAs
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.dll
 D:\EjercicioMasterSegundoCorte\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\bin\Debug\Utilitarios.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\bin\Debug\Utilitarios.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\obj\Debug\Utilitarios.csprojResolveAssemblyReference.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\obj\Debug\Utilitarios.csproj.CoreCompileInputs.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\obj\Debug\Utilitarios.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Utilitarios\obj\Debug\Utilitarios.pdb

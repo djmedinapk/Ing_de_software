@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="250308ec746440f0afdc1a742e2c430c" Name="Diagram1">
+        <EntityTypeShape EntityType="ForoUdecModel.contacto" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.denuncia_comentario" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.denuncia_publicacion" Width="1.5" PointX="8.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.estado_denuncia" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.controles" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.formulario" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.idioma" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.lcontroles" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.categoria" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.comentario" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.estado" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.publicacion" Width="1.5" PointX="5.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.puntuacion" Width="1.5" PointX="7.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.auditoria" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.bloqueo_configuration" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.ingresos" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.bloqueo" Width="1.5" PointX="5.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.correo_institucional" Width="1.5" PointX="5.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.estado1" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.permisos" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.user_session" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForoUdecModel.usuario" Width="1.5" PointX="5.25" PointY="32.25" IsExpanded="true" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_comentario_id_comentario_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_comentario_id_denunciante_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_comentario_id_estado_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_publicacion_id_denunciante_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_publicacion_id_estado_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.denuncia_publicacion_id_publicacion_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.controles_formulario_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.controles_idioma_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.lcontroles_formulario_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.publicacion_id_categoria_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.comentario_id_comentario_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.comentario_id_publicacion_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.comentario_id_usuario_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.publicacion_id_estado_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.publicacion_id_usuario_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.puntuacion_id_publicacion_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.puntuacion_id_usuario_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.bloqueo_id_user_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.correo_institucional_id_session_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.user_session_id_estado_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.user_session_id_permisos_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="ForoUdecModel.id_session" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

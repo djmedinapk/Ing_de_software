@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9819CE73-79F9-4242-95A3-69F148439FFF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Persistence</RootNamespace>
+    <AssemblyName>Persistence</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\web\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\web\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="auditoria.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bloqueo.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bloqueo_configuration.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categoria.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comentario.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contacto.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="controles.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="correo_institucional.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="denuncia_comentario.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="denuncia_publicacion.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estado.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estado1.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estado_denuncia.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="formulario.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Foro.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Foro.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Foro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Foro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Foro.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="f_busqueda_private_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_busqueda_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_caragr_datos_admin_chart_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_caragr_datos_admin_home_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_cargar_idiomas_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_cargar_mod_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_cargar_usuariospubl_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_crud_mod_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_crud_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_crud_usuarios_listar_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_categoria_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_comentarios_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_controles2_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_controles_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_formulario_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_home_categorias_private_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_home_categorias_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_home_private_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_home_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_home_servicios_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_moderador_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_private_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_public_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_listar_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_mostar_denuncias_comentario_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_obtener_idioma_formulario_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_reporte_publicacion_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_reporte_puntuacion_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_reporte_usuario_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_solicitar_bloqueo2_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_perfil_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_sesion1_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_sesion2_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_sesion_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_traer_datos_vista_perfil_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_validar_usuario_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_ver_post2_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_ver_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="idioma.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ingresos.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lcontroles.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="permisos.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PsqlAdmin.cs" />
+    <Compile Include="PsqlContacto.cs" />
+    <Compile Include="PsqlCorreoInst.cs" />
+    <Compile Include="publicacion.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="puntuacion.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_session.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usuario.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Foro.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Foro.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Foro.edmx.diagram">
+      <DependentUpon>Foro.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Encapsulados\Encapsulados.csproj">
+      <Project>{F60280C1-4974-40AA-BF67-D7F7B9019667}</Project>
+      <Name>Encapsulados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilitarios\Utilitarios.csproj">
+      <Project>{62F04007-D002-46C1-81C9-625202F8461D}</Project>
+      <Name>Utilitarios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Foro.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Foro.edmx</DependentUpon>
+      <LastGenOutput>Foro.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Foro.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Foro.edmx</DependentUpon>
+      <LastGenOutput>Foro.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

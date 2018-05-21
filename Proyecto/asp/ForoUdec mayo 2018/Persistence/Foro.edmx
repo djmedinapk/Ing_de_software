@@ -1,0 +1,3016 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ForoUdecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="_idpost">
+          <Property Name="id_comentario" Type="int" />
+        </EntityType>-->
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="correo" Type="nvarchar" MaxLength="200" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="100" />
+          <Property Name="contenido" Type="ntext" />
+          <Property Name="fecha_solicitud" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="denuncia_comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="ntext" />
+          <Property Name="id_comentario" Type="bigint" />
+          <Property Name="id_denunciante" Type="bigint" />
+          <Property Name="id_estado" Type="int" />
+        </EntityType>
+        <EntityType Name="denuncia_publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="ntext" />
+          <Property Name="id_publicacion" Type="bigint" />
+          <Property Name="id_denunciante" Type="bigint" />
+          <Property Name="id_estado" Type="int" />
+        </EntityType>
+        <EntityType Name="estado_denuncia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="ntext" />
+        </EntityType>
+        <EntityType Name="controles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="control" Type="ntext" />
+          <Property Name="idioma_id" Type="int" />
+          <Property Name="formulario_id" Type="int" />
+          <Property Name="texto" Type="ntext" />
+        </EntityType>
+        <EntityType Name="formulario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" />
+          <Property Name="url" Type="ntext" />
+        </EntityType>
+        <EntityType Name="idioma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="ntext" Nullable="false" />
+          <Property Name="terminacion" Type="ntext" />
+        </EntityType>
+        <EntityType Name="lcontroles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="control" Type="ntext" />
+          <Property Name="formulario_id" Type="int" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="ntext" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contenido" Type="ntext" />
+          <Property Name="fecha" Type="datetime2" Precision="7" />
+          <Property Name="id_comentario" Type="bigint" />
+          <Property Name="id_usuario" Type="bigint" />
+          <Property Name="id_publicacion" Type="bigint" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="500" />
+          <Property Name="contenido" Type="nvarchar" MaxLength="500" />
+          <Property Name="visitas" Type="bigint" />
+          <Property Name="fecha" Type="datetime2" Precision="7" />
+          <Property Name="fuente" Type="nvarchar" MaxLength="500" />
+          <Property Name="id_estado" Type="int" />
+          <Property Name="id_usuario" Type="bigint" />
+          <Property Name="miniatura" Type="nvarchar" MaxLength="500" />
+          <Property Name="etiquetas" Type="nvarchar" MaxLength="500" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="seccion" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="puntuacion" Type="int" />
+          <Property Name="fecha" Type="datetime2" Precision="7" />
+          <Property Name="id_usuario" Type="bigint" />
+          <Property Name="id_publicacion" Type="bigint" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="accion" Type="nvarchar" MaxLength="100" />
+          <Property Name="schema" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="tabla" Type="nvarchar" MaxLength="200" />
+          <Property Name="pk" Type="ntext" Nullable="false" />
+          <Property Name="session" Type="ntext" Nullable="false" />
+          <Property Name="user_bd" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="data" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bloqueo_configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="tiempo" Type="int" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ingresos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="user_mac" Type="ntext" />
+          <Property Name="user_session" Type="ntext" />
+          <Property Name="fecha_inicio" Type="time" Precision="7" />
+          <Property Name="fecha_fin" Type="time" Precision="7" />
+          <Property Name="user_ip" Type="ntext" />
+        </EntityType>
+        <EntityType Name="bloqueo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_bloqueo" Type="datetime" />
+          <Property Name="id_user" Type="bigint" />
+          <Property Name="fecha_teminacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="correo_institucional">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_session" Type="bigint" />
+          <Property Name="correo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="estado1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="ntext" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="token">
+          <Property Name="user_id" Type="int" />
+          <Property Name="token" Type="nvarchar" MaxLength="500" />
+          <Property Name="fecha_creado" Type="datetime2" Precision="7" />
+          <Property Name="fecha_vigencia" Type="datetime2" Precision="7" />
+        </EntityType>-->
+        <EntityType Name="user_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="100" />
+          <Property Name="pasword" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_ult_session" Type="datetime2" Precision="7" />
+          <Property Name="correo" Type="nvarchar" MaxLength="100" />
+          <Property Name="estado_session" Type="int" />
+          <Property Name="session" Type="nvarchar" MaxLength="100" />
+          <Property Name="id_permisos" Type="int" />
+          <Property Name="id_estado" Type="int" />
+          <Property Name="intentos_acceso" Type="int" />
+          <Property Name="n_sesiones" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="100" />
+          <Property Name="edad" Type="int" />
+          <Property Name="id_session" Type="bigint" />
+          <Property Name="sexo" Type="nvarchar" MaxLength="50" />
+          <Property Name="session" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="bloqueo_id_user_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="bloqueo" Type="Self.bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bloqueo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1" />
+          <End Role="comentario1" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario1">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_idioma_id_fkey">
+          <End Role="idioma" Type="Self.idioma" Multiplicity="0..1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idioma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="idioma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="correo_institucional_id_session_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="correo_institucional" Type="Self.correo_institucional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="correo_institucional">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_session">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lcontroles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1" />
+          <End Role="lcontroles" Type="Self.lcontroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lcontroles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_categoria_fkey">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_estado_fkey">
+          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_estado_fkey">
+          <End Role="estado1" Type="Self.estado1" Multiplicity="0..1" />
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_permisos_fkey">
+          <End Role="permisos" Type="Self.permisos" Multiplicity="0..1" />
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_permisos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="f_caragr_datos_admin_chart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin" />
+        <Function Name="f_caragr_datos_admin_home" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin" />
+        <Function Name="f_cargar_usuariospoints" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin" />
+        <Function Name="f_cargar_usuariospubl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin" />
+        <Function Name="f_crud_mod_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_crud_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_crud_usuarios_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="session" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_crud_usuarios_delete2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="id_user" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_crud_usuarios_listar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin" />
+        <Function Name="f_modificar_perfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="admin" Type="int" Mode="In" />
+          <Parameter Name="session" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_modificar_perfil_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="session" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="edad" Type="int" Mode="In" />
+          <Parameter Name="sexo" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_traer_bloqueo_sesiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos_perfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos_sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="admin">
+          <Parameter Name="userid" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_agregar_contacto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contenido" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_modificar_perfil_ajustes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="session" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_modificar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="session" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="apellido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="edad" Type="int" Mode="In" />
+          <Parameter Name="sexo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="avatar" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_registro_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="session" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_aceptar_denuncia_comentario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="denuncia">
+          <Parameter Name="denunciaid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_denunciar_comentario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="denuncia">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="comentarioid" Type="int" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_denunciar_publicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="denuncia">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_eliminar_denuncia_comentario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="denuncia">
+          <Parameter Name="denunciaid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_mostar_denuncias_comentario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="denuncia">
+          <Parameter Name="denunciaid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_agregar_control" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="control" Type="nvarchar" Mode="In" />
+          <Parameter Name="formulario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_cargar_idiomas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma" />
+        <Function Name="f_ingresar_idioma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="idioma" Type="nvarchar" Mode="In" />
+          <Parameter Name="cultura" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_ingresar_idioma_control" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="idioma" Type="int" Mode="In" />
+          <Parameter Name="control" Type="nvarchar" Mode="In" />
+          <Parameter Name="formulario" Type="int" Mode="In" />
+          <Parameter Name="valor" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_controles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="formulario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_listar_controles2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="formulario" Type="int" Mode="In" />
+          <Parameter Name="idioma" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_listar_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma" />
+        <Function Name="f_obtener_idioma_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="formulario_id" Type="int" Mode="In" />
+          <Parameter Name="idioma_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_update_idioma_control" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
+          <Parameter Name="control" Type="int" Mode="In" />
+          <Parameter Name="valor" Type="text" Mode="In" />
+        </Function>
+        <Function Name="f_busqueda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="dato" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_busqueda_private" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="dato" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_cargar_mod_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_comentar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="comentarioid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+          <Parameter Name="comentario" Type="ntext" Mode="In" />
+        </Function>
+        <Function Name="f_ingresar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="categoria" Type="int" Mode="In" />
+          <Parameter Name="contenido" Type="ntext" Mode="In" />
+          <Parameter Name="autor" Type="nvarchar" Mode="In" />
+          <Parameter Name="miniatura" Type="ntext" Mode="In" />
+          <Parameter Name="etiquetas" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_ingresar_post_privado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="categoria" Type="int" Mode="In" />
+          <Parameter Name="contenido" Type="ntext" Mode="In" />
+          <Parameter Name="autor" Type="nvarchar" Mode="In" />
+          <Parameter Name="miniatura" Type="ntext" Mode="In" />
+          <Parameter Name="etiquetas" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_ingreso_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post" />
+        <Function Name="f_listar_comentarios_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="postid" Type="bigint" Mode="In" />
+          <Parameter Name="comentario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_home" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_home_categorias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_home_categorias_private" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_home_private" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_home_servicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_moderador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="orden" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_private" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_listar_post_public" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_modificar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="nvarchar" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="categoria" Type="int" Mode="In" />
+          <Parameter Name="contenido" Type="text" Mode="In" />
+          <Parameter Name="autor" Type="nvarchar" Mode="In" />
+          <Parameter Name="miniatura" Type="ntext" Mode="In" />
+          <Parameter Name="etiquetas" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_puntuar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="puntuacion" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_suspender_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="text" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_validar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="sesion" Type="text" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_ver_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="postid" Type="bigint" Mode="In" />
+          <Parameter Name="control" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_ver_post2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_visita_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
+          <Parameter Name="postid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_reporte_publicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+        <Function Name="f_reporte_puntuacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+        <Function Name="f_reporte_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+        <Function Name="f_actualizar_bloqueo_sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario" />
+        <Function Name="f_actualizar_bloqueo_sesion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="session" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="f_actualizar_bloqueo_sesiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="nsesion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_actualizar_estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="p_user_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_almacenar_token" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="token" Type="text" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_cambiar_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="token" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_ingresar_bloqueo_sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_ingresar_correo_institucional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="session" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_limpiar_bloqueo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_modificar_perfil_ajustes1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario" StoreFunctionName="f_modificar_perfil_ajustes">
+          <Parameter Name="session" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_solicitar_bloqueo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_solicitar_bloqueo_preingreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_solicitar_bloqueo_sesiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_solicitar_bloqueo2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_solicitar_contador_sesiones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_traer_correo_institucional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos_sesion1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario" StoreFunctionName="f_traer_datos_sesion">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos_sesion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_traer_datos_vista_perfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_validar_token" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="token" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="f_validar_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
+          <Parameter Name="user_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ForoUdecModelStoreContainer">
+          <EntitySet Name="contacto" EntityType="Self.contacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="denuncia_comentario" EntityType="Self.denuncia_comentario" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="denuncia_publicacion" EntityType="Self.denuncia_publicacion" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="estado_denuncia" EntityType="Self.estado_denuncia" Schema="denuncia" store:Type="Tables" />
+          <EntitySet Name="controles" EntityType="Self.controles" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="formulario" EntityType="Self.formulario" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="idioma" EntityType="Self.idioma" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="lcontroles" EntityType="Self.lcontroles" Schema="idioma" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="post" store:Type="Tables" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" Schema="post" store:Type="Tables" />
+          <EntitySet Name="estado" EntityType="Self.estado" Schema="post" store:Type="Tables" />
+          <EntitySet Name="publicacion" EntityType="Self.publicacion" Schema="post" store:Type="Tables" />
+          <EntitySet Name="puntuacion" EntityType="Self.puntuacion" Schema="post" store:Type="Tables" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="bloqueo_configuration" EntityType="Self.bloqueo_configuration" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="ingresos" EntityType="Self.ingresos" Schema="seguridad_registros" store:Type="Tables" />
+          <EntitySet Name="bloqueo" EntityType="Self.bloqueo" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="correo_institucional" EntityType="Self.correo_institucional" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="estado1" EntityType="Self.estado1" Schema="usuario" Table="estado" store:Type="Tables" />
+          <EntitySet Name="permisos" EntityType="Self.permisos" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="user_session" EntityType="Self.user_session" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="usuario" store:Type="Tables" />
+          <AssociationSet Name="bloqueo_id_user_fkey" Association="Self.bloqueo_id_user_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="bloqueo" EntitySet="bloqueo" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_comentario_fkey" Association="Self.comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="comentario1" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_publicacion_fkey" Association="Self.comentario_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_usuario_fkey" Association="Self.comentario_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="controles_formulario_id_fkey" Association="Self.controles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_idioma_id_fkey" Association="Self.controles_idioma_id_fkey">
+            <End Role="idioma" EntitySet="idioma" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="correo_institucional_id_session_fkey" Association="Self.correo_institucional_id_session_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="correo_institucional" EntitySet="correo_institucional" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_comentario_fkey" Association="Self.denuncia_comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_denunciante_fkey" Association="Self.denuncia_comentario_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_estado_fkey" Association="Self.denuncia_comentario_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_denunciante_fkey" Association="Self.denuncia_publicacion_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_estado_fkey" Association="Self.denuncia_publicacion_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_publicacion_fkey" Association="Self.denuncia_publicacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="id_session" Association="Self.id_session">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="lcontroles_formulario_id_fkey" Association="Self.lcontroles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="lcontroles" EntitySet="lcontroles" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_categoria_fkey" Association="Self.publicacion_id_categoria_fkey">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_estado_fkey" Association="Self.publicacion_id_estado_fkey">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_usuario_fkey" Association="Self.publicacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_publicacion_fkey" Association="Self.puntuacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Self.puntuacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_estado_fkey" Association="Self.user_session_id_estado_fkey">
+            <End Role="estado1" EntitySet="estado1" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_permisos_fkey" Association="Self.user_session_id_permisos_fkey">
+            <End Role="permisos" EntitySet="permisos" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ForoUdecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_solicitud" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="denuncia_comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_comentario" Type="Int64" />
+          <Property Name="id_denunciante" Type="Int64" />
+          <Property Name="id_estado" Type="Int32" />
+          <NavigationProperty Name="comentario" Relationship="Self.denuncia_comentario_id_comentario_fkey" FromRole="denuncia_comentario" ToRole="comentario" />
+          <NavigationProperty Name="user_session" Relationship="Self.denuncia_comentario_id_denunciante_fkey" FromRole="denuncia_comentario" ToRole="user_session" />
+          <NavigationProperty Name="estado_denuncia" Relationship="Self.denuncia_comentario_id_estado_fkey" FromRole="denuncia_comentario" ToRole="estado_denuncia" />
+        </EntityType>
+        <EntityType Name="denuncia_publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <Property Name="id_denunciante" Type="Int64" />
+          <Property Name="id_estado" Type="Int32" />
+          <NavigationProperty Name="user_session" Relationship="Self.denuncia_publicacion_id_denunciante_fkey" FromRole="denuncia_publicacion" ToRole="user_session" />
+          <NavigationProperty Name="estado_denuncia" Relationship="Self.denuncia_publicacion_id_estado_fkey" FromRole="denuncia_publicacion" ToRole="estado_denuncia" />
+          <NavigationProperty Name="publicacion" Relationship="Self.denuncia_publicacion_id_publicacion_fkey" FromRole="denuncia_publicacion" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="estado_denuncia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Self.denuncia_comentario_id_estado_fkey" FromRole="estado_denuncia" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Self.denuncia_publicacion_id_estado_fkey" FromRole="estado_denuncia" ToRole="denuncia_publicacion" />
+        </EntityType>
+        <EntityType Name="controles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="control" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idioma_id" Type="Int32" />
+          <Property Name="formulario_id" Type="Int32" />
+          <Property Name="texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="formulario" Relationship="Self.controles_formulario_id_fkey" FromRole="controles" ToRole="formulario" />
+          <NavigationProperty Name="idioma" Relationship="Self.controles_idioma_id_fkey" FromRole="controles" ToRole="idioma" />
+        </EntityType>
+        <EntityType Name="formulario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="controles" Relationship="Self.controles_formulario_id_fkey" FromRole="formulario" ToRole="controles" />
+          <NavigationProperty Name="lcontroles" Relationship="Self.lcontroles_formulario_id_fkey" FromRole="formulario" ToRole="lcontroles" />
+        </EntityType>
+        <EntityType Name="idioma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="terminacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="controles" Relationship="Self.controles_idioma_id_fkey" FromRole="idioma" ToRole="controles" />
+        </EntityType>
+        <EntityType Name="lcontroles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="control" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formulario_id" Type="Int32" />
+          <NavigationProperty Name="formulario" Relationship="Self.lcontroles_formulario_id_fkey" FromRole="lcontroles" ToRole="formulario" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="publicacion" Relationship="Self.publicacion_id_categoria_fkey" FromRole="categoria" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="comentario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="7" />
+          <Property Name="id_comentario" Type="Int64" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Self.denuncia_comentario_id_comentario_fkey" FromRole="comentario" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="comentario1" Relationship="Self.comentario_id_comentario_fkey" FromRole="comentario" ToRole="comentario1" />
+          <NavigationProperty Name="comentario2" Relationship="Self.comentario_id_comentario_fkey" FromRole="comentario1" ToRole="comentario" />
+          <NavigationProperty Name="publicacion" Relationship="Self.comentario_id_publicacion_fkey" FromRole="comentario" ToRole="publicacion" />
+          <NavigationProperty Name="user_session" Relationship="Self.comentario_id_usuario_fkey" FromRole="comentario" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="publicacion" Relationship="Self.publicacion_id_estado_fkey" FromRole="estado" ToRole="publicacion" />
+        </EntityType>
+        <EntityType Name="publicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="contenido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="visitas" Type="Int64" />
+          <Property Name="fecha" Type="DateTime" Precision="7" />
+          <Property Name="fuente" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="id_estado" Type="Int32" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="miniatura" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="etiquetas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="seccion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Self.denuncia_publicacion_id_publicacion_fkey" FromRole="publicacion" ToRole="denuncia_publicacion" />
+          <NavigationProperty Name="categoria" Relationship="Self.publicacion_id_categoria_fkey" FromRole="publicacion" ToRole="categoria" />
+          <NavigationProperty Name="comentario" Relationship="Self.comentario_id_publicacion_fkey" FromRole="publicacion" ToRole="comentario" />
+          <NavigationProperty Name="estado" Relationship="Self.publicacion_id_estado_fkey" FromRole="publicacion" ToRole="estado" />
+          <NavigationProperty Name="user_session" Relationship="Self.publicacion_id_usuario_fkey" FromRole="publicacion" ToRole="user_session" />
+          <NavigationProperty Name="puntuacion" Relationship="Self.puntuacion_id_publicacion_fkey" FromRole="publicacion" ToRole="puntuacion" />
+        </EntityType>
+        <EntityType Name="puntuacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="puntuacion1" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="7" />
+          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="id_publicacion" Type="Int64" />
+          <NavigationProperty Name="publicacion" Relationship="Self.puntuacion_id_publicacion_fkey" FromRole="puntuacion" ToRole="publicacion" />
+          <NavigationProperty Name="user_session" Relationship="Self.puntuacion_id_usuario_fkey" FromRole="puntuacion" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="accion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="schema" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tabla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="pk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_bd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bloqueo_configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tiempo" Type="Int32" />
+          <Property Name="tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ingresos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="user_mac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_inicio" Type="Time" Precision="7" />
+          <Property Name="fecha_fin" Type="Time" Precision="7" />
+          <Property Name="user_ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bloqueo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_bloqueo" Type="DateTime" Precision="3" />
+          <Property Name="id_user" Type="Int64" />
+          <Property Name="fecha_teminacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="user_session" Relationship="Self.bloqueo_id_user_fkey" FromRole="bloqueo" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="correo_institucional">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_session" Type="Int64" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Self.correo_institucional_id_session_fkey" FromRole="correo_institucional" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="estado1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Self.user_session_id_estado_fkey" FromRole="estado1" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="permisos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Self.user_session_id_permisos_fkey" FromRole="permisos" ToRole="user_session" />
+        </EntityType>
+        <EntityType Name="user_session">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_ult_session" Type="DateTime" Precision="7" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="estado_session" Type="Int32" />
+          <Property Name="session" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id_permisos" Type="Int32" />
+          <Property Name="id_estado" Type="Int32" />
+          <Property Name="intentos_acceso" Type="Int32" />
+          <Property Name="n_sesiones" Type="Int32" />
+          <NavigationProperty Name="denuncia_comentario" Relationship="Self.denuncia_comentario_id_denunciante_fkey" FromRole="user_session" ToRole="denuncia_comentario" />
+          <NavigationProperty Name="denuncia_publicacion" Relationship="Self.denuncia_publicacion_id_denunciante_fkey" FromRole="user_session" ToRole="denuncia_publicacion" />
+          <NavigationProperty Name="comentario" Relationship="Self.comentario_id_usuario_fkey" FromRole="user_session" ToRole="comentario" />
+          <NavigationProperty Name="publicacion" Relationship="Self.publicacion_id_usuario_fkey" FromRole="user_session" ToRole="publicacion" />
+          <NavigationProperty Name="puntuacion" Relationship="Self.puntuacion_id_usuario_fkey" FromRole="user_session" ToRole="puntuacion" />
+          <NavigationProperty Name="bloqueo" Relationship="Self.bloqueo_id_user_fkey" FromRole="user_session" ToRole="bloqueo" />
+          <NavigationProperty Name="correo_institucional" Relationship="Self.correo_institucional_id_session_fkey" FromRole="user_session" ToRole="correo_institucional" />
+          <NavigationProperty Name="estado1" Relationship="Self.user_session_id_estado_fkey" FromRole="user_session" ToRole="estado1" />
+          <NavigationProperty Name="permisos" Relationship="Self.user_session_id_permisos_fkey" FromRole="user_session" ToRole="permisos" />
+          <NavigationProperty Name="usuario" Relationship="Self.id_session" FromRole="user_session" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="id_session" Type="Int64" />
+          <Property Name="sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_session" Relationship="Self.id_session" FromRole="usuario" ToRole="user_session" />
+        </EntityType>
+        <Association Name="denuncia_comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_comentario_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1" />
+          <End Role="denuncia_comentario" Type="Self.denuncia_comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_comentario">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_denunciante_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_denunciante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_estado_fkey">
+          <End Role="estado_denuncia" Type="Self.estado_denuncia" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_denuncia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="denuncia_publicacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="denuncia_publicacion" Type="Self.denuncia_publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="denuncia_publicacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="controles_idioma_id_fkey">
+          <End Role="idioma" Type="Self.idioma" Multiplicity="0..1" />
+          <End Role="controles" Type="Self.controles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="idioma">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="controles">
+              <PropertyRef Name="idioma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="lcontroles_formulario_id_fkey">
+          <End Role="formulario" Type="Self.formulario" Multiplicity="0..1" />
+          <End Role="lcontroles" Type="Self.lcontroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formulario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lcontroles">
+              <PropertyRef Name="formulario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_categoria_fkey">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_comentario_fkey">
+          <End Role="comentario" Type="Self.comentario" Multiplicity="0..1" />
+          <End Role="comentario1" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comentario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario1">
+              <PropertyRef Name="id_comentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="comentario" Type="Self.comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_estado_fkey">
+          <End Role="estado" Type="Self.estado" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="publicacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="publicacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_publicacion_fkey">
+          <End Role="publicacion" Type="Self.publicacion" Multiplicity="0..1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_publicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="puntuacion_id_usuario_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="puntuacion" Type="Self.puntuacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="puntuacion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bloqueo_id_user_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="bloqueo" Type="Self.bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bloqueo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="correo_institucional_id_session_fkey">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="correo_institucional" Type="Self.correo_institucional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="correo_institucional">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_estado_fkey">
+          <End Role="estado1" Type="Self.estado1" Multiplicity="0..1" />
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_session_id_permisos_fkey">
+          <End Role="permisos" Type="Self.permisos" Multiplicity="0..1" />
+          <End Role="user_session" Type="Self.user_session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permisos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_session">
+              <PropertyRef Name="id_permisos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_session">
+          <End Role="user_session" Type="Self.user_session" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_session">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="id_session" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ForoUdecEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contacto" EntityType="Self.contacto" />
+          <EntitySet Name="denuncia_comentario" EntityType="Self.denuncia_comentario" />
+          <EntitySet Name="denuncia_publicacion" EntityType="Self.denuncia_publicacion" />
+          <EntitySet Name="estado_denuncia" EntityType="Self.estado_denuncia" />
+          <EntitySet Name="controles" EntityType="Self.controles" />
+          <EntitySet Name="formulario" EntityType="Self.formulario" />
+          <EntitySet Name="idioma" EntityType="Self.idioma" />
+          <EntitySet Name="lcontroles" EntityType="Self.lcontroles" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="comentario" EntityType="Self.comentario" />
+          <EntitySet Name="estado" EntityType="Self.estado" />
+          <EntitySet Name="publicacion" EntityType="Self.publicacion" />
+          <EntitySet Name="puntuacion" EntityType="Self.puntuacion" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" />
+          <EntitySet Name="bloqueo_configuration" EntityType="Self.bloqueo_configuration" />
+          <EntitySet Name="ingresos" EntityType="Self.ingresos" />
+          <EntitySet Name="bloqueo" EntityType="Self.bloqueo" />
+          <EntitySet Name="correo_institucional" EntityType="Self.correo_institucional" />
+          <EntitySet Name="estado1" EntityType="Self.estado1" />
+          <EntitySet Name="permisos" EntityType="Self.permisos" />
+          <EntitySet Name="user_session" EntityType="Self.user_session" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="denuncia_comentario_id_comentario_fkey" Association="Self.denuncia_comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_denunciante_fkey" Association="Self.denuncia_comentario_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_comentario_id_estado_fkey" Association="Self.denuncia_comentario_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_comentario" EntitySet="denuncia_comentario" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_denunciante_fkey" Association="Self.denuncia_publicacion_id_denunciante_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_estado_fkey" Association="Self.denuncia_publicacion_id_estado_fkey">
+            <End Role="estado_denuncia" EntitySet="estado_denuncia" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="denuncia_publicacion_id_publicacion_fkey" Association="Self.denuncia_publicacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="denuncia_publicacion" EntitySet="denuncia_publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="controles_formulario_id_fkey" Association="Self.controles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="controles_idioma_id_fkey" Association="Self.controles_idioma_id_fkey">
+            <End Role="idioma" EntitySet="idioma" />
+            <End Role="controles" EntitySet="controles" />
+          </AssociationSet>
+          <AssociationSet Name="lcontroles_formulario_id_fkey" Association="Self.lcontroles_formulario_id_fkey">
+            <End Role="formulario" EntitySet="formulario" />
+            <End Role="lcontroles" EntitySet="lcontroles" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_categoria_fkey" Association="Self.publicacion_id_categoria_fkey">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_comentario_fkey" Association="Self.comentario_id_comentario_fkey">
+            <End Role="comentario" EntitySet="comentario" />
+            <End Role="comentario1" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_publicacion_fkey" Association="Self.comentario_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_id_usuario_fkey" Association="Self.comentario_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="comentario" EntitySet="comentario" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_estado_fkey" Association="Self.publicacion_id_estado_fkey">
+            <End Role="estado" EntitySet="estado" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="publicacion_id_usuario_fkey" Association="Self.publicacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="publicacion" EntitySet="publicacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_publicacion_fkey" Association="Self.puntuacion_id_publicacion_fkey">
+            <End Role="publicacion" EntitySet="publicacion" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="puntuacion_id_usuario_fkey" Association="Self.puntuacion_id_usuario_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="puntuacion" EntitySet="puntuacion" />
+          </AssociationSet>
+          <AssociationSet Name="bloqueo_id_user_fkey" Association="Self.bloqueo_id_user_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="bloqueo" EntitySet="bloqueo" />
+          </AssociationSet>
+          <AssociationSet Name="correo_institucional_id_session_fkey" Association="Self.correo_institucional_id_session_fkey">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="correo_institucional" EntitySet="correo_institucional" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_estado_fkey" Association="Self.user_session_id_estado_fkey">
+            <End Role="estado1" EntitySet="estado1" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="user_session_id_permisos_fkey" Association="Self.user_session_id_permisos_fkey">
+            <End Role="permisos" EntitySet="permisos" />
+            <End Role="user_session" EntitySet="user_session" />
+          </AssociationSet>
+          <AssociationSet Name="id_session" Association="Self.id_session">
+            <End Role="user_session" EntitySet="user_session" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <FunctionImport Name="f_caragr_datos_admin_chart" ReturnType="Collection(ForoUdecModel.f_caragr_datos_admin_chart_Result)" />
+          <FunctionImport Name="f_caragr_datos_admin_home" ReturnType="Collection(ForoUdecModel.f_caragr_datos_admin_home_Result)" />
+          <FunctionImport Name="f_cargar_usuariospoints" />
+          <FunctionImport Name="f_cargar_usuariospubl" ReturnType="Collection(ForoUdecModel.f_cargar_usuariospubl_Result)" />
+          <FunctionImport Name="f_crud_mod_post" ReturnType="Collection(ForoUdecModel.f_crud_mod_post_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_crud_usuarios_delete" ReturnType="Collection(String)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="session" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_crud_usuarios_delete2" ReturnType="Collection(String)">
+            <Parameter Name="id_user" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_crud_usuarios_listar" ReturnType="Collection(ForoUdecModel.f_crud_usuarios_listar_Result)" />
+          <FunctionImport Name="f_modificar_perfil" ReturnType="Collection(String)">
+            <Parameter Name="admin" Mode="In" Type="Int32" />
+            <Parameter Name="session" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_modificar_perfil_usuario" ReturnType="Collection(String)">
+            <Parameter Name="session" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="edad" Mode="In" Type="Int32" />
+            <Parameter Name="sexo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_bloqueo_sesiones" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos_perfil" ReturnType="Collection(ForoUdecModel.f_traer_datos_perfil_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos_sesion" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion_Result)">
+            <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_agregar_contacto">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_modificar_perfil_ajustes" ReturnType="Collection(String)">
+            <Parameter Name="session" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_modificar_usuario" ReturnType="Collection(String)">
+            <Parameter Name="session" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellido" Mode="In" Type="String" />
+            <Parameter Name="edad" Mode="In" Type="Int32" />
+            <Parameter Name="sexo" Mode="In" Type="String" />
+            <Parameter Name="avatar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_registro_usuario" ReturnType="Collection(String)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="session" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_aceptar_denuncia_comentario">
+            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_denunciar_comentario" ReturnType="Collection(String)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="comentarioid" Mode="In" Type="Int32" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_denunciar_publicacion" ReturnType="Collection(String)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_eliminar_denuncia_comentario">
+            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_mostar_denuncias_comentario" ReturnType="Collection(ForoUdecModel.f_mostar_denuncias_comentario_Result)">
+            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_agregar_control">
+            <Parameter Name="control" Mode="In" Type="String" />
+            <Parameter Name="formulario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_cargar_idiomas" ReturnType="Collection(ForoUdecModel.f_cargar_idiomas_Result)" />
+          <FunctionImport Name="f_ingresar_idioma">
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="cultura" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingresar_idioma_control">
+            <Parameter Name="idioma" Mode="In" Type="Int32" />
+            <Parameter Name="control" Mode="In" Type="String" />
+            <Parameter Name="formulario" Mode="In" Type="Int32" />
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_controles" ReturnType="Collection(ForoUdecModel.f_listar_controles_Result)">
+            <Parameter Name="formulario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_controles2" ReturnType="Collection(ForoUdecModel.f_listar_controles2_Result)">
+            <Parameter Name="formulario" Mode="In" Type="Int32" />
+            <Parameter Name="idioma" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_formulario" ReturnType="Collection(ForoUdecModel.f_listar_formulario_Result)" />
+          <FunctionImport Name="f_obtener_idioma_formulario" ReturnType="Collection(ForoUdecModel.f_obtener_idioma_formulario_Result)">
+            <Parameter Name="formulario_id" Mode="In" Type="Int32" />
+            <Parameter Name="idioma_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_update_idioma_control">
+            <Parameter Name="control" Mode="In" Type="Int32" />
+            <Parameter Name="valor" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_busqueda" ReturnType="Collection(ForoUdecModel.f_busqueda_Result)">
+            <Parameter Name="dato" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_busqueda_private" ReturnType="Collection(ForoUdecModel.f_busqueda_private_Result)">
+            <Parameter Name="dato" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_cargar_mod_post" ReturnType="Collection(ForoUdecModel.f_cargar_mod_post_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_comentar_post" ReturnType="Collection(String)">
+            <Parameter Name="comentarioid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+            <Parameter Name="comentario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingresar_post" ReturnType="Collection(String)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="categoria" Mode="In" Type="Int32" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="miniatura" Mode="In" Type="String" />
+            <Parameter Name="etiquetas" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingresar_post_privado" ReturnType="Collection(String)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="categoria" Mode="In" Type="Int32" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="miniatura" Mode="In" Type="String" />
+            <Parameter Name="etiquetas" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingreso_categoria" ReturnType="Collection(String)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_categoria" ReturnType="Collection(ForoUdecModel.f_listar_categoria_Result)" />
+          <FunctionImport Name="f_listar_comentarios_post" ReturnType="Collection(ForoUdecModel.f_listar_comentarios_post_Result)">
+            <Parameter Name="postid" Mode="In" Type="Int64" />
+            <Parameter Name="comentario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post" ReturnType="Collection(ForoUdecModel.f_listar_post_Result)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_home" ReturnType="Collection(ForoUdecModel.f_listar_post_home_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_home_categorias" ReturnType="Collection(ForoUdecModel.f_listar_post_home_categorias_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_home_categorias_private" ReturnType="Collection(ForoUdecModel.f_listar_post_home_categorias_private_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_home_private" ReturnType="Collection(ForoUdecModel.f_listar_post_home_private_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_home_servicios" ReturnType="Collection(ForoUdecModel.f_listar_post_home_servicios_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_moderador" ReturnType="Collection(ForoUdecModel.f_listar_post_moderador_Result)">
+            <Parameter Name="orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_private" ReturnType="Collection(ForoUdecModel.f_listar_post_private_Result)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_listar_post_public" ReturnType="Collection(ForoUdecModel.f_listar_post_public_Result)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_modificar_post" ReturnType="Collection(String)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="categoria" Mode="In" Type="Int32" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+            <Parameter Name="autor" Mode="In" Type="String" />
+            <Parameter Name="miniatura" Mode="In" Type="String" />
+            <Parameter Name="etiquetas" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_puntuar_post" ReturnType="Collection(String)">
+            <Parameter Name="puntuacion" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_suspender_post" ReturnType="Collection(String)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_validar_post" ReturnType="Collection(String)">
+            <Parameter Name="sesion" Mode="In" Type="String" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_ver_post" ReturnType="Collection(ForoUdecModel.f_ver_post_Result)">
+            <Parameter Name="postid" Mode="In" Type="Int64" />
+            <Parameter Name="control" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_ver_post2" ReturnType="Collection(ForoUdecModel.f_ver_post2_Result)">
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_visita_post">
+            <Parameter Name="postid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_reporte_publicacion" ReturnType="Collection(ForoUdecModel.f_reporte_publicacion_Result)" />
+          <FunctionImport Name="f_reporte_puntuacion" ReturnType="Collection(ForoUdecModel.f_reporte_puntuacion_Result)" />
+          <FunctionImport Name="f_reporte_usuario" ReturnType="Collection(ForoUdecModel.f_reporte_usuario_Result)" />
+          <FunctionImport Name="f_actualizar_bloqueo_sesion" />
+          <FunctionImport Name="f_actualizar_bloqueo_sesion2">
+            <Parameter Name="session" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_actualizar_bloqueo_sesiones">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="nsesion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_actualizar_estado">
+            <Parameter Name="p_user_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_almacenar_token">
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_cambiar_password" ReturnType="Collection(Int32)">
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="token" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingresar_bloqueo_sesion">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_ingresar_correo_institucional" ReturnType="Collection(String)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="session" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_limpiar_bloqueo">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_modificar_perfil_ajustes1" ReturnType="Collection(String)">
+            <Parameter Name="session" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_solicitar_bloqueo" ReturnType="Collection(String)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_solicitar_bloqueo_preingreso" ReturnType="Collection(Int32)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_solicitar_bloqueo_sesiones" ReturnType="Collection(Int32)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_solicitar_bloqueo2" ReturnType="Collection(ForoUdecModel.f_solicitar_bloqueo2_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_solicitar_contador_sesiones" ReturnType="Collection(String)">
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_correo_institucional" ReturnType="Collection(String)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos" ReturnType="Collection(ForoUdecModel.f_traer_datos_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos_sesion1" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion1_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos_sesion2" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion2_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_traer_datos_vista_perfil" ReturnType="Collection(ForoUdecModel.f_traer_datos_vista_perfil_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_validar_token" ReturnType="Collection(Int32)">
+            <Parameter Name="token" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_validar_usuario" ReturnType="Collection(ForoUdecModel.f_validar_usuario_Result)">
+            <Parameter Name="user_name" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="f_caragr_datos_admin_chart_Result">
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_caragr_datos_admin_home_Result">
+          <Property Type="Int32" Name="totalusere" Nullable="true" />
+          <Property Type="Int32" Name="totalusere1" Nullable="true" />
+          <Property Type="Int32" Name="totalusere2" Nullable="true" />
+          <Property Type="Int32" Name="totalusere3" Nullable="true" />
+          <Property Type="Int32" Name="totalusere4" Nullable="true" />
+          <Property Type="Int32" Name="totalusere5" Nullable="true" />
+          <Property Type="Int32" Name="totalusere6" Nullable="true" />
+          <Property Type="Int32" Name="totalusere7" Nullable="true" />
+          <Property Type="Int32" Name="totalusere8" Nullable="true" />
+          <Property Type="Int32" Name="totalusere9" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_cargar_usuariospubl_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="contador" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_crud_mod_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="Column1" Nullable="true" />
+          <Property Type="Int64" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="Column3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_crud_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="Column1" Nullable="true" />
+          <Property Type="Int64" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="Column3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_crud_usuarios_listar_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="tipo1" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_perfil_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="Int64" Name="id_session" Nullable="true" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="session" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_sesion_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado_session" Nullable="true" />
+          <Property Type="String" Name="session" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_permisos" Nullable="true" />
+          <Property Type="Int32" Name="id_estado" Nullable="true" />
+          <Property Type="Int32" Name="intentos_acceso" Nullable="true" />
+          <Property Type="Int32" Name="n_sesiones" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_mostar_denuncias_comentario_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="Max" />
+          <Property Type="Int64" Name="id_comentario" Nullable="true" />
+          <Property Type="Int64" Name="id_denunciante" Nullable="true" />
+          <Property Type="String" Name="contenido" Nullable="true" MaxLength="Max" />
+          <Property Type="Int64" Name="id_denunciante1" Nullable="true" />
+          <Property Type="Int64" Name="id_denunciante2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_cargar_idiomas_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="terminacion" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_listar_controles_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="formulario_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_listar_controles2_Result">
+          <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="idioma_id" Nullable="true" />
+          <Property Type="Int32" Name="formulario_id" Nullable="true" />
+          <Property Type="String" Name="texto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_listar_formulario_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="url" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_obtener_idioma_formulario_Result">
+          <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="texto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_busqueda_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_busqueda_private_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_cargar_mod_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="id_estado" Nullable="true" />
+          <Property Type="Int64" Name="id_usuario" Nullable="true" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="id_categoria" Nullable="true" />
+          <Property Type="String" Name="seccion" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="f_listar_categoria_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_listar_comentarios_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="String" Name="contenido" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="163" />
+          <Property Type="String" Name="Column3" Nullable="true" MaxLength="168" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_home_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_home_categorias_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="110" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_home_categorias_private_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="110" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_home_private_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_home_servicios_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_moderador_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_private_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="129" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="f_listar_post_public_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="124" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="f_ver_post_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_ver_post2_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+          <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="f_reporte_publicacion_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="DateTime" Name="fecha" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_reporte_puntuacion_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="puntuacion" Nullable="true" />
+          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="f_reporte_usuario_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="f_solicitar_bloqueo2_Result">
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="Int32" Name="Column3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_sesion1_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado_session" Nullable="true" />
+          <Property Type="String" Name="session" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_permisos" Nullable="true" />
+          <Property Type="Int32" Name="id_estado" Nullable="true" />
+          <Property Type="Int32" Name="intentos_acceso" Nullable="true" />
+          <Property Type="Int32" Name="n_sesiones" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_sesion2_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_traer_datos_vista_perfil_Result">
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="edad" Nullable="true" />
+          <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="f_validar_usuario_Result">
+          <Property Type="Int32" Name="Column1" Nullable="false" />
+          <Property Type="String" Name="Column2" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Column3" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="Column4" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Column5" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="Column6" Nullable="false" />
+          <Property Type="String" Name="Column7" Nullable="false" MaxLength="1" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ForoUdecModelStoreContainer" CdmEntityContainer="ForoUdecEntities1">
+          <EntitySetMapping Name="contacto">
+            <EntityTypeMapping TypeName="ForoUdecModel.contacto">
+              <MappingFragment StoreEntitySet="contacto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="denuncia_comentario">
+            <EntityTypeMapping TypeName="ForoUdecModel.denuncia_comentario">
+              <MappingFragment StoreEntitySet="denuncia_comentario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="denuncia_publicacion">
+            <EntityTypeMapping TypeName="ForoUdecModel.denuncia_publicacion">
+              <MappingFragment StoreEntitySet="denuncia_publicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado_denuncia">
+            <EntityTypeMapping TypeName="ForoUdecModel.estado_denuncia">
+              <MappingFragment StoreEntitySet="estado_denuncia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="controles">
+            <EntityTypeMapping TypeName="ForoUdecModel.controles">
+              <MappingFragment StoreEntitySet="controles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formulario">
+            <EntityTypeMapping TypeName="ForoUdecModel.formulario">
+              <MappingFragment StoreEntitySet="formulario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="idioma">
+            <EntityTypeMapping TypeName="ForoUdecModel.idioma">
+              <MappingFragment StoreEntitySet="idioma">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lcontroles">
+            <EntityTypeMapping TypeName="ForoUdecModel.lcontroles">
+              <MappingFragment StoreEntitySet="lcontroles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="ForoUdecModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentario">
+            <EntityTypeMapping TypeName="ForoUdecModel.comentario">
+              <MappingFragment StoreEntitySet="comentario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado">
+            <EntityTypeMapping TypeName="ForoUdecModel.estado">
+              <MappingFragment StoreEntitySet="estado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="publicacion">
+            <EntityTypeMapping TypeName="ForoUdecModel.publicacion">
+              <MappingFragment StoreEntitySet="publicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puntuacion">
+            <EntityTypeMapping TypeName="ForoUdecModel.puntuacion">
+              <MappingFragment StoreEntitySet="puntuacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="puntuacion1" ColumnName="puntuacion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditoria">
+            <EntityTypeMapping TypeName="ForoUdecModel.auditoria">
+              <MappingFragment StoreEntitySet="auditoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="accion" ColumnName="accion" />
+                <ScalarProperty Name="schema" ColumnName="schema" />
+                <ScalarProperty Name="tabla" ColumnName="tabla" />
+                <ScalarProperty Name="pk" ColumnName="pk" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="user_bd" ColumnName="user_bd" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bloqueo_configuration">
+            <EntityTypeMapping TypeName="ForoUdecModel.bloqueo_configuration">
+              <MappingFragment StoreEntitySet="bloqueo_configuration">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ingresos">
+            <EntityTypeMapping TypeName="ForoUdecModel.ingresos">
+              <MappingFragment StoreEntitySet="ingresos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_mac" ColumnName="user_mac" />
+                <ScalarProperty Name="user_session" ColumnName="user_session" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="user_ip" ColumnName="user_ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bloqueo">
+            <EntityTypeMapping TypeName="ForoUdecModel.bloqueo">
+              <MappingFragment StoreEntitySet="bloqueo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha_bloqueo" ColumnName="fecha_bloqueo" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="fecha_teminacion" ColumnName="fecha_teminacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="correo_institucional">
+            <EntityTypeMapping TypeName="ForoUdecModel.correo_institucional">
+              <MappingFragment StoreEntitySet="correo_institucional">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_session" ColumnName="id_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estado1">
+            <EntityTypeMapping TypeName="ForoUdecModel.estado1">
+              <MappingFragment StoreEntitySet="estado1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permisos">
+            <EntityTypeMapping TypeName="ForoUdecModel.permisos">
+              <MappingFragment StoreEntitySet="permisos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_session">
+            <EntityTypeMapping TypeName="ForoUdecModel.user_session">
+              <MappingFragment StoreEntitySet="user_session">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+                <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="ForoUdecModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="id_session" ColumnName="id_session" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="session" ColumnName="session" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="f_caragr_datos_admin_chart" FunctionName="ForoUdecModel.Store.f_caragr_datos_admin_chart">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_caragr_datos_admin_chart_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_caragr_datos_admin_home" FunctionName="ForoUdecModel.Store.f_caragr_datos_admin_home">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_caragr_datos_admin_home_Result">
+                <ScalarProperty Name="totalusere" ColumnName="totalusere" />
+                <ScalarProperty Name="totalusere1" ColumnName="totalusere1" />
+                <ScalarProperty Name="totalusere2" ColumnName="totalusere2" />
+                <ScalarProperty Name="totalusere3" ColumnName="totalusere3" />
+                <ScalarProperty Name="totalusere4" ColumnName="totalusere4" />
+                <ScalarProperty Name="totalusere5" ColumnName="totalusere5" />
+                <ScalarProperty Name="totalusere6" ColumnName="totalusere6" />
+                <ScalarProperty Name="totalusere7" ColumnName="totalusere7" />
+                <ScalarProperty Name="totalusere8" ColumnName="totalusere8" />
+                <ScalarProperty Name="totalusere9" ColumnName="totalusere9" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_cargar_usuariospoints" FunctionName="ForoUdecModel.Store.f_cargar_usuariospoints" />
+          <FunctionImportMapping FunctionImportName="f_cargar_usuariospubl" FunctionName="ForoUdecModel.Store.f_cargar_usuariospubl">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_usuariospubl_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="contador" ColumnName="contador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_crud_mod_post" FunctionName="ForoUdecModel.Store.f_crud_mod_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_mod_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_crud_post" FunctionName="ForoUdecModel.Store.f_crud_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_crud_usuarios_delete" FunctionName="ForoUdecModel.Store.f_crud_usuarios_delete" />
+          <FunctionImportMapping FunctionImportName="f_crud_usuarios_delete2" FunctionName="ForoUdecModel.Store.f_crud_usuarios_delete2" />
+          <FunctionImportMapping FunctionImportName="f_crud_usuarios_listar" FunctionName="ForoUdecModel.Store.f_crud_usuarios_listar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_usuarios_listar_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_modificar_perfil" FunctionName="ForoUdecModel.Store.f_modificar_perfil" />
+          <FunctionImportMapping FunctionImportName="f_modificar_perfil_usuario" FunctionName="ForoUdecModel.Store.f_modificar_perfil_usuario" />
+          <FunctionImportMapping FunctionImportName="f_traer_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_traer_bloqueo_sesiones" />
+          <FunctionImportMapping FunctionImportName="f_traer_datos_perfil" FunctionName="ForoUdecModel.Store.f_traer_datos_perfil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_perfil_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="id_session" ColumnName="id_session" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="session" ColumnName="session" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_traer_datos_sesion" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+                <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_agregar_contacto" FunctionName="ForoUdecModel.Store.f_agregar_contacto" />
+          <FunctionImportMapping FunctionImportName="f_modificar_perfil_ajustes" FunctionName="ForoUdecModel.Store.f_modificar_perfil_ajustes" />
+          <FunctionImportMapping FunctionImportName="f_modificar_usuario" FunctionName="ForoUdecModel.Store.f_modificar_usuario" />
+          <FunctionImportMapping FunctionImportName="f_registro_usuario" FunctionName="ForoUdecModel.Store.f_registro_usuario" />
+          <FunctionImportMapping FunctionImportName="f_aceptar_denuncia_comentario" FunctionName="ForoUdecModel.Store.f_aceptar_denuncia_comentario" />
+          <FunctionImportMapping FunctionImportName="f_denunciar_comentario" FunctionName="ForoUdecModel.Store.f_denunciar_comentario" />
+          <FunctionImportMapping FunctionImportName="f_denunciar_publicacion" FunctionName="ForoUdecModel.Store.f_denunciar_publicacion" />
+          <FunctionImportMapping FunctionImportName="f_eliminar_denuncia_comentario" FunctionName="ForoUdecModel.Store.f_eliminar_denuncia_comentario" />
+          <FunctionImportMapping FunctionImportName="f_mostar_denuncias_comentario" FunctionName="ForoUdecModel.Store.f_mostar_denuncias_comentario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_mostar_denuncias_comentario_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
+                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="id_denunciante1" ColumnName="id_denunciante1" />
+                <ScalarProperty Name="id_denunciante2" ColumnName="id_denunciante2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_agregar_control" FunctionName="ForoUdecModel.Store.f_agregar_control" />
+          <FunctionImportMapping FunctionImportName="f_cargar_idiomas" FunctionName="ForoUdecModel.Store.f_cargar_idiomas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_idiomas_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="terminacion" ColumnName="terminacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_ingresar_idioma" FunctionName="ForoUdecModel.Store.f_ingresar_idioma" />
+          <FunctionImportMapping FunctionImportName="f_ingresar_idioma_control" FunctionName="ForoUdecModel.Store.f_ingresar_idioma_control" />
+          <FunctionImportMapping FunctionImportName="f_listar_controles" FunctionName="ForoUdecModel.Store.f_listar_controles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_controles2" FunctionName="ForoUdecModel.Store.f_listar_controles2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles2_Result">
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
+                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_formulario" FunctionName="ForoUdecModel.Store.f_listar_formulario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_formulario_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="url" ColumnName="url" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_obtener_idioma_formulario" FunctionName="ForoUdecModel.Store.f_obtener_idioma_formulario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_obtener_idioma_formulario_Result">
+                <ScalarProperty Name="control" ColumnName="control" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_update_idioma_control" FunctionName="ForoUdecModel.Store.f_update_idioma_control" />
+          <FunctionImportMapping FunctionImportName="f_busqueda" FunctionName="ForoUdecModel.Store.f_busqueda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_busqueda_private" FunctionName="ForoUdecModel.Store.f_busqueda_private">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_private_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_cargar_mod_post" FunctionName="ForoUdecModel.Store.f_cargar_mod_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_mod_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="seccion" ColumnName="seccion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_comentar_post" FunctionName="ForoUdecModel.Store.f_comentar_post" />
+          <FunctionImportMapping FunctionImportName="f_ingresar_post" FunctionName="ForoUdecModel.Store.f_ingresar_post" />
+          <FunctionImportMapping FunctionImportName="f_ingresar_post_privado" FunctionName="ForoUdecModel.Store.f_ingresar_post_privado" />
+          <FunctionImportMapping FunctionImportName="f_ingreso_categoria" FunctionName="ForoUdecModel.Store.f_ingreso_categoria" />
+          <FunctionImportMapping FunctionImportName="f_listar_categoria" FunctionName="ForoUdecModel.Store.f_listar_categoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_categoria_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_comentarios_post" FunctionName="ForoUdecModel.Store.f_listar_comentarios_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_comentarios_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post" FunctionName="ForoUdecModel.Store.f_listar_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_home" FunctionName="ForoUdecModel.Store.f_listar_post_home">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias_private">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_private_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_home_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_private">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_private_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_home_servicios" FunctionName="ForoUdecModel.Store.f_listar_post_home_servicios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_servicios_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_moderador" FunctionName="ForoUdecModel.Store.f_listar_post_moderador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_moderador_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_private" FunctionName="ForoUdecModel.Store.f_listar_post_private">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_private_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_listar_post_public" FunctionName="ForoUdecModel.Store.f_listar_post_public">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_public_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_modificar_post" FunctionName="ForoUdecModel.Store.f_modificar_post" />
+          <FunctionImportMapping FunctionImportName="f_puntuar_post" FunctionName="ForoUdecModel.Store.f_puntuar_post" />
+          <FunctionImportMapping FunctionImportName="f_suspender_post" FunctionName="ForoUdecModel.Store.f_suspender_post" />
+          <FunctionImportMapping FunctionImportName="f_validar_post" FunctionName="ForoUdecModel.Store.f_validar_post" />
+          <FunctionImportMapping FunctionImportName="f_ver_post" FunctionName="ForoUdecModel.Store.f_ver_post">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_ver_post2" FunctionName="ForoUdecModel.Store.f_ver_post2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post2_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fuente" ColumnName="fuente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_visita_post" FunctionName="ForoUdecModel.Store.f_visita_post" />
+          <FunctionImportMapping FunctionImportName="f_reporte_publicacion" FunctionName="ForoUdecModel.Store.f_reporte_publicacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_publicacion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_reporte_puntuacion" FunctionName="ForoUdecModel.Store.f_reporte_puntuacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_puntuacion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_reporte_usuario" FunctionName="ForoUdecModel.Store.f_reporte_usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_usuario_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesion" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesion" />
+          <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesion2" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesion2" />
+          <FunctionImportMapping FunctionImportName="f_actualizar_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_actualizar_bloqueo_sesiones" />
+          <FunctionImportMapping FunctionImportName="f_actualizar_estado" FunctionName="ForoUdecModel.Store.f_actualizar_estado" />
+          <FunctionImportMapping FunctionImportName="f_almacenar_token" FunctionName="ForoUdecModel.Store.f_almacenar_token" />
+          <FunctionImportMapping FunctionImportName="f_cambiar_password" FunctionName="ForoUdecModel.Store.f_cambiar_password" />
+          <FunctionImportMapping FunctionImportName="f_ingresar_bloqueo_sesion" FunctionName="ForoUdecModel.Store.f_ingresar_bloqueo_sesion" />
+          <FunctionImportMapping FunctionImportName="f_ingresar_correo_institucional" FunctionName="ForoUdecModel.Store.f_ingresar_correo_institucional" />
+          <FunctionImportMapping FunctionImportName="f_limpiar_bloqueo" FunctionName="ForoUdecModel.Store.f_limpiar_bloqueo" />
+          <FunctionImportMapping FunctionImportName="f_modificar_perfil_ajustes1" FunctionName="ForoUdecModel.Store.f_modificar_perfil_ajustes1" />
+          <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo" />
+          <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo_preingreso" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo_preingreso" />
+          <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo_sesiones" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo_sesiones" />
+          <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo2" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_solicitar_bloqueo2_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_solicitar_contador_sesiones" FunctionName="ForoUdecModel.Store.f_solicitar_contador_sesiones" />
+          <FunctionImportMapping FunctionImportName="f_traer_correo_institucional" FunctionName="ForoUdecModel.Store.f_traer_correo_institucional" />
+          <FunctionImportMapping FunctionImportName="f_traer_datos" FunctionName="ForoUdecModel.Store.f_traer_datos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_traer_datos_sesion1" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion1_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+                <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_traer_datos_sesion2" FunctionName="ForoUdecModel.Store.f_traer_datos_sesion2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_sesion2_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_traer_datos_vista_perfil" FunctionName="ForoUdecModel.Store.f_traer_datos_vista_perfil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_vista_perfil_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="corrreo" ColumnName="corrreo" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_validar_token" FunctionName="ForoUdecModel.Store.f_validar_token" />
+          <FunctionImportMapping FunctionImportName="f_validar_usuario" FunctionName="ForoUdecModel.Store.f_validar_usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_validar_usuario_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+                <ScalarProperty Name="Column6" ColumnName="Column6" />
+                <ScalarProperty Name="Column7" ColumnName="Column7" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

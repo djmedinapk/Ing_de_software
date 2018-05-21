@@ -1,0 +1,15 @@
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\obj\Debug\Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Persistence.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Encapsulados.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\EntityFramework.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Utilitarios.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Encapsulados.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\Utilitarios.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\EntityFramework.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\obj\Debug\Persistence.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\obj\Debug\Persistence.pdb

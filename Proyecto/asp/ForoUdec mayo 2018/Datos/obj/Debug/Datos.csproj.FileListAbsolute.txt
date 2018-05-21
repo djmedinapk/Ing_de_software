@@ -85,3 +85,15 @@ D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csprojResolveAssemblyRefere
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.dll
 D:\EjercicioMasterSegundoCorte\Datos\obj\Debug\Datos.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Datos.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Datos.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Encapsulados.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Npgsql.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Encapsulados.pdb
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\Npgsql.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\obj\Debug\Datos.dll
+C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Datos\obj\Debug\Datos.pdb
