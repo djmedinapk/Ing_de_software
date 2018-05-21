@@ -232,13 +232,23 @@
     <Compile Include="lcontroles.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pcontacto.cs" />
     <Compile Include="permisos.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
+    <Compile Include="Ppost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PsqlAdmin.cs" />
     <Compile Include="PsqlContacto.cs" />
     <Compile Include="PsqlCorreoInst.cs" />
+    <Compile Include="PsqlDenuncia.cs" />
+    <Compile Include="PsqlIdioma.cs" />
+    <Compile Include="PsqlLogin.cs" />
+    <Compile Include="PsqlPerfil.cs" />
+    <Compile Include="PsqlPost.cs" />
+    <Compile Include="PsqlRegistro.cs" />
+    <Compile Include="PsqlResetPass.cs" />
+    <Compile Include="PsqlServicios.cs" />
     <Compile Include="publicacion.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>

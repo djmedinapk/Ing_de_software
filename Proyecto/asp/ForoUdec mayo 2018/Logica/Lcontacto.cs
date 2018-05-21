@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Datos;
 using Encapsulados;
 using Utilitarios;
-using Persistencia;
 using Tablas;
+using Persistence;
 
 namespace Logica
 {
@@ -15,13 +15,13 @@ namespace Logica
     {
         public void enviarSolicitud(Ucontacto contacto)
         {
-            Contacto datos = new Contacto();
+            contacto datos = new contacto();
             datos.nombre = contacto.Nombre;
             datos.apellido=contacto.Apellido;
             datos.correo=contacto.Correo;
             datos.telefono=contacto.Telefono;
             datos.contenido=contacto.Contenido;
-            datos.fechaSolicitud = DateTime.Now;
+            datos.fecha_solicitud = DateTime.Now;
             Pcontacto solicitud = new Pcontacto();
             solicitud.enviarSolicitud(datos);
             

@@ -9,6 +9,7 @@ using Encapsulados;
 using System.Data;
 using Persistencia;
 using Tablas;
+using Persistence;
 
 namespace Logica
 {
@@ -46,9 +47,10 @@ namespace Logica
                 //else
                 //{
                 //    usuario.Alerta = Alerta("No Se Encontro EL usuario", "rojo");
-                //}
-                Puser solicitud = new Puser();
-                User_session user = solicitud.traerUser(id);
+                ////}
+                //Puser solicitud = new Puser();
+                PsqlLogin solicitud = new PsqlLogin();
+                user_session user = solicitud.traerUser(id);
 
                 if (user!=null)
                 {
@@ -57,7 +59,7 @@ namespace Logica
                     usuariodd.Username = user.username;
                     usuariodd.Correo = user.correo;
                     usuariodd.Password = user.pasword;
-                    usuariodd.Nsesion = user.nSesiones.ToString();
+                    usuariodd.Nsesion = user.n_sesiones.ToString();
                 }
                 else
                 {
@@ -71,7 +73,8 @@ namespace Logica
         //Persi------------------Fin Persistencia---------------------------
         public void actualizarPerfil(Uadmin_ver_usuario_2 registro, Int32 id, String sessionId)
         {
-            Dadmin solicitud = new Dadmin();
+            //Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             Eadmin_actualizar_usuario_2 usuario = new Eadmin_actualizar_usuario_2();
             usuario.Id = id.ToString();
             usuario.Nombre = registro.Nombre;
@@ -97,7 +100,8 @@ namespace Logica
         {
             int admin = 0;
             String respuesta = null;
-            Dadmin solicitud = new Dadmin();
+           // Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             Eadmin_actualizar_usuario usuario = new Eadmin_actualizar_usuario();
             encryption encriptar = new encryption();
             usuario.Correo = registro.Correo;
@@ -119,7 +123,8 @@ namespace Logica
             Uadmin_ver_usuario_2 usuario = new Uadmin_ver_usuario_2();
             if (comando == "ver")
             {
-                Dadmin consulta = new Dadmin();
+                //Dadmin consulta = new Dadmin();
+                PsqlAdmin consulta = new PsqlAdmin();
                 DataTable dato = consulta.datos_usuario_perfil(id);
 
                 if (dato.Rows.Count > 0)
@@ -217,7 +222,8 @@ namespace Logica
         
         public DataTable cargar_user()
         {
-            Dadmin solicitud = new Dadmin();
+            // Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             DataTable respuesta = solicitud.cargar_usuarios();
             return respuesta;
         }

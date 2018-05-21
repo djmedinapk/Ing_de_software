@@ -30,13 +30,15 @@ namespace Logica
         }
         public DataTable cargar_top_user_post()
         {
-            Dadmin solicitud = new Dadmin();
+            //Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             DataTable respuesta = solicitud.cargar_pag_home_toppub();
             return respuesta;
         }
         public DataTable cargar_top_user_puntos()
         {
-            Dadmin solicitud = new Dadmin();
+            //Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             DataTable respuesta = solicitud.cargar_pag_home_toppoint();
 
             return respuesta;
@@ -44,7 +46,8 @@ namespace Logica
 
         public DataTable cargar_admin_chart()
         {
-            Dadmin solicitud = new Dadmin();
+            //Dadmin solicitud = new Dadmin();
+            PsqlAdmin solicitud = new PsqlAdmin();
             DataTable respuesta = solicitud.cargar_pag_home_chart();
 
             return respuesta;

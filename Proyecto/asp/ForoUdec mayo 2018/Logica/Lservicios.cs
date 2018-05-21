@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Logica
         {
 
             Dservicios solicitud = new Dservicios();
+            //PsqlServicios solicitud = new PsqlServicios();
             DataSet datos = solicitud.ver_post_home_categoria(orden);
             return datos;
         }

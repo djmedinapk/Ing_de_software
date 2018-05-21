@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
 using Encapsulados;
+using Persistence;
 
 namespace Logica
 {
@@ -17,7 +18,8 @@ namespace Logica
         {
 
             String popup = "";
-            Dperfil news = new Dperfil();
+            //Dperfil news = new Dperfil();
+            PsqlPerfil news = new PsqlPerfil();
             Eadmin_actualizar_usuario_2 datos = new Eadmin_actualizar_usuario_2();
             datos.Id = newData.Id;
             datos.Nombre = newData.Nombre;
@@ -130,7 +132,8 @@ namespace Logica
 
             // Traer los datos antiguos
             Uperfil_campos data = new Uperfil_campos();
-            Dperfil old = new Dperfil();
+            // Dperfil old = new Dperfil();
+            PsqlPerfil old = new PsqlPerfil();
             DataTable datosSesion = old.traerDatosSesion(userid);
             if (datosSesion.Rows.Count > 0)
             {
@@ -161,7 +164,8 @@ namespace Logica
             }
             else
             {
-                Dperfil ajustes = new Dperfil();
+                //Dperfil ajustes = new Dperfil();
+                PsqlPerfil ajustes = new PsqlPerfil();
                 DataTable informacion = ajustes.modificar_perfil_ajustes(userid, sesion, datosAjustes);
                 if (informacion.Rows.Count != 0)
                 {
@@ -182,26 +186,30 @@ namespace Logica
         }
         public DataTable Llistar_post_perfil(Int32 user_id,String sesion)
         {
-            Dperfil solicitud = new Dperfil();
+            // Dperfil solicitud = new Dperfil();
+            PsqlPerfil solicitud = new PsqlPerfil();
             DataTable posts = solicitud.listar_post(user_id, sesion);
             return posts;
         }
         public DataTable Llistar_post_perfil_private(Int32 user_id, String sesion)
         {
-            Dperfil solicitud = new Dperfil();
+            //Dperfil solicitud = new Dperfil();
+            PsqlPerfil solicitud = new PsqlPerfil();
             DataTable posts = solicitud.listar_post_private(user_id, sesion);
             return posts;
         }
         public DataTable Llistar_post_perfil_public(Int32 user_id, String sesion)
         {
-            Dperfil solicitud = new Dperfil();
+            //Dperfil solicitud = new Dperfil();
+            PsqlPerfil solicitud = new PsqlPerfil();
             DataTable posts = solicitud.listar_post_public(user_id, sesion);
             return posts;
         }
 
         public Uvista_perfil vista_perfil(Int32 userid)
         {
-            Dperfil datos_usuario = new Dperfil();
+            //Dperfil datos_usuario = new Dperfil();
+            PsqlPerfil datos_usuario = new PsqlPerfil();
             DataTable datos_user = datos_usuario.traerDatos_vistaPerfil(userid);
             Uvista_perfil respuesta = new Uvista_perfil();
             if (datos_user.Rows.Count > 0)
@@ -233,7 +241,8 @@ namespace Logica
         public Utraer_datos traer_d(DataRow sesion)
         {
             Utraer_datos respuesta = new Utraer_datos();
-            Dperfil old = new Dperfil();
+            //Dperfil old = new Dperfil();
+            PsqlPerfil old = new PsqlPerfil();
             DataTable datosold = old.traerDatos(int.Parse(sesion["id"].ToString()));
             DataTable datosSession = old.traerDatosSesion(int.Parse(sesion["id"].ToString()));
 

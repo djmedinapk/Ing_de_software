@@ -7,6 +7,7 @@ using Utilitarios;
 using Datos;
 using Encapsulados;
 using System.Data;
+using Persistence;
 
 namespace Logica
 {
@@ -22,14 +23,15 @@ namespace Logica
             DataTable[] mensaje = new DataTable[2];
 
             Dlogin ingresar = new Dlogin();
-            DataTable verificar = ingresar.solicitar_bloqueo_sesion_pre(usuario.Username);
+            PsqlLogin ingresar2 = new PsqlLogin();
+            DataTable verificar = ingresar2.solicitar_bloqueo_sesion_pre(usuario.Username);
             if (verificar.Rows.Count > 0)
             {
-                DataTable contador_sesiones = ingresar.solicitar_conteo_sesion(usuario.Username);
+                DataTable contador_sesiones = ingresar2.solicitar_conteo_sesion(usuario.Username);
                 if (contador_sesiones.Rows.Count>0)
                 {
                     Int32 n;
-                    DataTable n_sesiones=ingresar.traer_n_sesiones(usuario.Username);
+                    DataTable n_sesiones=ingresar2.traer_n_sesiones(usuario.Username);
                     try { n = Int32.Parse(n_sesiones.Rows[0][0].ToString());
 
                     }
@@ -56,7 +58,7 @@ namespace Logica
 
                                 try
                                 {
-                                    ingresar.limpiar_bloqueo_sesion(usuario.Username);
+                                    ingresar2.limpiar_bloqueo_sesion(usuario.Username);
                                     String permisos = data.Rows[0]["id_permisos"].ToString();
                                     mensaje[0] = data;
                                     //mensaje[1] = data.Rows[0]["username"].ToString();
@@ -76,7 +78,8 @@ namespace Logica
 
 
 
-                                    DcorreoInst old = new DcorreoInst();
+                                    // DcorreoInst old = new DcorreoInst();
+                                    PsqlCorreoInst old = new PsqlCorreoInst();
                                     DataTable correoIns = old.traerCorreoInstitucional(int.Parse(mensaje[0].Rows[0]["id"].ToString()));
                                     if (correoIns.Rows.Count > 0)
                                     {
@@ -111,7 +114,7 @@ namespace Logica
                             }
                             else
                             {
-                                ingresar.ingresar_bloqueo_sesion(usuario.Username);
+                                ingresar2.ingresar_bloqueo_sesion(usuario.Username);
                                 Llogin oto = new Llogin();
                                 r1["mensaje"] = oto.mensaje(usuario);
                             }
@@ -153,8 +156,8 @@ namespace Logica
         public String mensaje(Uadmin_ver_usuario usuario)
         {
             String r1 = null;
-            Dlogin ingresar = new Dlogin();
-            DataTable intentos = ingresar.solicitar_bloqueo_sesion(usuario.Username);
+            PsqlLogin ingresar2 = new PsqlLogin();
+            DataTable intentos = ingresar2.solicitar_bloqueo_sesion(usuario.Username);
             if (intentos.Rows.Count > 0)
             {
                 String[] auxmsg1 = new string[3] { intentos.Rows[0]["dias"].ToString(), intentos.Rows[0]["minutos"].ToString(), intentos.Rows[0]["segundos"].ToString() };

@@ -11,6 +11,7 @@ using System.Collections;
 using Utilitarios;
 using Persistencia;
 using Tablas;
+using Persistence;
 
 namespace Logica
 {
@@ -19,58 +20,67 @@ namespace Logica
         public DataTable cargar_idioma()
         {
             //Didioma idiomas = new Didioma();
-            //DataTable datos = idiomas.cargar_idiomas();
-            Pidioma solicitud = new Pidioma();
-            List<Idioma> datos = solicitud.cargarIdioma();
-            ConverToDataTable op = new ConverToDataTable();
-            DataTable result = op.ConvertToDataTable(datos);
-            return result;
+            PsqlIdioma idiomas = new PsqlIdioma();
+            DataTable datos = idiomas.cargar_idiomas();
+            //Pidioma solicitud = new Pidioma();
+            //List<Idioma> datos = solicitud.cargarIdioma();
+            //ConverToDataTable op = new ConverToDataTable();
+            //DataTable result = op.ConvertToDataTable(datos);
+            return datos;
         }
         public DataTable cargar_form()
         {
             //Didioma idiomas = new Didioma();
-            //DataTable datos = idiomas.cargar_form();
-            //return datos;
+            PsqlIdioma idiomas = new PsqlIdioma();
+            DataTable datos = idiomas.cargar_form();
+            return datos;
 
-            Pidioma solicitud = new Pidioma();
-            List<Formulario> datos = solicitud.cargarForm();
+            //Pidioma solicitud = new Pidioma();
+            //List<Formulario> datos = solicitud.cargarForm();
 
-            ConverToDataTable op = new ConverToDataTable();
-            DataTable result = op.ConvertToDataTable(datos);
-            return result;
+            //ConverToDataTable op = new ConverToDataTable();
+            //DataTable result = op.ConvertToDataTable(datos);
+            //return result;
 
         }
         public String agregar_idioma(Uidioma_agregar datos)
         {
             //Didioma idi = new Didioma();
-            //try {
-            //    idi.agregarIdioma(datos.Idioma, datos.Terminacion);
-            //    return "agregado Correctamente";
-            //} catch { return "error Al agregar Idioma"; }
+            PsqlIdioma idi = new PsqlIdioma();
             try
             {
-                Idioma neww = new Idioma();
-                neww.nombre = datos.Idioma;
-                neww.terminacion = datos.Terminacion;
-
-                Pidioma solicitud = new Pidioma();
-                solicitud.agregarIdioma(neww);
-
+                idi.agregarIdioma(datos.Idioma, datos.Terminacion);
                 return "agregado Correctamente";
-
             }
             catch { return "error Al agregar Idioma"; }
+            //try
+            //{
+            //    Idioma neww = new Idioma();
+            //    neww.nombre = datos.Idioma;
+            //    neww.terminacion = datos.Terminacion;
+
+            //    Pidioma solicitud = new Pidioma();
+            //    solicitud.agregarIdioma(neww);
+
+            //    return "agregado Correctamente";
+
+            //}
+            //catch { return "error Al agregar Idioma"; }
         }
         public String eliminar_idioma(Int32 id)
         {
             //Didioma idi = new Didioma();
-            //try {
+            //PsqlIdioma idi = new PsqlIdioma();
+            //try
+            //{
             //    idi.agregarIdioma(datos.Idioma, datos.Terminacion);
             //    return "agregado Correctamente";
-            //} catch { return "error Al agregar Idioma"; }
+            //}
+            //catch { return "error Al agregar Idioma"; }
             try
             {
-                Pidioma solicitud = new Pidioma();
+                //Pidioma solicitud = new Pidioma();
+                PsqlIdioma solicitud = new PsqlIdioma();
                 solicitud.eliminarIdioma(id);
                 return "Eliminado Correctamente";
             }
@@ -83,7 +93,8 @@ namespace Logica
         public String select_idioma(Int32 idioma)
         {
             String cultura="es-CO";
-            Didioma idioam = new Didioma();
+            //Didioma idioam = new Didioma();
+            PsqlIdioma idioam = new PsqlIdioma();
             DataTable datos = idioam.cargar_idiomas();
             if (datos.Rows.Count > 0)
             {
@@ -101,14 +112,15 @@ namespace Logica
 
         public Hashtable cargar_controles(Int32 formulario_id,Int32 idioma_id)
         {
-            Didioma idioma = new Didioma();
+            //Didioma idioma = new Didioma();
+            PsqlIdioma idioma = new PsqlIdioma();
             DataTable info = idioma.obtenerIdioma(formulario_id,idioma_id);
 
             Hashtable controles = new Hashtable();
 
             for (int i = 0; i < info.Rows.Count; i++)
             {
-                controles.Add(info.Rows[i]["control"].ToString(), info.Rows[i]["valor"].ToString());
+                controles.Add(info.Rows[i]["control"].ToString(), info.Rows[i][1].ToString());
             }
             return controles;
         }
@@ -119,7 +131,8 @@ namespace Logica
         }
         public void modificar_control(String control,Int32 idioma, Int32 formulario, String texto)
         {
-            Didioma idiomas = new Didioma();
+            //Didioma idiomas = new Didioma();
+            PsqlIdioma idiomas = new PsqlIdioma();
             Controle neww = new Controle();
             neww.control = control;
             neww.formularioId = formulario;
@@ -131,7 +144,8 @@ namespace Logica
         }
         public DataTable cargar_ctrl(Int32 form, Int32 idioma)
         {
-            Didioma idiomas = new Didioma();
+            //Didioma idiomas = new Didioma();
+            PsqlIdioma idiomas = new PsqlIdioma();
             DataTable datos = idiomas.cargar_ctrl(form, idioma);
             return datos;
         }

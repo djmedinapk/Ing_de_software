@@ -8,6 +8,7 @@ using Datos;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Data;
+using Persistence;
 
 namespace Logica
 {
@@ -16,7 +17,8 @@ namespace Logica
         public String[] reset(String TResetPassUser)
         {
             String[] respuesta = new String[2];
-            DResetPass reset = new DResetPass();
+            //DResetPass reset = new DResetPass();
+            PsqlResetPass reset = new PsqlResetPass();
             System.Data.DataTable validez = reset.GenerarToken(TResetPassUser);
 
             if (int.Parse(validez.Rows[0]["id"].ToString()) > 0 && int.Parse(validez.Rows[0]["estado_session"].ToString()) == 1)
@@ -78,7 +80,8 @@ namespace Logica
         public String validar(String token)
         {
             String respuesta = null;
-            DResetPass validacion = new DResetPass();
+            //DResetPass validacion = new DResetPass();
+            PsqlResetPass validacion = new PsqlResetPass();
             DataTable validez = validacion.Validartoken(token);
             if (int.Parse(validez.Rows[0][0].ToString()) != 1)
             {
@@ -93,7 +96,8 @@ namespace Logica
         public String[] cambiarpass(String TNewPassUser,String token)
         {
             String[] respuesta = new String[3];
-            DResetPass reset = new DResetPass();
+            //DResetPass reset = new DResetPass();
+            PsqlResetPass reset = new PsqlResetPass();
             encryption encript = new encryption();
             System.Data.DataTable validez = reset.CambiarContraseña(encript.encrypto(TNewPassUser), token);
             if (int.Parse(validez.Rows[0][0].ToString()) == 1)

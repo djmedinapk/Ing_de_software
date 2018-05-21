@@ -7,6 +7,7 @@ using Utilitarios;
 using Datos;
 using Encapsulados;
 using System.Data;
+using Persistence;
 
 namespace Logica
 {
@@ -24,7 +25,8 @@ namespace Logica
 
             datos.Password =encriptar.encrypto(usuario.Password);
 
-            Dregistro registro = new Dregistro();
+            //Dregistro registro = new Dregistro();
+            PsqlRegistro registro = new PsqlRegistro();
             DataTable informacion = registro.registro(datos);
             if (informacion.Rows.Count != 0)
             {

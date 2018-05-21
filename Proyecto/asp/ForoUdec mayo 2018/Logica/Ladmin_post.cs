@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using System.Data;
+using Persistencia;
+using Persistence;
 
 namespace Logica
 {
@@ -12,7 +14,8 @@ namespace Logica
     {
         public DataTable listar_crud_post(String orden)
         {
-            Dadmin post = new Dadmin();
+            //Dadmin post = new Dadmin();
+            PsqlAdmin post = new PsqlAdmin();
             DataTable publicaciones = post.crud_post(orden);
             return publicaciones;
         }

@@ -10,6 +10,8 @@ using System.Data;
 using System.IO;
 using Persistencia;
 using Tablas;
+using Persistence;
+
 namespace Logica
 {
     public class Lpost
@@ -18,11 +20,11 @@ namespace Logica
         public String publicarPost(Upost datos,bool autor,String modo, String sesion,Int32 user_Id)
         {
             String respuesta = null;
-            Publicacion neww = new Publicacion();
+            publicacion neww = new publicacion();
             neww.titulo = datos.Nombre;
             neww.descripcion = datos.Descripcion;
             neww.contenido = datos.Contenido;
-            neww.idCategoria = datos.Categoria;
+            neww.id_categoria = datos.Categoria;
             neww.etiquetas = datos.Etiquetas;
             neww.miniatura = datos.Miniatura;
             if (autor == true)
@@ -34,9 +36,9 @@ namespace Logica
                 neww.fuente = "El Contenido es de mi autoria y/o Recopilacion de varias fuentes";
             }
             neww.fecha = DateTime.Now;
-            neww.idEstado = 3;
+            neww.id_estado = 3;
             neww.visitas = 0;
-            neww.idUsuario = user_Id;
+            neww.id_usuario = user_Id;
             if (modo == "1")
             {
                 neww.seccion = "privado";
@@ -45,7 +47,7 @@ namespace Logica
             {
                 neww.seccion = "publico";
             }
-            Ppost solicitud = new Ppost();
+            Persistence.Ppost solicitud = new Persistence.Ppost();
             solicitud.publicarPost(neww);
             // db.publicaciones.Add(neww);
             //db.SaveChanges();
@@ -126,14 +128,14 @@ namespace Logica
             {
                 //Dpost eliminar = new Dpost();
                 //DataTable informacion = eliminar.eliminar_post(post_id, sesion);
-                Ppost solicitud = new Ppost();
+                Persistence.Ppost solicitud = new Persistence.Ppost();
                 solicitud.eliminarPost(post_id);
             }
             if (comando == "validar")
             {
                 //Dpost validar = new Dpost();
                 //DataTable informacion = validar.validar_post(post_id, sesion);
-                Ppost solicitud = new Ppost();
+                Persistence.Ppost solicitud = new Persistence.Ppost();
                 solicitud.validarPost(post_id);
             }
 
@@ -142,13 +144,13 @@ namespace Logica
         public String terminar_mod(Upost datos, String sesion, Int32 user_id, Int32 post_id, bool autor, String miniatura)
         {
             String respuesta = null;
-            using (ForoUdecContext db = new ForoUdecContext("post"))
+            using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                Publicacion neww = db.publicaciones.Find(post_id);
+                publicacion neww = db.publicacion.Find(post_id);
                 neww.titulo = datos.Nombre;
                 neww.descripcion = datos.Descripcion;
                 neww.contenido = datos.Contenido;
-                neww.idCategoria = datos.Categoria;
+                neww.id_categoria = datos.Categoria;
                 neww.etiquetas = datos.Etiquetas;
                 neww.miniatura = datos.Miniatura;
                 if (autor == true)
@@ -159,8 +161,8 @@ namespace Logica
                 {
                     neww.fuente = "El Contenido es de mi autoria y/o Recopilacion de varias fuentes";
                 }
-                neww.idEstado = 3;
-                Ppost solicitud = new Ppost();
+                neww.id_estado = 3;
+                Persistence.Ppost solicitud = new Persistence.Ppost();
                 solicitud.modificarPost(neww);
                 // db.SaveChanges();
                 string mensaje = "<strong>Se relizo la publicacion</strong>, espera a que un moderador la acepte";
@@ -268,7 +270,8 @@ namespace Logica
         }
         public Upost2 cargarPost(Int32 id_post,Int32 userid)
         {
-            Dpost cargar = new Dpost();
+            //Dpost cargar = new Dpost();
+            PsqlPost cargar = new PsqlPost();
             Int32 post_id = id_post;
             Int32 user_id = userid;
             DataTable datos_post = cargar.cargar_mod_post(post_id, user_id);
@@ -349,7 +352,8 @@ namespace Logica
             if (comando == "eliminar")
             {
 
-                DDenuncia eliminar = new DDenuncia();
+                //DDenuncia eliminar = new DDenuncia();
+                PsqlDenuncia eliminar = new PsqlDenuncia();
                 DataTable informacion = eliminar.aceptar_denuncia_comentario(post_id);
             }
             
@@ -371,7 +375,8 @@ namespace Logica
                 mensaje[0] = "";
                 try
                 {
-                    DDenuncia denuncia = new DDenuncia();
+                    //DDenuncia denuncia = new DDenuncia();
+                    PsqlDenuncia denuncia = new PsqlDenuncia();
                     Int32 user_id = Int32.Parse(userid);
                     switch (opcion)
                     {
@@ -427,7 +432,8 @@ namespace Logica
             {
                 try
                 {
-                    Dpost puntuar = new Dpost();
+                    //Dpost puntuar = new Dpost();
+                    PsqlPost puntuar = new PsqlPost();
                     DataTable informacion = puntuar.puntuar_post(puntuacion, int.Parse(userid), postid);
                     if (informacion.Rows.Count != 0)
                     {
@@ -472,7 +478,8 @@ namespace Logica
                mensaje[0] = "";
                 try
                 {
-                    DDenuncia comentario = new DDenuncia();
+                    //DDenuncia comentario = new DDenuncia();
+                    PsqlDenuncia comentario = new PsqlDenuncia();
                     DataTable informacion = comentario.denuncia_comentario(int.Parse(userid), comId, descripcion);
                     if (informacion.Rows.Count != 0)
                     {
@@ -514,7 +521,8 @@ namespace Logica
                 mensaje[0] = "";
                 try
                 {
-                    Dpost comentario = new Dpost();
+                    //Dpost comentario = new Dpost();
+                    PsqlPost comentario = new PsqlPost();
                     DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
                     if (informacion.Rows.Count != 0)
                     {
@@ -566,7 +574,8 @@ namespace Logica
                 mensaje[0] = "";
                 try
                 {
-                    Dpost comentario = new Dpost();
+                    //Dpost comentario = new Dpost();
+                    PsqlPost comentario = new PsqlPost();
                     DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
                     if (informacion.Rows.Count != 0)
                     {
@@ -606,13 +615,15 @@ namespace Logica
 
         public DataTable listar_categorias()
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable categorias = solicitud.listar_categoria();
             return categorias;
         }
         public Upost3 ver_post(Int32 post_id, DataRow sesion)
         {
-            Dpost solicitud = new Dpost();
+            // Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable datospost = solicitud.ver_post(post_id);
             Upost3 dp1 = new Upost3();
             if (datospost.Rows.Count > 0)
@@ -682,69 +693,82 @@ namespace Logica
                 dp1.Respons = "../home/index.aspx";
             }
 
-            Dpost visitar = new Dpost();
+            //Dpost visitar = new Dpost();
+            PsqlPost visitar = new PsqlPost();
             DataTable visita = visitar.visita_post(post_id);
             return dp1;
         }
 
         public DataTable listar_ver_post_home(String orden)
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.ver_post_home(orden);
             return post;
         }
         public DataTable listar_ver_comentarios_post(int post_id, int comentario)
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.ver_comentarios(post_id, comentario);
             return post;
         }
         public DataTable listar_ver_post_moderador(String orden)
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.listar_post_moderador(orden);
             return post;
         }
         public DataTable listar_busqueda(String info)
         {
-            Dpost solicitud = new Dpost();
+            // Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.busqueda(info);
             return post;
         }
         public DataTable listar_categorias_home(String orden)
         {
-            Dpost solicitud = new Dpost();
+            // Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.ver_post_home_categoria(orden);
             return post;
         }
         
         public DataTable ver_post_home_private(string orden)
         {
-            Dpost solicitud = new Dpost();
+            // Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.ver_post_home_private(orden);
             return post;
         }
         public DataTable ver_post_home_categoria_private(string orden)
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.ver_post_home_categoria_private(orden);
             return post;
         }
         public DataTable listar_busqueda_private(String info)
         {
-            Dpost solicitud = new Dpost();
+            //Dpost solicitud = new Dpost();
+            PsqlPost solicitud = new PsqlPost();
             DataTable post = solicitud.busqueda_private(info);
             return post;
         }
         public DataTable mostar_denuncia_comentario()
         {
-            DDenuncia solicitud = new DDenuncia();
+            //DDenuncia solicitud = new DDenuncia();
+            PsqlDenuncia solicitud = new PsqlDenuncia();
             DataTable post = solicitud.mostar_denuncia_comentario();
             return post;
         }
         public DataTable eliminar_denuncia_comentario(Int32 id_denuncia)
         {
-            DDenuncia solicitud = new DDenuncia();
+            //DDenuncia solicitud = new DDenuncia();
+
+            PsqlDenuncia solicitud = new PsqlDenuncia();
+
             DataTable post = solicitud.eliminar_denuncia_comentario(id_denuncia);
             return post;
         }

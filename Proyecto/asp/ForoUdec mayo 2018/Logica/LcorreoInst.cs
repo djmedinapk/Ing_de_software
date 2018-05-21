@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
 using System.Data;
+using Persistence;
 
 namespace Logica
 {
@@ -21,7 +22,8 @@ namespace Logica
             String Codigoold = correo.Clave;
             if (codigo == Codigoold)
             {
-                Dperfil perfil = new Dperfil();
+                //Dperfil perfil = new Dperfil();
+                PsqlPerfil perfil = new PsqlPerfil();
                 DataTable msg = perfil.RegistrarCorreoInstitucional(id, mail, correo.Cecion);
                 if (msg.Rows.Count > 0)
                 {
