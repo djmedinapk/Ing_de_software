@@ -31,10 +31,13 @@ namespace Logica
                 if (contador_sesiones.Rows.Count>0)
                 {
                     Int32 n;
-                    DataTable n_sesiones=ingresar2.traer_n_sesiones(usuario.Username);
-                    try { n = Int32.Parse(n_sesiones.Rows[0][0].ToString());
-
+                    Int32 n_sesiones=ingresar2.traer_n_sesiones(usuario.Username);
+                    try
+                    {
+                        n = n_sesiones;
                     }
+
+                    
 
                     catch {
                         n = 3;

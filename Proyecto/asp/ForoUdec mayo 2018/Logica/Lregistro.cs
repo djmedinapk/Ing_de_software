@@ -27,10 +27,10 @@ namespace Logica
 
             //Dregistro registro = new Dregistro();
             PsqlRegistro registro = new PsqlRegistro();
-            DataTable informacion = registro.registro(datos);
-            if (informacion.Rows.Count != 0)
+            String informacion = registro.registro(datos);
+            if (informacion != null)
             {
-                string frase = informacion.Rows[0][0].ToString();
+                string frase = informacion.ToString();
                 if (frase == "Registro_exitoso")
                 {
                      mensaje = "<div class='alert alert-success alert-dismissible fade show' role='alert'>  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>    <span aria-hidden='true'>&times;</span>  </button>  <strong>Registro Exitoso!</strong> Gracias Por Ser Parte De Esta Gran Comunidad</div>";

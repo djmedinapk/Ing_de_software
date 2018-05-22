@@ -94,14 +94,15 @@ namespace Persistence
             }
             return Usuario;
         }
-        public DataTable traer_n_sesiones(String username)
+        public Int32 traer_n_sesiones(String username)
         {
-            DataTable datos = new DataTable();
+            Int32 datos ;
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_traer_bloqueo_sesiones(username).ToList();
+                List<int?> a = db.f_traer_bloqueo_sesiones(username).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = Int32.Parse(a.First().ToString());
             }
             return datos;
         }

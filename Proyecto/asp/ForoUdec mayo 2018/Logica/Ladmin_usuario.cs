@@ -112,7 +112,7 @@ namespace Logica
             { admin = 1; }
             else { admin = 0; }
 
-            DataTable r = solicitud.actualizar_sesion(admin, id, usuario);
+            string r = solicitud.actualizar_sesion(admin, id, usuario);
 
             solicitud.n_sesiones(usuario.Username, Int32.Parse(registro.Nsesion));
 
@@ -126,7 +126,7 @@ namespace Logica
                 //Dadmin consulta = new Dadmin();
                 PsqlAdmin consulta = new PsqlAdmin();
                 DataTable dato = consulta.datos_usuario_perfil(id);
-
+                
                 if (dato.Rows.Count > 0)
                 {
                     usuario.Nombre = dato.Rows[0]["nombre"].ToString();
@@ -171,7 +171,7 @@ namespace Logica
             {
                 // Dadmin eliminar = new Dadmin();
                 PsqlAdmin eliminar = new PsqlAdmin();
-                DataTable informacion = eliminar.suspender_usuario(id, sessionId);
+                string informacion = eliminar.suspender_usuario(id, sessionId);
                 respueta= "usuario.aspx";
             }
             return respueta;

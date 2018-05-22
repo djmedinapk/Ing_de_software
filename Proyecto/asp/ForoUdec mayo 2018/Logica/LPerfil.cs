@@ -29,7 +29,7 @@ namespace Logica
             //datos.Session = newData.Session;
             datos.Avatar = newData.Avatar;
 
-            DataTable informacion = news.modificarDatos(userid, datos, sesion);
+            string informacion = news.modificarDatos(userid, datos, sesion);
             popup = confirm_mod(informacion);            //Verifica si se agrego la informacion y devuelve el popUp
             return popup;
         }
@@ -100,12 +100,12 @@ namespace Logica
             }
             return avatar;
         }
-        public String confirm_mod(DataTable informacion)
+        public String confirm_mod(string informacion)
         {
             String popup = "";
-            if (informacion.Rows.Count != 0)
+            if (informacion != null)
             {
-                string frase = informacion.Rows[0][0].ToString();
+                string frase = informacion.ToString();
                 if (frase == "Registro_exitoso")
                 {
 
@@ -166,10 +166,10 @@ namespace Logica
             {
                 //Dperfil ajustes = new Dperfil();
                 PsqlPerfil ajustes = new PsqlPerfil();
-                DataTable informacion = ajustes.modificar_perfil_ajustes(userid, sesion, datosAjustes);
-                if (informacion.Rows.Count != 0)
+                string informacion = ajustes.modificar_perfil_ajustes(userid, sesion, datosAjustes);
+                if (informacion != null)
                 {
-                    string frase = informacion.Rows[0][0].ToString();
+                    string frase = informacion.ToString();
                     data.Popup = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='../perfil/Perfil.aspx' class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                        "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                     if (frase == "Cambios Guardados")

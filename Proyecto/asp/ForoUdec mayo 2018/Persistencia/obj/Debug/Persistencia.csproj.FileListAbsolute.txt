@@ -73,3 +73,12 @@ C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018
 C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
 C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.dll
 C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\bin\Debug\Persistencia.dll.config
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\bin\Debug\Persistencia.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\bin\Debug\Persistencia.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\bin\Debug\Tablas.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\bin\Debug\Tablas.pdb
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.dll
+C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistencia\obj\Debug\Persistencia.pdb

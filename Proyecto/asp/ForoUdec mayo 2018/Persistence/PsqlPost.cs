@@ -144,15 +144,16 @@ namespace Persistence
             return post;
         }
 
-        public DataTable comentar_post(int comentario_id, int user_id, int post_id, String comentario)
+        public string comentar_post(int comentario_id, int user_id, int post_id, String comentario)
         {
-            DataTable post = new DataTable();
+            string post;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_comentar_post(comentario_id, user_id, post_id, comentario).ToList();
+                List<string> a = db.f_comentar_post(comentario_id, user_id, post_id, comentario).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                post = salida.ConvertToDataTable(a);
+                //post = salida.ConvertToDataTable(a);
+                post = a.First().ToString();
             }
             return post;
         }

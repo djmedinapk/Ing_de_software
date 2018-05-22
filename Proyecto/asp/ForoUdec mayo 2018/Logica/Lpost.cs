@@ -392,10 +392,10 @@ namespace Logica
 
                     }
                     descripcion += argumento;
-                    DataTable informacion = denuncia.denuncia_publicacion(user_id, postid, descripcion);
-                    if (informacion.Rows.Count != 0)
+                    string informacion = denuncia.denuncia_publicacion(user_id, postid, descripcion);
+                    if (informacion != null)
                     {
-                        string frase = informacion.Rows[0][0].ToString();
+                        string frase = informacion.ToString();
                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                            "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                         mensaje[1] = "";
@@ -480,10 +480,10 @@ namespace Logica
                 {
                     //DDenuncia comentario = new DDenuncia();
                     PsqlDenuncia comentario = new PsqlDenuncia();
-                    DataTable informacion = comentario.denuncia_comentario(int.Parse(userid), comId, descripcion);
-                    if (informacion.Rows.Count != 0)
+                    string informacion = comentario.denuncia_comentario(int.Parse(userid), comId, descripcion);
+                    if (informacion != null)
                     {
-                        string frase = informacion.Rows[0][0].ToString();
+                        string frase = informacion.ToString();
                         mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                            "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                         mensaje[1] = "";
@@ -523,10 +523,10 @@ namespace Logica
                 {
                     //Dpost comentario = new Dpost();
                     PsqlPost comentario = new PsqlPost();
-                    DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
-                    if (informacion.Rows.Count != 0)
+                    string informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
+                    if (informacion != null)
                     {
-                        string frase = informacion.Rows[0][0].ToString();
+                        string frase = informacion.ToString();
                         mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                            "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
                            "setInterval('guardar()', 1500);" +
@@ -576,10 +576,10 @@ namespace Logica
                 {
                     //Dpost comentario = new Dpost();
                     PsqlPost comentario = new PsqlPost();
-                    DataTable informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
-                    if (informacion.Rows.Count != 0)
+                    string informacion = comentario.comentar_post(comId, int.Parse(userid), post_id, contenido);
+                    if (informacion !=null)
                     {
-                        string frase = informacion.Rows[0][0].ToString();
+                        string frase = informacion.ToString();
                         mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                            "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});" +
                            "setInterval('guardar()', 1500);" +

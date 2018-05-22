@@ -26,15 +26,16 @@ namespace Persistence
             return datos;
         }
 
-        public DataTable suspender_usuario(Int32 id, String Sesion)
+        public string suspender_usuario(Int32 id, String Sesion)
         {
-            DataTable datos = new DataTable();
+            string datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_crud_usuarios_delete(id, Sesion).ToList();
+                List<string> a = db.f_crud_usuarios_delete(id, Sesion).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
 
             }
 
@@ -72,28 +73,30 @@ namespace Persistence
 
         }
 
-        public DataTable actualizar_sesion(int admin, int userid, Eadmin_actualizar_usuario modificados)
+        public string actualizar_sesion(int admin, int userid, Eadmin_actualizar_usuario modificados)
         {
-            DataTable datos = new DataTable();
+            string datos;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_modificar_perfil(admin, modificados.Session, userid, modificados.Username, modificados.Correo, modificados.Password).ToList();
+               List<string> a = db.f_modificar_perfil(admin, modificados.Session, userid, modificados.Username, modificados.Correo, modificados.Password).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
             }
             return datos;
         }
 
-        public DataTable actualizar_perfil(Eadmin_actualizar_usuario_2 modificados)
+        public string actualizar_perfil(Eadmin_actualizar_usuario_2 modificados)
         {
-            DataTable datos = new DataTable();
+            string datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_modificar_perfil_usuario(modificados.Session, Int32.Parse(modificados.Id), modificados.Nombre, modificados.Apellido, Int32.Parse(modificados.Edad), modificados.Sexo).ToList();
+                List<string> a = db.f_modificar_perfil_usuario(modificados.Session, Int32.Parse(modificados.Id), modificados.Nombre, modificados.Apellido, Int32.Parse(modificados.Edad), modificados.Sexo).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
             }
             return datos;
         }

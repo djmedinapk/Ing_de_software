@@ -22,28 +22,30 @@ namespace Persistence
             return datos;
         }
 
-        public DataTable denuncia_publicacion(int user_id, int publicacion_id, String descripcion)
+        public string denuncia_publicacion(int user_id, int publicacion_id, String descripcion)
         {
-            DataTable datos = new DataTable();
+            string datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_denunciar_publicacion(user_id, publicacion_id, descripcion).ToList();
+                List<string> a = db.f_denunciar_publicacion(user_id, publicacion_id, descripcion).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
             }
             return datos;
         }
 
-        public DataTable denuncia_comentario(int user_id, int comentario_id, String descripcion)
+        public string denuncia_comentario(int user_id, int comentario_id, String descripcion)
         {
-            DataTable datos = new DataTable();
+            string datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_denunciar_comentario(user_id, comentario_id, descripcion).ToList();
+                List<string> a = db.f_denunciar_comentario(user_id, comentario_id, descripcion).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                //datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
 
 
             }

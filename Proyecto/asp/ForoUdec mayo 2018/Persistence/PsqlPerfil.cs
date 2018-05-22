@@ -11,15 +11,16 @@ namespace Persistence
 {
     public class PsqlPerfil
     {
-        public DataTable modificarDatos(int user_id, Eadmin_actualizar_usuario_2 datos, String Sesion)
+        public string modificarDatos(int user_id, Eadmin_actualizar_usuario_2 datos, String Sesion)
         {
-            DataTable datos1 = new DataTable();
+            string datos1 ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_modificar_usuario(Sesion, user_id,datos.Nombre,datos.Apellido,Int32.Parse(datos.Edad),datos.Sexo,datos.Avatar).ToList();
+                List<string> a = db.f_modificar_usuario(Sesion, user_id,datos.Nombre,datos.Apellido,Int32.Parse(datos.Edad),datos.Sexo,datos.Avatar).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos1 = salida.ConvertToDataTable(a);
+                //datos1 = salida.ConvertToDataTable(a);
+                datos1 = a.First().ToString();
             }
             return datos1;
         }
@@ -38,15 +39,16 @@ namespace Persistence
                 return datos;
         }
 
-        public DataTable modificar_perfil_ajustes(int user_id, String Sesion, Eadmin_actualizar_usuario datos)
+        public string modificar_perfil_ajustes(int user_id, String Sesion, Eadmin_actualizar_usuario datos)
         {
-            DataTable datos1 = new DataTable();
+            string datos1 ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_modificar_perfil_ajustes(Sesion,user_id,datos.Username,datos.Correo,datos.Password).ToList();
+                List<string> a = db.f_modificar_perfil_ajustes(Sesion,user_id,datos.Username,datos.Correo,datos.Password).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos1 = salida.ConvertToDataTable(a);
+                // datos1 = salida.ConvertToDataTable(a);
+                datos1 = a.First().ToString();
 
             }
                     

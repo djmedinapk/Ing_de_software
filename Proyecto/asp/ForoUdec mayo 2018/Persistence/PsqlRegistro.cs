@@ -11,15 +11,16 @@ namespace Persistence
 {
     public class PsqlRegistro
     {
-        public DataTable registro(Eadmin_actualizar_usuario datos)
+        public String registro(Eadmin_actualizar_usuario datos)
         {
-            DataTable datos1 = new DataTable();
+            String datos1;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_registro_usuario(datos.Username,datos.Password,datos.Correo,datos.Session).ToList();
+                List<string> a= db.f_registro_usuario(datos.Username, datos.Password, datos.Correo, datos.Session).ToList(); 
                 ConverToDataTable salida = new ConverToDataTable();
-                datos1 = salida.ConvertToDataTable(a);
+                //datos1 = salida.ConvertToDataTable(a);
+                datos1 = a.First().ToString(); 
             }
             return datos1;
 
