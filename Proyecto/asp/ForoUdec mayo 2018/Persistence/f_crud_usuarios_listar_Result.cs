@@ -13,10 +13,10 @@ namespace Persistence
     
     public partial class f_crud_usuarios_listar_Result
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string username { get; set; }
         public string correo { get; set; }
-        public string tipo { get; set; }
-        public string tipo1 { get; set; }
+        public string estado { get; set; }
+        public string permisos { get; set; }
     }
 }

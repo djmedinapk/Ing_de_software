@@ -15,7 +15,7 @@ namespace Persistence
     {
         public string username { get; set; }
         public string corrreo { get; set; }
-        public long id_usuario { get; set; }
+        public int id_usuario { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public Nullable<int> edad { get; set; }

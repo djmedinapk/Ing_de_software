@@ -13,9 +13,9 @@ namespace Persistence
     
     public partial class f_reporte_puntuacion_Result
     {
-        public long id { get; set; }
-        public Nullable<int> puntuacion { get; set; }
-        public long id1 { get; set; }
+        public int id_publicacion { get; set; }
+        public Nullable<int> puntos { get; set; }
+        public int id_usuario { get; set; }
         public string username { get; set; }
     }
 }

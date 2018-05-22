@@ -9,7 +9,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" MaxLength="100" />
     <Property Name="apellido" Type="nvarchar" MaxLength="100" />
     <Property Name="correo" Type="nvarchar" MaxLength="200" />
@@ -21,20 +21,20 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="ntext" />
-    <Property Name="id_comentario" Type="bigint" />
-    <Property Name="id_denunciante" Type="bigint" />
+    <Property Name="id_comentario" Type="int" />
+    <Property Name="id_denunciante" Type="int" />
     <Property Name="id_estado" Type="int" />
   </EntityType>
   <EntityType Name="denuncia_publicacion">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="ntext" />
-    <Property Name="id_publicacion" Type="bigint" />
-    <Property Name="id_denunciante" Type="bigint" />
+    <Property Name="id_publicacion" Type="int" />
+    <Property Name="id_denunciante" Type="int" />
     <Property Name="id_estado" Type="int" />
   </EntityType>
   <EntityType Name="estado_denuncia">
@@ -90,12 +90,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="contenido" Type="ntext" />
     <Property Name="fecha" Type="datetime2" Precision="7" />
-    <Property Name="id_comentario" Type="bigint" />
-    <Property Name="id_usuario" Type="bigint" />
-    <Property Name="id_publicacion" Type="bigint" />
+    <Property Name="id_comentario" Type="int" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_publicacion" Type="int" />
   </EntityType>
   <EntityType Name="estado">
     <Key>
@@ -108,15 +108,15 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="titulo" Type="nvarchar" MaxLength="50" />
     <Property Name="descripcion" Type="nvarchar" MaxLength="500" />
     <Property Name="contenido" Type="nvarchar" MaxLength="500" />
-    <Property Name="visitas" Type="bigint" />
+    <Property Name="visitas" Type="int" />
     <Property Name="fecha" Type="datetime2" Precision="7" />
     <Property Name="fuente" Type="nvarchar" MaxLength="500" />
     <Property Name="id_estado" Type="int" />
-    <Property Name="id_usuario" Type="bigint" />
+    <Property Name="id_usuario" Type="int" />
     <Property Name="miniatura" Type="nvarchar" MaxLength="500" />
     <Property Name="etiquetas" Type="nvarchar" MaxLength="500" />
     <Property Name="id_categoria" Type="int" />
@@ -126,17 +126,17 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="puntuacion" Type="int" />
     <Property Name="fecha" Type="datetime2" Precision="7" />
-    <Property Name="id_usuario" Type="bigint" />
-    <Property Name="id_publicacion" Type="bigint" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_publicacion" Type="int" />
   </EntityType>
   <EntityType Name="auditoria">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha" Type="datetimeoffset" Precision="7" Nullable="false" />
     <Property Name="accion" Type="nvarchar" MaxLength="100" />
     <Property Name="schema" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -159,7 +159,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_id" Type="int" />
     <Property Name="user_mac" Type="ntext" />
     <Property Name="user_session" Type="ntext" />
@@ -173,7 +173,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha_bloqueo" Type="datetime" />
-    <Property Name="id_user" Type="bigint" />
+    <Property Name="id_user" Type="int" />
     <Property Name="fecha_teminacion" Type="datetime" />
   </EntityType>
   <EntityType Name="correo_institucional">
@@ -181,7 +181,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="id_session" Type="bigint" />
+    <Property Name="id_session" Type="int" />
     <Property Name="correo" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="estado1">
@@ -210,7 +210,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="nvarchar" MaxLength="100" />
     <Property Name="pasword" Type="nvarchar" MaxLength="50" />
     <Property Name="fecha_ult_session" Type="datetime2" Precision="7" />
@@ -226,12 +226,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" MaxLength="100" />
     <Property Name="apellido" Type="nvarchar" MaxLength="100" />
     <Property Name="avatar" Type="nvarchar" MaxLength="100" />
     <Property Name="edad" Type="int" />
-    <Property Name="id_session" Type="bigint" />
+    <Property Name="id_session" Type="int" />
     <Property Name="sexo" Type="nvarchar" MaxLength="50" />
     <Property Name="session" Type="nvarchar" MaxLength="100" />
   </EntityType>
@@ -607,10 +607,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
   </Function>
   <Function Name="f_listar_controles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
     <Parameter Name="formulario" Type="int" Mode="In" />
+    <Parameter Name="idioma" Type="int" Mode="In" />
   </Function>
   <Function Name="f_listar_controles2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
     <Parameter Name="formulario" Type="int" Mode="In" />
-    <Parameter Name="idioma" Type="int" Mode="In" />
   </Function>
   <Function Name="f_listar_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma" />
   <Function Name="f_obtener_idioma_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
@@ -665,7 +665,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
   </Function>
   <Function Name="f_listar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post" />
   <Function Name="f_listar_comentarios_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
-    <Parameter Name="postid" Type="bigint" Mode="In" />
+    <Parameter Name="postid" Type="int" Mode="In" />
     <Parameter Name="comentario" Type="int" Mode="In" />
   </Function>
   <Function Name="f_listar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
@@ -724,7 +724,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
     <Parameter Name="postid" Type="int" Mode="In" />
   </Function>
   <Function Name="f_ver_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
-    <Parameter Name="postid" Type="bigint" Mode="In" />
+    <Parameter Name="postid" Type="int" Mode="In" />
     <Parameter Name="control" Type="int" Mode="In" />
   </Function>
   <Function Name="f_ver_post2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">

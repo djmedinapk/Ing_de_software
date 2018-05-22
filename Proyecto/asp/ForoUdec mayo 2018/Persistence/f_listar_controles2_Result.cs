@@ -13,9 +13,8 @@ namespace Persistence
     
     public partial class f_listar_controles2_Result
     {
+        public int id { get; set; }
         public string control { get; set; }
-        public Nullable<int> idioma_id { get; set; }
         public Nullable<int> formulario_id { get; set; }
-        public string texto { get; set; }
     }
 }

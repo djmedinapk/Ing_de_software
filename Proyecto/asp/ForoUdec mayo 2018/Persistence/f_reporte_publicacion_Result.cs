@@ -13,9 +13,9 @@ namespace Persistence
     
     public partial class f_reporte_publicacion_Result
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string titulo { get; set; }
-        public Nullable<long> visitas { get; set; }
+        public Nullable<int> visitas { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
     }
 }

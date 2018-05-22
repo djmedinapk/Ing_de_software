@@ -242,6 +242,7 @@
     <Compile Include="PsqlContacto.cs" />
     <Compile Include="PsqlCorreoInst.cs" />
     <Compile Include="PsqlDenuncia.cs" />
+    <Compile Include="PsqlFunctions.cs" />
     <Compile Include="PsqlIdioma.cs" />
     <Compile Include="PsqlLogin.cs" />
     <Compile Include="PsqlPerfil.cs" />

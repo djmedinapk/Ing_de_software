@@ -13,7 +13,7 @@ namespace Persistence
     
     public partial class f_caragr_datos_admin_chart_Result
     {
-        public Nullable<int> Column1 { get; set; }
-        public Nullable<int> Column2 { get; set; }
+        public Nullable<int> publicos { get; set; }
+        public Nullable<int> privado { get; set; }
     }
 }

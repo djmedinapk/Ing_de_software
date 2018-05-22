@@ -14,12 +14,12 @@ namespace Persistence
     
     public partial class usuario
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string avatar { get; set; }
         public Nullable<int> edad { get; set; }
-        public Nullable<long> id_session { get; set; }
+        public Nullable<int> id_session { get; set; }
         public string sexo { get; set; }
         public string session { get; set; }
     

@@ -14,7 +14,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="100" />
           <Property Name="apellido" Type="nvarchar" MaxLength="100" />
           <Property Name="correo" Type="nvarchar" MaxLength="200" />
@@ -26,20 +26,20 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="ntext" />
-          <Property Name="id_comentario" Type="bigint" />
-          <Property Name="id_denunciante" Type="bigint" />
+          <Property Name="id_comentario" Type="int" />
+          <Property Name="id_denunciante" Type="int" />
           <Property Name="id_estado" Type="int" />
         </EntityType>
         <EntityType Name="denuncia_publicacion">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="ntext" />
-          <Property Name="id_publicacion" Type="bigint" />
-          <Property Name="id_denunciante" Type="bigint" />
+          <Property Name="id_publicacion" Type="int" />
+          <Property Name="id_denunciante" Type="int" />
           <Property Name="id_estado" Type="int" />
         </EntityType>
         <EntityType Name="estado_denuncia">
@@ -95,12 +95,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="contenido" Type="ntext" />
           <Property Name="fecha" Type="datetime2" Precision="7" />
-          <Property Name="id_comentario" Type="bigint" />
-          <Property Name="id_usuario" Type="bigint" />
-          <Property Name="id_publicacion" Type="bigint" />
+          <Property Name="id_comentario" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_publicacion" Type="int" />
         </EntityType>
         <EntityType Name="estado">
           <Key>
@@ -113,15 +113,15 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="titulo" Type="nvarchar" MaxLength="50" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="500" />
           <Property Name="contenido" Type="nvarchar" MaxLength="500" />
-          <Property Name="visitas" Type="bigint" />
+          <Property Name="visitas" Type="int" />
           <Property Name="fecha" Type="datetime2" Precision="7" />
           <Property Name="fuente" Type="nvarchar" MaxLength="500" />
           <Property Name="id_estado" Type="int" />
-          <Property Name="id_usuario" Type="bigint" />
+          <Property Name="id_usuario" Type="int" />
           <Property Name="miniatura" Type="nvarchar" MaxLength="500" />
           <Property Name="etiquetas" Type="nvarchar" MaxLength="500" />
           <Property Name="id_categoria" Type="int" />
@@ -131,17 +131,17 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="puntuacion" Type="int" />
           <Property Name="fecha" Type="datetime2" Precision="7" />
-          <Property Name="id_usuario" Type="bigint" />
-          <Property Name="id_publicacion" Type="bigint" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="id_publicacion" Type="int" />
         </EntityType>
         <EntityType Name="auditoria">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fecha" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="accion" Type="nvarchar" MaxLength="100" />
           <Property Name="schema" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -164,7 +164,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" />
           <Property Name="user_mac" Type="ntext" />
           <Property Name="user_session" Type="ntext" />
@@ -178,7 +178,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fecha_bloqueo" Type="datetime" />
-          <Property Name="id_user" Type="bigint" />
+          <Property Name="id_user" Type="int" />
           <Property Name="fecha_teminacion" Type="datetime" />
         </EntityType>
         <EntityType Name="correo_institucional">
@@ -186,7 +186,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_session" Type="bigint" />
+          <Property Name="id_session" Type="int" />
           <Property Name="correo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="estado1">
@@ -215,7 +215,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="100" />
           <Property Name="pasword" Type="nvarchar" MaxLength="50" />
           <Property Name="fecha_ult_session" Type="datetime2" Precision="7" />
@@ -231,12 +231,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="100" />
           <Property Name="apellido" Type="nvarchar" MaxLength="100" />
           <Property Name="avatar" Type="nvarchar" MaxLength="100" />
           <Property Name="edad" Type="int" />
-          <Property Name="id_session" Type="bigint" />
+          <Property Name="id_session" Type="int" />
           <Property Name="sexo" Type="nvarchar" MaxLength="50" />
           <Property Name="session" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -612,10 +612,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
         </Function>
         <Function Name="f_listar_controles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
           <Parameter Name="formulario" Type="int" Mode="In" />
+          <Parameter Name="idioma" Type="int" Mode="In" />
         </Function>
         <Function Name="f_listar_controles2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
           <Parameter Name="formulario" Type="int" Mode="In" />
-          <Parameter Name="idioma" Type="int" Mode="In" />
         </Function>
         <Function Name="f_listar_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma" />
         <Function Name="f_obtener_idioma_formulario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="idioma">
@@ -670,7 +670,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
         </Function>
         <Function Name="f_listar_categoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post" />
         <Function Name="f_listar_comentarios_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
-          <Parameter Name="postid" Type="bigint" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
           <Parameter Name="comentario" Type="int" Mode="In" />
         </Function>
         <Function Name="f_listar_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
@@ -729,7 +729,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Parameter Name="postid" Type="int" Mode="In" />
         </Function>
         <Function Name="f_ver_post" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
-          <Parameter Name="postid" Type="bigint" Mode="In" />
+          <Parameter Name="postid" Type="int" Mode="In" />
           <Parameter Name="control" Type="int" Mode="In" />
         </Function>
         <Function Name="f_ver_post2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="post">
@@ -935,7 +935,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -947,10 +947,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="id_comentario" Type="Int64" />
-          <Property Name="id_denunciante" Type="Int64" />
+          <Property Name="id_comentario" Type="Int32" />
+          <Property Name="id_denunciante" Type="Int32" />
           <Property Name="id_estado" Type="Int32" />
           <NavigationProperty Name="comentario" Relationship="Self.denuncia_comentario_id_comentario_fkey" FromRole="denuncia_comentario" ToRole="comentario" />
           <NavigationProperty Name="user_session" Relationship="Self.denuncia_comentario_id_denunciante_fkey" FromRole="denuncia_comentario" ToRole="user_session" />
@@ -960,10 +960,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="id_publicacion" Type="Int64" />
-          <Property Name="id_denunciante" Type="Int64" />
+          <Property Name="id_publicacion" Type="Int32" />
+          <Property Name="id_denunciante" Type="Int32" />
           <Property Name="id_estado" Type="Int32" />
           <NavigationProperty Name="user_session" Relationship="Self.denuncia_publicacion_id_denunciante_fkey" FromRole="denuncia_publicacion" ToRole="user_session" />
           <NavigationProperty Name="estado_denuncia" Relationship="Self.denuncia_publicacion_id_estado_fkey" FromRole="denuncia_publicacion" ToRole="estado_denuncia" />
@@ -1031,12 +1031,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="fecha" Type="DateTime" Precision="7" />
-          <Property Name="id_comentario" Type="Int64" />
-          <Property Name="id_usuario" Type="Int64" />
-          <Property Name="id_publicacion" Type="Int64" />
+          <Property Name="id_comentario" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_publicacion" Type="Int32" />
           <NavigationProperty Name="denuncia_comentario" Relationship="Self.denuncia_comentario_id_comentario_fkey" FromRole="comentario" ToRole="denuncia_comentario" />
           <NavigationProperty Name="comentario1" Relationship="Self.comentario_id_comentario_fkey" FromRole="comentario" ToRole="comentario1" />
           <NavigationProperty Name="comentario2" Relationship="Self.comentario_id_comentario_fkey" FromRole="comentario1" ToRole="comentario" />
@@ -1055,15 +1055,15 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="contenido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="visitas" Type="Int64" />
+          <Property Name="visitas" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="7" />
           <Property Name="fuente" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="id_estado" Type="Int32" />
-          <Property Name="id_usuario" Type="Int64" />
+          <Property Name="id_usuario" Type="Int32" />
           <Property Name="miniatura" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="etiquetas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="id_categoria" Type="Int32" />
@@ -1079,11 +1079,11 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="puntuacion1" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="7" />
-          <Property Name="id_usuario" Type="Int64" />
-          <Property Name="id_publicacion" Type="Int64" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="id_publicacion" Type="Int32" />
           <NavigationProperty Name="publicacion" Relationship="Self.puntuacion_id_publicacion_fkey" FromRole="puntuacion" ToRole="publicacion" />
           <NavigationProperty Name="user_session" Relationship="Self.puntuacion_id_usuario_fkey" FromRole="puntuacion" ToRole="user_session" />
         </EntityType>
@@ -1091,7 +1091,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="accion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="schema" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1114,7 +1114,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="user_id" Type="Int32" />
           <Property Name="user_mac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="user_session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1128,7 +1128,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha_bloqueo" Type="DateTime" Precision="3" />
-          <Property Name="id_user" Type="Int64" />
+          <Property Name="id_user" Type="Int32" />
           <Property Name="fecha_teminacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="user_session" Relationship="Self.bloqueo_id_user_fkey" FromRole="bloqueo" ToRole="user_session" />
         </EntityType>
@@ -1137,7 +1137,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_session" Type="Int64" />
+          <Property Name="id_session" Type="Int32" />
           <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="user_session" Relationship="Self.correo_institucional_id_session_fkey" FromRole="correo_institucional" ToRole="user_session" />
         </EntityType>
@@ -1161,7 +1161,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="fecha_ult_session" Type="DateTime" Precision="7" />
@@ -1187,12 +1187,12 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="edad" Type="Int32" />
-          <Property Name="id_session" Type="Int64" />
+          <Property Name="id_session" Type="Int32" />
           <Property Name="sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="session" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="user_session" Relationship="Self.id_session" FromRole="usuario" ToRole="user_session" />
@@ -1680,10 +1680,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           </FunctionImport>
           <FunctionImport Name="f_listar_controles" ReturnType="Collection(ForoUdecModel.f_listar_controles_Result)">
             <Parameter Name="formulario" Mode="In" Type="Int32" />
+            <Parameter Name="idioma" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_controles2" ReturnType="Collection(ForoUdecModel.f_listar_controles2_Result)">
             <Parameter Name="formulario" Mode="In" Type="Int32" />
-            <Parameter Name="idioma" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_formulario" ReturnType="Collection(ForoUdecModel.f_listar_formulario_Result)" />
           <FunctionImport Name="f_obtener_idioma_formulario" ReturnType="Collection(ForoUdecModel.f_obtener_idioma_formulario_Result)">
@@ -1738,7 +1738,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           </FunctionImport>
           <FunctionImport Name="f_listar_categoria" ReturnType="Collection(ForoUdecModel.f_listar_categoria_Result)" />
           <FunctionImport Name="f_listar_comentarios_post" ReturnType="Collection(ForoUdecModel.f_listar_comentarios_post_Result)">
-            <Parameter Name="postid" Mode="In" Type="Int64" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
             <Parameter Name="comentario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post" ReturnType="Collection(ForoUdecModel.f_listar_post_Result)">
@@ -1797,7 +1797,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="postid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_ver_post" ReturnType="Collection(ForoUdecModel.f_ver_post_Result)">
-            <Parameter Name="postid" Mode="In" Type="Int64" />
+            <Parameter Name="postid" Mode="In" Type="Int32" />
             <Parameter Name="control" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_ver_post2" ReturnType="Collection(ForoUdecModel.f_ver_post2_Result)">
@@ -1884,8 +1884,8 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="f_caragr_datos_admin_chart_Result">
-          <Property Type="Int32" Name="Column1" Nullable="true" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="Int32" Name="publicos" Nullable="true" />
+          <Property Type="Int32" Name="privado" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_caragr_datos_admin_home_Result">
           <Property Type="Int32" Name="totalusere" Nullable="true" />
@@ -1901,47 +1901,48 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
         </ComplexType>
         <ComplexType Name="f_cargar_usuariospubl_Result">
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="contador" Nullable="true" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="publicaciones" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_crud_mod_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="Int64" Name="Column1" Nullable="true" />
-          <Property Type="Int64" Name="Column2" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_post" Nullable="true" />
+          <Property Type="Int32" Name="id_post2" Nullable="true" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
-          <Property Type="String" Name="Column3" Nullable="true" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_crud_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="Int64" Name="Column1" Nullable="true" />
-          <Property Type="Int64" Name="Column2" Nullable="true" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_post" Nullable="true" />
+          <Property Type="Int32" Name="id_post2" Nullable="true" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
-          <Property Type="String" Name="Column3" Nullable="true" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_crud_usuarios_listar_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="tipo1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="permisos" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_perfil_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="edad" Nullable="true" />
-          <Property Type="Int64" Name="id_session" Nullable="true" />
+          <Property Type="Int32" Name="id_session" Nullable="true" />
           <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="session" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_sesion_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
@@ -1954,13 +1955,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="Int32" Name="n_sesiones" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_mostar_denuncias_comentario_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_denuncia" Nullable="false" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="Max" />
-          <Property Type="Int64" Name="id_comentario" Nullable="true" />
-          <Property Type="Int64" Name="id_denunciante" Nullable="true" />
-          <Property Type="String" Name="contenido" Nullable="true" MaxLength="Max" />
-          <Property Type="Int64" Name="id_denunciante1" Nullable="true" />
-          <Property Type="Int64" Name="id_denunciante2" Nullable="true" />
+          <Property Type="Int32" Name="id_comentario" Nullable="true" />
+          <Property Type="Int32" Name="id_usuario" Nullable="true" />
+          <Property Type="String" Name="contenido_comentario" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="aux" Nullable="true" />
+          <Property Type="Int32" Name="aux2" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_cargar_idiomas_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1968,15 +1969,15 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="String" Name="terminacion" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="f_listar_controles_Result">
+          <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="idioma" Nullable="true" />
+          <Property Type="Int32" Name="formulario" Nullable="true" />
+          <Property Type="String" Name="texto" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="f_listar_controles2_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
           <Property Type="Int32" Name="formulario_id" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="f_listar_controles2_Result">
-          <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
-          <Property Type="Int32" Name="idioma_id" Nullable="true" />
-          <Property Type="Int32" Name="formulario_id" Nullable="true" />
-          <Property Type="String" Name="texto" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="f_listar_formulario_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1985,36 +1986,36 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
         </ComplexType>
         <ComplexType Name="f_obtener_idioma_formulario_Result">
           <Property Type="String" Name="control" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="texto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="valor" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="f_busqueda_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_busqueda_private_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_cargar_mod_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
           <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="id_estado" Nullable="true" />
-          <Property Type="Int64" Name="id_usuario" Nullable="true" />
+          <Property Type="Int32" Name="id_usuario" Nullable="true" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="etiquetas" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="id_categoria" Nullable="true" />
@@ -2026,131 +2027,131 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="Max" />
         </ComplexType>
         <ComplexType Name="f_listar_comentarios_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="Int32" Name="id_user" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="contenido" Nullable="true" MaxLength="Max" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Column1" Nullable="true" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="163" />
-          <Property Type="String" Name="Column3" Nullable="true" MaxLength="168" />
+          <Property Type="Int32" Name="respuestas" Nullable="true" />
+          <Property Type="String" Name="denuncia" Nullable="true" MaxLength="163" />
+          <Property Type="String" Name="comentaridpost" Nullable="true" MaxLength="168" />
         </ComplexType>
         <ComplexType Name="f_listar_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="editar_post" Nullable="true" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="f_listar_post_home_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_listar_post_home_categorias_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="110" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="fecha" Nullable="true" MaxLength="110" />
         </ComplexType>
         <ComplexType Name="f_listar_post_home_categorias_private_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="110" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="fecha" Nullable="true" MaxLength="110" />
         </ComplexType>
         <ComplexType Name="f_listar_post_home_private_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_listar_post_home_servicios_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="miniatura" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_listar_post_moderador_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="121" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="121" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_listar_post_private_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="129" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="129" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="editar_post" Nullable="true" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="f_listar_post_public_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="124" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="124" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Column2" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="editar_post" Nullable="true" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="f_ver_post_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_post" Nullable="false" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
           <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="id1" Nullable="false" />
-          <Property Type="Int32" Name="Column1" Nullable="true" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="avatar_username" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="Int32" Name="comentarios" Nullable="true" />
+          <Property Type="Int32" Name="posts" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_ver_post2_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id_post" Nullable="false" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="contenido" Nullable="true" MaxLength="500" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
           <Property Type="String" Name="fuente" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="id1" Nullable="false" />
-          <Property Type="Int32" Name="Column1" Nullable="true" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-          <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="avatar_username" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
+          <Property Type="Int32" Name="comentarios" Nullable="true" />
+          <Property Type="Int32" Name="posts" Nullable="true" />
+          <Property Type="String" Name="estado" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="f_reporte_publicacion_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
-          <Property Type="Int64" Name="visitas" Nullable="true" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
           <Property Type="DateTime" Name="fecha" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_reporte_puntuacion_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="puntuacion" Nullable="true" />
-          <Property Type="Int64" Name="id1" Nullable="false" />
+          <Property Type="Int32" Name="id_publicacion" Nullable="false" />
+          <Property Type="Int32" Name="puntos" Nullable="true" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="f_reporte_usuario_Result">
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
           <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="edad" Nullable="true" />
@@ -2158,14 +2159,14 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="f_solicitar_bloqueo2_Result">
-          <Property Type="Int32" Name="Column1" Nullable="true" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-          <Property Type="Int32" Name="Column3" Nullable="true" />
+          <Property Type="Int32" Name="dias" Nullable="true" />
+          <Property Type="Int32" Name="minutos" Nullable="true" />
+          <Property Type="Int32" Name="segundos" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_Result">
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
-          <Property Type="Int64" Name="id_usuario" Nullable="false" />
+          <Property Type="Int32" Name="id_usuario" Nullable="false" />
           <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="apellido" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="edad" Nullable="true" />
@@ -2173,7 +2174,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_sesion1_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
@@ -2186,22 +2187,22 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="Int32" Name="n_sesiones" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_sesion2_Result">
-          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="posts" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_traer_datos_vista_perfil_Result">
           <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="corrreo" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
+          <Property Type="DateTime" Name="ultacceso" Nullable="true" />
           <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="avatar" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="edad" Nullable="true" />
           <Property Type="String" Name="sexo" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="estado" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="posts" Nullable="true" />
         </ComplexType>
         <ComplexType Name="f_validar_usuario_Result">
           <Property Type="Int32" Name="Column1" Nullable="false" />
@@ -2465,8 +2466,8 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_caragr_datos_admin_chart" FunctionName="ForoUdecModel.Store.f_caragr_datos_admin_chart">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_caragr_datos_admin_chart_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="publicos" ColumnName="publicos" />
+                <ScalarProperty Name="privado" ColumnName="privado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2491,7 +2492,8 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_cargar_usuariospubl_Result">
                 <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="contador" ColumnName="contador" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="publicaciones" ColumnName="publicaciones" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2499,13 +2501,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_mod_post_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+                <ScalarProperty Name="id_post2" ColumnName="id_post2" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2513,13 +2515,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
+                <ScalarProperty Name="id_post2" ColumnName="id_post2" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2531,8 +2533,8 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="tipo1" ColumnName="tipo1" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="permisos" ColumnName="permisos" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2581,13 +2583,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_mostar_denuncias_comentario" FunctionName="ForoUdecModel.Store.f_mostar_denuncias_comentario">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_mostar_denuncias_comentario_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_denuncia" ColumnName="id_denuncia" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="id_comentario" ColumnName="id_comentario" />
-                <ScalarProperty Name="id_denunciante" ColumnName="id_denunciante" />
-                <ScalarProperty Name="contenido" ColumnName="contenido" />
-                <ScalarProperty Name="id_denunciante1" ColumnName="id_denunciante1" />
-                <ScalarProperty Name="id_denunciante2" ColumnName="id_denunciante2" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="contenido_comentario" ColumnName="contenido_comentario" />
+                <ScalarProperty Name="aux" ColumnName="aux" />
+                <ScalarProperty Name="aux2" ColumnName="aux2" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2606,19 +2608,19 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_listar_controles" FunctionName="ForoUdecModel.Store.f_listar_controles">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="control" ColumnName="control" />
-                <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="formulario" ColumnName="formulario" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_listar_controles2" FunctionName="ForoUdecModel.Store.f_listar_controles2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_controles2_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="control" ColumnName="control" />
-                <ScalarProperty Name="idioma_id" ColumnName="idioma_id" />
                 <ScalarProperty Name="formulario_id" ColumnName="formulario_id" />
-                <ScalarProperty Name="texto" ColumnName="texto" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2635,7 +2637,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_obtener_idioma_formulario_Result">
                 <ScalarProperty Name="control" ColumnName="control" />
-                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2643,10 +2645,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_busqueda" FunctionName="ForoUdecModel.Store.f_busqueda">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -2656,10 +2658,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_busqueda_private" FunctionName="ForoUdecModel.Store.f_busqueda_private">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_busqueda_private_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
-                <ScalarProperty Name="etiquetas" ColumnName="etiquetas" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -2701,14 +2703,14 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_listar_comentarios_post" FunctionName="ForoUdecModel.Store.f_listar_comentarios_post">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_comentarios_post_Result">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="respuestas" ColumnName="respuestas" />
+                <ScalarProperty Name="denuncia" ColumnName="denuncia" />
+                <ScalarProperty Name="comentaridpost" ColumnName="comentaridpost" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2716,18 +2718,18 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="editar_post" ColumnName="editar_post" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_listar_post_home" FunctionName="ForoUdecModel.Store.f_listar_post_home">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="miniatura" ColumnName="miniatura" />
@@ -2739,31 +2741,31 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_listar_post_home_categorias_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_categorias_private">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_categorias_private_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_listar_post_home_private" FunctionName="ForoUdecModel.Store.f_listar_post_home_private">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_private_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="miniatura" ColumnName="miniatura" />
@@ -2775,7 +2777,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_listar_post_home_servicios" FunctionName="ForoUdecModel.Store.f_listar_post_home_servicios">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_home_servicios_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="miniatura" ColumnName="miniatura" />
@@ -2787,10 +2789,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_listar_post_moderador" FunctionName="ForoUdecModel.Store.f_listar_post_moderador">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_moderador_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="miniatura" ColumnName="miniatura" />
                 <ScalarProperty Name="visitas" ColumnName="visitas" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -2801,11 +2803,11 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_private_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="editar_post" ColumnName="editar_post" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2813,11 +2815,11 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_listar_post_public_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="editar_post" ColumnName="editar_post" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2828,35 +2830,35 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_ver_post" FunctionName="ForoUdecModel.Store.f_ver_post">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="fuente" ColumnName="fuente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
                 <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="avatar" ColumnName="avatar" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="avatar_username" ColumnName="avatar_username" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_ver_post2" FunctionName="ForoUdecModel.Store.f_ver_post2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_ver_post2_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="fuente" ColumnName="fuente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
                 <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="avatar" ColumnName="avatar" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="avatar_username" ColumnName="avatar_username" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2874,9 +2876,9 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_reporte_puntuacion" FunctionName="ForoUdecModel.Store.f_reporte_puntuacion">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_reporte_puntuacion_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="id_publicacion" ColumnName="id_publicacion" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="username" ColumnName="username" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2911,9 +2913,9 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImportMapping FunctionImportName="f_solicitar_bloqueo2" FunctionName="ForoUdecModel.Store.f_solicitar_bloqueo2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ForoUdecModel.f_solicitar_bloqueo2_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="dias" ColumnName="dias" />
+                <ScalarProperty Name="minutos" ColumnName="minutos" />
+                <ScalarProperty Name="segundos" ColumnName="segundos" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2957,7 +2959,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="pasword" ColumnName="pasword" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2966,13 +2968,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
               <ComplexTypeMapping TypeName="ForoUdecModel.f_traer_datos_vista_perfil_Result">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="corrreo" ColumnName="corrreo" />
-                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="ultacceso" ColumnName="ultacceso" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="edad" ColumnName="edad" />
                 <ScalarProperty Name="sexo" ColumnName="sexo" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

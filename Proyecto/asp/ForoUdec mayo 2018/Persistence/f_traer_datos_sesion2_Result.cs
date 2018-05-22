@@ -13,10 +13,10 @@ namespace Persistence
     
     public partial class f_traer_datos_sesion2_Result
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string username { get; set; }
         public string pasword { get; set; }
         public string correo { get; set; }
-        public Nullable<int> Column1 { get; set; }
+        public Nullable<int> posts { get; set; }
     }
 }

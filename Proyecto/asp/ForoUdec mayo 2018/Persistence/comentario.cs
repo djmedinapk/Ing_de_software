@@ -21,12 +21,12 @@ namespace Persistence
             this.comentario1 = new HashSet<comentario>();
         }
     
-        public long id { get; set; }
+        public int id { get; set; }
         public string contenido { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
-        public Nullable<long> id_comentario { get; set; }
-        public Nullable<long> id_usuario { get; set; }
-        public Nullable<long> id_publicacion { get; set; }
+        public Nullable<int> id_comentario { get; set; }
+        public Nullable<int> id_usuario { get; set; }
+        public Nullable<int> id_publicacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<denuncia_comentario> denuncia_comentario { get; set; }

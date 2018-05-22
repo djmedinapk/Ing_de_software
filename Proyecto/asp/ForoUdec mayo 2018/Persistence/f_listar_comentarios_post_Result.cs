@@ -13,13 +13,13 @@ namespace Persistence
     
     public partial class f_listar_comentarios_post_Result
     {
-        public long id { get; set; }
-        public long id1 { get; set; }
+        public int id_user { get; set; }
+        public int id { get; set; }
         public string contenido { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public string username { get; set; }
-        public Nullable<int> Column1 { get; set; }
-        public string Column2 { get; set; }
-        public string Column3 { get; set; }
+        public Nullable<int> respuestas { get; set; }
+        public string denuncia { get; set; }
+        public string comentaridpost { get; set; }
     }
 }

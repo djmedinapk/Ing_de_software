@@ -13,17 +13,17 @@ namespace Persistence
     
     public partial class f_ver_post2_Result
     {
-        public long id { get; set; }
+        public int id_post { get; set; }
         public string titulo { get; set; }
         public string contenido { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public string fuente { get; set; }
-        public string nombre { get; set; }
+        public string categoria { get; set; }
         public string username { get; set; }
-        public string avatar { get; set; }
-        public long id1 { get; set; }
-        public Nullable<int> Column1 { get; set; }
-        public Nullable<int> Column2 { get; set; }
-        public string tipo { get; set; }
+        public string avatar_username { get; set; }
+        public int id_usuario { get; set; }
+        public Nullable<int> comentarios { get; set; }
+        public Nullable<int> posts { get; set; }
+        public string estado { get; set; }
     }
 }

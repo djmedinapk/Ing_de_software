@@ -14,6 +14,7 @@ namespace Persistence
     public partial class f_cargar_usuariospubl_Result
     {
         public string username { get; set; }
-        public Nullable<int> contador { get; set; }
+        public string correo { get; set; }
+        public Nullable<int> publicaciones { get; set; }
     }
 }

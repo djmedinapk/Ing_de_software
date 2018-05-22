@@ -14,6 +14,6 @@ namespace Persistence
     public partial class f_obtener_idioma_formulario_Result
     {
         public string control { get; set; }
-        public string texto { get; set; }
+        public string valor { get; set; }
     }
 }

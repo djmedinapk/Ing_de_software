@@ -16,7 +16,7 @@ namespace Persistence
     {
         public int id { get; set; }
         public Nullable<System.DateTime> fecha_bloqueo { get; set; }
-        public Nullable<long> id_user { get; set; }
+        public Nullable<int> id_user { get; set; }
         public Nullable<System.DateTime> fecha_teminacion { get; set; }
     
         public virtual user_session user_session { get; set; }

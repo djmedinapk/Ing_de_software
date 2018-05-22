@@ -13,11 +13,11 @@ namespace Persistence
     
     public partial class f_listar_post_home_categorias_private_Result
     {
-        public string Column1 { get; set; }
+        public string id_post { get; set; }
         public string titulo { get; set; }
         public string descripcion { get; set; }
         public string miniatura { get; set; }
-        public Nullable<long> visitas { get; set; }
-        public string Column2 { get; set; }
+        public Nullable<int> visitas { get; set; }
+        public string fecha { get; set; }
     }
 }

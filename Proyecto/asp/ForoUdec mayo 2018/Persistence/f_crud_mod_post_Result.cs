@@ -13,13 +13,13 @@ namespace Persistence
     
     public partial class f_crud_mod_post_Result
     {
-        public long id { get; set; }
-        public Nullable<long> Column1 { get; set; }
-        public Nullable<long> Column2 { get; set; }
+        public int id { get; set; }
+        public Nullable<int> id_post { get; set; }
+        public Nullable<int> id_post2 { get; set; }
         public string titulo { get; set; }
         public string descripcion { get; set; }
-        public string tipo { get; set; }
-        public Nullable<long> visitas { get; set; }
-        public string Column3 { get; set; }
+        public string miniatura { get; set; }
+        public Nullable<int> visitas { get; set; }
+        public string fecha { get; set; }
     }
 }

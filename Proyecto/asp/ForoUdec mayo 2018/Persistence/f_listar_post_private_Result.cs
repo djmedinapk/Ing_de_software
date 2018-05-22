@@ -13,11 +13,11 @@ namespace Persistence
     
     public partial class f_listar_post_private_Result
     {
-        public long id { get; set; }
-        public string Column1 { get; set; }
+        public int id { get; set; }
+        public string id_post { get; set; }
         public string titulo { get; set; }
+        public string estado { get; set; }
         public string descripcion { get; set; }
-        public string tipo { get; set; }
-        public string Column2 { get; set; }
+        public string editar_post { get; set; }
     }
 }

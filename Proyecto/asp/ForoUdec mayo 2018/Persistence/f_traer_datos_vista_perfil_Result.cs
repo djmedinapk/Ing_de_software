@@ -15,12 +15,12 @@ namespace Persistence
     {
         public string username { get; set; }
         public string corrreo { get; set; }
-        public Nullable<System.DateTime> fecha_ult_session { get; set; }
+        public Nullable<System.DateTime> ultacceso { get; set; }
         public string nombre { get; set; }
         public string avatar { get; set; }
         public Nullable<int> edad { get; set; }
         public string sexo { get; set; }
         public string estado { get; set; }
-        public Nullable<int> Column1 { get; set; }
+        public Nullable<int> posts { get; set; }
     }
 }

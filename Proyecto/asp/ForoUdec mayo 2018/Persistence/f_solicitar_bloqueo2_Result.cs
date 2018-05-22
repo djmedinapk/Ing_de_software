@@ -13,8 +13,8 @@ namespace Persistence
     
     public partial class f_solicitar_bloqueo2_Result
     {
-        public Nullable<int> Column1 { get; set; }
-        public Nullable<int> Column2 { get; set; }
-        public Nullable<int> Column3 { get; set; }
+        public Nullable<int> dias { get; set; }
+        public Nullable<int> minutos { get; set; }
+        public Nullable<int> segundos { get; set; }
     }
 }

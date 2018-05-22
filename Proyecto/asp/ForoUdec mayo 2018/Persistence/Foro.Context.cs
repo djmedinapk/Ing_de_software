@@ -417,16 +417,7 @@ namespace Persistence
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("f_ingresar_idioma_control", idiomaParameter, controlParameter, formularioParameter, valorParameter);
         }
     
-        public virtual ObjectResult<f_listar_controles_Result> f_listar_controles(Nullable<int> formulario)
-        {
-            var formularioParameter = formulario.HasValue ?
-                new ObjectParameter("formulario", formulario) :
-                new ObjectParameter("formulario", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_listar_controles_Result>("f_listar_controles", formularioParameter);
-        }
-    
-        public virtual ObjectResult<f_listar_controles2_Result> f_listar_controles2(Nullable<int> formulario, Nullable<int> idioma)
+        public virtual ObjectResult<f_listar_controles_Result> f_listar_controles(Nullable<int> formulario, Nullable<int> idioma)
         {
             var formularioParameter = formulario.HasValue ?
                 new ObjectParameter("formulario", formulario) :
@@ -436,7 +427,16 @@ namespace Persistence
                 new ObjectParameter("idioma", idioma) :
                 new ObjectParameter("idioma", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_listar_controles2_Result>("f_listar_controles2", formularioParameter, idiomaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_listar_controles_Result>("f_listar_controles", formularioParameter, idiomaParameter);
+        }
+    
+        public virtual ObjectResult<f_listar_controles2_Result> f_listar_controles2(Nullable<int> formulario)
+        {
+            var formularioParameter = formulario.HasValue ?
+                new ObjectParameter("formulario", formulario) :
+                new ObjectParameter("formulario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_listar_controles2_Result>("f_listar_controles2", formularioParameter);
         }
     
         public virtual ObjectResult<f_listar_formulario_Result> f_listar_formulario()
@@ -622,11 +622,11 @@ namespace Persistence
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_listar_categoria_Result>("f_listar_categoria");
         }
     
-        public virtual ObjectResult<f_listar_comentarios_post_Result> f_listar_comentarios_post(Nullable<long> postid, Nullable<int> comentario)
+        public virtual ObjectResult<f_listar_comentarios_post_Result> f_listar_comentarios_post(Nullable<int> postid, Nullable<int> comentario)
         {
             var postidParameter = postid.HasValue ?
                 new ObjectParameter("postid", postid) :
-                new ObjectParameter("postid", typeof(long));
+                new ObjectParameter("postid", typeof(int));
     
             var comentarioParameter = comentario.HasValue ?
                 new ObjectParameter("comentario", comentario) :
@@ -816,11 +816,11 @@ namespace Persistence
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("f_validar_post", sesionParameter, postidParameter);
         }
     
-        public virtual ObjectResult<f_ver_post_Result> f_ver_post(Nullable<long> postid, Nullable<int> control)
+        public virtual ObjectResult<f_ver_post_Result> f_ver_post(Nullable<int> postid, Nullable<int> control)
         {
             var postidParameter = postid.HasValue ?
                 new ObjectParameter("postid", postid) :
-                new ObjectParameter("postid", typeof(long));
+                new ObjectParameter("postid", typeof(int));
     
             var controlParameter = control.HasValue ?
                 new ObjectParameter("control", control) :

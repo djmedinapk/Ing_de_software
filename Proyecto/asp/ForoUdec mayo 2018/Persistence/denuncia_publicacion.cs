@@ -14,10 +14,10 @@ namespace Persistence
     
     public partial class denuncia_publicacion
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string descripcion { get; set; }
-        public Nullable<long> id_publicacion { get; set; }
-        public Nullable<long> id_denunciante { get; set; }
+        public Nullable<int> id_publicacion { get; set; }
+        public Nullable<int> id_denunciante { get; set; }
         public Nullable<int> id_estado { get; set; }
     
         public virtual user_session user_session { get; set; }

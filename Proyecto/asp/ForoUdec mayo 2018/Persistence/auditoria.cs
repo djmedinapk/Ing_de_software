@@ -14,7 +14,7 @@ namespace Persistence
     
     public partial class auditoria
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public System.DateTimeOffset fecha { get; set; }
         public string accion { get; set; }
         public string schema { get; set; }

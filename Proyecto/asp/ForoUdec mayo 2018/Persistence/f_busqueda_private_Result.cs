@@ -13,12 +13,12 @@ namespace Persistence
     
     public partial class f_busqueda_private_Result
     {
-        public string Column1 { get; set; }
+        public string id_post { get; set; }
         public string titulo { get; set; }
-        public string etiquetas { get; set; }
-        public string nombre { get; set; }
-        public Nullable<long> visitas { get; set; }
+        public string descripcion { get; set; }
+        public string miniatura { get; set; }
+        public Nullable<int> visitas { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
-        public long id { get; set; }
+        public int id { get; set; }
     }
 }

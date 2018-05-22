@@ -34,6 +34,8 @@ namespace Persistence
                 Usuario = salida.ConvertToDataTable(a);
             }
             return Usuario;
+            PsqlFunctions zzz = new PsqlFunctions();
+            zzz.a(22);
         }
 
 
@@ -69,7 +71,7 @@ namespace Persistence
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_listar_controles(formulario).ToList();
+                var a = db.f_listar_controles(formulario,idioma).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
                 datos = salida.ConvertToDataTable(a);
             }

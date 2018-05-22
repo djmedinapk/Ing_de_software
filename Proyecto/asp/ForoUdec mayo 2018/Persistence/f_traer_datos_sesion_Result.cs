@@ -13,7 +13,7 @@ namespace Persistence
     
     public partial class f_traer_datos_sesion_Result
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string username { get; set; }
         public string pasword { get; set; }
         public Nullable<System.DateTime> fecha_ult_session { get; set; }

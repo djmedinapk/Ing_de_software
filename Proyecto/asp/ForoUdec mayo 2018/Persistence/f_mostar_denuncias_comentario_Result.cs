@@ -13,12 +13,12 @@ namespace Persistence
     
     public partial class f_mostar_denuncias_comentario_Result
     {
-        public long id { get; set; }
+        public int id_denuncia { get; set; }
         public string descripcion { get; set; }
-        public Nullable<long> id_comentario { get; set; }
-        public Nullable<long> id_denunciante { get; set; }
-        public string contenido { get; set; }
-        public Nullable<long> id_denunciante1 { get; set; }
-        public Nullable<long> id_denunciante2 { get; set; }
+        public Nullable<int> id_comentario { get; set; }
+        public Nullable<int> id_usuario { get; set; }
+        public string contenido_comentario { get; set; }
+        public Nullable<int> aux { get; set; }
+        public Nullable<int> aux2 { get; set; }
     }
 }
