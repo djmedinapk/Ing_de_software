@@ -774,5 +774,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="f_loggin" FunctionName="ForoUdecModel.Store.f_loggin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_loggin_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pasword" ColumnName="pasword" />
+          <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+          <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

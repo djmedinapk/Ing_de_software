@@ -54,28 +54,28 @@ namespace Persistence
             return datos;
         }
 
-        public DataTable CambiarContraseña(String clave, String token)
+        public Int32 CambiarContraseña(String clave, String token)
         {
-            DataTable datos = new DataTable();
+            Int32 datos;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_cambiar_password(clave, token).ToList();
+                List<Int32?> a = db.f_cambiar_password(clave, token).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                datos = Int32.Parse(a.First().ToString());
             }
             return datos;
         }
 
-        public DataTable Validartoken(String _token)
+        public Int32 Validartoken(String _token)
         {
-            DataTable datos = new DataTable();
+            Int32 datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_validar_token(_token).ToList();
+                List<Int32?> a = db.f_validar_token(_token).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                datos = Int32.Parse(a.First().ToString());
 
             }
 

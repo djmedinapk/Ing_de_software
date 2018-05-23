@@ -178,6 +178,9 @@
     <Compile Include="f_listar_post_Result.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_loggin_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
     <Compile Include="f_mostar_denuncias_comentario_Result.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>

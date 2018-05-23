@@ -55,15 +55,18 @@ namespace Persistence
             return datos1;
         }
 
-        public DataTable traerCorreoInstitucional(int user_id)
+        public String traerCorreoInstitucional(int user_id)
         {
-            DataTable datos = new DataTable();
+            String datos ;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_traer_correo_institucional(user_id).ToList();
+                List<String> a = db.f_traer_correo_institucional(user_id).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                try {
+                    datos = a.First().ToString();
+                } catch { datos = null; }
+                
 
             }
                 return datos;
@@ -149,15 +152,15 @@ namespace Persistence
 
         }
 
-        public DataTable RegistrarCorreoInstitucional(int user_id, String correo, String sesion)
+        public String RegistrarCorreoInstitucional(int user_id, String correo, String sesion)
         {
-            DataTable datos = new DataTable();
+            String datos;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_ingresar_correo_institucional(user_id,correo,sesion).ToList();
+                List<String> a = db.f_ingresar_correo_institucional(user_id,correo,sesion).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                datos = a.First().ToString();
 
             }
 

@@ -1091,5 +1091,18 @@ namespace Persistence
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_validar_usuario_Result>("f_validar_usuario", user_nameParameter);
         }
+    
+        public virtual ObjectResult<f_loggin_Result> f_loggin(string user_name, string clave)
+        {
+            var user_nameParameter = user_name != null ?
+                new ObjectParameter("user_name", user_name) :
+                new ObjectParameter("user_name", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_loggin_Result>("f_loggin", user_nameParameter, claveParameter);
+        }
     }
 }

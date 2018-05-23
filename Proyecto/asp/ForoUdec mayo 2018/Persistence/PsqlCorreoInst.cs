@@ -10,15 +10,20 @@ namespace Persistence
 {
     public class PsqlCorreoInst
     {
-        public DataTable traerCorreoInstitucional(int user_id)
+        public String traerCorreoInstitucional(int user_id)
         {
-            DataTable datos = new DataTable();
+            String datos;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_traer_correo_institucional(user_id).ToList();
+                List<String> a = db.f_traer_correo_institucional(user_id).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                datos = salida.ConvertToDataTable(a);
+                try {
+                    datos = a.First().ToString();
+
+                }
+                catch { datos = null; }
+               
                 
             }
             return datos;

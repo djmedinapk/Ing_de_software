@@ -246,9 +246,9 @@ namespace Logica
             DataTable datosold = old.traerDatos(int.Parse(sesion["id"].ToString()));
             DataTable datosSession = old.traerDatosSesion(int.Parse(sesion["id"].ToString()));
 
-            DataTable correoIns = old.traerCorreoInstitucional(int.Parse(sesion["id"].ToString()));
+            String correoIns = old.traerCorreoInstitucional(int.Parse(sesion["id"].ToString()));
 
-            if (datosSession.Rows.Count > 0)
+            if (datosSession != null)
             {
                 respuesta.TperfilAjustesUsername = datosSession.Rows[0]["username"].ToString();
                 respuesta.TperfilAjustesCorreo = datosSession.Rows[0]["correo"].ToString();
@@ -272,14 +272,14 @@ namespace Logica
                     "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                 respuesta.IperfilImage = "~\\Imagenes\\Default\\123.jpg";
             }
-            if (correoIns.Rows.Count > 0)
+            if (correoIns != null)
             {
-                if (correoIns.Rows[0][0].ToString() != "")
+                if (correoIns.ToString() != "")
                 {
 
                     respuesta.Bcorreoins= false;
                     respuesta.Tcorreoins = true;
-                    respuesta.Tcorreoins2 = correoIns.Rows[0][0].ToString();
+                    respuesta.Tcorreoins2 = correoIns.ToString();
                     respuesta.Pprivados = true;
                 }
                 else

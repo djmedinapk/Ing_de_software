@@ -1,10 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ForoUdecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="_idpost">
-          <Property Name="id_comentario" Type="int" />
-        </EntityType>-->
   <EntityType Name="contacto">
     <Key>
       <PropertyRef Name="id" />
@@ -198,14 +193,6 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tipo" Type="ntext" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="token">
-          <Property Name="user_id" Type="int" />
-          <Property Name="token" Type="nvarchar" MaxLength="500" />
-          <Property Name="fecha_creado" Type="datetime2" Precision="7" />
-          <Property Name="fecha_vigencia" Type="datetime2" Precision="7" />
-        </EntityType>-->
   <EntityType Name="user_session">
     <Key>
       <PropertyRef Name="id" />
@@ -736,6 +723,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
   <Function Name="f_reporte_publicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
   <Function Name="f_reporte_puntuacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
   <Function Name="f_reporte_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+  <Function Name="f_loggin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="seguridad_registros">
+    <Parameter Name="user_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="clave" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="f_actualizar_bloqueo_sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario" />
   <Function Name="f_actualizar_bloqueo_sesion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
     <Parameter Name="session" Type="varchar" Mode="In" />

@@ -11,16 +11,16 @@ namespace Persistence
 {
     public class PsqlLogin
     {
-        public DataTable ingresar(String userio_name, String pass)
+        
+        public DataTable guardadoSession(ingresos datos)
         {
             DataTable Usuario = new DataTable();
 
-            return Usuario;
-        }
-
-        public DataTable guardadoSession(Esesion datos)
-        {
-            DataTable Usuario = new DataTable();
+            using (ForoUdecEntities1 db = new ForoUdecEntities1())
+            {
+                db.ingresos.Add(datos);
+                db.SaveChanges();
+            }
 
             return Usuario;
         }
@@ -54,16 +54,16 @@ namespace Persistence
             }
             return Usuario;
         }
-        public DataTable solicitar_bloqueo_sesion_pre(String datos)
+        public Int32 solicitar_bloqueo_sesion_pre(String datos)
         {
-            DataTable Usuario = new DataTable();
+            Int32 Usuario;
 
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_solicitar_bloqueo_preingreso(datos).ToList();
+                List<Int32?> a = db.f_solicitar_bloqueo_preingreso(datos).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                Usuario = salida.ConvertToDataTable(a);
+                Usuario = Int32.Parse(a.First().ToString());
             }
 
 
@@ -81,16 +81,16 @@ namespace Persistence
 
             return Usuario;
         }
-        public DataTable solicitar_conteo_sesion(String datos)
+        public String solicitar_conteo_sesion(String datos)
         {
-            DataTable Usuario = new DataTable();
+            String Usuario;
 
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_solicitar_contador_sesiones(datos).ToList();
+                List<String> a = db.f_solicitar_contador_sesiones(datos).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                Usuario = salida.ConvertToDataTable(a);
+                Usuario = a.First().ToString();
             }
             return Usuario;
         }
@@ -116,5 +116,20 @@ namespace Persistence
             }
 
         }
+        public DataTable ingresar(String userio_name, String pass)
+        {
+            DataTable Usuario = new DataTable();
+            
+
+            using (ForoUdecEntities1 db = new ForoUdecEntities1())
+            {
+                var a = db.f_loggin(userio_name,pass).ToList();
+                ConverToDataTable salida = new ConverToDataTable();
+                Usuario = salida.ConvertToDataTable(a);
+                
+            }
+            return Usuario;
+        }
+
     }
 }

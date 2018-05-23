@@ -82,8 +82,8 @@ namespace Logica
             String respuesta = null;
             //DResetPass validacion = new DResetPass();
             PsqlResetPass validacion = new PsqlResetPass();
-            DataTable validez = validacion.Validartoken(token);
-            if (int.Parse(validez.Rows[0][0].ToString()) != 1)
+            Int32 validez = validacion.Validartoken(token);
+            if (int.Parse(validez.ToString()) != 1)
             {
                respuesta="ingresar.aspx";
             }
@@ -99,14 +99,14 @@ namespace Logica
             //DResetPass reset = new DResetPass();
             PsqlResetPass reset = new PsqlResetPass();
             encryption encript = new encryption();
-            System.Data.DataTable validez = reset.CambiarContraseña(encript.encrypto(TNewPassUser), token);
-            if (int.Parse(validez.Rows[0][0].ToString()) == 1)
+            Int32 validez = reset.CambiarContraseña(encript.encrypto(TNewPassUser), token);
+            if (int.Parse(validez.ToString()) == 1)
             {
                 respuesta[0] ="Green";
                 respuesta[1] = "Su contraseña ha sido restablecida";
                 respuesta[2]="redirect_login.aspx";
             }
-            else if (int.Parse(validez.Rows[0].ToString()) == 0)
+            else if (int.Parse(validez.ToString()) == 0)
             {
                 respuesta[0] = "Red";
                 respuesta[1] = "No puede cambiarse la contraseña";

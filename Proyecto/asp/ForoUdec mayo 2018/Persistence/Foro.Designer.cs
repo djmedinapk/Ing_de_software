@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\Dekc\Documents\Talleres\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\Foro.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\juandavid\Desktop\Ing_de_software\Proyecto\asp\ForoUdec mayo 2018\Persistence\Foro.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

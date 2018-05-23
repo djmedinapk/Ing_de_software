@@ -434,10 +434,10 @@ namespace Logica
                 {
                     //Dpost puntuar = new Dpost();
                     PsqlPost puntuar = new PsqlPost();
-                    DataTable informacion = puntuar.puntuar_post(puntuacion, int.Parse(userid), postid);
-                    if (informacion.Rows.Count != 0)
+                    string informacion = puntuar.puntuar_post(puntuacion, int.Parse(userid), postid);
+                    if (informacion != null)
                     {
-                        string frase = informacion.Rows[0][0].ToString();
+                        string frase = informacion.ToString();
                        mensaje[0] = "<div class='modal fade' id='mostrarmodal' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'><div class='modal-dialog'>   <div class='modal-content'><div class='modal-body'> " + frase.ToString() + "</div>      <div class='modal-footer'>     <a href='#' data-dismiss='modal'  class='btn btn-danger'>cerrar</a>  </div>   </div></div></div>" +
                            "<script>$(document).ready(function(){   $('#mostrarmodal').modal('show');});</script>";
                     }

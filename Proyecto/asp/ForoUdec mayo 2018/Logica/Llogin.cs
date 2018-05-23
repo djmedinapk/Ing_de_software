@@ -24,11 +24,11 @@ namespace Logica
 
             Dlogin ingresar = new Dlogin();
             PsqlLogin ingresar2 = new PsqlLogin();
-            DataTable verificar = ingresar2.solicitar_bloqueo_sesion_pre(usuario.Username);
-            if (verificar.Rows.Count > 0)
+            Int32 verificar = ingresar2.solicitar_bloqueo_sesion_pre(usuario.Username);
+            if (verificar >=0)
             {
-                DataTable contador_sesiones = ingresar2.solicitar_conteo_sesion(usuario.Username);
-                if (contador_sesiones.Rows.Count>0)
+                String contador_sesiones = ingresar2.solicitar_conteo_sesion(usuario.Username);
+                if (contador_sesiones != null)
                 {
                     Int32 n;
                     Int32 n_sesiones=ingresar2.traer_n_sesiones(usuario.Username);
@@ -44,9 +44,9 @@ namespace Logica
                             }
 
 
-                    if (Int32.Parse(contador_sesiones.Rows[0][0].ToString())<n)
+                    if (Int32.Parse(contador_sesiones.ToString())<n)
                     {
-                        if (verificar.Rows[0][0].ToString() == "1")
+                        if (verificar.ToString() == "1")
                         {
                             Llogin oto = new Llogin();
                             r1["mensaje"] = oto.mensaje(usuario);
@@ -55,7 +55,7 @@ namespace Logica
                         {
                             encryption encriptar = new encryption();
                             String pass = encriptar.encrypto(usuario.Password);
-                            DataTable data = ingresar.ingresar(usuario.Username, pass);
+                            DataTable data = ingresar2.ingresar(usuario.Username, pass);
                             if (data.Rows.Count > 0)
                             {
 
@@ -67,28 +67,29 @@ namespace Logica
                                     //mensaje[1] = data.Rows[0]["username"].ToString();
                                     //mensaje[2] = data.Rows[0]["id"].ToString();
 
-                                    Esesion datosUsuario = new Esesion();
+                                    ingresos datosUsuario = new ingresos();
                                     // String ipAddress;
                                     MAC macc = new MAC();
                                     String ipAddress = macc.ip();
                                     String MAC = macc.mac();
 
-                                    datosUsuario.UserId = int.Parse(mensaje[0].Rows[0]["id"].ToString());
-                                    datosUsuario.Ip = ipAddress;
-                                    datosUsuario.Mac = MAC;
-                                    datosUsuario.Session = session_id;
-                                    ingresar.guardadoSession(datosUsuario);
+
+                                    datosUsuario.user_id = int.Parse(mensaje[0].Rows[0]["id"].ToString());
+                                    datosUsuario.user_ip = ipAddress;
+                                    datosUsuario.user_mac = MAC;
+                                    datosUsuario.user_session = session_id;
+                                    ingresar2.guardadoSession(datosUsuario);
 
 
 
                                     // DcorreoInst old = new DcorreoInst();
                                     PsqlCorreoInst old = new PsqlCorreoInst();
-                                    DataTable correoIns = old.traerCorreoInstitucional(int.Parse(mensaje[0].Rows[0]["id"].ToString()));
-                                    if (correoIns.Rows.Count > 0)
+                                    String correoIns = old.traerCorreoInstitucional(int.Parse(mensaje[0].Rows[0]["id"].ToString()));
+                                    if (correoIns != null)
                                     {
-                                        if (correoIns.Rows[0][0].ToString() != "")
+                                        if (correoIns.ToString() != "")
                                         {
-                                            r1["correo_ins"] = correoIns.Rows[0][0].ToString();
+                                            r1["correo_ins"] = correoIns.ToString();
                                         }
                                         else
                                         {

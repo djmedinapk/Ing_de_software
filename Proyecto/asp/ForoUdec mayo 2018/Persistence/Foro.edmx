@@ -4,12 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ForoUdecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="_idpost">
-          <Property Name="id_comentario" Type="int" />
-        </EntityType>-->
+    <Schema Namespace="ForoUdecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="contacto">
           <Key>
             <PropertyRef Name="id" />
@@ -203,14 +198,6 @@ advertencia 6013: La tabla o vista 'ForoUdec.dbo._idpost' no tiene definida una 
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tipo" Type="ntext" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="token">
-          <Property Name="user_id" Type="int" />
-          <Property Name="token" Type="nvarchar" MaxLength="500" />
-          <Property Name="fecha_creado" Type="datetime2" Precision="7" />
-          <Property Name="fecha_vigencia" Type="datetime2" Precision="7" />
-        </EntityType>-->
         <EntityType Name="user_session">
           <Key>
             <PropertyRef Name="id" />
@@ -741,6 +728,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
         <Function Name="f_reporte_publicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
         <Function Name="f_reporte_puntuacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
         <Function Name="f_reporte_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+        <Function Name="f_loggin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="seguridad_registros">
+          <Parameter Name="user_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="clave" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="f_actualizar_bloqueo_sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario" />
         <Function Name="f_actualizar_bloqueo_sesion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="usuario">
           <Parameter Name="session" Type="varchar" Mode="In" />
@@ -926,8 +917,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <End Role="user_session" EntitySet="user_session" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ForoUdecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1577,17 +1567,17 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <FunctionImport Name="f_cargar_usuariospoints" />
           <FunctionImport Name="f_cargar_usuariospubl" ReturnType="Collection(ForoUdecModel.f_cargar_usuariospubl_Result)" />
           <FunctionImport Name="f_crud_mod_post" ReturnType="Collection(ForoUdecModel.f_crud_mod_post_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_crud_usuarios_delete" ReturnType="Collection(String)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="session" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_crud_usuarios_delete2" ReturnType="Collection(String)">
-            <Parameter Name="id_user" Mode="In" Type="Int32" />
+          <Parameter Name="id_user" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_crud_usuarios_listar" ReturnType="Collection(ForoUdecModel.f_crud_usuarios_listar_Result)" />
           <FunctionImport Name="f_modificar_perfil" ReturnType="Collection(String)">
@@ -1607,13 +1597,13 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="sexo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_traer_bloqueo_sesiones" ReturnType="Collection(Int32)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos_perfil" ReturnType="Collection(ForoUdecModel.f_traer_datos_perfil_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos_sesion" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion_Result)">
-            <Parameter Name="userid" Mode="In" Type="String" />
+          <Parameter Name="userid" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_agregar_contacto">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -1645,7 +1635,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="session" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_aceptar_denuncia_comentario">
-            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          <Parameter Name="denunciaid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_denunciar_comentario" ReturnType="Collection(String)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
@@ -1658,10 +1648,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_eliminar_denuncia_comentario">
-            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          <Parameter Name="denunciaid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_mostar_denuncias_comentario" ReturnType="Collection(ForoUdecModel.f_mostar_denuncias_comentario_Result)">
-            <Parameter Name="denunciaid" Mode="In" Type="Int32" />
+          <Parameter Name="denunciaid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_agregar_control">
             <Parameter Name="control" Mode="In" Type="String" />
@@ -1683,7 +1673,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="idioma" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_controles2" ReturnType="Collection(ForoUdecModel.f_listar_controles2_Result)">
-            <Parameter Name="formulario" Mode="In" Type="Int32" />
+          <Parameter Name="formulario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_formulario" ReturnType="Collection(ForoUdecModel.f_listar_formulario_Result)" />
           <FunctionImport Name="f_obtener_idioma_formulario" ReturnType="Collection(ForoUdecModel.f_obtener_idioma_formulario_Result)">
@@ -1695,10 +1685,10 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="valor" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_busqueda" ReturnType="Collection(ForoUdecModel.f_busqueda_Result)">
-            <Parameter Name="dato" Mode="In" Type="String" />
+          <Parameter Name="dato" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_busqueda_private" ReturnType="Collection(ForoUdecModel.f_busqueda_private_Result)">
-            <Parameter Name="dato" Mode="In" Type="String" />
+          <Parameter Name="dato" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_cargar_mod_post" ReturnType="Collection(ForoUdecModel.f_cargar_mod_post_Result)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
@@ -1746,22 +1736,22 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_home" ReturnType="Collection(ForoUdecModel.f_listar_post_home_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_home_categorias" ReturnType="Collection(ForoUdecModel.f_listar_post_home_categorias_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_home_categorias_private" ReturnType="Collection(ForoUdecModel.f_listar_post_home_categorias_private_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_home_private" ReturnType="Collection(ForoUdecModel.f_listar_post_home_private_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_home_servicios" ReturnType="Collection(ForoUdecModel.f_listar_post_home_servicios_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_moderador" ReturnType="Collection(ForoUdecModel.f_listar_post_moderador_Result)">
-            <Parameter Name="orden" Mode="In" Type="String" />
+          <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_listar_post_private" ReturnType="Collection(ForoUdecModel.f_listar_post_private_Result)">
             <Parameter Name="sesion" Mode="In" Type="String" />
@@ -1801,24 +1791,24 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="control" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_ver_post2" ReturnType="Collection(ForoUdecModel.f_ver_post2_Result)">
-            <Parameter Name="postid" Mode="In" Type="Int32" />
+          <Parameter Name="postid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_visita_post">
-            <Parameter Name="postid" Mode="In" Type="Int32" />
+          <Parameter Name="postid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_reporte_publicacion" ReturnType="Collection(ForoUdecModel.f_reporte_publicacion_Result)" />
           <FunctionImport Name="f_reporte_puntuacion" ReturnType="Collection(ForoUdecModel.f_reporte_puntuacion_Result)" />
           <FunctionImport Name="f_reporte_usuario" ReturnType="Collection(ForoUdecModel.f_reporte_usuario_Result)" />
           <FunctionImport Name="f_actualizar_bloqueo_sesion" />
           <FunctionImport Name="f_actualizar_bloqueo_sesion2">
-            <Parameter Name="session" Mode="In" Type="String" />
+          <Parameter Name="session" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_actualizar_bloqueo_sesiones">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="nsesion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_actualizar_estado">
-            <Parameter Name="p_user_name" Mode="In" Type="String" />
+          <Parameter Name="p_user_name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_almacenar_token">
             <Parameter Name="token" Mode="In" Type="String" />
@@ -1829,7 +1819,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_ingresar_bloqueo_sesion">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_ingresar_correo_institucional" ReturnType="Collection(String)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
@@ -1837,7 +1827,7 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="session" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_limpiar_bloqueo">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_modificar_perfil_ajustes1" ReturnType="Collection(String)">
             <Parameter Name="session" Mode="In" Type="String" />
@@ -1847,40 +1837,44 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
             <Parameter Name="contrasena" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_solicitar_bloqueo" ReturnType="Collection(String)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_solicitar_bloqueo_preingreso" ReturnType="Collection(Int32)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_solicitar_bloqueo_sesiones" ReturnType="Collection(Int32)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_solicitar_bloqueo2" ReturnType="Collection(ForoUdecModel.f_solicitar_bloqueo2_Result)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_solicitar_contador_sesiones" ReturnType="Collection(String)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_traer_correo_institucional" ReturnType="Collection(String)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos" ReturnType="Collection(ForoUdecModel.f_traer_datos_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos_sesion1" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion1_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos_sesion2" ReturnType="Collection(ForoUdecModel.f_traer_datos_sesion2_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_traer_datos_vista_perfil" ReturnType="Collection(ForoUdecModel.f_traer_datos_vista_perfil_Result)">
-            <Parameter Name="userid" Mode="In" Type="Int32" />
+          <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_validar_token" ReturnType="Collection(Int32)">
-            <Parameter Name="token" Mode="In" Type="String" />
+          <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_validar_usuario" ReturnType="Collection(ForoUdecModel.f_validar_usuario_Result)">
+          <Parameter Name="user_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_loggin" ReturnType="Collection(ForoUdecModel.f_loggin_Result)">
             <Parameter Name="user_name" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="f_caragr_datos_admin_chart_Result">
@@ -2212,6 +2206,19 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
           <Property Type="String" Name="Column5" Nullable="false" MaxLength="1" />
           <Property Type="Int32" Name="Column6" Nullable="false" />
           <Property Type="String" Name="Column7" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="f_loggin_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="pasword" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_session" Nullable="true" />
+          <Property Type="String" Name="correo" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="estado_session" Nullable="true" />
+          <Property Type="String" Name="session" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_permisos" Nullable="true" />
+          <Property Type="Int32" Name="id_estado" Nullable="true" />
+          <Property Type="Int32" Name="intentos_acceso" Nullable="true" />
+          <Property Type="Int32" Name="n_sesiones" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2989,6 +2996,23 @@ advertencia 6013: La tabla o vista 'ForoUdec.usuario.token' no tiene definida un
                 <ScalarProperty Name="Column5" ColumnName="Column5" />
                 <ScalarProperty Name="Column6" ColumnName="Column6" />
                 <ScalarProperty Name="Column7" ColumnName="Column7" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_loggin" FunctionName="ForoUdecModel.Store.f_loggin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_loggin_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pasword" ColumnName="pasword" />
+                <ScalarProperty Name="fecha_ult_session" ColumnName="fecha_ult_session" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="estado_session" ColumnName="estado_session" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="id_permisos" ColumnName="id_permisos" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="intentos_acceso" ColumnName="intentos_acceso" />
+                <ScalarProperty Name="n_sesiones" ColumnName="n_sesiones" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

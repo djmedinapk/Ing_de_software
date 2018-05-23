@@ -11,40 +11,42 @@ namespace Persistence
 {
     public class PsqlPost
     {
-        public DataTable ingresar_post(Epublicacion datosPost, int user_id, String Sesion, int modo)
+        public string ingresar_post(Epublicacion datosPost, int user_id, String Sesion, int modo)
         {
-            DataTable categoria = new DataTable();
+            string categoria;
 
             if (modo == 1)
             {
                 using (ForoUdecEntities1 db = new ForoUdecEntities1())
                 {
-                    var a = db.f_ingresar_post_privado(Sesion, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
+                    List<string> a = db.f_ingresar_post_privado(Sesion, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
                     ConverToDataTable salida = new ConverToDataTable();
-                    categoria = salida.ConvertToDataTable(a);
+                    //categoria = salida.ConvertToDataTable(a);
+                    categoria = a.First().ToString();
                 }
             }
             else
             {
                 using (ForoUdecEntities1 db = new ForoUdecEntities1())
                 {
-                    var a = db.f_ingresar_post(Sesion, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
+                    List<string> a = db.f_ingresar_post(Sesion, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
                     ConverToDataTable salida = new ConverToDataTable();
-                    categoria = salida.ConvertToDataTable(a);
+                    //categoria = salida.ConvertToDataTable(a);
+                    categoria = a.First().ToString();
                 }
             }
 
             return categoria;
         }
-        public DataTable eliminar_post(int post_id, String Sesion)
+        public string eliminar_post(int post_id, String Sesion)
         {
-            DataTable post = new DataTable();
+            string post;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_suspender_post(Sesion, post_id).ToList();
+                List<string> a = db.f_suspender_post(Sesion, post_id).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                post = salida.ConvertToDataTable(a);
+                post = a.First().ToString();
             }
             return post;
         }
@@ -60,30 +62,30 @@ namespace Persistence
             }
             return post;
         }
-        public DataTable validar_post(int post_id, String Sesion)
+        public string validar_post(int post_id, String Sesion)
         {
-            DataTable post = new DataTable();
+            string post;
 
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_validar_post(Sesion, post_id).ToList();
+                List<string> a = db.f_validar_post(Sesion, post_id).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                post = salida.ConvertToDataTable(a);
+                post = a.First().ToString();
             }
             return post;
         }
 
-        public DataTable modificar_post(Epublicacion datosPost, int user_id, String Sesion, int post_id)
+        public string modificar_post(Epublicacion datosPost, int user_id, String Sesion, int post_id)
         {
-            DataTable categoria = new DataTable();
+            string categoria;
 
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_modificar_post(Sesion, post_id, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
+                List<string> a = db.f_modificar_post(Sesion, post_id, user_id, datosPost.Nombre, datosPost.Descripcion, datosPost.Categoria, datosPost.Contenido, datosPost.Autor, datosPost.Miniatura, datosPost.Etiquetas).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                categoria = salida.ConvertToDataTable(a);
+                categoria = a.First().ToString();
             }
             return categoria;
         }
@@ -131,15 +133,15 @@ namespace Persistence
             }
             return post;
         }
-        public DataTable puntuar_post(int puntuacion, int user_id, int post_id)
+        public string puntuar_post(int puntuacion, int user_id, int post_id)
         {
-            DataTable post = new DataTable();
+            string post;
 
             using (ForoUdecEntities1 db = new ForoUdecEntities1())
             {
-                var a = db.f_puntuar_post(puntuacion, user_id, post_id).ToList();
+                List<string>a = db.f_puntuar_post(puntuacion, user_id, post_id).ToList();
                 ConverToDataTable salida = new ConverToDataTable();
-                post = salida.ConvertToDataTable(a);
+                post = a.First().ToString();
             }
             return post;
         }

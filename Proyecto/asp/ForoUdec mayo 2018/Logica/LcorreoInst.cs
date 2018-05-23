@@ -24,10 +24,10 @@ namespace Logica
             {
                 //Dperfil perfil = new Dperfil();
                 PsqlPerfil perfil = new PsqlPerfil();
-                DataTable msg = perfil.RegistrarCorreoInstitucional(id, mail, correo.Cecion);
-                if (msg.Rows.Count > 0)
+                string msg = perfil.RegistrarCorreoInstitucional(id, mail, correo.Cecion);
+                if (msg != null)
                 {
-                    mensaje = msg.Rows[0][0].ToString();
+                    mensaje = msg.ToString();
                     tipoMensaje = "verde";
                 }
                 else
