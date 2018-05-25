@@ -14,8 +14,8 @@ namespace Logica
         public DataSet post(String orden)
         {
 
-            Dservicios solicitud = new Dservicios();
-            //PsqlServicios solicitud = new PsqlServicios();
+            //Dservicios solicitud = new Dservicios();
+            PsqlServicios solicitud = new PsqlServicios();
             DataSet datos = solicitud.ver_post_home_categoria(orden);
             return datos;
         }

@@ -21,7 +21,7 @@ namespace Logica
             DataTable datos = solicitud.cargar_pag_home();
             Uadmin_main datos2 = new Uadmin_main();
             datos2.LtotalUsers= datos.Rows[0]["totalusere1"].ToString();
-            datos2.HltotalUsers = "Usuarios activos: "+ datos.Rows[0]["totalusere2"].ToString() + "<br>Usuarios suspendido: " + datos.Rows[0]["totalusere3"].ToString() + "<br>Usuarios inactivos: " + datos.Rows[0]["totalusere2"].ToString();
+            datos2.HltotalUsers = "Usuarios activos: "+ datos.Rows[0]["totalusere1"].ToString() + "<br>Usuarios suspendido: " + datos.Rows[0]["totalusere3"].ToString() + "<br>Usuarios inactivos: " + datos.Rows[0]["totalusere2"].ToString();
             datos2.LtotalPost = datos.Rows[0]["totalusere4"].ToString();
             datos2.HltotalPost = "Publicaciones Activas: " + datos.Rows[0]["totalusere5"].ToString() + "<br>Publicaciones suspendidas: " + datos.Rows[0]["totalusere7"].ToString() + "<br>Publicaciones Pendientes: " + datos.Rows[0]["totalusere6"].ToString();
             datos2.LtotalComentarios= datos.Rows[0]["totalusere8"].ToString();

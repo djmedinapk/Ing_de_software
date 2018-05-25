@@ -49,6 +49,7 @@
         <AssociationConnector Association="ForoUdecModel.user_session_id_estado_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="ForoUdecModel.user_session_id_permisos_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="ForoUdecModel.id_session" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ForoUdecModel.audit" Width="1.5" PointX="8.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

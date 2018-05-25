@@ -173,7 +173,7 @@
                                             <td >
                                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("contenido_comentario") %>'></asp:Label></td>
                                             <td >
-                                               <asp:LinkButton runat="server" Text="" CommandName="Delete" CausesValidation="False" ID="LinkButton1"><i class="fa fa-times" aria-hidden="true" style="font-size:16px; color:white;"></i></asp:LinkButton>
+                                               <asp:LinkButton runat="server" Text="" CommandArgument='<%# Bind("id_denuncia") %>' CommandName="Delete" CausesValidation="False" ID="LinkButton1"><i class="fa fa-times" aria-hidden="true" style="font-size:16px; color:white;"></i></asp:LinkButton>
                                                <asp:Button ID="Beliminar" class="close Beliminar" Text="aceptar" runat="server" CommandName="eliminar" CommandArgument='<%#  Bind("id_denuncia") %>' />
                                         </tr>
 

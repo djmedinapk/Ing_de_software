@@ -132,6 +132,19 @@
           <Property Name="id_usuario" Type="int" />
           <Property Name="id_publicacion" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ForoUdec.seguridad_registros.audit' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="audit">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="sesion" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="sesion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="data" Type="ntext" />
+        </EntityType>
         <EntityType Name="auditoria">
           <Key>
             <PropertyRef Name="id" />
@@ -162,7 +175,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" />
           <Property Name="user_mac" Type="ntext" />
-          <Property Name="user_session" Type="ntext" />
+          <Property Name="user_session" Type="nvarchar(max)" />
           <Property Name="fecha_inicio" Type="time" Precision="7" />
           <Property Name="fecha_fin" Type="time" Precision="7" />
           <Property Name="user_ip" Type="ntext" />
@@ -728,6 +741,15 @@
         <Function Name="f_reporte_publicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
         <Function Name="f_reporte_puntuacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
         <Function Name="f_reporte_usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="pruebas" />
+        <Function Name="f_cerrar_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="seguridad_registros">
+          <Parameter Name="session" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="f_guardado_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="seguridad_registros">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="ip" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="mac" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="session" Type="text" Mode="In" />
+        </Function>
         <Function Name="f_loggin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="seguridad_registros">
           <Parameter Name="user_name" Type="nvarchar" Mode="In" />
           <Parameter Name="clave" Type="nvarchar" Mode="In" />
@@ -828,6 +850,14 @@
           <EntitySet Name="permisos" EntityType="Self.permisos" Schema="usuario" store:Type="Tables" />
           <EntitySet Name="user_session" EntityType="Self.user_session" Schema="usuario" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="usuario" store:Type="Tables" />
+          <EntitySet Name="audit" EntityType="Self.audit" store:Type="Tables" store:Schema="seguridad_registros">
+            <DefiningQuery>SELECT 
+    [audit].[id] AS [id], 
+    [audit].[fecha] AS [fecha], 
+    [audit].[sesion] AS [sesion], 
+    [audit].[data] AS [data]
+    FROM [seguridad_registros].[audit] AS [audit]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="bloqueo_id_user_fkey" Association="Self.bloqueo_id_user_fkey">
             <End Role="user_session" EntitySet="user_session" />
             <End Role="bloqueo" EntitySet="bloqueo" />
@@ -1569,7 +1599,7 @@
           <FunctionImport Name="f_crud_mod_post" ReturnType="Collection(ForoUdecModel.f_crud_mod_post_Result)">
           <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result)">
+          <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result1)">
           <Parameter Name="orden" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_crud_usuarios_delete" ReturnType="Collection(String)">
@@ -1875,6 +1905,16 @@
           <FunctionImport Name="f_loggin" ReturnType="Collection(ForoUdecModel.f_loggin_Result)">
             <Parameter Name="user_name" Mode="In" Type="String" />
             <Parameter Name="clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="audit" EntityType="ForoUdecModel.audit" />
+          <FunctionImport Name="f_cerrar_session">
+          <Parameter Name="session" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_guardado_session">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="ip" Mode="In" Type="String" />
+            <Parameter Name="mac" Mode="In" Type="String" />
+            <Parameter Name="session" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="f_caragr_datos_admin_chart_Result">
@@ -2220,6 +2260,27 @@
           <Property Type="Int32" Name="intentos_acceso" Nullable="true" />
           <Property Type="Int32" Name="n_sesiones" Nullable="true" />
         </ComplexType>
+        <EntityType Name="audit">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="sesion" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="sesion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="f_crud_post_Result1">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="id_post" Nullable="true" MaxLength="129" />
+          <Property Type="String" Name="id_post2" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="miniatura" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="visitas" Nullable="true" />
+          <Property Type="String" Name="fecha" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2519,8 +2580,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="f_crud_post" FunctionName="ForoUdecModel.Store.f_crud_post">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result1">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_post" ColumnName="id_post" />
                 <ScalarProperty Name="id_post2" ColumnName="id_post2" />
@@ -3016,6 +3077,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="audit">
+            <EntityTypeMapping TypeName="ForoUdecModel.audit">
+              <MappingFragment StoreEntitySet="audit">
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="sesion" ColumnName="sesion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="f_cerrar_session" FunctionName="ForoUdecModel.Store.f_cerrar_session" />
+          <FunctionImportMapping FunctionImportName="f_guardado_session" FunctionName="ForoUdecModel.Store.f_guardado_session" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

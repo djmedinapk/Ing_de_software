@@ -49,6 +49,7 @@ namespace Persistence
         public virtual DbSet<permisos> permisos { get; set; }
         public virtual DbSet<user_session> user_session { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<audit> audit { get; set; }
     
         public virtual ObjectResult<f_caragr_datos_admin_chart_Result> f_caragr_datos_admin_chart()
         {
@@ -79,13 +80,13 @@ namespace Persistence
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_crud_mod_post_Result>("f_crud_mod_post", ordenParameter);
         }
     
-        public virtual ObjectResult<f_crud_post_Result> f_crud_post(string orden)
+        public virtual ObjectResult<f_crud_post_Result1> f_crud_post(string orden)
         {
             var ordenParameter = orden != null ?
                 new ObjectParameter("orden", orden) :
                 new ObjectParameter("orden", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_crud_post_Result>("f_crud_post", ordenParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_crud_post_Result1>("f_crud_post", ordenParameter);
         }
     
         public virtual ObjectResult<string> f_crud_usuarios_delete(Nullable<int> userid, string session)
@@ -1103,6 +1104,36 @@ namespace Persistence
                 new ObjectParameter("clave", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<f_loggin_Result>("f_loggin", user_nameParameter, claveParameter);
+        }
+    
+        public virtual int f_cerrar_session(string session)
+        {
+            var sessionParameter = session != null ?
+                new ObjectParameter("session", session) :
+                new ObjectParameter("session", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("f_cerrar_session", sessionParameter);
+        }
+    
+        public virtual int f_guardado_session(Nullable<int> user_id, string ip, string mac, string session)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var ipParameter = ip != null ?
+                new ObjectParameter("ip", ip) :
+                new ObjectParameter("ip", typeof(string));
+    
+            var macParameter = mac != null ?
+                new ObjectParameter("mac", mac) :
+                new ObjectParameter("mac", typeof(string));
+    
+            var sessionParameter = session != null ?
+                new ObjectParameter("session", session) :
+                new ObjectParameter("session", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("f_guardado_session", user_idParameter, ipParameter, macParameter, sessionParameter);
         }
     }
 }

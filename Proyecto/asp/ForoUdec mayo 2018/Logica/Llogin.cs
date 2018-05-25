@@ -22,7 +22,7 @@ namespace Logica
             DataRow r1 = datos2.NewRow();
             DataTable[] mensaje = new DataTable[2];
 
-            Dlogin ingresar = new Dlogin();
+            //Dlogin ingresar = new Dlogin();
             PsqlLogin ingresar2 = new PsqlLogin();
             Int32 verificar = ingresar2.solicitar_bloqueo_sesion_pre(usuario.Username);
             if (verificar >=0)
@@ -153,7 +153,8 @@ namespace Logica
 
         public void terminar_sesion(String sesion)
         {
-            Dlogin cerrar = new Dlogin();
+            //Dlogin cerrar = new Dlogin();
+            PsqlLogin cerrar = new PsqlLogin();
             cerrar.CerrarSession(sesion);
         }
 

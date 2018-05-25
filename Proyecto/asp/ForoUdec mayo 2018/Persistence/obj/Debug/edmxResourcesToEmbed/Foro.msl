@@ -295,7 +295,7 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="f_crud_post" FunctionName="ForoUdecModel.Store.f_crud_post">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result">
+        <ComplexTypeMapping TypeName="ForoUdecModel.f_crud_post_Result1">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="id_post" ColumnName="id_post" />
           <ScalarProperty Name="id_post2" ColumnName="id_post2" />
@@ -791,5 +791,17 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="audit">
+      <EntityTypeMapping TypeName="ForoUdecModel.audit">
+        <MappingFragment StoreEntitySet="audit">
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="sesion" ColumnName="sesion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="f_cerrar_session" FunctionName="ForoUdecModel.Store.f_cerrar_session" />
+    <FunctionImportMapping FunctionImportName="f_guardado_session" FunctionName="ForoUdecModel.Store.f_guardado_session" />
   </EntityContainerMapping>
 </Mapping>

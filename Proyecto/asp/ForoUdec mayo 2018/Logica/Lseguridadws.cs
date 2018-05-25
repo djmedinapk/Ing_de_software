@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,8 @@ namespace Logica
         {
             if (!String.IsNullOrEmpty(token) && !String.IsNullOrEmpty(fuente))
             {
-                Dservicios solicitud = new Dservicios();
+                //Dservicios solicitud = new Dservicios();
+                PsqlServicios solicitud = new PsqlServicios();
                 DataTable respuesta = solicitud.validarToken(token, fuente);
                 if (respuesta.Rows.Count > 0)
                 {
@@ -31,7 +33,8 @@ namespace Logica
         {
             String[] result = new String[5];
 
-            Dservicios ingresar = new Dservicios();
+            //Dservicios ingresar = new Dservicios();
+            PsqlServicios ingresar = new PsqlServicios();
             encryption encriptar = new encryption();
             String pass = encriptar.encrypto(password);
             DataTable data = ingresar.login(username, pass);

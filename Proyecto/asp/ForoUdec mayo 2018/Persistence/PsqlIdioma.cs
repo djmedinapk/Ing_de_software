@@ -34,8 +34,8 @@ namespace Persistence
                 Usuario = salida.ConvertToDataTable(a);
             }
             return Usuario;
-            PsqlFunctions zzz = new PsqlFunctions();
-            zzz.a(22);
+            
+            
         }
 
 

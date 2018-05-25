@@ -357,7 +357,18 @@ namespace Logica
                 DataTable informacion = eliminar.aceptar_denuncia_comentario(post_id);
             }
             
+             if (comando == "Delete")
+            {
+
+                //DDenuncia eliminar = new DDenuncia();
+                PsqlDenuncia eliminar = new PsqlDenuncia();
+                DataTable informacion = eliminar.eliminar_denuncia_comentario(post_id);
+            }
+
+
+
         }
+       
         public String[] recibir_denuncia_post(String userid,String username, Int32 postid, String opcion, String argumento)
         {
             String[] mensaje = new String[2];

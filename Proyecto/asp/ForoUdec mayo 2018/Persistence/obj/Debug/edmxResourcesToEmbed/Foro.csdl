@@ -648,7 +648,7 @@
     <FunctionImport Name="f_crud_mod_post" ReturnType="Collection(ForoUdecModel.f_crud_mod_post_Result)">
       <Parameter Name="orden" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result)">
+    <FunctionImport Name="f_crud_post" ReturnType="Collection(ForoUdecModel.f_crud_post_Result1)">
       <Parameter Name="orden" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="f_crud_usuarios_delete" ReturnType="Collection(String)">
@@ -954,6 +954,16 @@
     <FunctionImport Name="f_loggin" ReturnType="Collection(ForoUdecModel.f_loggin_Result)">
       <Parameter Name="user_name" Mode="In" Type="String" />
       <Parameter Name="clave" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="audit" EntityType="ForoUdecModel.audit" />
+    <FunctionImport Name="f_cerrar_session">
+      <Parameter Name="session" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="f_guardado_session">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="ip" Mode="In" Type="String" />
+      <Parameter Name="mac" Mode="In" Type="String" />
+      <Parameter Name="session" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="f_caragr_datos_admin_chart_Result">
@@ -1298,5 +1308,26 @@
     <Property Type="Int32" Name="id_estado" Nullable="true" />
     <Property Type="Int32" Name="intentos_acceso" Nullable="true" />
     <Property Type="Int32" Name="n_sesiones" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="audit">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="fecha" />
+      <PropertyRef Name="sesion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="sesion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="f_crud_post_Result1">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="id_post" Nullable="true" MaxLength="129" />
+    <Property Type="String" Name="id_post2" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="titulo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="miniatura" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="visitas" Nullable="true" />
+    <Property Type="String" Name="fecha" Nullable="true" />
   </ComplexType>
 </Schema>

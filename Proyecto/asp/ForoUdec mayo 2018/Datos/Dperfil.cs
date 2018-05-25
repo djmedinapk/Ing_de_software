@@ -13,10 +13,7 @@ namespace Datos
 {
     public class Dperfil
     {
-        public Dperfil()
-        {
-
-        }
+        
         public DataTable modificarDatos(int user_id, Eadmin_actualizar_usuario_2 datos, String Sesion)
         {
             DataTable Usuario = new DataTable();

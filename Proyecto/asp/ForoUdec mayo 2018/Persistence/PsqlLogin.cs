@@ -27,7 +27,10 @@ namespace Persistence
         public DataTable CerrarSession(String datos)
         {
             DataTable Usuario = new DataTable();
-
+            using (ForoUdecEntities1 db = new ForoUdecEntities1())
+            {
+                db.f_cerrar_session(datos);
+            }
             return Usuario;
         }
         public DataTable ingresar_bloqueo_sesion(String datos)

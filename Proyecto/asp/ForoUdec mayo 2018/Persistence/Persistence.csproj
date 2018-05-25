@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="audit.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
     <Compile Include="auditoria.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
@@ -131,6 +134,9 @@
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
     <Compile Include="f_crud_post_Result.cs">
+      <DependentUpon>Foro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_crud_post_Result1.cs">
       <DependentUpon>Foro.tt</DependentUpon>
     </Compile>
     <Compile Include="f_crud_usuarios_listar_Result.cs">

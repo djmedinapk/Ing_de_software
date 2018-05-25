@@ -23,7 +23,7 @@
         <h2><asp:Label ID="L_categoria" runat="server" Text="Categorias"></asp:Label></h2>
         <h6>
             <asp:DropDownList ID="DDLbusqueda" runat="server" DataSourceID="ODScategorias" AutoPostBack="True" DataTextField="nombre" DataValueField="id"></asp:DropDownList>
-        <asp:ObjectDataSource runat="server" ID="ODScategorias" SelectMethod="listar_categoria" TypeName="DAOpost"></asp:ObjectDataSource>
+            <asp:ObjectDataSource runat="server" ID="ODScategorias" SelectMethod="listar_categorias" TypeName="Logica.Lpost"></asp:ObjectDataSource>
         </h6>
         
         <hr>
