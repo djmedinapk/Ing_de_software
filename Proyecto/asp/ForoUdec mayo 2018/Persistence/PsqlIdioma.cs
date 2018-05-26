@@ -20,6 +20,9 @@ namespace Persistence
                 ConverToDataTable salida = new ConverToDataTable();
                 datos = salida.ConvertToDataTable(a);
             }
+            PsqlFunctions asdasda = new PsqlFunctions();
+
+            DataTable asdsasda=asdasda.cargar_mod_post(22,30);
             return datos;
         }
 
@@ -101,5 +104,6 @@ namespace Persistence
             }
 
         }
+
     }
 }
